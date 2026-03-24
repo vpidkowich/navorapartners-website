@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/pidvi/Downloads -maxdepth 2 -type f \\\\\\(-iname *overlay* -o -iname *hero* -o -iname *navora* -o -iname *meeting* -o -iname *office* \\\\\\) \\\\\\(-iname *.png -o -iname *.jpg \\\\\\) -newer '/c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/navora-home.html')",
+      "Bash(start chrome:*)",
+      "Bash(ls -lh \"/c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP\"/*.html)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\pidvi\\.claude\\plans"
+    ]
+  }
+}

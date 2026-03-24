@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4-Stage Ring Diagram — Variation C (Icon + Glow)</title>
+<style>
+  @font-face {
+    font-family: 'Excalifont';
+    src: url('../fonts/Excalifont-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Roslindale';
+    src: url('../fonts/roslindale/Roslindale-DisplayBold-Testing.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --jade: #024742;
+    --cream: #faf9f5;
+    --gold: #ffe174;
+    --orange: #ff6b00;
+    --text-dark: #181a1d;
+    --font-excali: 'Excalifont', 'Segoe Print', cursive;
+    --font-heading: 'Roslindale', Georgia, serif;
+    --glow-x: 65%;
+    --glow-y: 35%;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-excali);
+    font-weight: 400;
+    background: var(--cream);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 60px 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 42px;
+    color: var(--text-dark);
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .ring-diagram-wrapper {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+  }
+
+  .ring-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .ring-svg .segment-stroke {
+    fill: none;
+    stroke: var(--jade);
+    stroke-width: 6;
+    cursor: pointer;
+    transition: stroke 350ms ease-out, stroke-width 350ms ease-out;
+    stroke-linecap: round;
+  }
+
+  .ring-svg .segment-stroke.active {
+    stroke: var(--orange);
+    stroke-width: 9;
+  }
+
+  .ring-svg .segment-hit {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 40;
+    cursor: pointer;
+  }
+
+  .ring-svg .segment-arrow {
+    fill: none;
+    stroke: var(--jade);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 350ms ease-out, stroke-width 350ms ease-out;
+  }
+
+  .ring-svg .segment-arrow.active {
+    stroke: var(--orange);
+    stroke-width: 8;
+  }
+
+  /* Center Content with glow */
+  .ring-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 545px;
+    height: 545px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  /* Radial glow from active segment direction */
+  .ring-center::before {
+    content: '';
+    position: absolute;
+    inset: -60px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at var(--glow-x) var(--glow-y),
+      rgba(255, 107, 0, 0.08) 0%,
+      transparent 60%
+    );
+    transition: background 500ms ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Small icon above description */
+  .center-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 18px;
+    opacity: 0.4;
+    transition: opacity 150ms ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .center-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ring-center .stage-desc {
+    font-family: var(--font-excali);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--text-dark);
+    transition: opacity 150ms ease;
+    position: relative;
+    z-index: 2;
+    max-width: 380px;
+  }
+
+  .ring-center.fading .stage-desc,
+  .ring-center.fading .center-icon {
+    opacity: 0;
+  }
+
+  /* External Labels */
+  .ring-label {
+    position: absolute;
+    font-family: var(--font-excali);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.25;
+    transition: opacity 300ms ease, color 300ms ease;
+    opacity: 0.45;
+    cursor: pointer;
+    padding: 6px 10px;
+  }
+
+  .ring-label .stage-num {
+    display: block;
+    font-size: 17px;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-bottom: 3px;
+  }
+
+  .ring-label .stage-title {
+    font-weight: 400;
+  }
+
+  .ring-label.active {
+    opacity: 1;
+    color: var(--text-dark);
+  }
+
+  .ring-label.active .stage-num {
+    opacity: 1;
+  }
+
+  .ring-label[data-stage="1"] {
+    top: 50px;
+    right: 10px;
+    text-align: left;
+    max-width: 240px;
+  }
+
+  .ring-label[data-stage="2"] {
+    bottom: 70px;
+    right: 0px;
+    text-align: left;
+    max-width: 240px;
+  }
+
+  .ring-label[data-stage="3"] {
+    bottom: 60px;
+    left: -10px;
+    text-align: left;
+    max-width: 260px;
+  }
+
+  .ring-label[data-stage="4"] {
+    top: 50px;
+    left: -10px;
+    text-align: left;
+    max-width: 280px;
+  }
+</style>
+</head>
+<body>
+
+<h2>A four-part system for predictable, P&L-backed growth.</h2>
+
+<div class="ring-diagram-wrapper" id="ring-wrapper">
+  <svg class="ring-svg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+    <g id="ring-segments"></g>
+  </svg>
+
+  <div class="ring-center" id="ring-center">
+    <div class="center-icon" id="center-icon"></div>
+    <p class="stage-desc" id="center-desc"></p>
+  </div>
+
+  <div class="ring-label" data-stage="1" id="label-1">
+    <span class="stage-num">Stage 1</span>
+    <span class="stage-title">Growth-Clarity<br>Decision System</span>
+  </div>
+  <div class="ring-label" data-stage="2" id="label-2">
+    <span class="stage-num">Stage 2</span>
+    <span class="stage-title">Paid Demand &amp;<br>Creative Engine</span>
+  </div>
+  <div class="ring-label" data-stage="3" id="label-3">
+    <span class="stage-num">Stage 3</span>
+    <span class="stage-title">Conversion &amp; LTV<br>Architecture</span>
+  </div>
+  <div class="ring-label" data-stage="4" id="label-4">
+    <span class="stage-num">Stage 4</span>
+    <span class="stage-title">Operating Cadence &amp; Strategic Advisory</span>
+  </div>
+</div>
+
+<script>
+(function() {
+  const STAGES = [
+    { desc: 'We reconcile platforms, P&L, and customer signals into one source of truth so your leadership team can see what\u2019s working, what isn\u2019t, and where the next dollar should go.', glowX: '68%', glowY: '32%' },
+    { desc: 'We build a bespoke customer acquisition strategy focused on sustainability and profitability. We do this through structured testing, and profit guardrails engineered around your brand economics so scaling increases contribution \u2014 without erosion.', glowX: '72%', glowY: '72%' },
+    { desc: 'We engineer the post-click and post-purchase experience to increase revenue per visitor and lifetime contribution, tightening payback windows and ensuring that scaling paid acquisition strengthens your economics instead of stressing them.', glowX: '28%', glowY: '72%' },
+    { desc: 'We install the weekly rhythms, scorecards, and strategic support that keep the whole growth system aligned and compounding instead of drifting back into chaos.', glowX: '28%', glowY: '28%' }
+  ];
+
+  const ICONS_SMALL = [
+    `<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2" stroke-linecap="round"><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="12"/><circle cx="32" cy="32" r="2.5" fill="#024742" stroke="none"/><line x1="32" y1="4" x2="32" y2="16"/><line x1="32" y1="48" x2="32" y2="60"/><line x1="4" y1="32" x2="16" y2="32"/><line x1="48" y1="32" x2="60" y2="32"/></svg>`,
+    `<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14,26 L14,38 L22,38 L22,26Z"/><path d="M22,24 L48,12 L48,52 L22,40Z"/><circle cx="51" cy="32" r="4"/><path d="M18,38 L18,48 Q18,52 22,52 L24,52 Q28,52 28,48 L28,40"/><line x1="55" y1="22" x2="60" y2="19"/><line x1="56" y1="32" x2="62" y2="32"/><line x1="55" y1="42" x2="60" y2="45"/></svg>`,
+    `<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12,12 L52,12 L38,32 L38,48 L26,48 L26,32Z"/><line x1="26" y1="48" x2="26" y2="56"/><line x1="38" y1="48" x2="38" y2="56"/><line x1="22" y1="56" x2="42" y2="56"/><path d="M46,28 L46,8 M42,13 L46,8 L50,13"/></svg>`,
+    `<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2" stroke-linecap="round"><path d="M32,8 A24,24 0 0,1 52,22"/><polygon points="52,18 56,24 48,24" fill="#024742" stroke="none"/><path d="M56,32 A24,24 0 0,1 42,54"/><polygon points="45,56 39,52 44,49" fill="#024742" stroke="none"/><path d="M32,58 A24,24 0 0,1 12,42"/><polygon points="12,46 8,40 16,40" fill="#024742" stroke="none"/><path d="M8,32 A24,24 0 0,1 22,10"/><polygon points="19,8 25,12 20,15" fill="#024742" stroke="none"/><circle cx="32" cy="32" r="6"/><circle cx="32" cy="32" r="1.5" fill="#024742" stroke="none"/></svg>`
+  ];
+
+  const CX = 450, CY = 450, R = 310;
+  const GAP_DEG = 12;
+  const SEGMENT_DEG = (360 - GAP_DEG * 4) / 4;
+  const START_OFFSET = -90;
+
+  function polarToCart(cx, cy, r, angleDeg) {
+    const rad = (angleDeg * Math.PI) / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  }
+
+  function describeStrokeArc(cx, cy, r, startAngle, endAngle) {
+    const start = polarToCart(cx, cy, r, startAngle);
+    const end = polarToCart(cx, cy, r, endAngle);
+    const largeArc = (endAngle - startAngle) > 180 ? 1 : 0;
+    return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 1 ${end.x} ${end.y}`;
+  }
+
+  // offset from any point at a given angle and distance
+  function offsetPoint(ox, oy, dist, angleDeg) {
+    const rad = (angleDeg * Math.PI) / 180;
+    return { x: ox + dist * Math.cos(rad), y: oy + dist * Math.sin(rad) };
+  }
+
+  // Create open chevron arrowhead path (hand-drawn style V shape) at end of arc
+  function createArrowhead(cx, cy, r, angleDeg, size) {
+    const tip = polarToCart(cx, cy, r, angleDeg);
+    // Tangent direction (clockwise on circle = angleDeg + 90)
+    const tangentAngle = angleDeg + 90;
+    const radialAngle = angleDeg;
+    // Two prongs of the V, angled back from the tip
+    const prong1 = offsetPoint(tip.x, tip.y, size * 2.2, tangentAngle + 180 + 28);
+    const prong2 = offsetPoint(tip.x, tip.y, size * 2.2, tangentAngle + 180 - 28);
+    return `M ${prong1.x} ${prong1.y} L ${tip.x} ${tip.y} L ${prong2.x} ${prong2.y}`;
+  }
+
+  const segmentsGroup = document.getElementById('ring-segments');
+  const segmentStrokes = [];
+  const segmentHits = [];
+  const segmentArrows = [];
+  const segmentAngles = [];
+
+  for (let i = 0; i < 4; i++) {
+    const startAngle = START_OFFSET + i * (SEGMENT_DEG + GAP_DEG) + GAP_DEG / 2;
+    const endAngle = startAngle + SEGMENT_DEG;
+    segmentAngles.push({ start: startAngle, end: endAngle });
+
+    const d = describeStrokeArc(CX, CY, R, startAngle, endAngle);
+
+    const hitPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    hitPath.setAttribute('d', d);
+    hitPath.setAttribute('class', 'segment-hit');
+    hitPath.setAttribute('data-stage', i + 1);
+    segmentsGroup.appendChild(hitPath);
+    segmentHits.push(hitPath);
+
+    const strokePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    strokePath.setAttribute('d', d);
+    strokePath.setAttribute('class', 'segment-stroke');
+    strokePath.setAttribute('data-stage', i + 1);
+    segmentsGroup.appendChild(strokePath);
+    segmentStrokes.push(strokePath);
+
+    // Arrowhead at the clockwise end of each arc
+    const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    arrow.setAttribute('d', createArrowhead(CX, CY, R, endAngle, 10));
+    arrow.setAttribute('class', 'segment-arrow');
+    arrow.setAttribute('data-stage', i + 1);
+    segmentsGroup.appendChild(arrow);
+    segmentArrows.push(arrow);
+  }
+
+  let activeStage = -1;
+  const wrapper = document.getElementById('ring-wrapper');
+  const centerEl = document.getElementById('ring-center');
+  const descEl = document.getElementById('center-desc');
+  const iconEl = document.getElementById('center-icon');
+  const ringLabels = document.querySelectorAll('.ring-label');
+
+  function setActiveStage(index) {
+    if (index === activeStage) return;
+
+    segmentStrokes.forEach((seg, i) => seg.classList.toggle('active', i === index));
+    segmentArrows.forEach((arr, i) => arr.classList.toggle('active', i === index));
+
+    for (let i = 0; i < 4; i++) {
+      const a = segmentAngles[i];
+      const radius = (i === index) ? R + 12 : R;
+      const d = describeStrokeArc(CX, CY, radius, a.start, a.end);
+      segmentStrokes[i].setAttribute('d', d);
+      segmentHits[i].setAttribute('d', d);
+      segmentArrows[i].setAttribute('d', createArrowhead(CX, CY, radius, a.end, (i === index) ? 12 : 10));
+    }
+
+    ringLabels.forEach((lbl) => {
+      const stageIdx = parseInt(lbl.getAttribute('data-stage')) - 1;
+      lbl.classList.toggle('active', stageIdx === index);
+    });
+
+    // Update glow position
+    wrapper.style.setProperty('--glow-x', STAGES[index].glowX);
+    wrapper.style.setProperty('--glow-y', STAGES[index].glowY);
+
+    centerEl.classList.add('fading');
+    setTimeout(() => {
+      descEl.textContent = STAGES[index].desc;
+      iconEl.innerHTML = ICONS_SMALL[index];
+      centerEl.classList.remove('fading');
+      activeStage = index;
+    }, 150);
+  }
+
+  setActiveStage(0);
+
+  segmentHits.forEach((hit, i) => hit.addEventListener('mouseenter', () => setActiveStage(i)));
+  segmentStrokes.forEach((seg, i) => seg.addEventListener('mouseenter', () => setActiveStage(i)));
+  ringLabels.forEach((lbl) => {
+    const idx = parseInt(lbl.getAttribute('data-stage')) - 1;
+    lbl.addEventListener('mouseenter', () => setActiveStage(idx));
+  });
+
+  wrapper.addEventListener('mouseleave', () => setActiveStage(0));
+})();
+</script>
+</body>
+</html>
