@@ -1,0 +1,9 @@
+# Large video files (exceed GitHub's 100MB limit)
+videos/Nick at Inova Air Purifiers/Nick Testimonial.mp4
+
+# Zip archives
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
