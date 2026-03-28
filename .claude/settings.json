@@ -1,7 +1,33 @@
 {
   "permissions": {
     "allow": [
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(for i:*)",
+      "Bash(do mkdir:*)",
+      "Bash(done)",
+      "Bash(ls -d \"/c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/videos/Internal Case Study\"*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/videos/**)",
+      "Bash(ls \"/c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/videos/videos \\(2\\)/\")",
+      "Bash(ls \"/c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/videos/videos \\(2\\)/videos/\")",
+      "Read(//c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/videos/videos \\(2\\)/videos/**)",
+      "WebFetch(domain:uxplanet.org)",
+      "WebFetch(domain:atlassian.design)",
+      "WebFetch(domain:www.conceptfusion.co.uk)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:www.reddit.com)",
+      "Bash(python3 -c \":*)",
+      "Bash(python -c \":*)",
+      "Bash(node -e \"console.log\\(''node available''\\)\")",
+      "Bash(node \"/c/Users/pidvi/AppData/Local/Temp/docx_extract/parse.js\")",
+      "Bash(unzip -l \"/c/Users/pidvi/AppData/Local/Temp/docx_extract/doc.zip\")",
+      "Bash(sort -k5 -hr)",
+      "Bash(npm list:*)",
+      "Bash(gh --version)",
+      "Bash(gh auth:*)",
+      "Bash(1:*)",
+      "Bash(gh repo:*)",
+      "Bash(gh api:*)"
     ]
   }
 }
