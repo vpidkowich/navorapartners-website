@@ -1030,8 +1030,8 @@
       width: 100%;
       height: auto;
       display: flex;
-      flex-direction: column-reverse;
-      gap: var(--space-md);
+      flex-wrap: wrap;
+      gap: 0;
     }
     .ring-svg { display: none; }
     .ring-center {
@@ -1065,9 +1065,12 @@
 
     .ring-label {
       position: static;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 0;
       max-width: none !important;
-      padding: 10px 16px;
+      padding: 12px 4px;
       border-left: none;
       border-bottom: 3px solid transparent;
       margin-bottom: 0;
@@ -1076,12 +1079,18 @@
       transition: opacity 300ms ease, border-color 300ms ease;
       border-radius: 0;
       text-align: center;
+      order: -1;
     }
     .ring-label .stage-num { font-size: 14px; margin-bottom: 0; }
     .ring-label .stage-title { display: none; }
     .ring-label.active {
       opacity: 1;
       border-bottom-color: var(--orange);
+    }
+    .ring-center {
+      order: 1;
+      flex-basis: 100%;
+      margin-top: var(--space-md);
     }
   }
 
@@ -1979,8 +1988,8 @@
 
     /* 3. Accomplishments */
     .accomplishments { padding: var(--space-xl) var(--space-md); }
-    .accomplishments-inner { flex-direction: column-reverse; gap: var(--space-xl); }
-    .accomplishments-quote { font-size: 32px; }
+    .accomplishments-inner { flex-direction: column-reverse; gap: var(--space-xl); align-items: center; }
+    .accomplishments-quote { font-size: 32px; text-align: center; }
     .accomplishments-stats {
       flex: none;
       border-left: none;
@@ -1989,6 +1998,7 @@
       text-align: center;
       padding-top: 0;
       border-top: none;
+      justify-items: center;
     }
     .accomplishments-quote { border-top: none; }
     .stat-number { font-size: 40px; }
@@ -2022,7 +2032,7 @@
       flex-direction: column;
       text-align: center;
       gap: var(--space-md);
-      padding: var(--space-lg) 0;
+      padding: var(--space-lg) 0 calc(var(--space-lg) * 3);
     }
     .who-help-cta p { font-size: 26px; }
     .who-help-cta .btn { width: 100%; justify-content: center; }
@@ -2067,8 +2077,9 @@
       padding: var(--space-xl) var(--space-md);
     }
     .founder-inner { flex-direction: column; gap: var(--space-lg); }
-    .founder-right { flex: none; margin-top: 0; }
-    .founder-photo { width: 100%; max-width: 280px; height: 360px; margin: 0 auto; }
+    .founder-right { flex: none; margin-top: 0; display: flex; justify-content: center; }
+    .founder-photo { width: 240px; height: 320px; border: 2px solid var(--gold); background: url('images/chaky white shirt forward facing.webp') center/cover no-repeat !important; }
+    .founder-photo-border { display: none; }
     .founder-left { padding: 0; }
     .founder-quote blockquote { font-size: 24px; }
     .founder-quote .attribution-name { font-size: 18px; }
@@ -2102,7 +2113,7 @@
     .footer-compass { height: 100px; }
     .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
     .footer-badges { flex-direction: column; gap: var(--space-md); align-items: center; }
-    .footer-badge img { height: 64px; }
+    .footer-badge img { height: 64px; width: auto; object-fit: contain; }
     .footer-col ul li a { font-size: 17px; }
   }
 
