@@ -76,7 +76,7 @@
 
   /* ========== RESET & BASE ========== */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body {
     font-family: var(--font-body);
     font-weight: 300;
@@ -84,6 +84,7 @@
     background: var(--cream);
     -webkit-font-smoothing: antialiased;
     zoom: 0.9;
+    overflow-x: hidden;
   }
   img { max-width: 100%; display: block; }
   a { text-decoration: none; color: inherit; }
@@ -1463,7 +1464,7 @@
   }
   .carousel-slide.active {
     opacity: 1;
-    position: relative;
+    position: absolute;
     pointer-events: auto;
   }
   .carousel-slide blockquote {
@@ -1752,8 +1753,8 @@
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* ========== RESPONSIVE: TABLET (max-width: 1024px) ========== */
-  @media (max-width: 1024px) {
+  /* ========== RESPONSIVE: TABLET (max-width: 1200px) ========== */
+  @media (max-width: 1200px) {
     body { zoom: 1; }
 
     /* 1. Header — hamburger on tablet too, keep CTA visible */
@@ -1836,8 +1837,8 @@
     /* 11. Founder */
     .founder { padding: 0 var(--space-xl); }
     .founder-dark { margin: 0 calc(-1 * var(--space-xl)); padding: var(--space-3xl) var(--space-xl); }
-    .founder-dark::before { top: 8%; bottom: 8%; }
-    .founder-dark::after { height: 8%; }
+    .founder-dark::before { top: 5%; bottom: 5%; }
+    .founder-dark::after { height: 5%; }
     .founder-right { flex: 0 0 340px; }
     .founder-photo { width: 340px; height: 430px; }
     .founder-quote blockquote { font-size: 32px; }
@@ -1845,6 +1846,7 @@
 
     /* 12. Testimonial Carousel */
     .testimonial-carousel { padding: var(--space-3xl) var(--space-xl); }
+    .carousel-slides { min-height: 420px; }
     .carousel-slide blockquote { font-size: 40px; }
 
     /* 13. Final CTA */
@@ -2088,12 +2090,12 @@
   <div class="header-inner">
     <a href="#" class="header-logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="7.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/><path d="M12 1.5V3.5M12 20.5V22.5M1.5 12H3.5M20.5 12H22.5" stroke="#fff" stroke-width="1" stroke-linecap="round"/><path d="M4.5 4.5L6 6M18 18L19.5 19.5M19.5 4.5L18 6M6 18L4.5 19.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" stroke-linecap="round"/><path d="M16.5 7.5L13.2 10.8L12 12L10.8 13.2L7.5 16.5" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 16.5L10.8 13.2L12 12L13.2 10.8L16.5 7.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="0.1 14.5 100"/><polygon points="16.5,7.5 14,8.5 15.5,10" fill="#FFE174"/><polygon points="7.5,16.5 10,15.5 8.5,14" fill="#fff"/><circle cx="12" cy="12" r="2" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="12" cy="12" r="0.8" fill="#FFE174"/><text x="12" y="4.2" text-anchor="middle" fill="#FFE174" font-size="3" font-weight="700" font-family="sans-serif">N</text></svg>Navora Partners</a>
     <div class="header-right">
-      <a href="#" class="btn btn-gold btn-arrow header-cta">Get Free Growth Strategy</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
       </button>
+      <a href="#" class="btn btn-gold btn-arrow header-cta">Get Free Growth Strategy</a>
     </div>
     <nav class="header-nav" id="headerNav">
       <a href="#">About</a>
