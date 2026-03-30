@@ -919,6 +919,9 @@
     stroke: #fff;
     fill: none;
   }
+  .stage-title-mobile {
+    display: none;
+  }
   .ring-center .stage-desc {
     font-family: var(--font-excali);
     font-size: 19px;
@@ -1051,11 +1054,20 @@
       line-height: 1.55;
     }
 
+    .stage-title-mobile {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--warm-cream);
+      margin: 0 0 var(--space-sm);
+    }
+
     .ring-label {
       position: static;
       display: inline-block;
       max-width: none !important;
-      padding: 10px 14px;
+      padding: 10px 16px;
       border-left: none;
       border-bottom: 3px solid transparent;
       margin-bottom: 0;
@@ -1065,9 +1077,8 @@
       border-radius: 0;
       text-align: center;
     }
-    .ring-label .stage-num { font-size: 11px; margin-bottom: 2px; }
-    .ring-label .stage-title { font-size: 14px; }
-    .ring-label .stage-title br { display: none; }
+    .ring-label .stage-num { font-size: 14px; margin-bottom: 0; }
+    .ring-label .stage-title { display: none; }
     .ring-label.active {
       opacity: 1;
       border-bottom-color: var(--orange);
@@ -1946,7 +1957,7 @@
       padding: var(--space-xs) 0;
       font-size: 18px;
     }
-    .header-cta { display: none; }
+    .header-cta { display: none !important; }
     .header-nav-cta {
       display: flex !important;
       width: 100%;
@@ -1981,6 +1992,7 @@
     }
     .accomplishments-quote { border-top: none; }
     .stat-number { font-size: 40px; }
+    .stat-label { max-width: 200px; margin: var(--space-2xs) auto 0; }
 
     /* 4. Why Navora */
     .why-navora { padding: var(--space-xl) var(--space-md); }
@@ -2056,7 +2068,7 @@
     }
     .founder-inner { flex-direction: column; gap: var(--space-lg); }
     .founder-right { flex: none; margin-top: 0; }
-    .founder-photo { width: 100%; max-width: 280px; height: auto; aspect-ratio: 3/4; margin: 0 auto; }
+    .founder-photo { width: 100%; max-width: 280px; height: 360px; margin: 0 auto; }
     .founder-left { padding: 0; }
     .founder-quote blockquote { font-size: 24px; }
     .founder-quote .attribution-name { font-size: 18px; }
@@ -2064,7 +2076,7 @@
     .founder-dark::after { display: none; }
 
     /* 12. Testimonial Carousel */
-    .testimonial-carousel { padding: var(--space-xl) var(--space-md); }
+    .testimonial-carousel { padding: calc(var(--space-xl) * 2.5) var(--space-md) var(--space-xl); }
     .carousel-slide blockquote { font-size: 28px; }
     .carousel-slides { min-height: 250px; }
     .carousel-note { font-size: 18px; }
@@ -2089,7 +2101,7 @@
     .footer-brand-name { font-size: 40px; }
     .footer-compass { height: 100px; }
     .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
-    .footer-badges { flex-direction: row; gap: var(--space-md); justify-content: center; }
+    .footer-badges { flex-direction: column; gap: var(--space-md); align-items: center; }
     .footer-badge img { height: 64px; }
     .footer-col ul li a { font-size: 17px; }
   }
@@ -2484,6 +2496,7 @@
 
     <div class="ring-center" id="ring-center">
       <div class="center-icon" id="center-icon"></div>
+      <h4 class="stage-title-mobile" id="center-title"></h4>
       <p class="stage-desc" id="center-desc"></p>
     </div>
 
@@ -2818,10 +2831,10 @@
 <script>
 (function() {
   const STAGES = [
-    { desc: 'We reconcile platforms, P&L, and customer signals into one source of truth so your leadership team can see what\u2019s working, what isn\u2019t, and where the next dollar should go.', glowX: '68%', glowY: '32%' },
-    { desc: 'We build a bespoke customer acquisition strategy focused on sustainability and profitability. We do this through structured testing, and profit guardrails engineered around your brand economics so scaling increases contribution \u2014 without erosion.', glowX: '72%', glowY: '72%' },
-    { desc: 'We engineer the post-click and post-purchase experience to increase revenue per visitor and lifetime contribution, tightening payback windows and ensuring that scaling paid acquisition strengthens your economics instead of stressing them.', glowX: '28%', glowY: '72%' },
-    { desc: 'We install the weekly rhythms, scorecards, and strategic support that keep the whole growth system aligned and compounding instead of drifting back into chaos.', glowX: '28%', glowY: '28%' }
+    { title: 'Growth-Clarity Decision System', desc: 'We reconcile platforms, P&L, and customer signals into one source of truth so your leadership team can see what\u2019s working, what isn\u2019t, and where the next dollar should go.', glowX: '68%', glowY: '32%' },
+    { title: 'Paid Demand & Creative Engine', desc: 'We build a bespoke customer acquisition strategy focused on sustainability and profitability. We do this through structured testing, and profit guardrails engineered around your brand economics so scaling increases contribution \u2014 without erosion.', glowX: '72%', glowY: '72%' },
+    { title: 'Conversion & LTV Architecture', desc: 'We engineer the post-click and post-purchase experience to increase revenue per visitor and lifetime contribution, tightening payback windows and ensuring that scaling paid acquisition strengthens your economics instead of stressing them.', glowX: '28%', glowY: '72%' },
+    { title: 'Operating Cadence & Strategic Advisory', desc: 'We install the weekly rhythms, scorecards, and strategic support that keep the whole growth system aligned and compounding instead of drifting back into chaos.', glowX: '28%', glowY: '28%' }
   ];
 
   const ICONS_SMALL = [
@@ -2900,6 +2913,7 @@
   var wrapper = document.getElementById('ring-wrapper');
   var centerEl = document.getElementById('ring-center');
   var descEl = document.getElementById('center-desc');
+  var titleEl = document.getElementById('center-title');
   var iconEl = document.getElementById('center-icon');
   var ringLabels = document.querySelectorAll('.ring-label');
 
@@ -2929,6 +2943,7 @@
     centerEl.classList.add('fading');
     setTimeout(function() {
       descEl.textContent = STAGES[index].desc;
+      if (titleEl) titleEl.textContent = STAGES[index].title;
       iconEl.innerHTML = ICONS_SMALL[index];
       centerEl.classList.remove('fading');
       activeStage = index;
