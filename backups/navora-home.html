@@ -1,0 +1,3079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navora Partners — Predictable Growth Through Paid Media</title>
+<meta name="description" content="Navora Partners is an e-commerce paid media agency that drives predictable, profitable growth through strategic media buying, creative strategy, and full-funnel optimization.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Inria+Serif:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ========== FONT FACES ========== */
+  @font-face {
+    font-family: 'Roslindale';
+    src: url('fonts/roslindale/Roslindale-DisplayBold-Testing.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Roslindale';
+    src: url('fonts/roslindale/Roslindale-DisplayRegular-Testing.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Roslindale';
+    src: url('fonts/roslindale/Roslindale-DisplayMedium-Testing.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Excalifont';
+    src: url('fonts/Excalifont-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ========== CSS CUSTOM PROPERTIES ========== */
+  :root {
+    --jade: #024742;
+    --dark-bg: #282828;
+    --dark-navy: #172838;
+    --cream: #faf9f5;
+    --warm-cream: #faf9e9;
+    --gold: #ffe174;
+    --text-dark: #181a1d;
+    --text-dark-alt: #282828;
+    --text-light: #faf9f5;
+    --muted: #c5cbbf;
+    --orange: #ff6b00;
+    --font-heading: 'Roslindale', Georgia, 'Times New Roman', serif;
+    --font-body: 'Satoshi', system-ui, -apple-system, sans-serif;
+    --font-label: 'Inter Tight', system-ui, sans-serif;
+    --font-inria: 'Inria Serif', Georgia, serif;
+    --font-excali: 'Excalifont', 'Segoe Print', cursive;
+
+    /* Spacing Scale (8px grid) */
+    --space-2xs: 4px;
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+    --space-3xl: 80px;
+    --space-4xl: 96px;
+    --space-5xl: 112px;
+  }
+
+  /* ========== RESET & BASE ========== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--text-dark);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    zoom: 0.9;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ========== UTILITY ========== */
+  .container { max-width: 1216px; margin: 0 auto; width: 100%; }
+  .container-wide { max-width: 1280px; margin: 0 auto; width: 100%; }
+  .section-label {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    text-align: center;
+    margin-bottom: var(--space-md);
+  }
+
+  /* ========== BUTTONS ========== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 14px 28px;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: border-color 0.4s ease, color 0.4s ease;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--dark-navy);
+    border: 1.5px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: var(--dark-navy);
+    transition: width 0.4s ease;
+    z-index: -1;
+  }
+  .btn-gold:hover {
+    color: var(--gold);
+    border-color: var(--dark-navy);
+  }
+  .btn-gold:hover::before {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+  .btn-outline-white {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .btn-outline-white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+  }
+  .btn-outline-white:hover {
+    color: var(--dark-navy);
+  }
+  .btn-outline-white:hover::before {
+    transform: translateX(0);
+  }
+  .btn-arrow::after {
+    content: '\2192';
+    font-size: 20px;
+    font-weight: 900;
+    display: inline-block;
+    margin-left: 2px;
+    transition: transform 0.4s ease, margin 0.4s ease;
+  }
+  .btn-arrow:hover::after {
+    transform: translateX(14px);
+  }
+
+  /* ========== 1. HEADER ========== */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(2,71,66,0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-5xl);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .header-logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+  .header-logo svg {
+    width: 24px;
+    height: 24px;
+  }
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+  .header-nav a:not(.btn) {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 300;
+    transition: color 0.3s ease;
+  }
+  .header-nav a:not(.btn):hover { color: var(--gold); }
+  .header-cta {
+    padding: 10px 22px;
+    font-size: 15px;
+    border-radius: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: background-position 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* ========== 2. HERO ========== */
+  .hero {
+    position: relative;
+    background: #022e2a;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: var(--space-xl) var(--space-5xl) var(--space-3xl);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(170deg, #01332e 0%, #024742 40%, #024742 100%);
+  }
+  /* Salesflow-style angular translucent panels */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(140deg, rgba(3,80,72,0.5) 0%, rgba(3,80,72,0.3) 15%, transparent 40%),
+      linear-gradient(155deg, transparent 10%, rgba(4,95,87,0.25) 20%, rgba(4,95,87,0.15) 35%, transparent 50%),
+      linear-gradient(130deg, transparent 50%, rgba(3,70,64,0.3) 65%, rgba(2,55,50,0.4) 80%, rgba(2,55,50,0.3) 100%),
+      linear-gradient(160deg, transparent 25%, rgba(5,110,100,0.12) 35%, rgba(5,110,100,0.08) 50%, transparent 65%),
+      linear-gradient(20deg, rgba(1,35,32,0.5) 0%, rgba(1,35,32,0.2) 20%, transparent 40%);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(145deg, rgba(5,100,90,0.2) 0%, rgba(5,100,90,0.15) 18%, transparent 18.5%),
+      linear-gradient(135deg, transparent 30%, rgba(4,85,78,0.12) 30.5%, rgba(4,85,78,0.08) 48%, transparent 48.5%),
+      linear-gradient(150deg, transparent 55%, rgba(3,75,68,0.15) 55.5%, rgba(3,75,68,0.1) 72%, transparent 72.5%),
+      radial-gradient(ellipse 400px 300px at 75% 15%, rgba(5,120,110,0.1) 0%, transparent 70%),
+      linear-gradient(to bottom, transparent 60%, rgba(1,30,27,0.2) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero-left { flex: 0 0 670px; max-width: 670px; }
+  .hero-right { flex: 1; display: flex; justify-content: flex-end; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) 0;
+    margin-bottom: var(--space-md);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .hero-stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; }
+
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: var(--space-md);
+  }
+  .hero-sub {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+  }
+  .hero-trust {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .hero-trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 14px;
+    color: #e8e8e4;
+  }
+  .hero-trust-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--jade);
+    flex-shrink: 0;
+  }
+  .hero-portrait {
+    width: 420px;
+    height: 520px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #035a54, #024742);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.15);
+    font-size: 14px;
+    font-family: var(--font-body);
+  }
+
+  /* ========== 3. ACCOMPLISHMENTS ========== */
+  .accomplishments {
+    background: var(--dark-navy);
+    padding: var(--space-4xl) var(--space-5xl);
+  }
+  .accomplishments-inner {
+    display: flex;
+    gap: var(--space-3xl);
+    align-items: flex-start;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .accomplishments-quote {
+    flex: 1;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: #fff;
+  }
+  .accomplishments-stats {
+    flex: 0 0 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg) var(--space-xl);
+    border-left: 1px solid rgba(255,255,255,0.15);
+    padding-left: var(--space-xl);
+  }
+  .stat-number {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-size: 18px;
+    color: #fff;
+    margin-top: var(--space-2xs);
+    line-height: 1.5;
+  }
+
+  /* ========== 4. WHY NAVORA ========== */
+  .why-navora {
+    background: var(--cream);
+    padding: 88px 272px var(--space-3xl);
+  }
+  .why-navora .section-label { color: var(--text-dark); }
+  .why-items { display: flex; flex-direction: column; gap: 128px; margin-top: var(--space-xl); }
+  .why-item { display: flex; gap: var(--space-lg); align-items: flex-start; }
+  .why-item .why-icon { margin-top: -14px; }
+  .why-icon {
+    flex-shrink: 0;
+    width: 76px;
+    height: 76px;
+    border-radius: 12px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .why-icon-placeholder {
+    color: var(--jade);
+    font-size: 24px;
+  }
+  .why-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .why-item h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: var(--space-md);
+  }
+  .why-item p {
+    font-size: 35px;
+    line-height: 1.5;
+    color: var(--text-dark-alt);
+  }
+
+  /* ========== 5. CASE STUDIES ========== */
+  .case-studies {
+    background: var(--cream);
+    padding: 56px var(--space-5xl) var(--space-4xl);
+  }
+  .case-studies-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .case-studies-header .section-label { color: var(--text-dark); letter-spacing: 1.8px; }
+  .case-studies-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--text-dark);
+  }
+
+  .featured-cases {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    max-width: 1216px;
+    margin: 0 auto var(--space-2xl);
+  }
+  .case-card {
+    flex: 1;
+    display: flex;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    background: var(--jade);
+  }
+  .case-card-image {
+    flex: 1;
+    background: linear-gradient(135deg, #3a6b67, #024742);
+    min-height: 320px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .case-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--dark-navy);
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .case-card-image:hover::after {
+    opacity: 0.08;
+  }
+  .play-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0;
+    cursor: pointer;
+    transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .play-btn::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 18px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 4px;
+    transition: border-color 0.4s ease;
+  }
+  .play-btn:hover {
+    background: rgba(255,255,255,0.25);
+    border-color: #fff;
+    transform: scale(1.15);
+  }
+  .case-card-content {
+    flex: 1;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--jade);
+  }
+  .case-card-content blockquote {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: var(--space-xl);
+  }
+  .case-card-content p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-bottom: var(--space-md);
+  }
+  .case-card-attribution {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+  .case-card-attribution img {
+    height: 28px;
+    width: auto;
+  }
+  .case-card-attribution .attr-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .case-card-attribution .attr-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .case-card-attribution .attr-role {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  .case-card-attribution .attr-since {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--gold);
+    opacity: 0.85;
+    line-height: 1.3;
+  }
+  .case-card-content .read-more {
+    color: var(--gold);
+    font-weight: 500;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    margin-top: auto;
+  }
+  .case-card-content .read-more:hover span:first-child {
+    text-decoration: underline;
+  }
+  .read-more-arrow {
+    display: inline-block;
+    transition: transform 0.4s ease;
+  }
+  .read-more:hover .read-more-arrow {
+    transform: translateX(8px);
+  }
+
+  .more-stories h3 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-top: 104px;
+    margin-bottom: var(--space-4xl);
+  }
+  .stories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    max-width: 1216px;
+    margin: 0 auto var(--space-xl);
+  }
+  .story-card {
+    display: flex;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    background: #fff;
+    min-height: 180px;
+  }
+  .story-card-img {
+    flex: 0 0 256px;
+    background: linear-gradient(135deg, #d4d8d0, #b8bcb4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 240px;
+  }
+  .story-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--dark-navy);
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .story-card-img:hover::after {
+    opacity: 0.08;
+  }
+  .story-card-img .play-btn {
+    z-index: 1;
+  }
+  .story-card-body {
+    flex: 1;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .story-card-body h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--jade);
+    margin-bottom: var(--space-md);
+  }
+  .story-card-body .story-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md) 0;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .story-card-body .story-bullets li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--jade);
+    padding-left: var(--space-sm);
+    position: relative;
+  }
+  .story-card-body .story-bullets li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--jade);
+  }
+  .story-card-body .read-more {
+    color: var(--jade);
+    font-weight: 500;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+  }
+  .story-card-body .read-more:hover span:first-child {
+    text-decoration: underline;
+  }
+  .case-studies .see-all {
+    text-align: center;
+    margin-top: 128px;
+    margin-bottom: 56px;
+  }
+
+  /* ========== 6. WHO WE HELP ========== */
+  .who-help {
+    background: var(--dark-navy);
+    padding: 104px var(--space-5xl) 104px;
+  }
+  .who-help-header {
+    max-width: 960px;
+    margin: 0 auto var(--space-xl);
+    text-align: center;
+  }
+  .who-help-header .section-label {
+    color: var(--gold);
+  }
+  .who-help-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .who-help-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md) var(--space-xl);
+    max-width: 720px;
+    margin: 0 auto var(--space-xl);
+  }
+  .who-help-item {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--warm-cream);
+  }
+  .who-help-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .who-help-icon svg {
+    width: 48px;
+    height: 48px;
+    stroke: var(--gold);
+  }
+  .who-help-cta {
+    background: transparent;
+    border-radius: 0;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-xl) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+  }
+  .who-help-cta p {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 0;
+  }
+  .who-help-cta .btn-gold {
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+  }
+  .who-help-cta .btn-gold::before {
+    background: var(--gold);
+  }
+  .who-help-cta .btn-gold:hover {
+    color: var(--dark-navy);
+    border-color: var(--gold);
+  }
+
+  /* ========== 7. PILLARS / HOW WE HELP ========== */
+  .pillars {
+    background: var(--jade);
+    padding: 104px var(--space-5xl) 88px;
+    text-align: center;
+  }
+  .pillars .section-label { color: var(--gold); letter-spacing: 1.8px; }
+  .pillars h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    color: #fff;
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.2;
+  }
+
+  /* Ring Diagram */
+  .ring-diagram-wrapper {
+    position: relative;
+    width: 620px;
+    height: 620px;
+    margin: 0 auto;
+  }
+  .ring-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .ring-svg .segment-stroke {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 6;
+    cursor: pointer;
+    transition: stroke 350ms ease-out, stroke-width 350ms ease-out;
+    stroke-linecap: round;
+  }
+  .ring-svg .segment-stroke.active {
+    stroke: var(--orange);
+    stroke-width: 9;
+  }
+  .ring-svg .segment-hit {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 40;
+    cursor: pointer;
+  }
+  .ring-svg .segment-arrow {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 350ms ease-out, stroke-width 350ms ease-out;
+  }
+  .ring-svg .segment-arrow.active {
+    stroke: var(--orange);
+    stroke-width: 8;
+  }
+
+  .ring-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .ring-center::before {
+    content: '';
+    position: absolute;
+    inset: -60px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at var(--glow-x, 65%) var(--glow-y, 35%),
+      rgba(245, 230, 200, 0.18) 0%,
+      transparent 60%
+    );
+    transition: background 500ms ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ring-center .center-icon {
+    width: 38px;
+    height: 38px;
+    margin: 0 auto 14px;
+    opacity: 0.7;
+    transition: opacity 150ms ease;
+    position: relative;
+    z-index: 2;
+  }
+  .ring-center .center-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: #fff;
+    fill: none;
+  }
+  .ring-center .stage-desc {
+    font-family: var(--font-excali);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--warm-cream);
+    transition: opacity 150ms ease;
+    position: relative;
+    z-index: 2;
+    max-width: 300px;
+  }
+  .ring-center.fading .stage-desc,
+  .ring-center.fading .center-icon {
+    opacity: 0;
+  }
+
+  .ring-label {
+    position: absolute;
+    font-family: var(--font-excali);
+    font-size: 21px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.25;
+    transition: opacity 300ms ease, color 300ms ease;
+    opacity: 0.45;
+    cursor: pointer;
+    padding: 6px 10px;
+  }
+  .ring-label .stage-num {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-bottom: 3px;
+  }
+  .ring-label .stage-title {
+    font-weight: 400;
+  }
+  .ring-label.active {
+    opacity: 1;
+    color: #fff;
+  }
+  .ring-label.active .stage-num {
+    opacity: 1;
+  }
+  .ring-label[data-stage="1"] {
+    top: 35px;
+    right: 5px;
+    text-align: left;
+    max-width: 200px;
+  }
+  .ring-label[data-stage="2"] {
+    bottom: 50px;
+    right: -5px;
+    text-align: left;
+    max-width: 200px;
+  }
+  .ring-label[data-stage="3"] {
+    bottom: 42px;
+    left: -15px;
+    text-align: left;
+    max-width: 210px;
+  }
+  .ring-label[data-stage="4"] {
+    top: 35px;
+    left: -15px;
+    text-align: left;
+    max-width: 230px;
+  }
+
+  /* Ring Diagram — Responsive */
+  @media (max-width: 1080px) {
+    .pillars { padding: 80px 48px; }
+    .ring-diagram-wrapper { width: 520px; height: 520px; }
+    .ring-center { width: 350px; height: 350px; }
+    .ring-center .stage-desc { font-size: 17px; max-width: 260px; }
+    .ring-label { font-size: 19px; }
+    .ring-label .stage-num { font-size: 13px; }
+    .ring-label[data-stage="1"] { top: 28px; right: 0; max-width: 180px; }
+    .ring-label[data-stage="2"] { bottom: 42px; right: -10px; max-width: 180px; }
+    .ring-label[data-stage="3"] { bottom: 36px; left: -20px; max-width: 190px; }
+    .ring-label[data-stage="4"] { top: 28px; left: -20px; max-width: 200px; }
+  }
+
+  @media (max-width: 768px) {
+    .pillars { padding: 64px 24px; }
+    .pillars h2 { font-size: 36px; margin-bottom: 40px; }
+    .ring-diagram-wrapper { width: 420px; height: 420px; }
+    .ring-center { width: 280px; height: 280px; }
+    .ring-center .stage-desc { font-size: 15px; max-width: 220px; line-height: 1.45; }
+    .ring-center .center-icon { width: 30px; height: 30px; margin-bottom: 10px; }
+    .ring-label { font-size: 16px; }
+    .ring-label .stage-num { font-size: 12px; }
+    .ring-label[data-stage="1"] { top: 18px; right: -10px; max-width: 160px; }
+    .ring-label[data-stage="2"] { bottom: 32px; right: -15px; max-width: 160px; }
+    .ring-label[data-stage="3"] { bottom: 28px; left: -20px; max-width: 170px; }
+    .ring-label[data-stage="4"] { top: 18px; left: -20px; max-width: 180px; }
+  }
+
+  /* Mobile: replace ring with stacked vertical layout */
+  @media (max-width: 600px) {
+    .pillars { padding: 56px 20px; }
+    .pillars h2 { font-size: 28px; max-width: 100%; margin-bottom: 32px; }
+
+    .ring-diagram-wrapper {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .ring-svg { display: none; }
+    .ring-center {
+      position: static;
+      transform: none;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      background: rgba(255, 107, 0, 0.04);
+      padding: 28px 24px;
+      margin-bottom: 0;
+      overflow: visible;
+    }
+    .ring-center::before { display: none; }
+    .ring-center .center-icon { width: 40px; height: 40px; margin-bottom: 16px; }
+    .ring-center .stage-desc {
+      font-size: 18px;
+      max-width: 100%;
+      line-height: 1.55;
+    }
+
+    .ring-label {
+      position: static;
+      display: block;
+      max-width: 100% !important;
+      padding: 16px 20px;
+      border-left: 3px solid var(--jade);
+      margin-bottom: 0;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity 300ms ease, border-color 300ms ease, background 300ms ease;
+      border-radius: 0;
+    }
+    .ring-label .stage-num { font-size: 13px; margin-bottom: 2px; }
+    .ring-label .stage-title { font-size: 20px; }
+    .ring-label.active {
+      opacity: 1;
+      border-left-color: var(--orange);
+      background: rgba(255, 107, 0, 0.04);
+    }
+  }
+
+  /* ========== 8. TRUTH ========== */
+  .truth {
+    background: var(--jade);
+    padding: 72px var(--space-5xl) 136px;
+    position: relative;
+    overflow: hidden;
+  }
+  .truth-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+  .truth-circle-1 { width: 600px; height: 600px; top: -200px; left: -200px; }
+  .truth-circle-2 { width: 500px; height: 500px; bottom: -150px; right: -150px; }
+  .truth-circle-3 { width: 350px; height: 350px; top: 50px; right: -80px; }
+  .truth-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .truth-label {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    margin-bottom: var(--space-md);
+  }
+  .truth-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1.2;
+    color: #fff;
+  }
+  .truth-text em {
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  /* ========== 9. GROWTH STRATEGY ========== */
+  .growth-strategy {
+    background: var(--cream);
+    padding: var(--space-4xl) var(--space-5xl) 88px;
+  }
+  .growth-strategy h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .growth-strategy-inner {
+    display: flex;
+    gap: var(--space-2xl);
+    max-width: 1060px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+  .growth-strategy-desc {
+    flex: 1;
+    max-width: 560px;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--text-dark-alt);
+  }
+  .growth-strategy-card {
+    flex: 0 0 480px;
+    background: var(--dark-navy);
+    border-radius: 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    padding: var(--space-xl);
+  }
+  .growth-strategy-card h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: var(--space-md);
+  }
+  .checklist { display: flex; flex-direction: column; gap: var(--space-md); }
+  .checklist-item {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--warm-cream);
+  }
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--jade);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  /* ========== 10. PROCESS ========== */
+  .process {
+    background: var(--cream);
+    padding: 40px var(--space-5xl) var(--space-2xl);
+  }
+  .process .section-label { color: var(--text-dark); letter-spacing: 1.8px; margin-bottom: var(--space-xl); }
+  .process-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto var(--space-3xl);
+    overflow: visible;
+  }
+  .process-map-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+  }
+  .map-path-fill {
+    fill: none;
+    stroke: var(--jade);
+    stroke-width: 3.5;
+    stroke-dasharray: 18 12;
+    stroke-linecap: round;
+  }
+  .map-x-line {
+    fill: none;
+    stroke: var(--jade);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .map-circle-path {
+    fill: none;
+    stroke: var(--jade);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .process-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--space-xl);
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .process-step:nth-of-type(odd) .step-content {
+    transform: translateX(-40px);
+    transition: transform 0.7s ease;
+  }
+  .process-step:nth-of-type(even) .step-content {
+    transform: translateX(40px);
+    transition: transform 0.7s ease;
+  }
+  .process-step.in-view {
+    opacity: 1;
+  }
+  .process-step.in-view .step-content {
+    transform: translateX(0);
+  }
+  .process-step:nth-of-type(odd) { justify-content: flex-start; padding-right: calc(50% + 40px); }
+  .process-step:nth-of-type(even) { justify-content: flex-end; padding-left: calc(50% + 40px); }
+  .process-step::after {
+    display: none;
+  }
+  .step-content {
+    max-width: 360px;
+    position: relative;
+    z-index: 2;
+    background: var(--cream);
+    padding: 12px var(--space-sm);
+    margin: -12px calc(-1 * var(--space-sm));
+  }
+  .step-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--jade);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    margin-bottom: var(--space-sm);
+    flex-shrink: 0;
+  }
+  .step-icon svg {
+    width: 28px;
+    height: 24px;
+  }
+  .step-content h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 30px;
+    color: #282828;
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+  }
+  .step-content p {
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--text-dark-alt);
+  }
+
+  .process-cta {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    padding: var(--space-2xl);
+    text-align: center;
+  }
+  .process-cta h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: var(--space-md);
+  }
+  .process-cta p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--text-dark-alt);
+    margin-bottom: var(--space-xl);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ========== 11. FOUNDER ACCESS ========== */
+  .founder {
+    background: var(--cream);
+    padding: 0 var(--space-5xl);
+  }
+  .founder-top {
+    padding: var(--space-4xl) 0 var(--space-xl);
+    max-width: 1216px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .founder-top .section-label {
+    text-align: left;
+  }
+  .founder-top h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: var(--space-md);
+  }
+  .founder-top > p {
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--text-dark-alt);
+    max-width: 700px;
+  }
+  .founder-dark {
+    position: relative;
+    background: transparent;
+    margin: 0 calc(-1 * var(--space-5xl));
+    padding: var(--space-3xl) var(--space-5xl);
+    display: flex;
+    align-items: flex-end;
+    max-width: none;
+  }
+  .founder-dark::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    bottom: 20%;
+    background: var(--dark-bg);
+    z-index: 0;
+  }
+  .founder-dark::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20%;
+    background: var(--warm-cream);
+    z-index: 0;
+  }
+  .founder-inner {
+    display: flex;
+    gap: var(--space-2xl);
+    align-items: center;
+    max-width: 1216px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .founder-left {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    padding: var(--space-2xl) var(--space-xl) var(--space-2xl) 0;
+  }
+  .founder-quote {
+    border-left: 3px solid var(--gold);
+    padding-left: var(--space-md);
+  }
+  .founder-quote blockquote {
+    font-family: var(--font-heading);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: var(--space-md);
+  }
+  .founder-quote .attribution-name {
+    font-size: 26px;
+    color: #e8cb64;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .founder-quote .attribution-title {
+    font-size: 17px;
+    color: var(--warm-cream);
+    text-transform: uppercase;
+    margin-top: var(--space-2xs);
+  }
+  .founder-right {
+    flex: 0 0 552px;
+    position: relative;
+    z-index: 1;
+    margin-top: -100px;
+  }
+  .founder-photo {
+    width: 552px;
+    height: 696px;
+    border-radius: 0;
+    background: url('images/chaky white shirt forward facing.webp') center/cover no-repeat;
+    position: relative;
+    z-index: 1;
+    border: 2px solid var(--gold);
+  }
+  .founder-photo-border {
+    display: none;
+  }
+
+  /* ========== 12. TESTIMONIAL CAROUSEL ========== */
+  .testimonial-carousel {
+    background: var(--warm-cream);
+    padding: var(--space-4xl) var(--space-5xl);
+    position: relative;
+  }
+  .carousel-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-lg);
+  }
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--muted);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 0;
+  }
+  .carousel-dot.active {
+    background: var(--jade);
+    transform: scale(1.2);
+  }
+  .carousel-dot:hover {
+    background: var(--jade);
+  }
+  .carousel-slides {
+    position: relative;
+    min-height: 300px;
+  }
+  .carousel-slide {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+  }
+  .carousel-slide.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+  }
+  .carousel-slide blockquote {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--text-dark-alt);
+    margin-bottom: var(--space-xl);
+  }
+  .carousel-attribution {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-dark-alt);
+  }
+  .carousel-attribution strong {
+    font-weight: 700;
+    font-size: 22px;
+    display: block;
+  }
+  .carousel-attribution .attr-company {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--jade);
+  }
+  .carousel-attribution .attr-location {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    color: #282828;
+  }
+  .carousel-note {
+    margin-top: var(--space-xl);
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-dark-alt);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ========== 13. FINAL CTA ========== */
+  .final-cta {
+    position: relative;
+    padding: var(--space-4xl) var(--space-5xl);
+    background: url('images/Main call to action image.webp') center/cover no-repeat;
+    overflow: hidden;
+  }
+  .final-cta-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 71, 66, 0.65);
+    z-index: 0;
+  }
+  .final-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    text-align: left;
+  }
+  .final-cta-label {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    margin-bottom: var(--space-md);
+  }
+  .final-cta-inner h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: var(--space-md);
+  }
+  .final-cta-inner p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
+    margin-bottom: var(--space-xl);
+    max-width: 650px;
+  }
+
+  /* ========== 14. FOOTER ========== */
+  .footer {
+    background: var(--jade);
+    padding: var(--space-3xl) var(--space-5xl) var(--space-xl);
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    column-gap: var(--space-xl);
+    row-gap: var(--space-xl);
+    max-width: 1216px;
+    margin: 0 auto;
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand-row {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .footer-brand-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 77px;
+    color: rgba(255,255,255,0.10);
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  .footer-brand-tagline {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 22px;
+    color: rgba(255,255,255,0.18);
+    line-height: 1.4;
+  }
+  .footer-icons {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+  }
+  .footer-compass {
+    height: 184px;
+    width: auto;
+    opacity: 0.20;
+  }
+  .footer-col h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: var(--space-md);
+  }
+  .footer-col ul { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .footer-col ul li a {
+    font-size: 20px;
+    color: #fff;
+    transition: opacity 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); opacity: 1; }
+  .footer-address {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-bottom: var(--space-md);
+  }
+  .footer-social {
+    display: flex;
+    gap: var(--space-sm);
+  }
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: opacity 0.2s;
+  }
+  .social-icon:hover {
+    opacity: 0.7;
+  }
+  .social-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
+  }
+  .footer-badges {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+  .footer-badge {
+    display: flex;
+    align-items: center;
+  }
+  .footer-badge img {
+    height: 102px;
+    width: auto;
+    object-fit: contain;
+  }
+  .footer-badge:first-child img {
+    height: 102px;
+  }
+  .footer-bottom {
+    max-width: 1216px;
+    margin: 0 auto;
+    padding-top: var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .footer-bottom-links {
+    display: flex;
+    gap: var(--space-md);
+  }
+  .footer-bottom-links a { color: var(--muted); transition: opacity 0.2s; }
+  .footer-bottom-links a:hover { opacity: 0.7; }
+
+  /* ========== VIDEO LIGHTBOX ========== */
+  .video-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .video-lightbox.active {
+    display: flex;
+  }
+  .video-lightbox video {
+    max-width: 860px;
+    max-height: 80vh;
+    width: 90%;
+    border-radius: 4px;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+  .video-lightbox-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-lg);
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+  .video-lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+  /* ========== HAMBURGER BUTTON (hidden on desktop) ========== */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+  .hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ========== RESPONSIVE: TABLET (max-width: 1024px) ========== */
+  @media (max-width: 1024px) {
+    body { zoom: 1; }
+
+    /* 1. Header */
+    .header { padding: 0 var(--space-xl); }
+    .header-nav { gap: var(--space-lg); }
+
+    /* 2. Hero */
+    .hero { padding: var(--space-xl) var(--space-xl) var(--space-3xl); }
+    .hero-inner { gap: var(--space-lg); }
+    .hero-left { flex: 1; max-width: none; }
+    .hero h1 { font-size: 48px; }
+    .hero-sub { font-size: 18px; }
+    .hero-portrait { width: 340px; height: 420px; }
+
+    /* 3. Accomplishments */
+    .accomplishments { padding: var(--space-3xl) var(--space-xl); }
+    .accomplishments-inner { gap: var(--space-xl); }
+    .accomplishments-quote { font-size: 36px; }
+    .accomplishments-stats { flex: 0 0 400px; }
+
+    /* 4. Why Navora */
+    .why-navora { padding: var(--space-3xl) var(--space-xl); }
+    .why-item h3 { font-size: 32px; }
+    .why-item p { font-size: 28px; }
+
+    /* 5. Case Studies */
+    .case-studies { padding: var(--space-3xl) var(--space-xl); }
+    .featured-cases { flex-direction: column; }
+    .case-card { flex-direction: row; }
+    .stories-grid { gap: var(--space-md); }
+    .story-card-body h4 { font-size: 18px; }
+
+    /* 6. Who We Help */
+    .who-help { padding: var(--space-3xl) var(--space-xl) 0; }
+
+    /* 7. Pillars — existing responsive rules handle this via 1080px breakpoint */
+
+    /* 8. Truth */
+    .truth { padding: var(--space-3xl) var(--space-xl); }
+    .truth-text { font-size: 48px; }
+
+    /* 9. Growth Strategy */
+    .growth-strategy { padding: var(--space-3xl) var(--space-xl); }
+    .growth-strategy-inner { gap: var(--space-xl); }
+    .growth-strategy-card { flex: 0 0 380px; }
+    .growth-strategy h2 { font-size: 40px; }
+
+    /* 10. Process */
+    .process { padding: var(--space-3xl) var(--space-xl) var(--space-2xl); }
+
+    /* 11. Founder */
+    .founder { padding: 0 var(--space-xl); }
+    .founder-dark { margin: 0 calc(-1 * var(--space-xl)); padding: var(--space-2xl) var(--space-xl); }
+    .founder-right { flex: 0 0 400px; }
+    .founder-photo { width: 400px; height: 504px; }
+    .founder-top h2 { font-size: 40px; }
+
+    /* 12. Testimonial Carousel */
+    .testimonial-carousel { padding: var(--space-3xl) var(--space-xl); }
+    .carousel-slide blockquote { font-size: 40px; }
+
+    /* 13. Final CTA */
+    .final-cta { padding: var(--space-3xl) var(--space-xl); }
+    .final-cta-inner h2 { font-size: 40px; }
+
+    /* 14. Footer */
+    .footer { padding: var(--space-3xl) var(--space-xl) var(--space-xl); }
+  }
+
+  /* ========== RESPONSIVE: MOBILE (max-width: 768px) ========== */
+  @media (max-width: 768px) {
+    /* 1. Header — hamburger menu */
+    .header { padding: 0 var(--space-md); height: 64px; }
+    .header-logo { font-size: 20px; }
+    .hamburger { display: flex; }
+    .header-nav {
+      display: none;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(2,71,66,0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      flex-direction: column;
+      padding: var(--space-md) var(--space-md) var(--space-lg);
+      gap: var(--space-sm);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .header-nav.open { display: flex; }
+    .header-nav a:not(.btn) {
+      padding: var(--space-xs) 0;
+      font-size: 18px;
+    }
+    .header-cta {
+      width: 100%;
+      justify-content: center;
+      margin-top: var(--space-xs);
+    }
+
+    /* 2. Hero */
+    .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+    .hero-inner { flex-direction: column; gap: var(--space-lg); }
+    .hero-left { flex: none; max-width: 100%; }
+    .hero h1 { font-size: 36px; }
+    .hero-sub { font-size: 17px; max-width: 100%; }
+    .hero-right { justify-content: center; }
+    .hero-portrait { width: 100%; max-width: 360px; height: 400px; }
+    .hero-buttons { flex-direction: column; }
+    .hero-buttons .btn { width: 100%; justify-content: center; }
+
+    /* 3. Accomplishments */
+    .accomplishments { padding: var(--space-xl) var(--space-md); }
+    .accomplishments-inner { flex-direction: column; gap: var(--space-xl); }
+    .accomplishments-quote { font-size: 32px; }
+    .accomplishments-stats {
+      flex: none;
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: var(--space-xl);
+    }
+    .stat-number { font-size: 40px; }
+
+    /* 4. Why Navora */
+    .why-navora { padding: var(--space-xl) var(--space-md); }
+    .why-item { flex-direction: column; gap: var(--space-sm); }
+    .why-item h3 { font-size: 28px; }
+    .why-item p { font-size: 22px; }
+    .why-icon { width: 56px; height: 56px; }
+
+    /* 5. Case Studies */
+    .case-studies { padding: var(--space-xl) var(--space-md); }
+    .case-studies-header h2 { font-size: 36px; }
+    .featured-cases { flex-direction: column; }
+    .case-card { flex-direction: column; }
+    .case-card-image { min-height: 240px; }
+    .case-card-content blockquote { font-size: 24px; }
+    .stories-grid { grid-template-columns: 1fr; }
+    .story-card { flex-direction: column; }
+    .story-card-img { flex: none; min-height: 200px; }
+    .story-card-body { flex: none; }
+    .more-stories h3 { font-size: 26px; }
+
+    /* 6. Who We Help */
+    .who-help { padding: var(--space-xl) var(--space-md) 0; }
+    .who-help-header h2 { font-size: 36px; }
+    .who-help-grid { grid-template-columns: 1fr; }
+    .who-help-cta {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--space-md);
+      padding: var(--space-lg) 0;
+    }
+    .who-help-cta p { font-size: 26px; }
+    .who-help-cta .btn { width: 100%; justify-content: center; }
+
+    /* 7. Pillars — existing 768px & 600px breakpoints handle this */
+
+    /* 8. Truth */
+    .truth { padding: var(--space-xl) var(--space-md); }
+    .truth-text { font-size: 32px; }
+    .truth-label { font-size: 14px; }
+
+    /* 9. Growth Strategy */
+    .growth-strategy { padding: var(--space-xl) var(--space-md); }
+    .growth-strategy h2 { font-size: 32px; }
+    .growth-strategy-inner { flex-direction: column; }
+    .growth-strategy-desc { max-width: 100%; font-size: 20px; }
+    .growth-strategy-card { flex: none; width: 100%; }
+
+    /* 10. Process */
+    .process { padding: var(--space-xl) var(--space-md) var(--space-xl); }
+    .process-map-svg { display: none; }
+    .process-step:nth-of-type(odd) { padding-right: 0; justify-content: flex-start; }
+    .process-step:nth-of-type(even) { padding-left: 0; justify-content: flex-start; }
+    .process-step:nth-of-type(odd) .step-content,
+    .process-step:nth-of-type(even) .step-content {
+      transform: translateX(0);
+    }
+    .step-content { max-width: 100%; }
+    .step-content h4 { font-size: 24px; }
+    .step-content p { font-size: 18px; }
+    .process-cta { padding: var(--space-xl); }
+    .process-cta h3 { font-size: 28px; }
+    .process-cta p { font-size: 17px; }
+    .process-cta .btn { width: 100%; justify-content: center; }
+
+    /* 11. Founder */
+    .founder { padding: 0 var(--space-md); }
+    .founder-top h2 { font-size: 32px; }
+    .founder-top > p { font-size: 18px; }
+    .founder-dark {
+      margin: 0 calc(-1 * var(--space-md));
+      padding: var(--space-xl) var(--space-md);
+    }
+    .founder-inner { flex-direction: column-reverse; gap: var(--space-lg); }
+    .founder-right { flex: none; margin-top: 0; }
+    .founder-photo { width: 100%; height: auto; aspect-ratio: 3/4; }
+    .founder-left { padding: 0; }
+    .founder-quote blockquote { font-size: 28px; }
+    .founder-quote .attribution-name { font-size: 20px; }
+    .founder-dark::before { top: 0; bottom: 0; }
+    .founder-dark::after { display: none; }
+
+    /* 12. Testimonial Carousel */
+    .testimonial-carousel { padding: var(--space-xl) var(--space-md); }
+    .carousel-slide blockquote { font-size: 28px; }
+    .carousel-slides { min-height: 250px; }
+    .carousel-note { font-size: 18px; }
+
+    /* 13. Final CTA */
+    .final-cta { padding: var(--space-xl) var(--space-md); }
+    .final-cta-inner h2 { font-size: 32px; }
+    .final-cta-inner p { font-size: 17px; }
+    .final-cta-inner .btn { width: 100%; justify-content: center; }
+
+    /* 14. Footer */
+    .footer { padding: var(--space-xl) var(--space-md) var(--space-sm); }
+    .footer-inner {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-lg);
+    }
+    .footer-brand-row { flex-direction: column; align-items: flex-start; gap: var(--space-md); }
+    .footer-brand-name { font-size: 48px; }
+    .footer-compass { height: 120px; }
+    .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
+    .footer-badges { flex-direction: row; gap: var(--space-md); }
+    .footer-badge img { height: 72px; }
+    .footer-col ul li a { font-size: 17px; }
+  }
+
+  /* ========== RESPONSIVE: SMALL MOBILE (max-width: 480px) ========== */
+  @media (max-width: 480px) {
+    /* 2. Hero */
+    .hero h1 { font-size: 28px; }
+    .hero-sub { font-size: 16px; }
+    .hero-badge { font-size: 13px; }
+    .hero-portrait { max-width: 100%; height: 340px; }
+
+    /* 3. Accomplishments */
+    .accomplishments-quote { font-size: 26px; }
+    .stat-number { font-size: 36px; }
+    .stat-label { font-size: 16px; }
+
+    /* 4. Why Navora */
+    .why-item h3 { font-size: 24px; }
+    .why-item p { font-size: 18px; }
+    .why-items { gap: var(--space-xl); }
+
+    /* 5. Case Studies */
+    .case-studies-header h2 { font-size: 28px; }
+    .case-card-content blockquote { font-size: 20px; }
+    .story-card-body h4 { font-size: 17px; }
+
+    /* 6. Who We Help */
+    .who-help-header h2 { font-size: 28px; }
+    .who-help-cta p { font-size: 22px; }
+
+    /* 8. Truth */
+    .truth-text { font-size: 26px; }
+
+    /* 9. Growth Strategy */
+    .growth-strategy h2 { font-size: 28px; }
+    .growth-strategy-desc { font-size: 17px; }
+    .checklist-item { font-size: 16px; }
+
+    /* 10. Process */
+    .step-content h4 { font-size: 22px; }
+    .step-content p { font-size: 16px; }
+    .process-cta h3 { font-size: 24px; }
+    .process-cta p { font-size: 16px; }
+
+    /* 11. Founder */
+    .founder-top h2 { font-size: 28px; }
+    .founder-quote blockquote { font-size: 24px; }
+
+    /* 12. Testimonial Carousel */
+    .carousel-slide blockquote { font-size: 24px; }
+    .carousel-slides { min-height: 280px; }
+    .carousel-note { font-size: 16px; }
+
+    /* 13. Final CTA */
+    .final-cta-inner h2 { font-size: 26px; }
+    .final-cta-inner p { font-size: 16px; }
+    .final-cta-label { font-size: 12px; }
+
+    /* 14. Footer */
+    .footer-brand-name { font-size: 36px; }
+    .footer-brand-tagline { font-size: 16px; }
+    .footer-compass { height: 80px; }
+    .footer-badge img { height: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== 1. HEADER ========== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="header-logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="7.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/><path d="M12 1.5V3.5M12 20.5V22.5M1.5 12H3.5M20.5 12H22.5" stroke="#fff" stroke-width="1" stroke-linecap="round"/><path d="M4.5 4.5L6 6M18 18L19.5 19.5M19.5 4.5L18 6M6 18L4.5 19.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" stroke-linecap="round"/><path d="M16.5 7.5L13.2 10.8L12 12L10.8 13.2L7.5 16.5" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 16.5L10.8 13.2L12 12L13.2 10.8L16.5 7.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="0.1 14.5 100"/><polygon points="16.5,7.5 14,8.5 15.5,10" fill="#FFE174"/><polygon points="7.5,16.5 10,15.5 8.5,14" fill="#fff"/><circle cx="12" cy="12" r="2" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="12" cy="12" r="0.8" fill="#FFE174"/><text x="12" y="4.2" text-anchor="middle" fill="#FFE174" font-size="3" font-weight="700" font-family="sans-serif">N</text></svg>Navora Partners</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <nav class="header-nav" id="headerNav">
+      <a href="#">About</a>
+      <a href="#">Results</a>
+      <a href="#">Careers</a>
+      <a href="#" class="btn btn-gold btn-arrow header-cta">Get Free Growth Strategy</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== 2. HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        Rated 4.8 / 5 based on client feedback
+      </div>
+      <h1>Predictable growth through paid media — without the profit erosion</h1>
+      <p class="hero-sub">Uncover hidden truth with our proprietary ecom analysis and go beyond optimizing for ROAS. We align every ad dollar to your P&amp;L so you scale with clarity, not guesswork.</p>
+      <div class="hero-buttons">
+        <a href="#growth-strategy-cta" class="btn btn-gold btn-arrow">Get My Free Growth Strategy</a>
+        <a href="#growth-strategy" class="btn btn-outline-white">What Is The Growth Strategy?</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <span class="hero-trust-check"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Not a generic audit
+        </div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-check"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Zero ROAS theater
+        </div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-check"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Purely P&amp;L aligned
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-portrait">Portrait Placeholder</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3. ACCOMPLISHMENTS ========== -->
+<section class="accomplishments">
+  <div class="accomplishments-inner">
+    <div class="accomplishments-quote">
+      &ldquo;We've guided eCom brands from various verticals safely through turbulent waters more than once.&rdquo;
+    </div>
+    <div class="accomplishments-stats">
+      <div class="stat-item">
+        <div class="stat-number">$45M+</div>
+        <div class="stat-label">in managed spend</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$100M+</div>
+        <div class="stat-label">in sales generated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">years of unlocking new growth for eCom brands</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 4. WHY NAVORA PARTNERS ========== -->
+<section class="why-navora">
+  <div class="section-label">WHY NAVORA PARTNERS?</div>
+  <div class="why-items">
+    <div class="why-item">
+      <div class="why-icon"><img src="images/icons/True Strategic Partnership new.webp" alt="Partnership icon" loading="lazy" decoding="async"></div>
+      <div>
+        <h3>True Strategic Partnership</h3>
+        <p>We plug into your Slack and operating cadence like an in-house team. You get a strategist who understands your margins, your goals, and your constraints — not a rotating cast of account managers reading from a script.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon"><img src="images/icons/You Win We Win Compensation.webp" alt="Growth icon" loading="lazy" decoding="async"></div>
+      <div>
+        <h3>You Win &#8594; We Win Compensation</h3>
+        <p>We tie our upside to yours and structure fees around profitable growth. If you don't grow, we don't either. That's how confident we are in the system.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon"><img src="images/icons/comprehensive approach.webp" alt="Comprehensive icon" loading="lazy" decoding="async"></div>
+      <div>
+        <h3>Comprehensive Approach</h3>
+        <p>We don't stop at ad accounts; we stitch together P&amp;L, unit economics, creative strategy, and media buying into one cohesive system — because that's how profitable growth actually works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. CASE STUDIES ========== -->
+<section class="case-studies">
+  <div class="case-studies-header">
+    <div class="section-label">WE DELIVER REAL PROFITABLE GROWTH</div>
+    <h2>Proof over promises.</h2>
+  </div>
+
+  <div class="featured-cases">
+    <div class="case-card">
+      <div class="case-card-image" style="background: url('videos/Tammy/tammy thumbnail.webp') center/cover no-repeat;">
+        <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Tammy/Tammy testimonial.mp4'); return false;"></a>
+      </div>
+      <div class="case-card-content">
+        <blockquote>&ldquo;Extremely well thought out strategic insights&rdquo;</blockquote>
+        <div class="case-card-attribution">
+          <img src="images/inflektion-logo-light.svg" alt="Inflektion logo" loading="lazy" decoding="async">
+          <div class="attr-details">
+            <span class="attr-name">Tammy Pham, Hiring Manager</span>
+            <span class="attr-role">Inflektion &middot; Austin, TX</span>
+            <span class="attr-since">Client since 2022</span>
+          </div>
+        </div>
+        <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-image" style="background: url('videos/Nick at Inova Air Purifiers/Nick thumbnail.webp') center/cover no-repeat;">
+        <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Nick at Inova Air Purifiers/Nick Testimonial.mp4'); return false;"></a>
+      </div>
+      <div class="case-card-content">
+        <blockquote>&ldquo;30% year-over-year growth&rdquo;</blockquote>
+        <div class="case-card-attribution">
+          <img src="images/Inova_Logo_White_Tagline_300x300@2x.webp" alt="Inova Air Purifiers logo" style="height: 48px; object-fit: contain;" loading="lazy" decoding="async">
+          <div class="attr-details">
+            <span class="attr-name">Nick Kraus, Owner &amp; Operator</span>
+            <span class="attr-role">Inova Air Purifiers &middot; Austin, TX</span>
+            <span class="attr-since">Client since 2020</span>
+          </div>
+        </div>
+        <a href="inova-air-purifiers.html" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="more-stories">
+    <h3>More success stories</h3>
+    <div class="stories-grid">
+      <!-- Row 1 -->
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 1/thumbnail.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 1/[Navora Partners] Accelerating E-Commerce Revenue Growth by 435% 🚀.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>Auto Parts Revenue from $280K to $1.5M/Month</h4>
+          <ul class="story-bullets">
+            <li>Entire inventory trapped in one campaign</li>
+            <li>nCAC dropped 30% in 90 days — 435% total growth</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 2/thumbnail 2.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 2/[Navora Partners] Scaling High-Ticket E-Commerce： Strategies for 114% Revenue Growth.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>170% Revenue Growth for a High-Ticket Fitness Brand</h4>
+          <ul class="story-bullets">
+            <li>PMax cannibalizing branded search, choking growth</li>
+            <li>3x account scale with consistent 5x ROI</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 3/thumbnail 4.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 3/[Navora Partners] Scaling E-commerce Success： A 410% Revenue Increase Case Study.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>Tallow Skincare Scaled from $100K to $600K/Month</h4>
+          <ul class="story-bullets">
+            <li>Stalled on bottom-funnel branded traffic only</li>
+            <li>10x efficiency maintained across 500% growth</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 4/thumbnail 1.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 4/[Navora Partners] ＂Fake Data＂ Trap Brain Teaser Puzzle Case Study.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>Acquisition Cost Cut from $40 to $15 for a Puzzle Retailer</h4>
+          <ul class="story-bullets">
+            <li>Inflated conversion data masked real performance</li>
+            <li>Fake tracking fixed, new customer engine rebuilt</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 5/thumbnail 1.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 5/[Navora Partners] Why Scaling Brand Doesn\'t Increase Rev.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>3x Revenue for a Handmade Jewelry Brand</h4>
+          <ul class="story-bullets">
+            <li>Broken tracking confused the algorithm entirely</li>
+            <li>nCAC held at 20% of AOV across 24 months</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 6/thumbnail 1.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 6/[Navora Partners] Scaling E-Commerce Success： The PMAX Mirage Air Purifier Case Study 🚀.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>$98 nCAC Drop for an Australian Air Purifier Brand</h4>
+          <ul class="story-bullets">
+            <li>PMax &ldquo;ROAS mirage&rdquo; was starving new customers</li>
+            <li>Reversed revenue decline to 20% YoY growth</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+      <!-- Row 4 -->
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 7/thumbnail 1.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 7/[Navora Partners] Simplifying E-Commerce Ad Strategies for Increased Revenue Case Study.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>30% ROI Boost for a Neurofeedback Device Brand</h4>
+          <ul class="story-bullets">
+            <li>Duplicate campaigns choking a 2-SKU product line</li>
+            <li>+47% new traffic while simplifying the account</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-img" style="background: url('videos/Internal Case Study 8/thumbnail 3.webp') center/cover no-repeat;">
+          <a href="#" class="play-btn" onclick="openVideoLightbox('videos/Internal Case Study 8/[Navora Partners] Unlocking 20% Revenue Growth with Contrarian Strategy 🚀 Case Study.mp4'); return false;"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>37% Efficiency Gain for a DTC RV Mattress Brand</h4>
+          <ul class="story-bullets">
+            <li>Aggressive ROAS targets strangling ad visibility</li>
+            <li>+72% impressions, +20% revenue in peak season</li>
+          </ul>
+          <a href="#" class="read-more"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="see-all">
+      <a href="#" class="btn btn-gold btn-arrow">See All Proof</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6. WHO WE HELP ========== -->
+<section class="who-help">
+  <div class="who-help-header">
+    <div class="section-label">WHO WE HELP</div>
+    <h2>We help ambitious e-commerce<br>brands that&hellip;</h2>
+  </div>
+  <div class="who-help-grid">
+    <div class="who-help-item">
+      <span class="who-help-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="22 12 18 12 15 20 9 4 6 12 2 12" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="18 6 22 6 22 10" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg></span>
+      <span>Have growth plateaus despite strong fundamentals and loyal customers</span>
+    </div>
+    <div class="who-help-item">
+      <span class="who-help-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="1" x2="12" y2="17" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/><path d="M8 20c0 0 1 3 4 3s4-3 4-3" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><line x1="10" y1="22" x2="9" y2="24" stroke="#FFE174" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/><line x1="14" y1="22" x2="15" y2="24" stroke="#FFE174" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/></svg></span>
+      <span>Are being met with profit erosion every time you try to scale ad spend</span>
+    </div>
+    <div class="who-help-item">
+      <span class="who-help-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#FFE174" stroke-width="1.8"/><line x1="8" y1="21" x2="16" y2="21" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="17" x2="12" y2="21" stroke="#FFE174" stroke-width="1.8"/><polyline points="7 13 10 8 13 11 17 7" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="7" r="1.5" fill="#FFE174"/></svg></span>
+      <span>Can&rsquo;t reconcile Meta, Google, and Shopify with what the bank shows</span>
+    </div>
+    <div class="who-help-item">
+      <span class="who-help-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="#FFE174" stroke-width="2"/><line x1="16" y1="16" x2="22" y2="22" stroke="#FFE174" stroke-width="2.5" stroke-linecap="round"/><line x1="8" y1="11" x2="14" y2="11" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/><line x1="11" y1="8" x2="11" y2="14" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <span>Would like to make clear sense of your metrics and make decisions more confidently</span>
+    </div>
+    <div class="who-help-item">
+      <span class="who-help-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21V15C9 15 9 12 7 10C5 8 5 5 7 3C9 1 13 1 15 3C17 5 17 8 15 10C13 12 13 15 13 15V21" stroke="#FFE174" stroke-width="1.8" stroke-linejoin="round"/><line x1="9" y1="17" x2="13" y2="17" stroke="#FFE174" stroke-width="1.5"/><line x1="9" y1="19" x2="13" y2="19" stroke="#FFE174" stroke-width="1.5"/><line x1="11" y1="0" x2="11" y2="2" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="2" x2="6.5" y2="3.5" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="2" x2="15.5" y2="3.5" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <span>Value deep thinking and strategy, not just new campaign ideas</span>
+    </div>
+    <div class="who-help-item">
+      <span class="who-help-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 14C2 14 5 10 8 10L12 14L16 10C19 10 22 14 22 14" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="2" y1="14" x2="2" y2="18" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/><line x1="22" y1="14" x2="22" y2="18" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/><line x1="1" y1="18" x2="10" y2="18" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="18" x2="23" y2="18" stroke="#FFE174" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <span>Are coachable, open to sharing data, and value partnership over service</span>
+    </div>
+    <div class="who-help-item">
+      <span class="who-help-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="22" x2="12" y2="10" stroke="#FFE174" stroke-width="2" stroke-linecap="round"/><path d="M12 10C10 8 7 7 5 8C3 9 3 12 5 12C7 12 9 11 12 10Z" stroke="#FFE174" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M12 13C14 11 17 10 19 11C21 12 21 15 19 15C17 15 14 13 12 13Z" stroke="#FFE174" stroke-width="1.8" fill="none" stroke-linejoin="round"/><line x1="4" y1="22" x2="20" y2="22" stroke="#FFE174" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span>Care about profitable, sustainable growth more than short-term vanity wins</span>
+    </div>
+  </div>
+  <div class="who-help-cta">
+    <p>If any of these sound like you,<br>we might be a good fit.</p>
+    <a href="#" class="btn btn-gold btn-arrow">Get My Free Growth Strategy</a>
+  </div>
+</section>
+
+<!-- ========== 7. PILLARS / HOW WE HELP ========== -->
+<section class="pillars">
+  <div class="section-label">HOW WE HELP</div>
+  <h2>A four-part system for predictable, P&amp;L-backed growth.</h2>
+
+  <div class="ring-diagram-wrapper" id="ring-wrapper">
+    <svg class="ring-svg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+      <g id="ring-segments"></g>
+    </svg>
+
+    <div class="ring-center" id="ring-center">
+      <div class="center-icon" id="center-icon"></div>
+      <p class="stage-desc" id="center-desc"></p>
+    </div>
+
+    <div class="ring-label" data-stage="1">
+      <span class="stage-num">Stage 1</span>
+      <span class="stage-title">Growth-Clarity<br>Decision System</span>
+    </div>
+    <div class="ring-label" data-stage="2">
+      <span class="stage-num">Stage 2</span>
+      <span class="stage-title">Paid Demand &amp;<br>Creative Engine</span>
+    </div>
+    <div class="ring-label" data-stage="3">
+      <span class="stage-num">Stage 3</span>
+      <span class="stage-title">Conversion &amp; LTV<br>Architecture</span>
+    </div>
+    <div class="ring-label" data-stage="4">
+      <span class="stage-num">Stage 4</span>
+      <span class="stage-title">Operating Cadence &amp; Strategic Advisory</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. TRUTH ========== -->
+<section class="truth">
+  <div class="truth-circle truth-circle-1"></div>
+  <div class="truth-circle truth-circle-2"></div>
+  <div class="truth-circle truth-circle-3"></div>
+  <div class="truth-inner">
+    <div class="truth-label">Here's the TRUTH about scaling ads&hellip;</div>
+    <p class="truth-text">&hellip;most teams optimize dashboards, not real profit. After $45M+ in managed spend, we've built a system that ties every decision back to the P&amp;L. No more <em>"let's see what happens"</em> — just measured, repeatable profit.</p>
+  </div>
+</section>
+
+<!-- ========== 9. GROWTH STRATEGY ========== -->
+<section class="growth-strategy" id="growth-strategy">
+  <h2>What Is The Growth Strategy?</h2>
+  <div class="growth-strategy-inner">
+    <div class="growth-strategy-desc">
+      <p>The Growth Strategy is a complimentary, no-strings-attached deep dive into your brand's paid media and profitability. It's not a generic audit or a sales call in disguise — <u>it is a structured analysis</u> designed to surface the real constraints holding your growth back.</p>
+      <br>
+      <p>We look at what your ad platforms are reporting versus what your P&amp;L actually shows. We identify the gaps, the waste, and the opportunities most teams miss because they're optimizing dashboards instead of profit.</p>
+    </div>
+    <div class="growth-strategy-card">
+      <h3>What you'll walk away with&hellip;</h3>
+      <div class="checklist">
+        <div class="checklist-item">
+          <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Clarity on where to invest and why</span>
+        </div>
+        <div class="checklist-item">
+          <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>P&amp;L-aligned view of performance</span>
+        </div>
+        <div class="checklist-item">
+          <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>The constraints limiting growth</span>
+        </div>
+        <div class="checklist-item">
+          <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>A decision on whether partnering makes sense</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 10. PROCESS ========== -->
+<section class="process">
+  <div class="section-label">WHAT THE PROCESS LOOKS LIKE</div>
+  <div class="process-timeline" id="process-timeline">
+    <svg class="process-map-svg" viewBox="0 0 960 870" preserveAspectRatio="none">
+      <defs>
+        <mask id="path-reveal-mask">
+          <path id="map-path-reveal" d="
+            M 380,100
+            C 450,90 700,30 750,100
+            C 800,180 750,250 650,260
+            C 550,270 500,280 480,290
+            C 400,310 250,300 150,340
+            C 50,380 80,450 180,470
+            C 280,490 350,480 380,480
+            C 380,480 420,510 480,500
+            C 600,470 720,440 760,480
+            C 810,530 770,580 700,590
+            C 640,600 590,610 560,640
+          " fill="none" stroke="white" stroke-width="24"/>
+        </mask>
+      </defs>
+      <!-- X mark at step 1 start -->
+      <line class="map-x-line" id="x-line-1" x1="365" y1="85" x2="395" y2="115"/>
+      <line class="map-x-line" id="x-line-2" x1="395" y1="85" x2="365" y2="115"/>
+      <!-- Main travel path -->
+      <path class="map-path-fill" mask="url(#path-reveal-mask)" d="
+        M 380,100
+        C 450,90 700,30 750,100
+        C 800,180 750,250 650,260
+        C 550,270 500,280 480,290
+        C 400,310 250,300 150,340
+        C 50,380 80,450 180,470
+        C 280,490 350,480 380,480
+        C 380,480 420,510 480,500
+        C 600,470 720,440 760,480
+        C 810,530 770,580 700,590
+        C 640,600 590,610 560,640
+      "/>
+      <!-- Circle around step 4 — double pass solid pen stroke -->
+      <path class="map-circle-path" id="map-end-circle" d="
+        M 560,640
+        C 500,620 420,640 420,710
+        C 420,800 520,850 680,860
+        C 840,870 940,820 940,720
+        C 940,620 860,590 720,585
+        C 580,580 420,630 420,710
+        C 420,800 540,855 690,862
+        C 850,870 945,815 940,715
+      "/>
+    </svg>
+    <div class="process-step">
+      <div class="step-content">
+        <div class="step-icon"><svg viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75051 16.5C15.1365 16.5 19.5005 12.8063 19.5005 8.25C19.5005 3.69375 15.1365 0 9.75051 0C9.75051 0 0.000513022 3.69375 0.000513022 8.25C0.000513022 10.0594 0.689576 11.7328 1.85676 13.0969C1.6927 13.5375 1.44895 13.9266 1.19114 14.2547C0.966138 14.5453 0.736451 14.7703 0.567701 14.925C0.483326 15 0.413013 15.0609 0.366138 15.0984C0.342701 15.1172 0.323951 15.1313 0.314576 15.1359L0.305201 15.1453C0.047388 15.3375 -0.065112 15.675 0.038013 15.9797C0.141138 16.2844 0.427076 16.5 0.750513 16.5C1.77239 16.5 2.80364 16.2375 3.66145 15.9141C4.0927 15.75 4.49583 15.5672 4.84739 15.3797C6.28645 16.0922 7.95989 16.5 9.75051 16.5M21.0005 8.25C21.0005 13.5141 16.3552 17.4797 10.8521 17.9531C11.9911 21.4406 15.7693 24 20.2505 24C22.0411 24 23.7146 23.5922 25.1583 22.8797C25.5099 23.0672 25.9083 23.25 26.3396 23.4141C27.1974 23.7375 28.2286 24 29.2505 24C29.574 24 29.8646 23.7891 29.963 23.4797C30.0615 23.1703 29.9536 22.8328 29.6911 22.6406L29.6818 22.6313C29.6724 22.6219 29.6536 22.6125 29.6302 22.5938C29.5833 22.5562 29.513 22.5 29.4286 22.4203C29.2599 22.2656 29.0302 22.0406 28.8052 21.75C28.5474 21.4219 28.3036 21.0281 28.1396 20.5922C29.3068 19.2328 29.9958 17.5594 29.9958 15.7453C29.9958 11.3953 26.0161 7.82813 20.9677 7.51875C20.9865 7.75781 20.9958 8.00156 20.9958 8.24531L21.0005 8.25" fill="#FFE174"/></svg></div>
+        <h4>Step 1 — Leadership &amp; Context Call</h4>
+        <p>We start with a 30-minute conversation with your leadership team. The goal is to understand your business model, margins, growth goals, and what's been tried before — so our analysis is grounded in reality, not assumptions.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-content">
+        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5C2.32969 1.5 3 2.17031 3 3V18.75C3 19.1625 3.3375 19.5 3.75 19.5H22.5C23.3297 19.5 24 20.1703 24 21C24 21.8297 23.3297 22.5 22.5 22.5H3.75C1.67812 22.5 0 20.8219 0 18.75V3C0 2.17031 0.670313 1.5 1.5 1.5M6 6C6 5.17031 6.67031 4.5 7.5 4.5H16.5C17.3297 4.5 18 5.17031 18 6C18 6.82969 17.3297 7.5 16.5 7.5H7.5C6.67031 7.5 6 6.82969 6 6M7.5 9H13.5C14.3297 9 15 9.67031 15 10.5C15 11.3297 14.3297 12 13.5 12H7.5C6.67031 12 6 11.3297 6 10.5C6 9.67031 6.67031 9 7.5 9M7.5 13.5H19.5C20.3297 13.5 21 14.1703 21 15C21 15.8297 20.3297 16.5 19.5 16.5H7.5C6.67031 16.5 6 15.8297 6 15C6 14.1703 6.67031 13.5 7.5 13.5" fill="#FFE174"/></svg></div>
+        <h4>Step 2 — Metrics Review</h4>
+        <p>We dig into your ad accounts, P&amp;L, and attribution data. We compare what your platforms are reporting to what your bank account actually shows — and surface the gaps most brands don't even know exist.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-content">
+        <div class="step-icon"><svg viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6C0 4.34531 1.34531 3 3 3H15C16.6547 3 18 4.34531 18 6V18C18 19.6547 16.6547 21 15 21H3C1.34531 21 0 19.6547 0 18V6M26.2078 4.67813C26.6953 4.94063 27 5.44687 27 6V18C27 18.5531 26.6953 19.0594 26.2078 19.3219C25.7203 19.5844 25.1297 19.5563 24.6656 19.2469L20.1656 16.2469L19.5 15.8016V15V9V8.19844L20.1656 7.75313L24.6656 4.75312C25.125 4.44844 25.7156 4.41563 26.2078 4.67813" fill="#FFE174"/></svg></div>
+        <h4>Step 3 — Receive a Recorded Strategic Walkthrough</h4>
+        <p>You'll get a detailed, recorded video walkthrough of our findings — including where we see waste, where we see opportunity, and what we'd do differently. It's yours to keep whether we work together or not.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-content">
+        <div class="step-icon"><svg viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.1594 3.99375L10.6219 7.66875C9.86719 8.27812 9.72187 9.375 10.2937 10.1578C10.8984 10.9922 12.075 11.1562 12.8859 10.5234L17.5406 6.90469C17.8687 6.65156 18.3375 6.70781 18.5953 7.03594C18.8531 7.36406 18.7922 7.83281 18.4641 8.09062L17.4844 8.85L24 14.85V6H23.9672L23.7844 5.88281L20.3813 3.70312C19.6641 3.24375 18.825 3 17.9719 3C16.95 3 15.9563 3.35156 15.1594 3.99375M16.2281 9.825L13.8047 11.7094C12.3281 12.8625 10.1859 12.5625 9.07969 11.0437C8.03906 9.61406 8.30156 7.61719 9.675 6.50625L13.575 3.35156C13.0312 3.12188 12.4453 3.00469 11.85 3.00469C10.9688 3 10.1109 3.2625 9.375 3.75L6 6V16.5H7.32188L11.6062 20.4094C12.525 21.2484 13.9453 21.1828 14.7844 20.2641C15.0422 19.9781 15.2156 19.6453 15.3047 19.2984L16.1016 20.0297C17.0156 20.8688 18.4406 20.8078 19.2797 19.8937C19.4906 19.6641 19.6453 19.3969 19.7437 19.1203C20.6531 19.7297 21.8906 19.6031 22.6547 18.7688C23.4938 17.8547 23.4328 16.4297 22.5187 15.5906L16.2281 9.825M0.75 6C0.3375 6 0 6.3375 0 6.75V16.5C0 17.3297 0.670313 18 1.5 18H3C3.82969 18 4.5 17.3297 4.5 16.5V6H0.75M2.25 15C2.66394 15 3 15.3361 3 15.75C3 16.1639 2.66394 16.5 2.25 16.5C1.83606 16.5 1.5 16.1639 1.5 15.75C1.5 15.3361 1.83606 15 2.25 15M25.5 6V16.5C25.5 17.3297 26.1703 18 27 18H28.5C29.3297 18 30 17.3297 30 16.5V6.75C30 6.3375 29.6625 6 29.25 6H25.5M27 15.75C27 15.3361 27.3361 15 27.75 15C28.1639 15 28.5 15.3361 28.5 15.75C28.5 16.1639 28.1639 16.5 27.75 16.5C27.3361 16.5 27 16.1639 27 15.75" fill="#FFE174"/></svg></div>
+        <h4>Step 4 — Meet with our founder</h4>
+        <p>Finally, you'll meet with Chaky to talk through the findings, ask questions, and decide together if there's a fit. No pressure, no hard close — just an honest conversation about what growth could look like.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="process-cta">
+    <h3>Not a campaign critique, ad account audit or salespitch in disguise.</h3>
+    <p>It's a way to determine if you're ready for scaling and if not, what to do to get there.</p>
+    <a href="#" class="btn btn-gold btn-arrow">Get My Free Growth Strategy</a>
+  </div>
+</section>
+
+<!-- ========== 11. FOUNDER ACCESS ========== -->
+<section class="founder">
+  <div class="founder-top">
+    <div class="section-label">TALK DIRECTLY TO THE FOUNDER</div>
+    <h2>Access To Senior Strategy,<br>Not Just Juniors</h2>
+    <p>At Navora, you work directly with experienced strategists who've managed tens of millions in ad spend. No hand-offs to junior account managers. No learning on your dime. You get senior-level thinking on every call, every decision, every recommendation.</p>
+  </div>
+  <div class="founder-dark">
+    <div class="founder-inner">
+      <div class="founder-left">
+        <div class="founder-quote">
+          <blockquote>"Ecom is not about finding the right audience&hellip; if you want to succeed you need to create so much value that the right audience finds you."</blockquote>
+          <div class="attribution-name">CHAKY LING</div>
+          <div class="attribution-title">Founder &amp; CEO, Navora Partners</div>
+        </div>
+      </div>
+      <div class="founder-right">
+        <div class="founder-photo"></div>
+        <div class="founder-photo-border"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 12. TESTIMONIAL CAROUSEL ========== -->
+<section class="testimonial-carousel">
+  <div class="carousel-inner">
+    <div class="carousel-slides">
+      <div class="carousel-slide active">
+        <blockquote>"Chaky showed us our offer was shit in the nicest way possible, it gives me so much confidence in how much Chaky cares about our business. Thank you."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Mike — CMO</strong>
+          <span class="attr-company">D2C Supplements Brand</span>
+          <span class="attr-location">Idaho, USA</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"I always admire how you can storytell with data so logically, it helps strategizing and making decisions so much easier."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Yan H. — eCom Manager</strong>
+          <span class="attr-company">Luxury Beauty Cosmetic Company</span>
+          <span class="attr-location">Hong Kong</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"Dude, we are so impressed — we have never met anyone who actually dives into every crook and nook of an account in detail."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Marc S. — Fractional CMO</strong>
+          <span class="attr-company">Fractional CMO</span>
+          <span class="attr-location">North Carolina, USA</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"You are a true pro... whenever I need to scale an account — I think of you."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Marius M. — eCom Owner</strong>
+          <span class="attr-company">Red Light Therapy Device</span>
+          <span class="attr-location">Munich, Germany</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"The combo of data analysis and strategy sessions were always solid."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Chris W. — eCom Owner</strong>
+          <span class="attr-company">Mattress D2C</span>
+          <span class="attr-location">Florida, USA</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"Chaky, I love getting your loom updates, they are always very well done going into data, giving us a macro update and strategy, saving us tons of time from meetings."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Tammy P. — Co-Venture Marketing Partner</strong>
+          <span class="attr-company">Marketing</span>
+          <span class="attr-location">Austin, TX</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"Chaky — what makes you valuable and unique is paying attention to the details. I respect that."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Matt L. — VP of Marketing</strong>
+          <span class="attr-company">SaaS Company</span>
+          <span class="attr-location">Boston, MA</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"It was great working with you, you always gave reports and lots of great ideas and direction for our Google Ads account. We very much appreciate it."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Sean R. — eCom Owner</strong>
+          <span class="attr-company">Auto Parts</span>
+          <span class="attr-location">California, USA</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"Chaky is a true pro at running Google Ads and it is a tremendous opportunity to work with him and learn a ton."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Liana L. — Renowned Media Buyer</strong>
+          <span class="attr-company">Media Buying</span>
+          <span class="attr-location">Toronto, ON</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"What you taught me always stuck with me, marketing isn't just about the techniques, it's what value you are creating for the customer."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Dara D. — Meta Ad Creative Strategist</strong>
+          <span class="attr-company">Creative Strategy</span>
+          <span class="attr-location">New York City, NY</span>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <blockquote>"Chaky, thank you so much for sharing your gift with our team, it is truly a blessing to work with such a talented individual who is passionate about their craft."</blockquote>
+        <div class="carousel-attribution">
+          <strong>Nick C. — Owner</strong>
+          <span class="attr-company">Sun Panel Solar Panels</span>
+          <span class="attr-location">Idaho, USA</span>
+        </div>
+      </div>
+    </div>
+    <p class="carousel-note">(Many of our clients consider us their 'secret weapon' and have asked to have a degree of anonymity.)</p>
+  </div>
+</section>
+
+<!-- ========== 13. FINAL CTA ========== -->
+<section class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-inner">
+    <div class="final-cta-label">Stop scaling on hope. Start scaling on evidence.</div>
+    <h2>Ready to stop &ldquo;revving in neutral&rdquo; and get back to steady, predictable growth?</h2>
+    <p>The longer you try to scale without clarity, the more expensive it becomes. We'll give you a clear, P&amp;L-backed plan that restores confidence, aligns your team, and shows you exactly where profitable growth lives — starting with the right next move for your business.</p>
+    <a href="#" class="btn btn-outline-white btn-arrow">Get My Free Growth Strategy</a>
+  </div>
+</section>
+
+<!-- ========== 14. FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p class="footer-address">1309 Coffeen Avenue STE 9809,<br>Sheridan, WY 82801</p>
+      <div class="footer-social">
+        <a href="https://youtube.com/@navorapartners" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><svg viewBox="2 4 20 16" style="width:44px;height:44px"><path d="M10 8.5v7l6-3.5-6-3.5z"/><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a href="https://www.instagram.com/navorapartners" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+        <a href="https://www.linkedin.com/company/navorapartners" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v13h-4V8zm7.5 0h3.8v1.8h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6v7.3h-4v-6.5c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4V21h-4V8z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-badges">
+      <div class="footer-badge"><img src="images/Google-Certified-transparent.webp" alt="Google Certified Partner" loading="lazy" decoding="async"></div>
+      <div class="footer-badge"><img src="images/meta certified transparent.webp" alt="Meta Certified Partner" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="footer-brand-row">
+      <img src="images/sextant transparent.webp" alt="" class="footer-compass" loading="lazy" decoding="async">
+      <div class="footer-brand">
+        <span class="footer-brand-name">Navora Partners</span>
+        <span class="footer-brand-tagline">Navigating eCom growth with confidence</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; Navora Partners 2026 - All Rights Reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Sitemap</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== RING DIAGRAM SCRIPT ========== -->
+<script>
+(function() {
+  const STAGES = [
+    { desc: 'We reconcile platforms, P&L, and customer signals into one source of truth so your leadership team can see what\u2019s working, what isn\u2019t, and where the next dollar should go.', glowX: '68%', glowY: '32%' },
+    { desc: 'We build a bespoke customer acquisition strategy focused on sustainability and profitability. We do this through structured testing, and profit guardrails engineered around your brand economics so scaling increases contribution \u2014 without erosion.', glowX: '72%', glowY: '72%' },
+    { desc: 'We engineer the post-click and post-purchase experience to increase revenue per visitor and lifetime contribution, tightening payback windows and ensuring that scaling paid acquisition strengthens your economics instead of stressing them.', glowX: '28%', glowY: '72%' },
+    { desc: 'We install the weekly rhythms, scorecards, and strategic support that keep the whole growth system aligned and compounding instead of drifting back into chaos.', glowX: '28%', glowY: '28%' }
+  ];
+
+  const ICONS_SMALL = [
+    '<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2" stroke-linecap="round"><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="12"/><circle cx="32" cy="32" r="2.5" fill="#024742" stroke="none"/><line x1="32" y1="4" x2="32" y2="16"/><line x1="32" y1="48" x2="32" y2="60"/><line x1="4" y1="32" x2="16" y2="32"/><line x1="48" y1="32" x2="60" y2="32"/></svg>',
+    '<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14,26 L14,38 L22,38 L22,26Z"/><path d="M22,24 L48,12 L48,52 L22,40Z"/><circle cx="51" cy="32" r="4"/><path d="M18,38 L18,48 Q18,52 22,52 L24,52 Q28,52 28,48 L28,40"/><line x1="55" y1="22" x2="60" y2="19"/><line x1="56" y1="32" x2="62" y2="32"/><line x1="55" y1="42" x2="60" y2="45"/></svg>',
+    '<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12,12 L52,12 L38,32 L38,48 L26,48 L26,32Z"/><line x1="26" y1="48" x2="26" y2="56"/><line x1="38" y1="48" x2="38" y2="56"/><line x1="22" y1="56" x2="42" y2="56"/><path d="M46,28 L46,8 M42,13 L46,8 L50,13"/></svg>',
+    '<svg viewBox="0 0 64 64" fill="none" stroke="#024742" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,34 14,34 20,20 26,48 32,16 38,44 44,28 50,34 60,34"/><circle cx="32" cy="32" r="22" stroke-width="1.5" opacity="0.3"/><circle cx="32" cy="32" r="4" fill="#024742" stroke="none" opacity="0.4"/><line x1="32" y1="10" x2="32" y2="14" stroke-width="2" opacity="0.3"/><line x1="32" y1="50" x2="32" y2="54" stroke-width="2" opacity="0.3"/><line x1="10" y1="32" x2="14" y2="32" stroke-width="2" opacity="0.3"/><line x1="50" y1="32" x2="54" y2="32" stroke-width="2" opacity="0.3"/></svg>'
+  ];
+
+  const CX = 450, CY = 450, R = 310;
+  const GAP_DEG = 12;
+  const SEGMENT_DEG = (360 - GAP_DEG * 4) / 4;
+  const START_OFFSET = -90;
+
+  function polarToCart(cx, cy, r, angleDeg) {
+    var rad = (angleDeg * Math.PI) / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  }
+
+  function describeStrokeArc(cx, cy, r, startAngle, endAngle) {
+    var start = polarToCart(cx, cy, r, startAngle);
+    var end = polarToCart(cx, cy, r, endAngle);
+    var largeArc = (endAngle - startAngle) > 180 ? 1 : 0;
+    return 'M ' + start.x + ' ' + start.y + ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + end.x + ' ' + end.y;
+  }
+
+  function offsetPoint(ox, oy, dist, angleDeg) {
+    var rad = (angleDeg * Math.PI) / 180;
+    return { x: ox + dist * Math.cos(rad), y: oy + dist * Math.sin(rad) };
+  }
+
+  function createArrowhead(cx, cy, r, angleDeg, size) {
+    var tip = polarToCart(cx, cy, r, angleDeg);
+    var tangentAngle = angleDeg + 90;
+    var prong1 = offsetPoint(tip.x, tip.y, size * 2.2, tangentAngle + 180 + 28);
+    var prong2 = offsetPoint(tip.x, tip.y, size * 2.2, tangentAngle + 180 - 28);
+    return 'M ' + prong1.x + ' ' + prong1.y + ' L ' + tip.x + ' ' + tip.y + ' L ' + prong2.x + ' ' + prong2.y;
+  }
+
+  var segmentsGroup = document.getElementById('ring-segments');
+  var segmentStrokes = [];
+  var segmentHits = [];
+  var segmentArrows = [];
+  var segmentAngles = [];
+
+  for (var i = 0; i < 4; i++) {
+    var startAngle = START_OFFSET + i * (SEGMENT_DEG + GAP_DEG) + GAP_DEG / 2;
+    var endAngle = startAngle + SEGMENT_DEG;
+    segmentAngles.push({ start: startAngle, end: endAngle });
+
+    var d = describeStrokeArc(CX, CY, R, startAngle, endAngle);
+
+    var hitPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    hitPath.setAttribute('d', d);
+    hitPath.setAttribute('class', 'segment-hit');
+    hitPath.setAttribute('data-stage', i + 1);
+    segmentsGroup.appendChild(hitPath);
+    segmentHits.push(hitPath);
+
+    var strokePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    strokePath.setAttribute('d', d);
+    strokePath.setAttribute('class', 'segment-stroke');
+    strokePath.setAttribute('data-stage', i + 1);
+    segmentsGroup.appendChild(strokePath);
+    segmentStrokes.push(strokePath);
+
+    var arrow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    arrow.setAttribute('d', createArrowhead(CX, CY, R, endAngle, 10));
+    arrow.setAttribute('class', 'segment-arrow');
+    arrow.setAttribute('data-stage', i + 1);
+    segmentsGroup.appendChild(arrow);
+    segmentArrows.push(arrow);
+  }
+
+  var activeStage = -1;
+  var wrapper = document.getElementById('ring-wrapper');
+  var centerEl = document.getElementById('ring-center');
+  var descEl = document.getElementById('center-desc');
+  var iconEl = document.getElementById('center-icon');
+  var ringLabels = document.querySelectorAll('.ring-label');
+
+  function setActiveStage(index) {
+    if (index === activeStage) return;
+
+    for (var i = 0; i < 4; i++) {
+      segmentStrokes[i].classList.toggle('active', i === index);
+      segmentArrows[i].classList.toggle('active', i === index);
+
+      var a = segmentAngles[i];
+      var radius = (i === index) ? R + 12 : R;
+      var dd = describeStrokeArc(CX, CY, radius, a.start, a.end);
+      segmentStrokes[i].setAttribute('d', dd);
+      segmentHits[i].setAttribute('d', dd);
+      segmentArrows[i].setAttribute('d', createArrowhead(CX, CY, radius, a.end, (i === index) ? 12 : 10));
+    }
+
+    for (var j = 0; j < ringLabels.length; j++) {
+      var stageIdx = parseInt(ringLabels[j].getAttribute('data-stage')) - 1;
+      ringLabels[j].classList.toggle('active', stageIdx === index);
+    }
+
+    wrapper.style.setProperty('--glow-x', STAGES[index].glowX);
+    wrapper.style.setProperty('--glow-y', STAGES[index].glowY);
+
+    centerEl.classList.add('fading');
+    setTimeout(function() {
+      descEl.textContent = STAGES[index].desc;
+      iconEl.innerHTML = ICONS_SMALL[index];
+      centerEl.classList.remove('fading');
+      activeStage = index;
+    }, 150);
+  }
+
+  setActiveStage(0);
+
+  for (var h = 0; h < segmentHits.length; h++) {
+    (function(idx) {
+      segmentHits[idx].addEventListener('mouseenter', function() { setActiveStage(idx); });
+      segmentStrokes[idx].addEventListener('mouseenter', function() { setActiveStage(idx); });
+    })(h);
+  }
+
+  for (var l = 0; l < ringLabels.length; l++) {
+    (function(lbl) {
+      var idx = parseInt(lbl.getAttribute('data-stage')) - 1;
+      lbl.addEventListener('mouseenter', function() { setActiveStage(idx); });
+    })(ringLabels[l]);
+  }
+
+  wrapper.addEventListener('mouseleave', function() { setActiveStage(0); });
+
+  // Mobile: tap on labels to switch stages (touch devices have no hover)
+  var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) {
+    for (var t = 0; t < ringLabels.length; t++) {
+      (function(lbl) {
+        var idx = parseInt(lbl.getAttribute('data-stage')) - 1;
+        lbl.addEventListener('click', function(e) {
+          e.preventDefault();
+          setActiveStage(idx);
+        });
+      })(ringLabels[t]);
+    }
+  }
+})();
+</script>
+
+<!-- VIDEO LIGHTBOX -->
+<div class="video-lightbox" id="videoLightbox" onclick="closeVideoLightbox()">
+  <button class="video-lightbox-close" onclick="closeVideoLightbox()">&times;</button>
+  <video id="lightboxVideo" controls preload="none" onclick="event.stopPropagation()">
+    <source id="lightboxSource" src="" type="video/mp4">
+  </video>
+</div>
+<script>
+function openVideoLightbox(src) {
+  var lb = document.getElementById('videoLightbox');
+  var video = document.getElementById('lightboxVideo');
+  var source = document.getElementById('lightboxSource');
+  source.src = src;
+  video.load();
+  lb.classList.add('active');
+  video.play();
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoLightbox() {
+  var lb = document.getElementById('videoLightbox');
+  var video = document.getElementById('lightboxVideo');
+  video.pause();
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeVideoLightbox();
+});
+</script>
+
+<script>
+// Scrollytelling — Process Steps with treasure map path
+(function() {
+  var steps = document.querySelectorAll('.process-step');
+  var timeline = document.querySelector('#process-timeline');
+  var revealPath = document.querySelector('#map-path-reveal');
+  var xLine1 = document.querySelector('#x-line-1');
+  var xLine2 = document.querySelector('#x-line-2');
+  var endCircle = document.querySelector('#map-end-circle');
+  if (!steps.length || !timeline || !revealPath) return;
+
+  // Set up the mask path for progressive reveal
+  var pathLength = revealPath.getTotalLength();
+  revealPath.style.strokeDasharray = pathLength;
+  revealPath.style.strokeDashoffset = pathLength;
+
+  // Set up X mark lines — hidden initially
+  [xLine1, xLine2].forEach(function(line) {
+    if (!line) return;
+    var len = line.getTotalLength();
+    line.style.strokeDasharray = len;
+    line.style.strokeDashoffset = len;
+    line.style.transition = 'stroke-dashoffset 0.4s ease';
+  });
+
+  // Set up end circle — hidden, scroll-driven
+  var circleLen = 0;
+  if (endCircle) {
+    circleLen = endCircle.getTotalLength();
+    endCircle.style.strokeDasharray = circleLen;
+    endCircle.style.strokeDashoffset = circleLen;
+  }
+
+  var xDrawn = false;
+
+  // Intersection Observer for step reveal
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  steps.forEach(function(step) { observer.observe(step); });
+
+  // Scroll-driven path drawing
+  window.addEventListener('scroll', function() {
+    var rect = timeline.getBoundingClientRect();
+    var timelineTop = rect.top + window.scrollY;
+    var timelineHeight = rect.height;
+    var scrollPos = window.scrollY + window.innerHeight * 0.85;
+    var progress = Math.min(Math.max((scrollPos - timelineTop) / timelineHeight, 0), 1);
+
+    // Reveal the dashed path
+    revealPath.style.strokeDashoffset = pathLength * (1 - progress);
+
+    // Draw the X before the line starts (progress > 0.01)
+    if (progress > 0.01 && !xDrawn) {
+      xDrawn = true;
+      if (xLine1) xLine1.style.strokeDashoffset = '0';
+      setTimeout(function() {
+        if (xLine2) xLine2.style.strokeDashoffset = '0';
+      }, 200);
+    }
+    // Reset X if scrolled back up
+    if (progress <= 0.01 && xDrawn) {
+      xDrawn = false;
+      if (xLine1) xLine1.style.strokeDashoffset = xLine1.getTotalLength();
+      if (xLine2) xLine2.style.strokeDashoffset = xLine2.getTotalLength();
+    }
+
+    // Circle around step 4 — scroll-driven, starts at 85% progress
+    if (endCircle && circleLen) {
+      if (progress > 0.85) {
+        var circleProgress = Math.min((progress - 0.85) / 0.15, 1);
+        endCircle.style.strokeDashoffset = circleLen * (1 - circleProgress);
+      } else {
+        endCircle.style.strokeDashoffset = circleLen;
+      }
+    }
+  });
+})();
+</script>
+
+<script>
+// Words of Praise — Carousel rotation with dots and swipe
+(function() {
+  var slides = document.querySelectorAll('.carousel-slide');
+  var slidesContainer = document.querySelector('.carousel-slides');
+  if (slides.length < 2 || !slidesContainer) return;
+
+  // Fix height to tallest slide so layout doesn't shift
+  var maxH = 0;
+  slides.forEach(function(s) {
+    s.style.position = 'relative';
+    s.style.opacity = '1';
+    var h = s.offsetHeight;
+    if (h > maxH) maxH = h;
+    s.style.position = '';
+    s.style.opacity = '';
+  });
+  slidesContainer.style.minHeight = maxH + 'px';
+
+  // Build dot indicators
+  var dotsContainer = document.createElement('div');
+  dotsContainer.className = 'carousel-dots';
+  var dots = [];
+  slides.forEach(function(_, i) {
+    var dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function() { goTo(i); startTimer(); });
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
+  });
+  slidesContainer.parentNode.insertBefore(dotsContainer, slidesContainer.nextSibling);
+
+  var current = 0;
+  var timer;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(function() { goTo(current + 1); }, 8000);
+  }
+
+  // Swipe support
+  var startX = 0;
+  slidesContainer.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+  });
+  slidesContainer.addEventListener('touchend', function(e) {
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(diff > 0 ? current + 1 : current - 1);
+      startTimer();
+    }
+  });
+
+  // Only start rotation when section scrolls into view
+  var section = document.querySelector('.testimonial-carousel');
+  var started = false;
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        startTimer();
+      }
+    });
+  }, { threshold: 0.3 });
+  sectionObserver.observe(section);
+})();
+</script>
+
+<script>
+// Hamburger menu toggle
+(function() {
+  var btn = document.getElementById('hamburgerBtn');
+  var nav = document.getElementById('headerNav');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function() {
+    var isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('active');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close menu when a nav link is clicked
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close menu on window resize above mobile breakpoint
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      nav.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

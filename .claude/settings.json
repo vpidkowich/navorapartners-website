@@ -27,7 +27,13 @@
       "Bash(gh auth:*)",
       "Bash(1:*)",
       "Bash(gh repo:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(mkdir -p \"ab-testing\" \"backups\")",
+      "Bash(mv hero-preview-A-photo.html hero-preview-B-gradient.html hero-preview-C-glow.html hero-preview-D-salesflow.html ab-testing/)",
+      "Bash(mv navora-home-backup-before-responsive.html navora-home-before-spacing-manual-version.html backups/)",
+      "Bash(mkdir -p about-us case-studies/inova-air-purifiers case-studies/tammy-inflekion-media careers sitemap terms privacy)",
+      "Bash(cp navora-home.html index.html)",
+      "Bash(ls -d */)"
     ]
   }
 }
