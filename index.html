@@ -928,12 +928,13 @@
     font-weight: 400;
     line-height: 1.3;
     color: var(--warm-cream);
-    transition: opacity 150ms ease;
+    transition: opacity 400ms ease;
     position: relative;
     z-index: 2;
     max-width: 300px;
   }
   .ring-center.fading .stage-desc,
+  .ring-center.fading .stage-title-mobile,
   .ring-center.fading .center-icon {
     opacity: 0;
   }
@@ -1061,6 +1062,7 @@
       font-weight: 700;
       color: var(--warm-cream);
       margin: 0 0 var(--space-sm);
+      transition: opacity 400ms ease;
     }
 
     .ring-label {
@@ -1988,7 +1990,7 @@
 
     /* 3. Accomplishments */
     .accomplishments { padding: var(--space-xl) var(--space-md); }
-    .accomplishments-inner { flex-direction: column-reverse; gap: var(--space-xl); align-items: center; }
+    .accomplishments-inner { flex-direction: column-reverse; gap: var(--space-md); align-items: center; }
     .accomplishments-quote { font-size: 32px; text-align: center; }
     .accomplishments-stats {
       flex: none;
@@ -2032,7 +2034,7 @@
       flex-direction: column;
       text-align: center;
       gap: var(--space-md);
-      padding: var(--space-lg) 0 calc(var(--space-lg) * 3);
+      padding: var(--space-lg) 0 56px;
     }
     .who-help-cta p { font-size: 26px; }
     .who-help-cta .btn { width: 100%; justify-content: center; }
@@ -2113,7 +2115,7 @@
     .footer-compass { height: 100px; }
     .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
     .footer-badges { flex-direction: column; gap: var(--space-md); align-items: center; }
-    .footer-badge img { height: 64px; width: auto; object-fit: contain; }
+    .footer-badge img { height: 80px !important; width: auto; object-fit: contain; }
     .footer-col ul li a { font-size: 17px; }
   }
 
@@ -2958,7 +2960,7 @@
       iconEl.innerHTML = ICONS_SMALL[index];
       centerEl.classList.remove('fading');
       activeStage = index;
-    }, 150);
+    }, 400);
   }
 
   setActiveStage(0);
