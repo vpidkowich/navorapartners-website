@@ -88,7 +88,7 @@
     padding: 0;
   }
   .site-wrapper {
-    overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
     position: relative;
   }
@@ -203,6 +203,16 @@
     display: flex;
     align-items: center;
     padding: 0 var(--space-5xl);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #022e2a;
+    z-index: 1000;
   }
   .header-inner {
     display: flex;
