@@ -235,6 +235,7 @@
     align-items: center;
     gap: var(--space-xl);
   }
+  .header-nav-cta { display: none; }
   .header-nav a:not(.btn) {
     font-size: 16px;
     color: #fff;
@@ -1026,8 +1027,8 @@
       width: 100%;
       height: auto;
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      flex-direction: column-reverse;
+      gap: var(--space-md);
     }
     .ring-svg { display: none; }
     .ring-center {
@@ -1040,33 +1041,36 @@
       padding: 28px 24px;
       margin-bottom: 0;
       overflow: visible;
+      min-height: 120px;
     }
     .ring-center::before { display: none; }
     .ring-center .center-icon { width: 40px; height: 40px; margin-bottom: 16px; }
     .ring-center .stage-desc {
-      font-size: 18px;
+      font-size: 17px;
       max-width: 100%;
       line-height: 1.55;
     }
 
     .ring-label {
       position: static;
-      display: block;
-      max-width: 100% !important;
-      padding: 16px 20px;
-      border-left: 3px solid var(--jade);
+      display: inline-block;
+      max-width: none !important;
+      padding: 10px 14px;
+      border-left: none;
+      border-bottom: 3px solid transparent;
       margin-bottom: 0;
       opacity: 0.5;
       cursor: pointer;
-      transition: opacity 300ms ease, border-color 300ms ease, background 300ms ease;
+      transition: opacity 300ms ease, border-color 300ms ease;
       border-radius: 0;
+      text-align: center;
     }
-    .ring-label .stage-num { font-size: 13px; margin-bottom: 2px; }
-    .ring-label .stage-title { font-size: 20px; }
+    .ring-label .stage-num { font-size: 11px; margin-bottom: 2px; }
+    .ring-label .stage-title { font-size: 14px; }
+    .ring-label .stage-title br { display: none; }
     .ring-label.active {
       opacity: 1;
-      border-left-color: var(--orange);
-      background: rgba(255, 107, 0, 0.04);
+      border-bottom-color: var(--orange);
     }
   }
 
@@ -1942,9 +1946,12 @@
       padding: var(--space-xs) 0;
       font-size: 18px;
     }
-    .header-cta {
+    .header-cta { display: none; }
+    .header-nav-cta {
+      display: flex !important;
       width: 100%;
       justify-content: center;
+      margin-top: var(--space-xs);
       margin-top: var(--space-xs);
     }
 
@@ -1961,15 +1968,18 @@
 
     /* 3. Accomplishments */
     .accomplishments { padding: var(--space-xl) var(--space-md); }
-    .accomplishments-inner { flex-direction: column; gap: var(--space-xl); }
+    .accomplishments-inner { flex-direction: column-reverse; gap: var(--space-xl); }
     .accomplishments-quote { font-size: 32px; }
     .accomplishments-stats {
       flex: none;
       border-left: none;
       padding-left: 0;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      padding-top: var(--space-xl);
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding-top: 0;
+      border-top: none;
     }
+    .accomplishments-quote { border-top: none; }
     .stat-number { font-size: 40px; }
 
     /* 4. Why Navora */
@@ -2044,12 +2054,12 @@
       margin: 0 calc(-1 * var(--space-md));
       padding: var(--space-xl) var(--space-md);
     }
-    .founder-inner { flex-direction: column-reverse; gap: var(--space-lg); }
+    .founder-inner { flex-direction: column; gap: var(--space-lg); }
     .founder-right { flex: none; margin-top: 0; }
-    .founder-photo { width: 100%; height: auto; aspect-ratio: 3/4; }
+    .founder-photo { width: 100%; max-width: 280px; height: auto; aspect-ratio: 3/4; margin: 0 auto; }
     .founder-left { padding: 0; }
-    .founder-quote blockquote { font-size: 28px; }
-    .founder-quote .attribution-name { font-size: 20px; }
+    .founder-quote blockquote { font-size: 24px; }
+    .founder-quote .attribution-name { font-size: 18px; }
     .founder-dark::before { top: 0; bottom: 0; }
     .founder-dark::after { display: none; }
 
@@ -2070,13 +2080,17 @@
     .footer-inner {
       grid-template-columns: 1fr;
       row-gap: var(--space-lg);
+      text-align: center;
     }
-    .footer-brand-row { flex-direction: column; align-items: flex-start; gap: var(--space-md); }
-    .footer-brand-name { font-size: 48px; }
-    .footer-compass { height: 120px; }
+    .footer-col { text-align: center; }
+    .footer-social { justify-content: center; }
+    .footer-brand-row { flex-direction: column; align-items: center; gap: var(--space-md); }
+    .footer-brand { text-align: center; }
+    .footer-brand-name { font-size: 40px; }
+    .footer-compass { height: 100px; }
     .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
-    .footer-badges { flex-direction: row; gap: var(--space-md); }
-    .footer-badge img { height: 72px; }
+    .footer-badges { flex-direction: row; gap: var(--space-md); justify-content: center; }
+    .footer-badge img { height: 64px; }
     .footer-col ul li a { font-size: 17px; }
   }
 
@@ -2162,6 +2176,7 @@
       <a href="#">About</a>
       <a href="#">Results</a>
       <a href="#">Careers</a>
+      <a href="#" class="btn btn-gold btn-arrow header-nav-cta">Get Free Growth Strategy</a>
     </nav>
   </div>
 </header>
