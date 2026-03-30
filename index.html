@@ -76,7 +76,7 @@
 
   /* ========== RESET & BASE ========== */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; overscroll-behavior-x: none; }
+  html { scroll-behavior: smooth; overscroll-behavior-x: none; touch-action: pan-y; }
   body {
     font-family: var(--font-body);
     font-weight: 300;
@@ -1878,11 +1878,16 @@
     .hero-buttons { align-items: center; justify-content: center; }
     .hero-buttons .btn { width: auto; }
     .hero-trust { justify-content: center; }
-    .accomplishments-inner { flex-direction: column; gap: var(--space-xl); }
+    .accomplishments-inner { flex-direction: column-reverse; gap: var(--space-xl); }
     .accomplishments-stats {
       flex: none;
       border-left: none;
       padding-left: 0;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-md);
+      text-align: center;
+    }
+    .accomplishments-quote {
       border-top: 1px solid rgba(255,255,255,0.15);
       padding-top: var(--space-xl);
     }
