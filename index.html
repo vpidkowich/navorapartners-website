@@ -76,7 +76,7 @@
 
   /* ========== RESET & BASE ========== */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overscroll-behavior-x: none; }
   body {
     font-family: var(--font-body);
     font-weight: 300;
@@ -85,6 +85,7 @@
     -webkit-font-smoothing: antialiased;
     zoom: 0.9;
     overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
   img { max-width: 100%; display: block; }
   a { text-decoration: none; color: inherit; }
@@ -1857,6 +1858,20 @@
     .footer { padding: var(--space-3xl) var(--space-xl) var(--space-xl); }
   }
 
+  /* ========== RESPONSIVE: TABLET PORTRAIT ONLY ========== */
+  @media (max-width: 1200px) and (orientation: portrait) {
+    .hero-right { display: none; }
+    .hero-inner { flex-direction: column; }
+    .accomplishments-inner { flex-direction: column; gap: var(--space-xl); }
+    .accomplishments-stats {
+      flex: none;
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: var(--space-xl);
+    }
+  }
+
   /* ========== RESPONSIVE: MOBILE (max-width: 768px) ========== */
   @media (max-width: 768px) {
     /* 1. Header — hamburger menu */
@@ -1894,7 +1909,8 @@
     .hero-left { flex: none; max-width: 100%; }
     .hero h1 { font-size: 36px; }
     .hero-sub { font-size: 17px; max-width: 100%; }
-    .hero-right { display: none; }
+    .hero-right { justify-content: center; }
+    .hero-portrait { width: 100%; max-width: 360px; height: 400px; }
     .hero-buttons { flex-direction: column; }
     .hero-buttons .btn { width: 100%; justify-content: center; }
 
