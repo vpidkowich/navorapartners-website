@@ -147,12 +147,40 @@ Once the homepage is complete and responsive, extract a formal design system so 
 - **Documented** — anyone (or any AI) can use it without guessing
 - **Maintainable** — change a token in one place, it updates everywhere
 
-## Future Phase: GitHub Setup & Version Control
-Once the homepage is complete (or at a good milestone):
-1. Create a GitHub account (github.com)
-2. Install GitHub Desktop (optional GUI) or use git CLI
-3. Create a new repository on GitHub for Navora Partners website
-4. Connect local git repo to GitHub remote (`git remote add origin <url>`)
-5. Push code to GitHub (`git push -u origin master`)
-6. Learn basics: commits, branches, pull requests, and how to use GitHub as a backup/collaboration tool
-7. Optionally set up GitHub Pages for free hosting/preview
+## Future Phase: JSON-LD Schema Markup
+After responsive is complete, add structured data for SEO rich snippets. This is a `<script type="application/ld+json">` block in `<head>` — no visual impact, no functional impact, works on any host (Netlify, Sevalla, Framer, static).
+
+### Schemas to implement:
+1. **Organization** — business name, logo, URL, social profiles
+2. **ProfessionalService** — agency type, services offered, service area
+3. **Service** (multiple) — paid media management, growth strategy, creative strategy, full-funnel optimization
+4. **AggregateRating** — the "4.8/5 based on client feedback" from the hero
+5. **Review** — individual testimonials from the carousel (Tammy, Nick, etc.)
+6. **FAQPage** — if/when an FAQ section is added
+
+### Implementation approach:
+- Add all schemas in a single `<script type="application/ld+json">` block using `@graph` format
+- Validate with Google's Rich Results Test (search.google.com/test/rich-results)
+- Test with Schema.org validator (validator.schema.org)
+
+## Future Phase: GitHub & Hosting Setup (Partially Complete)
+GitHub repo is live and code is being pushed regularly.
+
+### Completed:
+- [x] GitHub account created
+- [x] Repository created on GitHub (vpidkowich/navorapartners-website)
+- [x] Local git repo connected to GitHub remote
+- [x] Code pushed to GitHub regularly
+- [x] GitHub Pages set up for preview (vpidkowich.github.io)
+
+### Remaining:
+1. Learn branching, pull requests, and collaboration workflows
+2. Deploy to Sevalla.com (primary production host — replaces GitHub Pages)
+
+### Sevalla.com Deployment
+Sevalla (sevalla.com) will be the primary hosting platform for the live site. GitHub Pages remains as a preview/staging tool.
+- Read Sevalla knowledge base for static site deployment steps
+- Connect GitHub repo to Sevalla for automatic deploys
+- Configure custom domain (navorapartners.com) on Sevalla
+- Set up SSL/HTTPS
+- Verify site performance and CDN configuration
