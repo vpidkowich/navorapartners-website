@@ -216,6 +216,11 @@
     width: 24px;
     height: 24px;
   }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
   .header-nav {
     display: flex;
     align-items: center;
@@ -1751,9 +1756,37 @@
   @media (max-width: 1024px) {
     body { zoom: 1; }
 
-    /* 1. Header */
+    /* 1. Header — hamburger on tablet too, keep CTA visible */
     .header { padding: 0 var(--space-xl); }
-    .header-nav { gap: var(--space-lg); }
+    .hamburger { display: flex; }
+    .header-nav {
+      display: none;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(2,71,66,0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      flex-direction: column;
+      padding: var(--space-md) var(--space-xl) var(--space-lg);
+      gap: var(--space-sm);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .header-nav.open { display: flex; }
+    .header-nav a:not(.btn):not(.header-cta) {
+      padding: var(--space-xs) 0;
+      font-size: 18px;
+    }
+    .header-cta {
+      display: flex !important;
+      position: static;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
 
     /* 2. Hero */
     .hero { padding: var(--space-xl) var(--space-xl) var(--space-3xl); }
@@ -1778,11 +1811,12 @@
     .case-studies { padding: var(--space-3xl) var(--space-xl); }
     .featured-cases { flex-direction: column; }
     .case-card { flex-direction: row; }
-    .stories-grid { gap: var(--space-md); }
+    .stories-grid { grid-template-columns: 1fr; gap: var(--space-md); }
     .story-card-body h4 { font-size: 18px; }
 
     /* 6. Who We Help */
-    .who-help { padding: var(--space-3xl) var(--space-xl) 0; }
+    .who-help { padding: var(--space-3xl) var(--space-xl) var(--space-3xl); }
+    .who-help-cta { padding-bottom: var(--space-xl); }
 
     /* 7. Pillars — existing responsive rules handle this via 1080px breakpoint */
 
@@ -1802,8 +1836,10 @@
     /* 11. Founder */
     .founder { padding: 0 var(--space-xl); }
     .founder-dark { margin: 0 calc(-1 * var(--space-xl)); padding: var(--space-2xl) var(--space-xl); }
-    .founder-right { flex: 0 0 400px; }
-    .founder-photo { width: 400px; height: 504px; }
+    .founder-dark::before { top: 15%; bottom: 15%; }
+    .founder-right { flex: 0 0 340px; }
+    .founder-photo { width: 340px; height: 430px; }
+    .founder-quote blockquote { font-size: 32px; }
     .founder-top h2 { font-size: 40px; }
 
     /* 12. Testimonial Carousel */
@@ -2050,16 +2086,18 @@
 <header class="header">
   <div class="header-inner">
     <a href="#" class="header-logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="7.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/><path d="M12 1.5V3.5M12 20.5V22.5M1.5 12H3.5M20.5 12H22.5" stroke="#fff" stroke-width="1" stroke-linecap="round"/><path d="M4.5 4.5L6 6M18 18L19.5 19.5M19.5 4.5L18 6M6 18L4.5 19.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" stroke-linecap="round"/><path d="M16.5 7.5L13.2 10.8L12 12L10.8 13.2L7.5 16.5" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 16.5L10.8 13.2L12 12L13.2 10.8L16.5 7.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="0.1 14.5 100"/><polygon points="16.5,7.5 14,8.5 15.5,10" fill="#FFE174"/><polygon points="7.5,16.5 10,15.5 8.5,14" fill="#fff"/><circle cx="12" cy="12" r="2" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="12" cy="12" r="0.8" fill="#FFE174"/><text x="12" y="4.2" text-anchor="middle" fill="#FFE174" font-size="3" font-weight="700" font-family="sans-serif">N</text></svg>Navora Partners</a>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
+    <div class="header-right">
+      <a href="#" class="btn btn-gold btn-arrow header-cta">Get Free Growth Strategy</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
     <nav class="header-nav" id="headerNav">
       <a href="#">About</a>
       <a href="#">Results</a>
       <a href="#">Careers</a>
-      <a href="#" class="btn btn-gold btn-arrow header-cta">Get Free Growth Strategy</a>
     </nav>
   </div>
 </header>
