@@ -1,0 +1,69 @@
+HERE
+
+Here is the exact content for each card, in order (left column first, then right column, row by row):
+
+ROW 1:
+[LEFT]
+Headline: Auto Parts Revenue from $280K to $1.5M/Month
+- DTC auto parts retailer, California, USA
+- 30,000+ SKU catalog across 21 brands
+- Entire inventory trapped in one campaign
+- nCAC dropped 30% in 90 days — 435% total growth
+
+[RIGHT]
+Headline: 170% Revenue Growth for a High-Ticket Fitness Brand
+- DTC fitness recovery equipment, Illinois, USA
+- Endorsed by Hollywood stars and pro athletes
+- PMax cannibalizing branded search, choking growth
+- 3x account scale with consistent 5x ROI
+
+ROW 2:
+[LEFT]
+Headline: Tallow Skincare Scaled from $100K to $600K/Month
+- DTC organic skincare brand, Alabama, USA
+- Category pioneer in the tallow skincare niche
+- Stalled on bottom-funnel branded traffic only
+- 10x efficiency maintained across 500% growth
+
+[RIGHT]
+Headline: Acquisition Cost Cut from $40 to $15 for a Puzzle Retailer
+- DTC puzzle and hobby retailer, Nevada, USA
+- 10,000+ SKUs with fiercely loyal repeat buyers
+- Inflated conversion data masked real performance
+- Fake tracking fixed, new customer engine rebuilt
+
+ROW 3:
+[LEFT]
+Headline: 3x Revenue for a Handmade Jewelry Brand
+- DTC sea-inspired jewelry, Oregon, USA
+- One of the most competitive niches in ecom
+- Broken tracking confused the algorithm entirely
+- nCAC held at 20% of AOV across 24 months
+
+[RIGHT]
+Headline: $98 nCAC Drop for an Australian Air Purifier Brand
+- DTC high-ticket air purifiers, NSW, Australia
+- Used by hospitals, universities, and government
+- PMax "ROAS mirage" was starving new customers
+- Reversed revenue decline to 20% YoY growth
+
+ROW 4:
+[LEFT]
+Headline: 30% ROI Boost for a Neurofeedback Device Brand
+- DTC neurofeedback device, Toronto, Canada
+- Sold in major electronics stores across 3 continents
+- Duplicate campaigns choking a 2-SKU product line
+- +47% new traffic while simplifying the account
+
+[RIGHT]
+Headline: 37% Efficiency Gain for a DTC RV Mattress Brand
+- DTC RV mattress retailer, Tennessee, USA
+- One of America's largest RV mattress retailers
+- Aggressive ROAS targets strangling ad visibility
+- +72% impressions, +20% revenue in peak season
+
+DESIGN NOTES:
+- Each card = video placeholder on one side + headline and 4 bullet points on the other
+- Headline should be bold and prominent — it's the scroll-stopper
+- Bullets should be tight, 5-8 words each, minimal styling
+- The grid pairs contrasting stories on each row intentionally — preserve this exact order
