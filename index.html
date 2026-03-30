@@ -84,10 +84,13 @@
     background: var(--cream);
     -webkit-font-smoothing: antialiased;
     zoom: 0.9;
+    margin: 0;
+    padding: 0;
+  }
+  .site-wrapper {
     overflow-x: hidden;
-    overscroll-behavior-x: none;
     width: 100%;
-    max-width: 100%;
+    position: relative;
   }
   img { max-width: 100%; display: block; }
   a { text-decoration: none; color: inherit; }
@@ -196,7 +199,7 @@
     -webkit-backdrop-filter: blur(16px);
     height: 80px;
     border-bottom: none;
-    box-shadow: 0 1px 0 0 #022e2a;
+    box-shadow: none;
     display: flex;
     align-items: center;
     padding: 0 var(--space-5xl);
@@ -2137,6 +2140,7 @@
 </style>
 </head>
 <body>
+<div class="site-wrapper">
 
 <!-- ========== 1. HEADER ========== -->
 <header class="header">
@@ -2789,6 +2793,7 @@
     </div>
   </div>
 </footer>
+</div><!-- /.site-wrapper -->
 
 <!-- ========== RING DIAGRAM SCRIPT ========== -->
 <script>
