@@ -1762,7 +1762,7 @@
     .header { padding: 0 var(--space-xl); }
     .hamburger { display: flex; }
     .header-nav {
-      display: none;
+      display: flex;
       position: absolute;
       top: 72px;
       left: 0;
@@ -1771,11 +1771,22 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       flex-direction: column;
+      padding: 0 var(--space-xl);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.5s ease, gap 0.5s ease;
+      pointer-events: none;
+    }
+    .header-nav.open {
+      max-height: 400px;
+      opacity: 1;
       padding: var(--space-md) var(--space-xl) var(--space-lg);
       gap: var(--space-sm);
-      border-top: 1px solid rgba(255,255,255,0.1);
+      pointer-events: auto;
     }
-    .header-nav.open { display: flex; }
     .header-nav a:not(.btn):not(.header-cta) {
       padding: var(--space-xs) 0;
       font-size: 18px;
@@ -1884,7 +1895,7 @@
     .header-logo { font-size: 20px; }
     .hamburger { display: flex; }
     .header-nav {
-      display: none;
+      display: flex;
       position: absolute;
       top: 64px;
       left: 0;
@@ -1893,11 +1904,22 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       flex-direction: column;
+      padding: 0 var(--space-md);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.5s ease, gap 0.5s ease;
+      pointer-events: none;
+    }
+    .header-nav.open {
+      max-height: 400px;
+      opacity: 1;
       padding: var(--space-md) var(--space-md) var(--space-lg);
       gap: var(--space-sm);
-      border-top: 1px solid rgba(255,255,255,0.1);
+      pointer-events: auto;
     }
-    .header-nav.open { display: flex; }
     .header-nav a:not(.btn) {
       padding: var(--space-xs) 0;
       font-size: 18px;
