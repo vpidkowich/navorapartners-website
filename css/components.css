@@ -636,7 +636,8 @@ ul { list-style: none; }
   transition: color var(--ease-default);
 }
 
-.header-nav a:not(.btn):hover {
+.header-nav a:not(.btn):hover,
+.header-nav a:not(.btn).nav-active {
   color: var(--color-gold);
 }
 
