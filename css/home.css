@@ -390,15 +390,18 @@
   color: var(--color-gold);
 }
 
+.who-help-cta .btn-gold::before {
+  background: var(--color-gold);
+}
+
 @media (hover: hover) {
   .who-help-cta .btn-gold:hover {
-    background-color: var(--color-gold);
     color: var(--color-dark-navy);
     border-color: var(--color-gold);
   }
 }
 
-.who-help-cta .btn-gold:active {
+.who-help-cta .btn-gold.tapped {
   background-color: var(--color-gold);
   color: var(--color-dark-navy);
   border-color: var(--color-gold);

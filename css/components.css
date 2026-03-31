@@ -60,12 +60,30 @@ ul { list-style: none; }
   transition: border-color var(--ease-interactive), color var(--ease-interactive);
 }
 
-/* Button — Gold (primary CTA) */
+/* Button — Gold (primary CTA)
+   Desktop hover: dark navy slides in from the right
+   Touch tap: brief color flash via JS .tapped class */
 .btn-gold {
   background-color: var(--color-gold);
   color: var(--color-dark-navy);
   border: 1.5px solid var(--color-gold);
-  transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  isolation: isolate;
+  transition: color var(--ease-interactive), border-color var(--ease-interactive);
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background: var(--color-dark-navy);
+  transition: width var(--ease-interactive);
+  z-index: -1;
 }
 
 /* Button — Gold Ghost (gold border on dark, fills gold on hover) */
@@ -73,15 +91,49 @@ ul { list-style: none; }
   background-color: transparent;
   color: var(--color-gold);
   border: 1.5px solid var(--color-gold);
-  transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  isolation: isolate;
+  transition: color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
-/* Button — Outline White (for dark backgrounds) */
+.btn-gold-ghost::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background: var(--color-gold);
+  transition: width var(--ease-interactive);
+  z-index: -1;
+}
+
+/* Button — Outline White (for dark backgrounds)
+   Desktop hover: white slides in from the left */
 .btn-outline-white {
   background-color: transparent;
   color: var(--color-text-white);
   border: 1.5px solid var(--color-text-white);
-  transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  isolation: isolate;
+  transition: color var(--ease-interactive), border-color var(--ease-interactive);
+}
+
+.btn-outline-white::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-text-white);
+  transform: translateX(-100%);
+  transition: transform var(--ease-interactive);
+  z-index: -1;
 }
 
 /* Button — Arrow modifier (appends → that shifts on hover) */
@@ -92,45 +144,62 @@ ul { list-style: none; }
   display: inline-block;
   margin-left: 2px;
   transition: transform var(--ease-interactive), margin var(--ease-interactive);
+  position: relative;
+  z-index: 1;
 }
 
-/* Hover + active states — only on pointer devices to prevent
-   iOS Safari sticky :hover. Touch gets :active feedback only. */
+/* ── Desktop: slide-in hover (pointer devices only) ──────────────── */
 @media (hover: hover) {
   .btn-gold:hover {
-    background-color: var(--color-dark-navy);
     color: var(--color-gold);
     border-color: var(--color-dark-navy);
   }
+  .btn-gold:hover::before {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
   .btn-gold-ghost:hover {
-    background-color: var(--color-gold);
     color: var(--color-dark-navy);
     border-color: var(--color-gold);
   }
+  .btn-gold-ghost:hover::before {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
   .btn-outline-white:hover {
-    background-color: var(--color-text-white);
     color: var(--color-dark-navy);
+  }
+  .btn-outline-white:hover::before {
+    transform: translateX(0);
   }
   .btn-arrow:hover::after {
     transform: translateX(13px);
   }
 }
 
-/* Touch tap feedback — brief color change while finger is down */
-.btn-gold:active {
+/* ── Touch: tap feedback via JS .tapped class ────────────────────── */
+.btn-gold.tapped {
   background-color: var(--color-dark-navy);
   color: var(--color-gold);
   border-color: var(--color-dark-navy);
 }
-.btn-gold-ghost:active {
+.btn-gold.tapped::before { display: none; }
+
+.btn-gold-ghost.tapped {
   background-color: var(--color-gold);
   color: var(--color-dark-navy);
 }
-.btn-outline-white:active {
+.btn-gold-ghost.tapped::before { display: none; }
+
+.btn-outline-white.tapped {
   background-color: var(--color-text-white);
   color: var(--color-dark-navy);
 }
-.btn-arrow:active::after {
+.btn-outline-white.tapped::before { display: none; }
+
+.btn-arrow.tapped::after {
   transform: translateX(13px);
 }
 

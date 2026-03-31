@@ -1151,5 +1151,24 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 
+<script>
+// Touch tap feedback — adds .tapped class briefly on touch devices
+(function() {
+  if (!('ontouchstart' in window)) return;
+  document.querySelectorAll('.btn').forEach(function(btn) {
+    btn.addEventListener('touchstart', function() {
+      this.classList.add('tapped');
+    }, { passive: true });
+    btn.addEventListener('touchend', function() {
+      var el = this;
+      setTimeout(function() { el.classList.remove('tapped'); }, 400);
+    });
+    btn.addEventListener('touchcancel', function() {
+      this.classList.remove('tapped');
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
