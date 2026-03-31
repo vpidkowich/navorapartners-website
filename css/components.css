@@ -68,12 +68,6 @@ ul { list-style: none; }
   transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
-.btn-gold:hover {
-  background-color: var(--color-dark-navy);
-  color: var(--color-gold);
-  border-color: var(--color-dark-navy);
-}
-
 /* Button — Gold Ghost (gold border on dark, fills gold on hover) */
 .btn-gold-ghost {
   background-color: transparent;
@@ -82,23 +76,12 @@ ul { list-style: none; }
   transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
-.btn-gold-ghost:hover {
-  background-color: var(--color-gold);
-  color: var(--color-dark-navy);
-  border-color: var(--color-gold);
-}
-
 /* Button — Outline White (for dark backgrounds) */
 .btn-outline-white {
   background-color: transparent;
   color: var(--color-text-white);
   border: 1.5px solid var(--color-text-white);
   transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
-}
-
-.btn-outline-white:hover {
-  background-color: var(--color-text-white);
-  color: var(--color-dark-navy);
 }
 
 /* Button — Arrow modifier (appends → that shifts on hover) */
@@ -111,7 +94,43 @@ ul { list-style: none; }
   transition: transform var(--ease-interactive), margin var(--ease-interactive);
 }
 
-.btn-arrow:hover::after {
+/* Hover + active states — only on pointer devices to prevent
+   iOS Safari sticky :hover. Touch gets :active feedback only. */
+@media (hover: hover) {
+  .btn-gold:hover {
+    background-color: var(--color-dark-navy);
+    color: var(--color-gold);
+    border-color: var(--color-dark-navy);
+  }
+  .btn-gold-ghost:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-navy);
+    border-color: var(--color-gold);
+  }
+  .btn-outline-white:hover {
+    background-color: var(--color-text-white);
+    color: var(--color-dark-navy);
+  }
+  .btn-arrow:hover::after {
+    transform: translateX(13px);
+  }
+}
+
+/* Touch tap feedback — brief color change while finger is down */
+.btn-gold:active {
+  background-color: var(--color-dark-navy);
+  color: var(--color-gold);
+  border-color: var(--color-dark-navy);
+}
+.btn-gold-ghost:active {
+  background-color: var(--color-gold);
+  color: var(--color-dark-navy);
+}
+.btn-outline-white:active {
+  background-color: var(--color-text-white);
+  color: var(--color-dark-navy);
+}
+.btn-arrow:active::after {
   transform: translateX(13px);
 }
 
