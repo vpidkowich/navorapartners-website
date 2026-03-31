@@ -1,0 +1,205 @@
+/* ================================================================
+   NAVORA PARTNERS — DESIGN TOKENS
+   Single source of truth for all visual primitives.
+   All other stylesheets reference these variables.
+   ================================================================ */
+
+
+/* ── @font-face: Local Fonts ─────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Roslindale';
+  src: url('../fonts/roslindale/Roslindale-DisplayBold-Testing.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roslindale';
+  src: url('../fonts/roslindale/Roslindale-DisplayRegular-Testing.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roslindale';
+  src: url('../fonts/roslindale/Roslindale-DisplayMedium-Testing.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Excalifont';
+  src: url('../fonts/Excalifont-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+
+  /* ── Colors: Brand ─────────────────────────────────────────────── */
+  --color-jade:          #024742;
+  --color-dark-navy:     #172838;
+  --color-dark-bg:       #282828;
+  --color-cream:         #faf9f5;
+  --color-warm-cream:    #faf9e9;
+  --color-gold:          #ffe174;
+  --color-orange:        #ff6b00;
+
+  /* ── Colors: Text ──────────────────────────────────────────────── */
+  --color-text-primary:  #181a1d;
+  --color-text-secondary:#282828;
+  --color-text-light:    #faf9f5;
+  --color-text-muted:    #c5cbbf;
+  --color-text-white:    #ffffff;
+
+  /* ── Colors: Semantic / Surface ────────────────────────────────── */
+  --color-hero-bg:            #022e2a;
+  --color-hero-trust-text:    #e8e8e4;
+  --color-founder-name:       #e8cb64;
+
+  /* ── Colors: Overlays & Translucent ────────────────────────────── */
+  --color-header-bg:          rgba(2, 71, 66, 0.95);
+  --color-header-menu-bg:     rgba(2, 71, 66, 0.98);
+  --color-final-cta-overlay:  rgba(2, 71, 66, 0.65);
+  --color-border-light:       rgba(255, 255, 255, 0.15);
+  --color-border-lighter:     rgba(255, 255, 255, 0.10);
+  --color-border-lightest:    rgba(255, 255, 255, 0.05);
+
+  /* ── Typography: Font Families ─────────────────────────────────── */
+  --font-heading:  'Roslindale', Georgia, 'Times New Roman', serif;
+  --font-body:     'Satoshi', system-ui, -apple-system, sans-serif;
+  --font-label:    'Inter Tight', system-ui, sans-serif;
+  --font-accent:   'Inria Serif', Georgia, serif;
+  --font-handwritten: 'Excalifont', 'Segoe Print', cursive;
+
+  /* ── Typography: Font Sizes ────────────────────────────────────── */
+  --text-2xs:   12px;
+  --text-xs:    13px;
+  --text-sm:    14px;
+  --text-base:  16px;
+  --text-md:    17px;
+  --text-lg:    18px;
+  --text-xl:    20px;
+  --text-2xl:   22px;
+  --text-3xl:   24px;
+  --text-4xl:   27px;
+  --text-5xl:   29px;
+  --text-6xl:   32px;
+  --text-7xl:   36px;
+  --text-8xl:   40px;
+  --text-9xl:   43px;
+  --text-10xl:  48px;
+  --text-11xl:  54px;
+  --text-12xl:  69px;
+
+  /* ── Typography: Font Weights ──────────────────────────────────── */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    900;
+
+  /* ── Typography: Line Heights ──────────────────────────────────── */
+  --leading-none:    1.1;
+  --leading-tight:   1.2;
+  --leading-snug:    1.25;
+  --leading-normal:  1.3;
+  --leading-relaxed: 1.45;
+  --leading-loose:   1.5;
+  --leading-extra:   1.55;
+
+  /* ── Typography: Letter Spacing ────────────────────────────────── */
+  --tracking-tight:   -1px;
+  --tracking-normal:  0;
+  --tracking-wide:    1px;
+  --tracking-wider:   1.6px;
+  --tracking-widest:  1.8px;
+  --tracking-stars:   2px;
+
+  /* ── Spacing Scale (0.9x from 8px grid — desktop) ─────────────── */
+  --space-2xs:  4px;
+  --space-xs:   7px;
+  --space-sm:   14px;
+  --space-md:   22px;
+  --space-lg:   29px;
+  --space-xl:   43px;
+  --space-2xl:  58px;
+  --space-3xl:  72px;
+  --space-4xl:  86px;
+  --space-5xl:  101px;
+
+  /* ── Border Radii ──────────────────────────────────────────────── */
+  --radius-none:   0;
+  --radius-sm:     2px;
+  --radius-md:     4px;
+  --radius-lg:     11px;
+  --radius-xl:     14px;
+  --radius-2xl:    16px;
+  --radius-full:   50%;
+
+  /* ── Box Shadows ───────────────────────────────────────────────── */
+  --shadow-xs:     0 2px 6px rgba(0, 0, 0, 0.15);
+  --shadow-sm:     0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-md:     0 7px 29px rgba(0, 0, 0, 0.08);
+  --shadow-lg:     0 8px 32px rgba(0, 0, 0, 0.10);
+  --shadow-xl:     0 8px 40px rgba(0, 0, 0, 0.08);
+  --shadow-2xl:    0 24px 64px rgba(0, 0, 0, 0.35);
+  --shadow-icon:   0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-overlay:0 16px 64px rgba(0, 0, 0, 0.5);
+
+  /* ── Transitions ───────────────────────────────────────────────── */
+  --ease-default:    0.3s ease;
+  --ease-interactive:0.4s ease;
+  --ease-content:    0.5s ease;
+  --ease-reveal:     0.7s ease;
+  --ease-fade:       0.8s ease;
+
+  /* ── Layout: Container Widths ──────────────────────────────────── */
+  --container-sm:    648px;
+  --container-md:    810px;
+  --container-base:  990px;
+  --container-lg:    1094px;
+  --container-xl:    1152px;
+  --container-2xl:   1296px;
+
+  /* ── Layout: Header ────────────────────────────────────────────── */
+  --header-height:         72px;
+  --header-height-mobile:  64px;
+
+  /* ── Breakpoints (for reference — used in @media queries) ──────── *
+   *  Tablet:            max-width: 1200px
+   *  Tablet portrait:   max-width: 1200px and orientation: portrait
+   *  Ring diagram mid:  max-width: 1080px
+   *  Mobile:            max-width: 768px
+   *  Ring diagram small:max-width: 600px
+   *  Small mobile:      max-width: 480px
+   * ─────────────────────────────────────────────────────────────── */
+
+  /* ── Z-Index Scale ─────────────────────────────────────────────── */
+  --z-base:      0;
+  --z-above:     1;
+  --z-header:    1000;
+  --z-hamburger: 1001;
+  --z-lightbox:  10000;
+}
+
+/* ── Spacing: Restore original 8px grid at tablet and below ──────── */
+@media (max-width: 1200px) {
+  :root {
+    --space-2xs:  4px;
+    --space-xs:   8px;
+    --space-sm:   16px;
+    --space-md:   24px;
+    --space-lg:   32px;
+    --space-xl:   48px;
+    --space-2xl:  64px;
+    --space-3xl:  80px;
+    --space-4xl:  96px;
+    --space-5xl:  112px;
+  }
+}

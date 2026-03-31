@@ -79,7 +79,7 @@ Add structured data for SEO rich snippets. This is a `<script type="application/
 - Validate with Google's Rich Results Test (search.google.com/test/rich-results)
 - Test with Schema.org validator (validator.schema.org)
 
-## Future Phase: Design System
+## Current Phase: Design System
 Once the homepage is complete and responsive, extract a formal design system so all future pages are consistent and efficient to build. The homepage sets the tone — the design system codifies it.
 
 ### What a design system includes:
@@ -118,6 +118,55 @@ Once the homepage is complete and responsive, extract a formal design system so 
 - Extract inline CSS into a structured stylesheet with CSS custom properties (variables)
 - Create a simple style guide page (`style-guide.html`) that displays all components in one place for reference
 - Document the system so future pages can be built by referencing the guide rather than copying from the homepage
+
+- **Maintainable** — change a token in one place, it updates everywhere
+
+## Next Phase: Internal Pages (Post-Design System)
+
+Once the design system is extracted and `style-guide.html` exists, use this workflow to build every internal page. The design system is the source of truth — Figma provides content and layout intent, the design system provides the visual language.
+
+### Prerequisites (completed in Design System phase)
+- Shared CSS files exist: `css/variables.css`, `css/components.css`, `css/layout.css`
+- Shared HTML partials exist: `partials/head.html`, `partials/nav.html`, `partials/footer.html`
+- `style-guide.html` documents all available components
+- `index.html` is refactored to use the shared system (no orphaned inline styles)
+
+### Per-Page Workflow (repeat for each internal page)
+
+**Pass 1 — Figma Pull (Claude Code terminal with Figma MCP)**
+
+Pull the page from Figma via the MCP server and save as `[page]-raw.html` (e.g., `about-raw.html`). This file captures layout structure, content, and design intent only. Don't attempt to match the existing site styles — just get the Figma design into code.
+
+**Pass 2 — Reconcile Against Design System (Claude Code)**
+
+Create the production file `[page].html` from the raw pull. Rules:
+1. Use `partials/head.html` content for the `<head>` section
+2. Use the exact nav from `partials/nav.html`
+3. Use the exact footer from `partials/footer.html`
+4. Link to `variables.css`, `components.css`, and `layout.css`
+5. Reuse existing component classes from `components.css` wherever the raw file has similar elements — don't reinvent styles that already exist
+6. Keep the content and general layout intent from the Figma version
+7. Match spacing, typography, color, and feel of `index.html`
+8. Put any page-specific styles in a new `css/[page].css` file
+9. Responsive behavior must match homepage patterns and breakpoints
+10. The result should feel like a sibling page of the homepage — same family, same quality
+
+**Pass 3 — Visual QA & Refinement**
+
+Open `[page].html` in the browser alongside the homepage. Check:
+- Nav and footer are identical to homepage
+- Fonts, colors, and spacing are consistent
+- Responsive behavior matches at all breakpoints
+- Buttons, links, and interactive elements feel the same
+- Overall "weight" and "air" of the page is consistent
+
+Fix any issues, then delete the `-raw` file once the production version is approved.
+
+### Maintaining the Design System During Page Builds
+- If a new page introduces a reusable pattern (e.g., a team member card, a pricing table), promote it into `components.css` and document it in `style-guide.html` — don't leave it in the page-specific CSS
+- If `css/[page].css` is growing large, that's a sign patterns should be extracted into the shared system
+- Every new component added to the system becomes available for all future pages
+- Never edit the `-raw` files — if you need a fresh Figma pull, re-pull and overwrite the raw file
 
 ## Future Phase: GitHub & Hosting Setup (Partially Complete)
 GitHub repo is live and code is being pushed regularly.

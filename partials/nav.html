@@ -1,0 +1,57 @@
+<!-- ================================================================
+     NAVORA PARTNERS — SHARED HEADER / NAV
+     Copy this block at the top of every page's <body>,
+     inside <div class="site-wrapper">.
+     ================================================================ -->
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="7.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/><path d="M12 1.5V3.5M12 20.5V22.5M1.5 12H3.5M20.5 12H22.5" stroke="#fff" stroke-width="1" stroke-linecap="round"/><path d="M4.5 4.5L6 6M18 18L19.5 19.5M19.5 4.5L18 6M6 18L4.5 19.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" stroke-linecap="round"/><path d="M16.5 7.5L13.2 10.8L12 12L10.8 13.2L7.5 16.5" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 16.5L10.8 13.2L12 12L13.2 10.8L16.5 7.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="0.1 14.5 100"/><polygon points="16.5,7.5 14,8.5 15.5,10" fill="#FFE174"/><polygon points="7.5,16.5 10,15.5 8.5,14" fill="#fff"/><circle cx="12" cy="12" r="2" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="12" cy="12" r="0.8" fill="#FFE174"/><text x="12" y="4.2" text-anchor="middle" fill="#FFE174" font-size="3" font-weight="700" font-family="sans-serif">N</text></svg>Navora Partners</a>
+    <div class="header-right">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <a href="#" class="btn btn-gold btn-arrow header-cta">Get Free Growth Strategy</a>
+    </div>
+    <nav class="header-nav" id="headerNav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Results</a>
+      <a href="careers.html">Careers</a>
+      <a href="#" class="btn btn-gold btn-arrow header-nav-cta">Get Free Growth Strategy</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hamburger menu toggle -->
+<script>
+(function() {
+  var btn = document.getElementById('hamburgerBtn');
+  var nav = document.getElementById('headerNav');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function() {
+    var isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('active');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      nav.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>

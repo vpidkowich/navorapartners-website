@@ -1,0 +1,341 @@
+/* ================================================================
+   NAVORA PARTNERS — LAYOUT PATTERNS
+   Global containers, grids, section structures, and alignment.
+   Depends on variables.css for all token values.
+   ================================================================ */
+
+
+/* ── Containers ──────────────────────────────────────────────────── */
+
+.container {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-wide {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-narrow {
+  max-width: var(--container-sm);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-text {
+  max-width: var(--container-base);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-hero {
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+/* ── Section Base ────────────────────────────────────────────────── */
+/* Standard horizontal padding for full-width sections.              */
+/* Vertical padding varies per section and is set individually.      */
+
+.section-pad {
+  padding-left: var(--space-5xl);
+  padding-right: var(--space-5xl);
+}
+
+
+/* ── Section Backgrounds ─────────────────────────────────────────── */
+
+.bg-cream       { background: var(--color-cream); }
+.bg-warm-cream  { background: var(--color-warm-cream); }
+.bg-jade        { background: var(--color-jade); }
+.bg-dark-navy   { background: var(--color-dark-navy); }
+.bg-dark        { background: var(--color-dark-bg); }
+
+
+/* ── Section Header (centered label + heading) ───────────────────── */
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.section-header h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-9xl);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+}
+
+.section-header--light h2 {
+  color: var(--color-text-white);
+}
+
+.section-header--light .section-label {
+  color: var(--color-gold);
+}
+
+
+/* ── Two-Column Layout ───────────────────────────────────────────── */
+/* Flex row with a content side and a secondary side.                */
+
+.two-col {
+  display: flex;
+  gap: var(--space-2xl);
+  align-items: flex-start;
+}
+
+.two-col--center {
+  align-items: center;
+}
+
+.two-col__main {
+  flex: 1;
+}
+
+.two-col__aside {
+  flex: 0 0 auto;
+}
+
+
+/* ── Grid Layouts ────────────────────────────────────────────────── */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.grid-2--wide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md) var(--space-xl);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: var(--space-xl);
+}
+
+
+/* ── Featured Cases Row ──────────────────────────────────────────── */
+
+.featured-cases {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  max-width: var(--container-lg);
+  margin: 0 auto var(--space-2xl);
+}
+
+
+/* ── Stories Grid ────────────────────────────────────────────────── */
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  max-width: var(--container-lg);
+  margin: 0 auto var(--space-xl);
+}
+
+
+/* ── Stacked List (vertical flex with consistent gap) ────────────── */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack--sm  { gap: var(--space-sm); }
+.stack--md  { gap: var(--space-md); }
+.stack--lg  { gap: var(--space-lg); }
+.stack--xl  { gap: var(--space-xl); }
+
+
+/* ── Inline Row (horizontal flex) ────────────────────────────────── */
+
+.inline {
+  display: flex;
+  align-items: center;
+}
+
+.inline--sm  { gap: var(--space-xs); }
+.inline--md  { gap: var(--space-sm); }
+.inline--lg  { gap: var(--space-md); }
+.inline--xl  { gap: var(--space-xl); }
+
+.inline--wrap { flex-wrap: wrap; }
+
+
+/* ── Centered Content Block ──────────────────────────────────────── */
+
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ── Full-Width CTA Bar ──────────────────────────────────────────── */
+/* A horizontal bar with heading on one side, button on the other.   */
+
+.cta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+}
+
+.cta-bar p {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-5xl);
+  line-height: var(--leading-tight);
+  color: var(--color-text-white);
+  margin-bottom: 0;
+}
+
+
+/* ── Image + Content Overlay Section ─────────────────────────────── */
+/* Section with a background image and translucent color overlay.    */
+
+.overlay-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-section__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.overlay-section__content {
+  position: relative;
+  z-index: var(--z-above);
+}
+
+
+/* ================================================================
+   RESPONSIVE — LAYOUT OVERRIDES
+   ================================================================ */
+
+/* ── Tablet (max-width: 1200px) ──────────────────────────────────── */
+@media (max-width: 1200px) {
+
+  .section-pad {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+
+  .two-col {
+    gap: var(--space-xl);
+  }
+
+  .featured-cases {
+    flex-direction: column;
+  }
+
+  .stories-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ── Tablet Portrait (max-width: 1200px, portrait) ───────────────── */
+@media (max-width: 1200px) and (orientation: portrait) {
+
+  .two-col--hero {
+    flex-direction: column;
+  }
+
+  .two-col--hero .two-col__aside {
+    display: none;
+  }
+
+  .two-col--hero .two-col__main {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* ── Mobile (max-width: 768px) ───────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .section-pad {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .section-header h2 {
+    font-size: var(--text-7xl);
+  }
+
+  .two-col {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .two-col__aside {
+    flex: none;
+    width: 100%;
+  }
+
+  .grid-2,
+  .grid-2--wide {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .featured-cases {
+    flex-direction: column;
+  }
+
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .cta-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Full-width buttons on mobile */
+  .btn-full-mobile {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Small Mobile (max-width: 480px) ─────────────────────────────── */
+@media (max-width: 480px) {
+
+  .section-header h2 {
+    font-size: var(--text-5xl);
+  }
+}
