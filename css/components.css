@@ -60,104 +60,54 @@ ul { list-style: none; }
   transition: border-color var(--ease-interactive), color var(--ease-interactive);
 }
 
-/* Button — Gold (primary CTA) */
+/* Button — Gold (primary CTA)
+   Hover: dark navy slides in from the right */
 .btn-gold {
-  background: var(--color-gold);
   color: var(--color-dark-navy);
   border: 1.5px solid var(--color-gold);
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-  isolation: isolate;
-}
-
-.btn-gold::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 100%;
-  background: var(--color-dark-navy);
-  transition: width var(--ease-interactive);
-  z-index: -1;
+  background: linear-gradient(to left, var(--color-dark-navy) 50%, var(--color-gold) 50%);
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  transition: background-position var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
 .btn-gold:hover {
+  background-position: 100% 0;
   color: var(--color-gold);
   border-color: var(--color-dark-navy);
 }
 
-.btn-gold:hover::before {
-  width: 100%;
-  left: 0;
-  right: auto;
-}
-
-/* Button — Gold Ghost (gold border on dark, fills gold on hover) */
+/* Button — Gold Ghost (gold border on dark, fills gold on hover)
+   Hover: gold slides in from the right */
 .btn-gold-ghost {
-  background: transparent;
   color: var(--color-gold);
   border: 1.5px solid var(--color-gold);
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-  isolation: isolate;
-}
-
-.btn-gold-ghost::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 100%;
-  background: var(--color-gold);
-  transition: width var(--ease-interactive);
-  z-index: -1;
+  background: linear-gradient(to left, var(--color-gold) 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  transition: background-position var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
 .btn-gold-ghost:hover {
+  background-position: 100% 0;
   color: var(--color-dark-navy);
   border-color: var(--color-gold);
 }
 
-.btn-gold-ghost:hover::before {
-  width: 100%;
-  left: 0;
-  right: auto;
-}
-
-/* Button — Outline White (for dark backgrounds) */
+/* Button — Outline White (for dark backgrounds)
+   Hover: white slides in from the left */
 .btn-outline-white {
-  background: transparent;
   color: var(--color-text-white);
   border: 1.5px solid var(--color-text-white);
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-  isolation: isolate;
-}
-
-.btn-outline-white::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--color-text-white);
-  transform: translateX(-100%);
-  transition: transform var(--ease-interactive);
-  z-index: -1;
+  background: linear-gradient(to right, var(--color-text-white) 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
 .btn-outline-white:hover {
+  background-position: 0% 0;
   color: var(--color-dark-navy);
-}
-
-.btn-outline-white:hover::before {
-  transform: translateX(0);
 }
 
 /* Button — Arrow modifier (appends → that shifts on hover) */
