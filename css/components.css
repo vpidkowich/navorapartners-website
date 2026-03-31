@@ -1015,8 +1015,9 @@ ul { list-style: none; }
     display: flex;
     position: absolute;
     top: var(--header-height);
-    left: calc(-1 * var(--space-xl));
-    right: calc(-1 * var(--space-xl));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
     background: var(--color-header-menu-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -1073,8 +1074,9 @@ ul { list-style: none; }
     display: flex;
     position: absolute;
     top: var(--header-height-mobile);
-    left: calc(-1 * var(--space-md));
-    right: calc(-1 * var(--space-md));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
     background: var(--color-header-menu-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
