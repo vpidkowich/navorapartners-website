@@ -179,29 +179,6 @@ ul { list-style: none; }
   }
 }
 
-/* ── Touch: tap feedback via JS .tapped class ────────────────────── */
-.btn-gold.tapped {
-  background-color: var(--color-dark-navy);
-  color: var(--color-gold);
-  border-color: var(--color-dark-navy);
-}
-.btn-gold.tapped::before { display: none; }
-
-.btn-gold-ghost.tapped {
-  background-color: var(--color-gold);
-  color: var(--color-dark-navy);
-}
-.btn-gold-ghost.tapped::before { display: none; }
-
-.btn-outline-white.tapped {
-  background-color: var(--color-text-white);
-  color: var(--color-dark-navy);
-}
-.btn-outline-white.tapped::before { display: none; }
-
-.btn-arrow.tapped::after {
-  transform: translateX(13px);
-}
 
 
 /* ── Read More Link ──────────────────────────────────────────────── */
