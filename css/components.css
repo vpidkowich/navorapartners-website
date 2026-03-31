@@ -60,53 +60,44 @@ ul { list-style: none; }
   transition: border-color var(--ease-interactive), color var(--ease-interactive);
 }
 
-/* Button — Gold (primary CTA)
-   Hover: dark navy slides in from the right */
+/* Button — Gold (primary CTA) */
 .btn-gold {
+  background-color: var(--color-gold);
   color: var(--color-dark-navy);
   border: 1.5px solid var(--color-gold);
-  background: linear-gradient(to left, var(--color-dark-navy) 50%, var(--color-gold) 50%);
-  background-size: 200% 100%;
-  background-position: 0% 0;
-  transition: background-position var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
+  transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
 .btn-gold:hover {
-  background-position: 100% 0;
+  background-color: var(--color-dark-navy);
   color: var(--color-gold);
   border-color: var(--color-dark-navy);
 }
 
-/* Button — Gold Ghost (gold border on dark, fills gold on hover)
-   Hover: gold slides in from the right */
+/* Button — Gold Ghost (gold border on dark, fills gold on hover) */
 .btn-gold-ghost {
+  background-color: transparent;
   color: var(--color-gold);
   border: 1.5px solid var(--color-gold);
-  background: linear-gradient(to left, var(--color-gold) 50%, transparent 50%);
-  background-size: 200% 100%;
-  background-position: 0% 0;
-  transition: background-position var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
+  transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
 .btn-gold-ghost:hover {
-  background-position: 100% 0;
+  background-color: var(--color-gold);
   color: var(--color-dark-navy);
   border-color: var(--color-gold);
 }
 
-/* Button — Outline White (for dark backgrounds)
-   Hover: white slides in from the left */
+/* Button — Outline White (for dark backgrounds) */
 .btn-outline-white {
+  background-color: transparent;
   color: var(--color-text-white);
   border: 1.5px solid var(--color-text-white);
-  background: linear-gradient(to right, var(--color-text-white) 50%, transparent 50%);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  transition: background-position var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
+  transition: background-color var(--ease-interactive), color var(--ease-interactive), border-color var(--ease-interactive);
 }
 
 .btn-outline-white:hover {
-  background-position: 0% 0;
+  background-color: var(--color-text-white);
   color: var(--color-dark-navy);
 }
 
@@ -523,6 +514,12 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   padding: 0 var(--space-5xl);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header a,
+.header button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .header-inner {
@@ -583,7 +580,7 @@ ul { list-style: none; }
   font-size: var(--text-sm);
   border-radius: var(--radius-none);
   box-shadow: var(--shadow-xs);
-  transition: background-position var(--ease-interactive), border-color var(--ease-interactive), color var(--ease-interactive);
+  transition: background-color var(--ease-interactive), border-color var(--ease-interactive), color var(--ease-interactive);
 }
 
 

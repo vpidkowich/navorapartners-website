@@ -385,15 +385,13 @@
 }
 
 .who-help-cta .btn-gold {
+  background-color: transparent;
   border: 1.5px solid var(--color-gold);
   color: var(--color-gold);
-  background: linear-gradient(to left, var(--color-gold) 50%, transparent 50%);
-  background-size: 200% 100%;
-  background-position: 0% 0;
 }
 
 .who-help-cta .btn-gold:hover {
-  background-position: 100% 0;
+  background-color: var(--color-gold);
   color: var(--color-dark-navy);
   border-color: var(--color-gold);
 }
