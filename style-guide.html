@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Navora Partners — Design System Style Guide</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Inria+Serif:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/layout.css">
+<style>
+  /* ── Style Guide Page Styles ─────────────────────────────────── */
+  .sg-body { padding: 0 0 80px; }
+  .sg-hero {
+    background: var(--color-jade);
+    padding: 64px 48px;
+    margin-bottom: 64px;
+  }
+  .sg-hero h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .sg-hero p {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    max-width: 600px;
+  }
+  .sg-section {
+    max-width: 1094px;
+    margin: 0 auto 80px;
+    padding: 0 32px;
+  }
+  .sg-section-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-jade);
+  }
+  .sg-section-desc {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+  .sg-subsection {
+    margin-bottom: 48px;
+  }
+  .sg-subsection-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .sg-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .sg-swatch {
+    width: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .sg-swatch-color {
+    height: 80px;
+  }
+  .sg-swatch-info {
+    padding: 10px 12px;
+    background: #fff;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .sg-swatch-info strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  .sg-swatch-info code {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+  .sg-type-sample {
+    margin-bottom: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .sg-type-meta {
+    font-size: 12px;
+    font-family: monospace;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+  }
+  .sg-spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .sg-spacing-bar {
+    height: 24px;
+    background: var(--color-jade);
+    border-radius: 4px;
+    min-width: 4px;
+  }
+  .sg-spacing-label {
+    font-size: 13px;
+    font-family: monospace;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    min-width: 200px;
+  }
+  .sg-shadow-box {
+    width: 160px;
+    height: 80px;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--color-text-muted);
+  }
+  .sg-radius-box {
+    width: 80px;
+    height: 80px;
+    background: var(--color-jade);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 11px;
+    font-family: monospace;
+  }
+  .sg-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .sg-dark-bg {
+    background: var(--color-dark-navy);
+    padding: 32px;
+    border-radius: 8px;
+  }
+  .sg-jade-bg {
+    background: var(--color-jade);
+    padding: 32px;
+    border-radius: 8px;
+  }
+  .sg-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .sg-component-label {
+    display: inline-block;
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--color-text-muted);
+    background: #f0f0ec;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .sg-nav-demo {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .sg-transition-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .sg-transition-bar {
+    height: 8px;
+    background: var(--color-gold);
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .sg-hero { padding: 40px 24px; }
+    .sg-hero h1 { font-size: 32px; }
+    .sg-section { padding: 0 20px; }
+    .sg-card-grid { grid-template-columns: 1fr; }
+    .sg-swatch { width: 140px; }
+  }
+</style>
+</head>
+<body class="sg-body">
+<div class="site-wrapper">
+
+<!-- ========== HERO ========== -->
+<div class="sg-hero">
+  <h1>Navora Design System</h1>
+  <p>The living reference for all visual primitives, components, and patterns used across the Navora Partners website.</p>
+</div>
+
+
+<!-- ========== 1. COLORS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">1. Colors</h2>
+  <p class="sg-section-desc">All colors are defined as CSS custom properties in variables.css. Never use raw hex values in page stylesheets.</p>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Brand Colors</h3>
+    <div class="sg-grid">
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#024742"></div>
+        <div class="sg-swatch-info"><strong>Jade</strong>#024742<br><code>--color-jade</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#172838"></div>
+        <div class="sg-swatch-info"><strong>Dark Navy</strong>#172838<br><code>--color-dark-navy</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#282828"></div>
+        <div class="sg-swatch-info"><strong>Dark BG</strong>#282828<br><code>--color-dark-bg</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#faf9f5; border: 1px solid #ddd"></div>
+        <div class="sg-swatch-info"><strong>Cream</strong>#faf9f5<br><code>--color-cream</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#faf9e9; border: 1px solid #ddd"></div>
+        <div class="sg-swatch-info"><strong>Warm Cream</strong>#faf9e9<br><code>--color-warm-cream</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#ffe174"></div>
+        <div class="sg-swatch-info"><strong>Gold</strong>#ffe174<br><code>--color-gold</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#ff6b00"></div>
+        <div class="sg-swatch-info"><strong>Orange</strong>#ff6b00<br><code>--color-orange</code></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Text Colors</h3>
+    <div class="sg-grid">
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#181a1d"></div>
+        <div class="sg-swatch-info"><strong>Primary</strong>#181a1d<br><code>--color-text-primary</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#282828"></div>
+        <div class="sg-swatch-info"><strong>Secondary</strong>#282828<br><code>--color-text-secondary</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#faf9f5; border: 1px solid #ddd"></div>
+        <div class="sg-swatch-info"><strong>Light</strong>#faf9f5<br><code>--color-text-light</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#c5cbbf"></div>
+        <div class="sg-swatch-info"><strong>Muted</strong>#c5cbbf<br><code>--color-text-muted</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#ffffff; border: 1px solid #ddd"></div>
+        <div class="sg-swatch-info"><strong>White</strong>#ffffff<br><code>--color-text-white</code></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Semantic / Surface Colors</h3>
+    <div class="sg-grid">
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#022e2a"></div>
+        <div class="sg-swatch-info"><strong>Hero BG</strong>#022e2a<br><code>--color-hero-bg</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#e8e8e4; border: 1px solid #ddd"></div>
+        <div class="sg-swatch-info"><strong>Hero Trust Text</strong>#e8e8e4<br><code>--color-hero-trust-text</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#e8cb64"></div>
+        <div class="sg-swatch-info"><strong>Founder Name</strong>#e8cb64<br><code>--color-founder-name</code></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Overlays &amp; Borders</h3>
+    <div class="sg-grid">
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:rgba(2,71,66,0.95)"></div>
+        <div class="sg-swatch-info"><strong>Header BG</strong>rgba(2,71,66,0.95)<br><code>--color-header-bg</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:rgba(2,71,66,0.65)"></div>
+        <div class="sg-swatch-info"><strong>CTA Overlay</strong>rgba(2,71,66,0.65)<br><code>--color-final-cta-overlay</code></div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch-color" style="background:#333"><div style="margin:20px auto;width:120px;height:1px;background:rgba(255,255,255,0.15)"></div></div>
+        <div class="sg-swatch-info"><strong>Border Light</strong>rgba(255,255,255,0.15)<br><code>--color-border-light</code></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 2. TYPOGRAPHY ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">2. Typography</h2>
+  <p class="sg-section-desc">Five font families, each with a specific role. Roslindale for headings, Satoshi for body text, Inter Tight for labels, Inria Serif for decorative accents, Excalifont for handwritten descriptions.</p>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Roslindale (--font-heading)</h3>
+    <p class="sg-type-meta">Used for all headings, stats, blockquotes, and brand display text.</p>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-12xl (69px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:69px; line-height:1.1; color:var(--color-text-primary)">Navora Partners</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-11xl (54px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:54px; line-height:1.2; color:var(--color-text-primary)">The truth about scaling</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-10xl (48px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:48px; line-height:1.2; color:var(--color-text-primary)">A four-part system for growth</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-9xl (43px) / Bold &mdash; Primary section heading</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:43px; line-height:1.2; color:var(--color-text-primary)">Predictable growth through paid media</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-7xl (36px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:36px; line-height:1.2; color:var(--color-text-primary)">True Strategic Partnership</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-6xl (32px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:32px; line-height:1.2; color:var(--color-text-primary)">Founder quote heading</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-5xl (29px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:29px; line-height:1.2; color:var(--color-text-primary)">More success stories</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-4xl (27px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:27px; line-height:1.2; color:var(--color-text-primary)">Step heading example</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-2xl (22px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:22px; line-height:1.2; color:var(--color-text-primary)">Card heading example</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-base (16px) / Bold</p>
+      <p style="font-family:var(--font-heading); font-weight:700; font-size:16px; color:var(--color-gold)">Footer column heading</p>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Satoshi (--font-body)</h3>
+    <p class="sg-type-meta">Primary body font. Used for paragraphs, buttons, nav, and general UI text.</p>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-6xl (32px) / Light (300) &mdash; Why Navora body text</p>
+      <p style="font-family:var(--font-body); font-weight:300; font-size:32px; line-height:1.5; color:var(--color-text-secondary)">We plug into your Slack and operating cadence like an in-house team.</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-2xl (22px) / Light (300) &mdash; Growth strategy description</p>
+      <p style="font-family:var(--font-body); font-weight:300; font-size:22px; line-height:1.5; color:var(--color-text-secondary)">The Growth Strategy is a complimentary, no-strings-attached deep dive into your brand's paid media and profitability.</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-xl (20px) / Light (300) &mdash; Founder body text</p>
+      <p style="font-family:var(--font-body); font-weight:300; font-size:20px; line-height:1.5; color:var(--color-text-secondary)">At Navora, you work directly with experienced strategists who've managed tens of millions in ad spend.</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-lg (18px) / Light (300) &mdash; Hero sub, CTA body</p>
+      <p style="font-family:var(--font-body); font-weight:300; font-size:18px; line-height:1.5; color:var(--color-text-secondary)">Uncover hidden truth with our proprietary ecom analysis and go beyond optimizing for ROAS.</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-base (16px) / Regular (400) &mdash; Checklist items, stat labels</p>
+      <p style="font-family:var(--font-body); font-weight:400; font-size:16px; line-height:1.5; color:var(--color-text-secondary)">P&amp;L-aligned view of performance</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-sm (14px) / Medium (500) &mdash; Button text, nav links</p>
+      <p style="font-family:var(--font-body); font-weight:500; font-size:14px; line-height:1.5; color:var(--color-text-secondary)">Get Free Growth Strategy</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-xs (13px) / Regular (400) &mdash; Badges, attributions, small text</p>
+      <p style="font-family:var(--font-body); font-weight:400; font-size:13px; line-height:1.5; color:var(--color-text-muted)">Rated 4.8 / 5 based on client feedback</p>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Inter Tight (--font-label)</h3>
+    <p class="sg-type-meta">Used exclusively for section labels. Always uppercase with wide letter-spacing.</p>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">15px / Medium (500) / Uppercase / tracking-wider (1.6px)</p>
+      <div class="section-label" style="color:var(--color-text-primary); margin-bottom:0">WHY NAVORA PARTNERS?</div>
+    </div>
+    <div class="sg-type-sample">
+      <div style="background:var(--color-dark-navy); padding:16px; border-radius:4px">
+        <div class="section-label" style="color:var(--color-gold); margin-bottom:0">WHO WE HELP</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Inria Serif (--font-accent)</h3>
+    <p class="sg-type-meta">Decorative serif accent. Used sparingly for taglines and italic emphasis.</p>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">--text-xl (20px) / Semibold (600) / Italic</p>
+      <p style="font-family:var(--font-accent); font-weight:600; font-style:italic; font-size:20px; line-height:1.4; color:var(--color-text-muted)">Navigating eCom growth with confidence</p>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Excalifont (--font-handwritten)</h3>
+    <p class="sg-type-meta">Handwritten style for the ring diagram descriptions and labels.</p>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">19px / Regular (400)</p>
+      <p style="font-family:var(--font-handwritten); font-weight:400; font-size:19px; line-height:1.25; color:var(--color-text-primary)">Growth-Clarity Decision System</p>
+    </div>
+    <div class="sg-type-sample">
+      <p class="sg-type-meta">17px / Regular (400) &mdash; Ring center description</p>
+      <p style="font-family:var(--font-handwritten); font-weight:400; font-size:17px; line-height:1.3; color:var(--color-text-secondary)">We reconcile platforms, P&amp;L, and customer signals into one source of truth so your leadership team can see what's working.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 3. SPACING ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">3. Spacing Scale</h2>
+  <p class="sg-section-desc">Desktop values are 0.9x of the 8px grid. Original values restore at the 1200px tablet breakpoint. Resize the browser to see them switch.</p>
+
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-2xs: 4px</span>
+    <div class="sg-spacing-bar" style="width:4px"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-xs: 7px (8px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-xs)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-sm: 14px (16px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-sm)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-md: 22px (24px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-md)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-lg: 29px (32px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-lg)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-xl: 43px (48px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-xl)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-2xl: 58px (64px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-2xl)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-3xl: 72px (80px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-3xl)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-4xl: 86px (96px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-4xl)"></div>
+  </div>
+  <div class="sg-spacing-row">
+    <span class="sg-spacing-label">--space-5xl: 101px (112px tablet)</span>
+    <div class="sg-spacing-bar" style="width:var(--space-5xl)"></div>
+  </div>
+</div>
+
+
+<!-- ========== 4. SHADOWS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">4. Shadows</h2>
+  <p class="sg-section-desc">Named shadow tokens for consistent elevation across components.</p>
+  <div class="sg-grid">
+    <div class="sg-shadow-box" style="box-shadow:var(--shadow-xs)">--shadow-xs</div>
+    <div class="sg-shadow-box" style="box-shadow:var(--shadow-sm)">--shadow-sm</div>
+    <div class="sg-shadow-box" style="box-shadow:var(--shadow-md)">--shadow-md</div>
+    <div class="sg-shadow-box" style="box-shadow:var(--shadow-lg)">--shadow-lg</div>
+    <div class="sg-shadow-box" style="box-shadow:var(--shadow-xl)">--shadow-xl</div>
+    <div class="sg-shadow-box" style="box-shadow:var(--shadow-2xl)">--shadow-2xl</div>
+    <div class="sg-shadow-box" style="box-shadow:var(--shadow-icon)">--shadow-icon</div>
+  </div>
+</div>
+
+
+<!-- ========== 5. BORDER RADII ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">5. Border Radii</h2>
+  <div class="sg-grid">
+    <div class="sg-radius-box" style="border-radius:var(--radius-none)">none (0)</div>
+    <div class="sg-radius-box" style="border-radius:var(--radius-sm)">sm (2px)</div>
+    <div class="sg-radius-box" style="border-radius:var(--radius-md)">md (4px)</div>
+    <div class="sg-radius-box" style="border-radius:var(--radius-lg)">lg (11px)</div>
+    <div class="sg-radius-box" style="border-radius:var(--radius-xl)">xl (14px)</div>
+    <div class="sg-radius-box" style="border-radius:var(--radius-2xl)">2xl (16px)</div>
+    <div class="sg-radius-box" style="border-radius:var(--radius-full)">full (50%)</div>
+  </div>
+</div>
+
+
+<!-- ========== 6. TRANSITIONS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">6. Transitions</h2>
+  <p class="sg-section-desc">Five named durations used across the system.</p>
+  <div class="sg-transition-row">
+    <span class="sg-spacing-label">--ease-default: 0.3s ease</span>
+    <div class="sg-transition-bar" style="width:60px"></div>
+  </div>
+  <div class="sg-transition-row">
+    <span class="sg-spacing-label">--ease-interactive: 0.4s ease</span>
+    <div class="sg-transition-bar" style="width:80px"></div>
+  </div>
+  <div class="sg-transition-row">
+    <span class="sg-spacing-label">--ease-content: 0.5s ease</span>
+    <div class="sg-transition-bar" style="width:100px"></div>
+  </div>
+  <div class="sg-transition-row">
+    <span class="sg-spacing-label">--ease-reveal: 0.7s ease</span>
+    <div class="sg-transition-bar" style="width:140px"></div>
+  </div>
+  <div class="sg-transition-row">
+    <span class="sg-spacing-label">--ease-fade: 0.8s ease</span>
+    <div class="sg-transition-bar" style="width:160px"></div>
+  </div>
+</div>
+
+
+<!-- ========== 7. BUTTONS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">7. Buttons</h2>
+  <p class="sg-section-desc">Four variants plus the arrow modifier. Desktop gets slide-in hover effects; touch devices get clean taps. Hover over each button to see the effect.</p>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Gold (Primary CTA)</h3>
+    <span class="sg-component-label">.btn .btn-gold .btn-arrow</span>
+    <div class="sg-btn-row">
+      <a href="#" class="btn btn-gold btn-arrow">Get Free Growth Strategy</a>
+      <a href="#" class="btn btn-gold">Without Arrow</a>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Gold Ghost (On Dark Backgrounds)</h3>
+    <span class="sg-component-label">.btn .btn-gold-ghost .btn-arrow</span>
+    <div class="sg-dark-bg">
+      <div class="sg-btn-row">
+        <a href="#" class="btn btn-gold-ghost btn-arrow">Get My Free Growth Strategy</a>
+        <a href="#" class="btn btn-gold-ghost">Without Arrow</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Outline White (On Dark Backgrounds)</h3>
+    <span class="sg-component-label">.btn .btn-outline-white</span>
+    <div class="sg-jade-bg">
+      <div class="sg-btn-row">
+        <a href="#" class="btn btn-outline-white">What Is The Growth Strategy?</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 8. SECTION LABELS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">8. Section Labels</h2>
+  <p class="sg-section-desc">Uppercase Inter Tight labels used above section headings. Color varies by background.</p>
+
+  <div class="sg-subsection">
+    <span class="sg-component-label">.section-label</span>
+    <div style="margin-bottom:24px">
+      <div class="section-label" style="color:var(--color-text-primary)">WHAT THE PROCESS LOOKS LIKE</div>
+    </div>
+    <div class="sg-jade-bg" style="margin-bottom:24px">
+      <div class="section-label" style="color:var(--color-gold)">HOW WE HELP</div>
+    </div>
+    <div class="sg-dark-bg">
+      <div class="section-label" style="color:var(--color-gold)">WHO WE HELP</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 9. CHECK ICON & CHECKLIST ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">9. Check Icon &amp; Checklist</h2>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Check Icon</h3>
+    <span class="sg-component-label">.check-icon</span>
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px">
+      <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span style="font-size:14px; color:var(--color-text-secondary)">Gold circle with checkmark (18px)</span>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Checklist</h3>
+    <span class="sg-component-label">.checklist .checklist-item .check-icon</span>
+    <div class="sg-dark-bg" style="max-width:480px">
+      <div class="checklist">
+        <div class="checklist-item">
+          <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Clarity on where to invest and why</span>
+        </div>
+        <div class="checklist-item">
+          <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>P&amp;L-aligned view of performance</span>
+        </div>
+        <div class="checklist-item">
+          <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>The constraints limiting growth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 10. PLAY BUTTON ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">10. Play Button</h2>
+  <span class="sg-component-label">.play-btn</span>
+  <p class="sg-section-desc">Video overlay play button. Scales up on hover.</p>
+  <div class="sg-jade-bg" style="display:flex; gap:24px; align-items:center">
+    <a href="#" class="play-btn" onclick="return false"></a>
+    <span style="color:#fff; font-size:14px">58px circle, 2px white border, triangle via ::before</span>
+  </div>
+</div>
+
+
+<!-- ========== 11. STEP ICON ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">11. Step Icon</h2>
+  <span class="sg-component-label">.step-icon</span>
+  <p class="sg-section-desc">Jade circle with SVG icon, used in the process timeline.</p>
+  <div style="display:flex; gap:24px; align-items:center">
+    <div class="step-icon"><svg viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 16.5C15.14 16.5 19.5 12.81 19.5 8.25C19.5 3.69 15.14 0 9.75 0C9.75 0 0 3.69 0 8.25C0 10.06 0.69 11.73 1.86 13.1C1.69 13.54 1.45 13.93 1.19 14.25C0.97 14.55 0.74 14.77 0.57 14.93C0.48 15 0.41 15.06 0.37 15.1L0.31 15.15C0.05 15.34-0.07 15.68 0.04 15.98C0.14 16.28 0.43 16.5 0.75 16.5C1.77 16.5 2.8 16.24 3.66 15.91C4.09 15.75 4.5 15.57 4.85 15.38C6.29 16.09 7.96 16.5 9.75 16.5" fill="#FFE174"/></svg></div>
+    <span style="font-size:14px; color:var(--color-text-secondary)">58px jade circle with shadow-icon</span>
+  </div>
+</div>
+
+
+<!-- ========== 12. READ MORE LINK ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">12. Read More Link</h2>
+  <span class="sg-component-label">.read-more .read-more-arrow</span>
+  <p class="sg-section-desc">Inline link with arrow that shifts 8px right on hover. Color set by context (gold on dark, jade on light).</p>
+  <div style="display:flex; gap:48px; align-items:center; flex-wrap:wrap">
+    <div>
+      <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:8px">On light background:</p>
+      <a href="#" class="read-more" style="color:var(--color-jade)" onclick="return false"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+    </div>
+    <div class="sg-jade-bg">
+      <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:8px">On dark background:</p>
+      <a href="#" class="read-more" style="color:var(--color-gold)" onclick="return false"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 13. CARDS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">13. Cards</h2>
+  <p class="sg-section-desc">Reusable card patterns extracted from the homepage.</p>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Featured Case Card</h3>
+    <span class="sg-component-label">.case-card .case-card-image .case-card-content</span>
+    <div style="max-width:720px">
+      <div class="case-card">
+        <div class="case-card-image" style="min-height:240px; background:linear-gradient(135deg, #3a6b67, #024742)">
+          <a href="#" class="play-btn" onclick="return false"></a>
+        </div>
+        <div class="case-card-content">
+          <blockquote>&ldquo;Extremely well thought out strategic insights&rdquo;</blockquote>
+          <div class="case-card-attribution">
+            <div class="attr-details">
+              <span class="attr-name">Tammy Pham, Hiring Manager</span>
+              <span class="attr-role">Inflektion &middot; Austin, TX</span>
+              <span class="attr-since">Client since 2022</span>
+            </div>
+          </div>
+          <a href="#" class="read-more" style="color:var(--color-gold)" onclick="return false"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Story Card</h3>
+    <span class="sg-component-label">.story-card .story-card-img .story-card-body</span>
+    <div style="max-width:540px">
+      <div class="story-card">
+        <div class="story-card-img" style="min-height:180px">
+          <a href="#" class="play-btn" onclick="return false"></a>
+        </div>
+        <div class="story-card-body">
+          <h4>Auto Parts Revenue from $280K to $1.5M/Month</h4>
+          <ul class="story-bullets">
+            <li>Entire inventory trapped in one campaign</li>
+            <li>nCAC dropped 30% in 90 days &mdash; 435% total growth</li>
+          </ul>
+          <a href="#" class="read-more" style="color:var(--color-jade)" onclick="return false"><span>See Case Study</span> <span class="read-more-arrow">&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">CTA Card</h3>
+    <span class="sg-component-label">.cta-card</span>
+    <div style="max-width:640px">
+      <div class="cta-card">
+        <h3>Not a campaign critique or audit.</h3>
+        <p>It's a way to determine if you're ready for scaling and if not, what to do to get there.</p>
+        <a href="#" class="btn btn-gold btn-arrow" onclick="return false">Get My Free Growth Strategy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Dark Card</h3>
+    <span class="sg-component-label">.dark-card</span>
+    <div style="max-width:432px">
+      <div class="dark-card">
+        <h3>What you'll walk away with&hellip;</h3>
+        <div class="checklist">
+          <div class="checklist-item">
+            <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>Clarity on where to invest and why</span>
+          </div>
+          <div class="checklist-item">
+            <span class="check-icon"><svg width="10" height="8" viewBox="0 0 12 10" fill="none"><path d="M1 5.5L4.5 9L11 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>P&amp;L-aligned view of performance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 14. CAROUSEL ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">14. Testimonial Carousel</h2>
+  <span class="sg-component-label">.carousel-inner .carousel-slides .carousel-slide .carousel-dot .carousel-attribution</span>
+  <p class="sg-section-desc">Crossfade carousel with dot indicators. Shown here as a static example.</p>
+
+  <div style="background:var(--color-warm-cream); padding:48px 32px; border-radius:8px">
+    <div class="carousel-inner">
+      <div style="position:relative; min-height:auto">
+        <div style="text-align:center">
+          <blockquote style="font-family:var(--font-heading); font-weight:700; font-size:43px; line-height:1.2; color:var(--color-text-secondary); margin-bottom:var(--space-xl)">&ldquo;Chaky has been one of the most transformative hires we've ever made.&rdquo;</blockquote>
+          <div class="carousel-attribution">
+            <strong>Tammy Pham</strong>
+            <span class="attr-company">Inflektion</span>
+            <span class="attr-location">Austin, TX</span>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-dots" style="margin-top:24px">
+        <button class="carousel-dot active"></button>
+        <button class="carousel-dot"></button>
+        <button class="carousel-dot"></button>
+        <button class="carousel-dot"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 15. SOCIAL ICON ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">15. Social Icons</h2>
+  <span class="sg-component-label">.social-icon</span>
+  <p class="sg-section-desc">36px gold SVG icons used in the footer.</p>
+  <div class="sg-jade-bg">
+    <div class="footer-social">
+      <a href="#" class="social-icon" aria-label="YouTube" onclick="return false"><svg viewBox="2 4 20 16" style="width:44px;height:44px"><path d="M10 8.5v7l6-3.5-6-3.5z"/><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+      <a href="#" class="social-icon" aria-label="Instagram" onclick="return false"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+      <a href="#" class="social-icon" aria-label="LinkedIn" onclick="return false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v13h-4V8zm7.5 0h3.8v1.8h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6v7.3h-4v-6.5c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4V21h-4V8z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 16. NAVIGATION ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">16. Navigation</h2>
+  <p class="sg-section-desc">Sticky header with inline nav on desktop, hamburger menu on tablet/mobile. The CTA moves inside the hamburger on mobile (&le;768px).</p>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Desktop Nav</h3>
+    <span class="sg-component-label">.header .header-inner .header-logo .header-nav .header-cta</span>
+    <div class="sg-nav-demo">
+      <header class="header" style="position:static; border-radius:8px 8px 0 0">
+        <div class="header-inner">
+          <a href="#" class="header-logo" onclick="return false"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px"><circle cx="12" cy="12" r="10.5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="7.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/><circle cx="12" cy="12" r="2" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="12" cy="12" r="0.8" fill="#FFE174"/><text x="12" y="4.2" text-anchor="middle" fill="#FFE174" font-size="3" font-weight="700" font-family="sans-serif">N</text></svg>Navora Partners</a>
+          <div class="header-right">
+            <a href="#" class="btn btn-gold btn-arrow header-cta" onclick="return false">Get Free Growth Strategy</a>
+          </div>
+          <nav class="header-nav" style="position:static; max-height:none; opacity:1; pointer-events:auto; flex-direction:row; padding:0; gap:var(--space-xl); border-top:none; background:transparent; backdrop-filter:none; -webkit-backdrop-filter:none; margin-right:var(--space-xl)">
+            <a href="#" onclick="return false">About</a>
+            <a href="#" onclick="return false">Results</a>
+            <a href="#" onclick="return false">Careers</a>
+          </nav>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="sg-subsection">
+    <h3 class="sg-subsection-title">Hamburger Button</h3>
+    <span class="sg-component-label">.hamburger .hamburger-line</span>
+    <div style="display:flex; gap:32px; align-items:center">
+      <div style="background:var(--color-jade); padding:16px; border-radius:8px">
+        <button class="hamburger" style="display:flex" onclick="return false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+      <span style="font-size:14px; color:var(--color-text-muted)">Closed state</span>
+      <div style="background:var(--color-jade); padding:16px; border-radius:8px">
+        <button class="hamburger active" style="display:flex" onclick="return false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+      <span style="font-size:14px; color:var(--color-text-muted)">Open state (X)</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== 17. FOOTER ========== -->
+<div class="sg-section" style="max-width:none; padding:0">
+  <div style="max-width:1094px; margin:0 auto; padding:0 32px">
+    <h2 class="sg-section-title">17. Footer</h2>
+    <span class="sg-component-label">.footer .footer-inner .footer-col .footer-brand-row .footer-bottom</span>
+    <p class="sg-section-desc">Full-width jade footer with 3-column grid, brand watermark, social icons, partner badges, and bottom links. Collapses to single column on mobile.</p>
+  </div>
+  <footer class="footer" style="margin-top:24px">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Information</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="footer-address">1309 Coffeen Avenue STE 9809,<br>Sheridan, WY 82801</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="YouTube" onclick="return false"><svg viewBox="2 4 20 16" style="width:44px;height:44px"><path d="M10 8.5v7l6-3.5-6-3.5z"/><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          <a href="#" class="social-icon" aria-label="Instagram" onclick="return false"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+          <a href="#" class="social-icon" aria-label="LinkedIn" onclick="return false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v13h-4V8zm7.5 0h3.8v1.8h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6v7.3h-4v-6.5c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4V21h-4V8z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-badges">
+        <div class="footer-badge"><img src="images/Google-Certified-transparent.webp" alt="Google Certified Partner" loading="lazy"></div>
+        <div class="footer-badge"><img src="images/meta%20certified%20transparent.webp" alt="Meta Certified Partner" loading="lazy"></div>
+      </div>
+      <div class="footer-brand-row">
+        <img src="images/sextant%20transparent.webp" alt="" class="footer-compass" loading="lazy">
+        <div class="footer-brand">
+          <span class="footer-brand-name">Navora Partners</span>
+          <span class="footer-brand-tagline">Navigating eCom growth with confidence</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; Navora Partners 2026 - All Rights Reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Sitemap</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ========== 18. LAYOUT CONTAINERS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">18. Layout Containers</h2>
+  <p class="sg-section-desc">Named max-width containers. All centered with auto margins.</p>
+
+  <div style="margin-bottom:12px">
+    <span class="sg-spacing-label" style="display:block; margin-bottom:4px">.container-hero (1296px)</span>
+    <div style="max-width:1296px; height:24px; background:var(--color-jade); border-radius:4px; opacity:0.15"></div>
+  </div>
+  <div style="margin-bottom:12px">
+    <span class="sg-spacing-label" style="display:block; margin-bottom:4px">.container-wide (1152px)</span>
+    <div style="max-width:1152px; height:24px; background:var(--color-jade); border-radius:4px; opacity:0.25"></div>
+  </div>
+  <div style="margin-bottom:12px">
+    <span class="sg-spacing-label" style="display:block; margin-bottom:4px">.container (1094px)</span>
+    <div style="max-width:1094px; height:24px; background:var(--color-jade); border-radius:4px; opacity:0.35"></div>
+  </div>
+  <div style="margin-bottom:12px">
+    <span class="sg-spacing-label" style="display:block; margin-bottom:4px">.container-text (990px)</span>
+    <div style="max-width:990px; height:24px; background:var(--color-jade); border-radius:4px; opacity:0.50"></div>
+  </div>
+  <div style="margin-bottom:12px">
+    <span class="sg-spacing-label" style="display:block; margin-bottom:4px">.container-narrow (648px)</span>
+    <div style="max-width:648px; height:24px; background:var(--color-jade); border-radius:4px; opacity:0.65"></div>
+  </div>
+</div>
+
+
+<!-- ========== 19. BREAKPOINTS ========== -->
+<div class="sg-section">
+  <h2 class="sg-section-title">19. Responsive Breakpoints</h2>
+  <p class="sg-section-desc">CSS custom properties can't be used in media queries, so these are documented values.</p>
+
+  <table style="width:100%; border-collapse:collapse; font-size:14px; line-height:1.8">
+    <thead>
+      <tr style="border-bottom:2px solid var(--color-jade); text-align:left">
+        <th style="padding:8px 16px 8px 0">Breakpoint</th>
+        <th style="padding:8px 16px 8px 0">Trigger</th>
+        <th style="padding:8px 0">Key Changes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #eee">
+        <td style="padding:8px 16px 8px 0; font-family:monospace; font-weight:600">1200px</td>
+        <td style="padding:8px 16px 8px 0">Tablet</td>
+        <td style="padding:8px 0">Spacing scale restores to 1x. Hamburger menu activates. Section padding reduces.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee">
+        <td style="padding:8px 16px 8px 0; font-family:monospace; font-weight:600">1200px + portrait</td>
+        <td style="padding:8px 16px 8px 0">Tablet Portrait</td>
+        <td style="padding:8px 0">Hero image hidden. Content centers. Accomplishments stats reflow to 3-column.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee">
+        <td style="padding:8px 16px 8px 0; font-family:monospace; font-weight:600">1080px</td>
+        <td style="padding:8px 16px 8px 0">Ring Diagram</td>
+        <td style="padding:8px 0">Ring diagram scales down slightly.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee">
+        <td style="padding:8px 16px 8px 0; font-family:monospace; font-weight:600">768px</td>
+        <td style="padding:8px 16px 8px 0">Mobile</td>
+        <td style="padding:8px 0">Single-column layouts. Cards stack. Buttons go full-width. CTA moves to hamburger.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee">
+        <td style="padding:8px 16px 8px 0; font-family:monospace; font-weight:600">600px</td>
+        <td style="padding:8px 16px 8px 0">Ring Diagram Mobile</td>
+        <td style="padding:8px 0">Ring diagram replaced by horizontal tab bar + content panel.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 16px 8px 0; font-family:monospace; font-weight:600">480px</td>
+        <td style="padding:8px 16px 8px 0">Small Mobile</td>
+        <td style="padding:8px 0">Further font size reductions. No layout changes.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</div><!-- /.site-wrapper -->
+</body>
+</html>
