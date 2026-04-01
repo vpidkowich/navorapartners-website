@@ -829,10 +829,10 @@
 
 .step4-circle-svg {
   position: absolute;
-  bottom: -40px;
-  right: -60px;
-  width: 500px;
-  height: 420px;
+  bottom: -80px;
+  right: -100px;
+  width: 600px;
+  height: 520px;
   pointer-events: none;
   z-index: 3;
   overflow: visible;
