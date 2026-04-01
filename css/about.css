@@ -400,6 +400,11 @@
   color: var(--color-jade);
 }
 
+.team-lightbox-badge--advocacy {
+  background: #b8e6d8;
+  color: #1a5c45;
+}
+
 .team-lightbox-name {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
