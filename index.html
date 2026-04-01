@@ -892,14 +892,10 @@
     wrapper.style.setProperty('--glow-x', STAGES[index].glowX);
     wrapper.style.setProperty('--glow-y', STAGES[index].glowY);
 
-    centerEl.classList.add('fading');
-    setTimeout(function() {
-      descEl.textContent = STAGES[index].desc;
-      if (titleEl) titleEl.textContent = STAGES[index].title;
-      iconEl.innerHTML = ICONS_SMALL[index];
-      centerEl.classList.remove('fading');
-      activeStage = index;
-    }, 200);
+    descEl.textContent = STAGES[index].desc;
+    if (titleEl) titleEl.textContent = STAGES[index].title;
+    iconEl.innerHTML = ICONS_SMALL[index];
+    activeStage = index;
   }
 
   setActiveStage(0);
