@@ -75,10 +75,11 @@
   color: var(--color-text-muted);
 }
 
-.hero-stars {
-  color: var(--color-gold);
-  font-size: var(--text-sm);
-  letter-spacing: var(--tracking-stars);
+.hero-stars-img {
+  height: 16px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 
