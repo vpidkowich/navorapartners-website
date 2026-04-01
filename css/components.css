@@ -932,9 +932,9 @@ ul { list-style: none; }
 }
 
 .footer-brand-tagline {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: var(--weight-semibold);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: var(--weight-regular);
   font-size: var(--text-xl);
   color: rgba(255, 255, 255, 0.18);
   line-height: 1.4;
