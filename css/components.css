@@ -506,9 +506,10 @@ ul { list-style: none; }
   content: '\2022';
   position: absolute;
   left: 0;
+  top: 0;
   color: var(--color-jade);
-  font-size: var(--text-lg);
-  line-height: var(--leading-loose);
+  font-size: var(--text-sm);
+  line-height: inherit;
 }
 
 .story-card-body .read-more {
