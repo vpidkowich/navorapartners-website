@@ -1078,54 +1078,7 @@
 
 
 /* ========== 13. FINAL CTA ========== */
-
-.final-cta {
-  position: relative;
-  padding: var(--space-4xl) var(--space-5xl);
-  background: url('../images/Main call to action image.webp') center/cover no-repeat;
-  overflow: hidden;
-}
-
-.final-cta-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--color-final-cta-overlay);
-  z-index: 0;
-}
-
-.final-cta-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-  text-align: left;
-}
-
-.final-cta-label {
-  font-family: var(--font-label);
-  font-weight: var(--weight-medium);
-  font-size: var(--text-xs);
-  color: var(--color-gold);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-widest);
-  margin-bottom: var(--space-md);
-}
-
-.final-cta-inner h2 {
-  font-family: var(--font-heading);
-  font-weight: var(--weight-bold);
-  font-size: var(--text-9xl);
-  line-height: var(--leading-tight);
-  color: #fff;
-  margin-bottom: var(--space-md);
-}
-
-.final-cta-inner p {
-  font-size: var(--text-lg);
-  line-height: var(--leading-loose);
-  color: #fff;
-  margin-bottom: var(--space-xl);
-  max-width: 585px;
-}
+/* Styles moved to components.css — shared across all pages */
 
 
 /* ================================================================
@@ -1190,9 +1143,7 @@
   /* 12. Testimonial Carousel */
   .testimonial-carousel { padding: var(--space-3xl) var(--space-xl); }
 
-  /* 13. Final CTA */
-  .final-cta { padding: var(--space-3xl) var(--space-xl); }
-  .final-cta-inner h2 { font-size: var(--text-8xl); }
+  /* 13. Final CTA — responsive in components.css */
 }
 
 /* ── Tablet Portrait (max-width: 1200px, portrait) ───────────────── */
@@ -1327,11 +1278,7 @@
   /* 12. Testimonial Carousel */
   .testimonial-carousel { padding: calc(var(--space-xl) * 2.5) var(--space-md) var(--space-xl); }
 
-  /* 13. Final CTA */
-  .final-cta { padding: var(--space-xl) var(--space-md); }
-  .final-cta-inner h2 { font-size: var(--text-6xl); }
-  .final-cta-inner p { font-size: var(--text-md); }
-  .final-cta-inner .btn { width: 100%; justify-content: center; }
+  /* 13. Final CTA — responsive in components.css */
 }
 
 /* ── Small Mobile (max-width: 480px) ─────────────────────────────── */
@@ -1379,7 +1326,5 @@
   .founder-quote blockquote { font-size: var(--text-3xl); }
 
   /* 13. Final CTA */
-  .final-cta-inner h2 { font-size: 26px; }
-  .final-cta-inner p { font-size: var(--text-base); }
-  .final-cta-label { font-size: var(--text-2xs); }
+  /* 13. Final CTA — responsive in components.css */
 }
