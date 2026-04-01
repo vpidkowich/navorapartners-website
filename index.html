@@ -1013,8 +1013,10 @@ document.addEventListener('keydown', function(e) {
     var scrollPos = window.scrollY + window.innerHeight * 0.7;
     var progress = Math.min(Math.max((scrollPos - timelineTop) / timelineHeight, 0), 1);
 
-    // Reveal the dashed path
-    revealPath.style.strokeDashoffset = pathLength * (1 - progress);
+    // Reveal the dashed path — accelerate in second half
+    var eased = progress < 0.5 ? progress : 0.5 + (progress - 0.5) * 1.6;
+    eased = Math.min(eased, 1);
+    revealPath.style.strokeDashoffset = pathLength * (1 - eased);
 
     // Draw the X before the line starts (progress > 0.01)
     if (progress > 0.01 && !xDrawn) {
