@@ -346,6 +346,39 @@
   height: 14px;
 }
 
+.value-toggle-icon {
+  transition: transform var(--ease-interactive);
+}
+
+.value-card.open .value-toggle-icon {
+  transform: rotate(45deg);
+}
+
+.value-expand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--ease-content), padding var(--ease-content);
+  padding: 0;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.value-card.open .value-expand {
+  max-height: 300px;
+  padding-top: var(--space-sm);
+}
+
+.value-expand li {
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.value-expand li::marker {
+  color: var(--color-jade);
+}
+
 
 /* ========== 7. PERKS AND BENEFITS ========== */
 
