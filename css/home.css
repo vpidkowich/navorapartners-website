@@ -77,12 +77,8 @@
 
 .hero-stars {
   color: var(--color-gold);
-  font-size: 80px;
-  letter-spacing: 8px;
-  display: block;
-  background: #fff;
-  padding: 40px;
-  width: fit-content;
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-stars);
 }
 
 
