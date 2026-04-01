@@ -86,10 +86,8 @@
   width: 0.55em;
   overflow: hidden;
   letter-spacing: 0;
-  vertical-align: text-bottom;
+  vertical-align: -1px;
   line-height: 1;
-  position: relative;
-  top: 0;
 }
 
 .hero h1 {
