@@ -536,7 +536,7 @@
   font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
   color: var(--color-warm-cream);
-  transition: opacity 400ms ease;
+  transition: opacity 200ms ease;
   position: relative;
   z-index: 2;
   max-width: 270px;
@@ -657,7 +657,7 @@
     font-weight: var(--weight-bold);
     color: var(--color-warm-cream);
     margin: 0 0 var(--space-sm);
-    transition: opacity 400ms ease;
+    transition: opacity 200ms ease;
   }
 
   .ring-label {
