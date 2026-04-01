@@ -1010,7 +1010,7 @@ document.addEventListener('keydown', function(e) {
     var rect = timeline.getBoundingClientRect();
     var timelineTop = rect.top + window.scrollY;
     var timelineHeight = rect.height;
-    var scrollPos = window.scrollY + window.innerHeight * 0.5;
+    var scrollPos = window.scrollY + window.innerHeight * 0.7;
     var progress = Math.min(Math.max((scrollPos - timelineTop) / timelineHeight, 0), 1);
 
     // Reveal the dashed path
