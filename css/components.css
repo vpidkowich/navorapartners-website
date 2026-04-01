@@ -630,9 +630,9 @@ ul { list-style: none; }
 .header-nav-cta { display: none; }
 
 .header-nav a:not(.btn) {
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   color: var(--color-text-white);
-  font-weight: var(--weight-light);
+  font-weight: var(--weight-regular);
   transition: color var(--ease-default);
 }
 
