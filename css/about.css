@@ -395,6 +395,11 @@
   border-radius: 4px;
 }
 
+.team-lightbox-badge--people {
+  background: #c8e6e3;
+  color: var(--color-jade);
+}
+
 .team-lightbox-name {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);

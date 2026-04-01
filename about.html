@@ -307,7 +307,9 @@
       photoEl.innerHTML = '<div style="width:100%;height:100%;background:linear-gradient(135deg,#035a54,#024742);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:14px">Photo TBD</div>';
     }
     badgesEl.innerHTML = d.badges.map(function(b) {
-      return '<span class="team-lightbox-badge">' + b + '</span>';
+      var cls = 'team-lightbox-badge';
+      if (b !== 'Leadership') cls += ' team-lightbox-badge--' + b.toLowerCase();
+      return '<span class="' + cls + '">' + b + '</span>';
     }).join('');
     nameEl.textContent = d.name;
     roleEl.textContent = d.role;
