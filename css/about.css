@@ -8,47 +8,43 @@
 /* ========== HERO ========== */
 
 .about-hero {
-  background: var(--color-jade);
+  background: var(--color-hero-bg);
   padding: var(--space-xl) var(--space-5xl) var(--space-3xl);
   position: relative;
   overflow: hidden;
 }
 
-.about-hero::before {
-  content: '';
+.about-hero-bg {
   position: absolute;
-  width: 1008px;
-  height: 500px;
-  left: -144px;
-  top: -143px;
-  background: rgba(255, 225, 116, 0.05);
-  filter: blur(60px);
-  border-radius: 9999px;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(170deg, #01332e 0%, #024742 40%, #024742 100%);
 }
 
-.about-hero::after {
+.about-hero-bg::before {
   content: '';
   position: absolute;
-  width: 864px;
-  height: 428px;
-  right: -144px;
-  top: 286px;
-  background: #035e57;
-  filter: blur(50px);
-  opacity: 0.6;
-  border-radius: 9999px;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(140deg, rgba(3,80,72,0.5) 0%, rgba(3,80,72,0.3) 15%, transparent 40%),
+    linear-gradient(155deg, transparent 10%, rgba(4,95,87,0.25) 20%, rgba(4,95,87,0.15) 35%, transparent 50%),
+    linear-gradient(130deg, transparent 50%, rgba(3,70,64,0.3) 65%, rgba(2,55,50,0.4) 80%, rgba(2,55,50,0.3) 100%),
+    linear-gradient(160deg, transparent 25%, rgba(5,110,100,0.12) 35%, rgba(5,110,100,0.08) 50%, transparent 65%),
+    linear-gradient(20deg, rgba(1,35,32,0.5) 0%, rgba(1,35,32,0.2) 20%, transparent 40%);
 }
 
-.about-hero-shimmer {
+.about-hero-bg::after {
+  content: '';
   position: absolute;
-  width: 720px;
-  height: 357px;
-  left: 288px;
-  bottom: -143px;
-  background: rgba(255, 225, 116, 0.05);
-  filter: blur(50px);
-  opacity: 0.4;
-  border-radius: 9999px;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(145deg, rgba(5,100,90,0.2) 0%, rgba(5,100,90,0.15) 18%, transparent 18.5%),
+    linear-gradient(135deg, transparent 30%, rgba(4,85,78,0.12) 30.5%, rgba(4,85,78,0.08) 48%, transparent 48.5%),
+    linear-gradient(150deg, transparent 55%, rgba(3,75,68,0.15) 55.5%, rgba(3,75,68,0.1) 72%, transparent 72.5%),
+    radial-gradient(ellipse 400px 300px at 75% 15%, rgba(5,120,110,0.1) 0%, transparent 70%),
+    linear-gradient(to bottom, transparent 60%, rgba(1,30,27,0.2) 100%);
 }
 
 .about-hero-inner {
