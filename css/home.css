@@ -83,8 +83,9 @@
 
 .hero-star-partial {
   display: inline-block;
-  clip-path: inset(0 20% 0 0);
-  margin-right: -0.2em;
+  width: 0.55em;
+  overflow: hidden;
+  letter-spacing: 0;
 }
 
 .hero h1 {
