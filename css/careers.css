@@ -213,8 +213,8 @@
 /* ========== 5. VISION + MISSION ========== */
 
 .careers-vision-mission {
-  background: var(--color-cream);
-  padding: 0 var(--space-5xl) var(--space-4xl);
+  background: var(--color-jade);
+  padding: var(--space-4xl) var(--space-5xl);
 }
 
 .careers-vision-mission-inner {
@@ -226,21 +226,21 @@
 }
 
 .careers-vm-block .section-label {
-  color: var(--color-text-primary);
+  color: var(--color-gold);
   text-align: left;
 }
 
 .careers-vm-block p {
   font-size: var(--text-xl);
   line-height: var(--leading-loose);
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
 }
 
 
 /* ========== 6. VALUES ========== */
 
 .careers-values {
-  background: var(--color-cream);
+  background: rgba(11, 28, 46, 0.95);
   padding: var(--space-4xl) var(--space-5xl);
 }
 
@@ -250,7 +250,7 @@
 }
 
 .careers-values-header .section-label {
-  color: var(--color-text-primary);
+  color: var(--color-gold);
 }
 
 .careers-values-header h2 {
@@ -258,14 +258,14 @@
   font-weight: var(--weight-bold);
   font-size: var(--text-9xl);
   line-height: var(--leading-tight);
-  color: var(--color-text-primary);
+  color: #fff;
   margin-bottom: var(--space-xs);
 }
 
 .careers-values-header p {
   font-size: var(--text-2xl);
   line-height: var(--leading-loose);
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   max-width: 768px;
   margin: var(--space-xs) auto 0;
 }
@@ -422,7 +422,7 @@
 .perk-icon {
   width: 56px;
   height: 56px;
-  background: rgba(255, 225, 116, 0.12);
+  background: var(--color-gold);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -455,7 +455,7 @@
 /* ========== 8. OPEN POSITIONS ========== */
 
 .careers-positions {
-  background: var(--color-dark-navy);
+  background: var(--color-cream);
   padding: var(--space-4xl) var(--space-5xl);
 }
 
@@ -465,7 +465,7 @@
 }
 
 .careers-positions-header .section-label {
-  color: var(--color-gold);
+  color: var(--color-text-primary);
 }
 
 .careers-positions-header h2 {
@@ -473,14 +473,14 @@
   font-weight: var(--weight-bold);
   font-size: var(--text-9xl);
   line-height: var(--leading-tight);
-  color: #fff;
+  color: var(--color-text-primary);
   margin-bottom: var(--space-xs);
 }
 
 .careers-positions-header p {
   font-size: var(--text-2xl);
   line-height: var(--leading-loose);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   max-width: 768px;
   margin: var(--space-xs) auto 0;
 }
@@ -569,10 +569,24 @@
   margin-top: var(--space-xl);
 }
 
+.btn-outline-jade {
+  background-color: transparent;
+  color: var(--color-jade);
+  border: 2px solid var(--color-jade);
+  transition: background-color var(--ease-interactive), color var(--ease-interactive);
+}
+
+@media (hover: hover) {
+  .btn-outline-jade:hover {
+    background-color: var(--color-jade);
+    color: #fff;
+  }
+}
+
 .positions-bottom p {
   font-size: var(--text-xl);
   line-height: var(--leading-loose);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-md);
 }
 
