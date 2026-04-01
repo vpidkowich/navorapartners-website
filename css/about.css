@@ -473,7 +473,7 @@
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: 60px;
-  line-height: 1;
+  line-height: var(--leading-tight);
   text-align: center;
   color: var(--color-text-primary);
   max-width: 960px;
@@ -484,7 +484,7 @@
 /* ========== OUR STORY SECTION ========== */
 
 .our-story {
-  background: var(--color-dark-bg);
+  background: rgba(11, 28, 46, 0.95);
   padding: var(--space-4xl) var(--space-5xl);
 }
 
