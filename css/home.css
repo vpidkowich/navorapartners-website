@@ -81,14 +81,6 @@
   letter-spacing: var(--tracking-stars);
 }
 
-.hero-star-partial {
-  display: inline-block;
-  width: 0.55em;
-  overflow: hidden;
-  letter-spacing: 0;
-  vertical-align: -1.75px;
-  line-height: 1;
-}
 
 .hero h1 {
   font-family: var(--font-heading);
