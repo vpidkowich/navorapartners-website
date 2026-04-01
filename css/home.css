@@ -732,7 +732,7 @@
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: var(--text-11xl);
-  line-height: var(--leading-tight);
+  line-height: var(--leading-normal);
   color: #fff;
 }
 

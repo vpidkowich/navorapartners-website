@@ -473,7 +473,7 @@
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: 60px;
-  line-height: var(--leading-tight);
+  line-height: var(--leading-normal);
   text-align: center;
   color: var(--color-text-primary);
   max-width: 960px;

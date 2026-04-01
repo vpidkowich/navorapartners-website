@@ -746,7 +746,7 @@ ul { list-style: none; }
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: var(--text-9xl);
-  line-height: var(--leading-tight);
+  line-height: var(--leading-normal);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-xl);
 }
