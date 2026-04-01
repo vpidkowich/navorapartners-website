@@ -62,25 +62,25 @@
   <div class="team-container">
     <h2 class="team-title">A team of real people</h2>
     <div class="team-cards">
-      <div class="team-card">
+      <div class="team-card" data-team="chaky">
         <div class="team-card-photo">
           <img src="images/chaky%20white%20shirt%20forward%20facing.webp" alt="Chaky Ling" loading="lazy" decoding="async">
         </div>
         <div class="team-card-name">Chaky Ling</div>
         <div class="team-card-role">Director of Paid Media</div>
         <div class="team-card-location">Tokyo, Japan</div>
-        <a href="#" class="team-card-link">Learn more &rarr;</a>
+        <span class="team-card-link">Learn more &rarr;</span>
       </div>
-      <div class="team-card">
+      <div class="team-card" data-team="victor">
         <div class="team-card-photo">
           <img src="images/victor-headshot.jpg" alt="Victor Pidkowich" loading="lazy" decoding="async">
         </div>
         <div class="team-card-name">Victor Pidkowich</div>
         <div class="team-card-role">Director of Operations</div>
         <div class="team-card-location">Calgary, AB</div>
-        <a href="#" class="team-card-link">Learn more &rarr;</a>
+        <span class="team-card-link">Learn more &rarr;</span>
       </div>
-      <div class="team-card">
+      <div class="team-card" data-team="joe">
         <div class="team-card-photo">
           <!-- TODO: Replace with actual Joe headshot or AI-generated portrait -->
           <div style="width:100%;height:100%;background:linear-gradient(135deg,#035a54,#024742);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:14px">Photo TBD</div>
@@ -88,7 +88,7 @@
         <div class="team-card-name">Joe</div>
         <div class="team-card-role">Director of Strategy</div>
         <div class="team-card-location">Miami, FL</div>
-        <a href="#" class="team-card-link">Learn more &rarr;</a>
+        <span class="team-card-link">Learn more &rarr;</span>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@
   <div class="navora-meaning-inner">
     <div class="navora-meaning-header">
       <h2>nah-VOR-ah</h2>
-      <p>In the vast, shifting expanse of the DTC market, the currents are more volatile than ever. What was once a steady voyage has become an unpredictable deep, where the thick fog of information obscures the way and deceptive tides pull brands off course. For many, this creates a sense of drift, the feeling of being captain of a vessel without a compass, where despite the energy spent, the destination remains lost in the haze, and the hidden reefs of risk are rising.</p>
+      <p>In the vast, shifting expanse of the DTC market, the currents are more volatile than ever. What was once a steady voyage has become an unpredictable deep, where the thick fog of information obscures the way and deceptive tides pull brands off course.<br><br>For many, this creates a sense of drift, the feeling of being captain of a vessel without a compass, where despite the energy spent, the destination remains lost in the haze, and the hidden reefs of risk are rising.</p>
       <p class="navora-meaning-clarity">This is where clarity begins.</p>
     </div>
     <div class="navora-meaning-cards">
@@ -209,6 +209,23 @@
   </div>
 </footer>
 
+<!-- TEAM LIGHTBOX -->
+<div class="team-lightbox" id="teamLightbox">
+  <div class="team-lightbox-card">
+    <button class="team-lightbox-close" id="teamLightboxClose">&times;</button>
+    <div class="team-lightbox-photo" id="teamLightboxPhoto"></div>
+    <div class="team-lightbox-info">
+      <div class="team-lightbox-badge">Leadership</div>
+      <h3 class="team-lightbox-name" id="teamLightboxName"></h3>
+      <p class="team-lightbox-role" id="teamLightboxRole"></p>
+      <div class="team-lightbox-meta">
+        <span class="team-lightbox-location" id="teamLightboxLocation"></span>
+      </div>
+      <p class="team-lightbox-bio" id="teamLightboxBio"></p>
+    </div>
+  </div>
+</div>
+
 </div><!-- /.site-wrapper -->
 
 <!-- Hamburger menu toggle -->
@@ -238,6 +255,80 @@
       btn.classList.remove('active');
       btn.setAttribute('aria-expanded', 'false');
     }
+  });
+})();
+</script>
+
+<script>
+// Team member lightbox
+(function() {
+  var teamData = {
+    chaky: {
+      photo: 'images/chaky%20white%20shirt%20forward%20facing.webp',
+      name: 'Chaky Ling',
+      role: 'Director of Paid Media',
+      location: 'Tokyo, Japan',
+      bio: 'With over a decade of hands-on experience scaling eCommerce brands through paid media, Chaky built Navora to be the agency he wished existed when he was in the trenches. He leads all growth strategy and media buying, connecting ad performance directly to P&L outcomes so every dollar drives real profit.'
+    },
+    victor: {
+      photo: 'images/victor-headshot.jpg',
+      name: 'Victor Pidkowich',
+      role: 'Director of Operations',
+      location: 'Calgary, AB',
+      bio: 'Victor ensures the machine runs smoothly. From client onboarding to internal systems, reporting cadences, and cross-team coordination, he keeps Navora operating with the precision and consistency our clients depend on. His background in operations and project management means nothing falls through the cracks.'
+    },
+    joe: {
+      photo: '',
+      name: 'Joe',
+      role: 'Director of Strategy',
+      location: 'Miami, FL',
+      bio: 'Joe brings deep strategic thinking to every engagement. With experience across DTC growth, creative strategy, and market analysis, he ensures our recommendations are grounded in data and aligned with each brand\'s unique economics and goals.'
+    }
+  };
+
+  var lightbox = document.getElementById('teamLightbox');
+  var photoEl = document.getElementById('teamLightboxPhoto');
+  var nameEl = document.getElementById('teamLightboxName');
+  var roleEl = document.getElementById('teamLightboxRole');
+  var locationEl = document.getElementById('teamLightboxLocation');
+  var bioEl = document.getElementById('teamLightboxBio');
+  var closeBtn = document.getElementById('teamLightboxClose');
+
+  function openLightbox(key) {
+    var d = teamData[key];
+    if (!d) return;
+    if (d.photo) {
+      photoEl.innerHTML = '<img src="' + d.photo + '" alt="' + d.name + '">';
+    } else {
+      photoEl.innerHTML = '<div style="width:100%;height:100%;background:linear-gradient(135deg,#035a54,#024742);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:14px">Photo TBD</div>';
+    }
+    nameEl.textContent = d.name;
+    roleEl.textContent = d.role;
+    locationEl.textContent = d.location;
+    bioEl.textContent = d.bio;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.team-card[data-team]').forEach(function(card) {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      openLightbox(this.getAttribute('data-team'));
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
   });
 })();
 </script>

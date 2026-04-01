@@ -183,6 +183,7 @@
 
 .team-card-role {
   font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-loose);
   color: var(--color-text-primary);
   text-align: center;
@@ -191,6 +192,7 @@
 
 .team-card-location {
   font-size: var(--text-base);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-loose);
   color: var(--color-jade);
   text-align: center;
@@ -198,32 +200,28 @@
 }
 
 .team-card-link {
-  font-size: var(--text-base);
-  line-height: var(--leading-loose);
   color: var(--color-jade);
-  text-align: center;
+  font-weight: var(--weight-medium);
+  font-size: var(--text-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition: opacity var(--ease-default);
 }
 
 .team-card-link:hover {
-  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.team-card {
+  border: 1.5px solid transparent;
+  transition: border-color var(--ease-interactive);
 }
 
 @media (hover: hover) {
-  .team-card {
-    transition: transform var(--ease-interactive), box-shadow var(--ease-interactive);
-  }
   .team-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    border-color: var(--color-text-muted);
   }
-  .team-card:hover .team-card-photo img {
-    transform: scale(1.05);
-  }
-}
-
-.team-card-photo img {
-  transition: transform var(--ease-interactive);
 }
 
 
@@ -235,7 +233,7 @@
 }
 
 .navora-meaning-inner {
-  max-width: var(--container-base);
+  max-width: 820px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -300,6 +298,142 @@
   font-size: var(--text-lg);
   line-height: 1.625;
   color: var(--color-text-muted);
+}
+
+
+/* ========== TEAM LIGHTBOX ========== */
+
+.team-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-lightbox);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+.team-lightbox.active {
+  display: flex;
+}
+
+.team-lightbox-card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  max-width: 720px;
+  width: 100%;
+  display: flex;
+  gap: var(--space-xl);
+  padding: var(--space-xl);
+  position: relative;
+  box-shadow: var(--shadow-2xl);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.team-lightbox-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--ease-default);
+  line-height: 1;
+}
+
+.team-lightbox-close:hover {
+  color: var(--color-text-primary);
+}
+
+.team-lightbox-photo {
+  flex: 0 0 240px;
+  height: 300px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.team-lightbox-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.team-lightbox-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.team-lightbox-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-jade);
+  background: rgba(2, 71, 66, 0.08);
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: var(--space-2xs);
+}
+
+.team-lightbox-name {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+}
+
+.team-lightbox-role {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+}
+
+.team-lightbox-meta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.team-lightbox-location::before {
+  content: '\25CB';
+  margin-right: 6px;
+}
+
+.team-lightbox-bio {
+  font-size: var(--text-base);
+  line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .team-lightbox-card {
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+  }
+  .team-lightbox-photo {
+    flex: none;
+    width: 100%;
+    height: 240px;
+  }
 }
 
 
