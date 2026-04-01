@@ -521,10 +521,10 @@
 .story-roas-title {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: var(--text-10xl);
-  line-height: 1;
+  font-size: var(--text-6xl);
+  line-height: var(--leading-tight);
   color: var(--color-gold);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .story-roas-col {
@@ -555,8 +555,8 @@
 
   .navora-meaning { padding: var(--space-3xl) var(--space-xl); }
 
-  .mission-section { padding: calc(var(--space-3xl) * 2) var(--space-xl); }
-  .mission-text { font-size: var(--text-9xl); }
+  .mission-section { padding: calc(var(--space-3xl) * 3) var(--space-xl); }
+  .mission-text { font-size: var(--text-9xl); max-width: 820px; }
 
   .our-story { padding: var(--space-3xl) var(--space-xl); }
   .story-row { gap: var(--space-xl); }
@@ -588,7 +588,7 @@
   .story-row { flex-direction: column; gap: var(--space-lg); }
   .story-image-col { height: 280px; }
   .story-text-col p { font-size: var(--text-lg); }
-  .story-roas-title { font-size: var(--text-7xl); }
+  .story-roas-title { font-size: var(--text-5xl); }
 
 }
 
@@ -602,7 +602,7 @@
   .mission-text { font-size: var(--text-5xl); line-height: 1.15; }
 
   .our-story-inner > h2 { font-size: var(--text-6xl); }
-  .story-roas-title { font-size: var(--text-6xl); }
+  .story-roas-title { font-size: var(--text-3xl); }
   .story-text-col p { font-size: var(--text-base); }
 
 }
