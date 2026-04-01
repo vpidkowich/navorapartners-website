@@ -88,6 +88,8 @@
   letter-spacing: 0;
   vertical-align: text-bottom;
   line-height: 1;
+  position: relative;
+  top: -1.5px;
 }
 
 .hero h1 {
