@@ -545,19 +545,6 @@
         C 800,540 760,620 700,680
         C 650,730 600,780 580,820
       "/>
-      <!-- Circle around step 4 — disabled for now, will revisit separately -->
-      <!--
-      <path class="map-circle-path" id="map-end-circle" d="
-        M 560,640
-        C 530,650 500,680 500,720
-        C 500,780 560,820 650,830
-        C 740,840 810,810 820,760
-        C 830,710 800,670 730,655
-        C 660,640 570,660 520,700
-        C 490,730 500,770 540,800
-        C 580,830 650,840 720,835
-      "/>
-      -->
     </svg>
     <div class="process-step">
       <div class="step-content">
@@ -587,6 +574,20 @@
         <p>Finally, you'll meet with Chaky to talk through the findings, ask questions, and decide together if there's a fit. No pressure, no hard close — just an honest conversation about what growth could look like.</p>
       </div>
     </div>
+    <!-- Circle around step 4 — separate SVG, sits above content -->
+    <svg class="step4-circle-svg" id="step4Circle" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+      <path id="step4CirclePath" d="
+        M 250,30
+        C 420,30 470,100 470,200
+        C 470,320 380,390 250,390
+        C 120,390 30,320 30,200
+        C 30,100 80,30 250,30
+        C 420,30 470,100 470,200
+        C 470,320 380,390 250,390
+        C 120,390 30,320 30,200
+        C 30,100 80,30 250,30
+      " fill="none" stroke="var(--color-jade)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
   </div>
 
   <div class="process-cta">
@@ -967,7 +968,7 @@ document.addEventListener('keydown', function(e) {
   var revealPath = document.querySelector('#map-path-reveal');
   var xLine1 = document.querySelector('#x-line-1');
   var xLine2 = document.querySelector('#x-line-2');
-  var endCircle = document.querySelector('#map-end-circle');
+  var endCircle = document.querySelector('#step4CirclePath');
   if (!steps.length || !timeline || !revealPath) return;
 
   // Set up the mask path for progressive reveal
@@ -1033,10 +1034,10 @@ document.addEventListener('keydown', function(e) {
       if (xLine2) xLine2.style.strokeDashoffset = xLine2.getTotalLength();
     }
 
-    // Circle around step 4 — scroll-driven, starts at 85% progress
+    // Circle around step 4 — scroll-driven, starts at 75% progress
     if (endCircle && circleLen) {
-      if (progress > 0.85) {
-        var circleProgress = Math.min((progress - 0.85) / 0.15, 1);
+      if (progress > 0.75) {
+        var circleProgress = Math.min((progress - 0.75) / 0.25, 1);
         endCircle.style.strokeDashoffset = circleLen * (1 - circleProgress);
       } else {
         endCircle.style.strokeDashoffset = circleLen;

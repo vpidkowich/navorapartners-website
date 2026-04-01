@@ -827,6 +827,17 @@
   overflow: visible;
 }
 
+.step4-circle-svg {
+  position: absolute;
+  bottom: -40px;
+  right: -60px;
+  width: 500px;
+  height: 420px;
+  pointer-events: none;
+  z-index: 3;
+  overflow: visible;
+}
+
 .map-path-fill {
   fill: none;
   stroke: var(--color-jade);
@@ -1245,6 +1256,7 @@
   /* 10. Process */
   .process { padding: var(--space-xl) var(--space-md) var(--space-xl); }
   .process-map-svg { display: none; }
+  .step4-circle-svg { display: none; }
   .process-step:nth-of-type(odd) { padding-right: 0; justify-content: flex-start; }
   .process-step:nth-of-type(even) { padding-left: 0; justify-content: flex-start; }
   .process-step:nth-of-type(odd) .step-content,
