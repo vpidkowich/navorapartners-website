@@ -215,7 +215,7 @@
     <button class="team-lightbox-close" id="teamLightboxClose">&times;</button>
     <div class="team-lightbox-photo" id="teamLightboxPhoto"></div>
     <div class="team-lightbox-info">
-      <div class="team-lightbox-badge">Leadership</div>
+      <div class="team-lightbox-badges" id="teamLightboxBadges"></div>
       <h3 class="team-lightbox-name" id="teamLightboxName"></h3>
       <p class="team-lightbox-role" id="teamLightboxRole"></p>
       <div class="team-lightbox-meta">
@@ -268,6 +268,7 @@
       name: 'Chaky Ling',
       role: 'Director of Paid Media',
       location: 'Tokyo, Japan',
+      badges: ['Leadership'],
       bio: 'With over a decade of hands-on experience scaling eCommerce brands through paid media, Chaky built Navora to be the agency he wished existed when he was in the trenches. He leads all growth strategy and media buying, connecting ad performance directly to P&L outcomes so every dollar drives real profit.'
     },
     victor: {
@@ -275,6 +276,7 @@
       name: 'Victor Pidkowich',
       role: 'Director of Operations',
       location: 'Calgary, AB',
+      badges: ['Leadership', 'People'],
       bio: 'Victor ensures the machine runs smoothly. From client onboarding to internal systems, reporting cadences, and cross-team coordination, he keeps Navora operating with the precision and consistency our clients depend on. His background in operations and project management means nothing falls through the cracks.'
     },
     joe: {
@@ -282,6 +284,7 @@
       name: 'Joe',
       role: 'Director of Strategy',
       location: 'Miami, FL',
+      badges: ['Leadership'],
       bio: 'Joe brings deep strategic thinking to every engagement. With experience across DTC growth, creative strategy, and market analysis, he ensures our recommendations are grounded in data and aligned with each brand\'s unique economics and goals.'
     }
   };
@@ -292,6 +295,7 @@
   var roleEl = document.getElementById('teamLightboxRole');
   var locationEl = document.getElementById('teamLightboxLocation');
   var bioEl = document.getElementById('teamLightboxBio');
+  var badgesEl = document.getElementById('teamLightboxBadges');
   var closeBtn = document.getElementById('teamLightboxClose');
 
   function openLightbox(key) {
@@ -302,6 +306,9 @@
     } else {
       photoEl.innerHTML = '<div style="width:100%;height:100%;background:linear-gradient(135deg,#035a54,#024742);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:14px">Photo TBD</div>';
     }
+    badgesEl.innerHTML = d.badges.map(function(b) {
+      return '<span class="team-lightbox-badge">' + b + '</span>';
+    }).join('');
     nameEl.textContent = d.name;
     roleEl.textContent = d.role;
     locationEl.textContent = d.location;
