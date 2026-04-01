@@ -834,6 +834,7 @@ ul { list-style: none; }
 
 .final-cta-inner p {
   font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-loose);
   color: #fff;
   margin-bottom: var(--space-xl);

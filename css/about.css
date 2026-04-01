@@ -78,6 +78,7 @@
 
 .about-hero-text p {
   font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-loose);
   color: var(--color-text-muted);
   margin-bottom: var(--space-sm);
@@ -88,6 +89,7 @@
   list-style: decimal;
   padding-left: 28px;
   font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-loose);
   color: var(--color-text-muted);
   max-width: 600px;
