@@ -1097,6 +1097,7 @@ ul { list-style: none; }
   .header-cta {
     display: flex !important;
     position: static;
+    order: -1;
   }
   .header-right {
     display: flex;

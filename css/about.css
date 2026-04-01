@@ -77,20 +77,20 @@
 }
 
 .about-hero-text p {
-  font-size: var(--text-3xl);
+  font-size: var(--text-lg);
   line-height: var(--leading-loose);
   color: var(--color-text-muted);
-  max-width: 576px;
+  margin-bottom: var(--space-sm);
+  max-width: 600px;
 }
 
 .about-hero-list {
   list-style: decimal;
   padding-left: 28px;
-  font-size: var(--text-3xl);
+  font-size: var(--text-lg);
   line-height: var(--leading-loose);
   color: var(--color-text-muted);
-  max-width: 576px;
-  margin-top: var(--space-sm);
+  max-width: 600px;
 }
 
 .about-hero-list li {
@@ -221,11 +221,19 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: opacity var(--ease-default);
 }
 
-.team-card-link:hover {
+.team-card-link:hover span:first-child {
   text-decoration: underline;
+}
+
+.team-card-link .read-more-arrow {
+  display: inline-block;
+  transition: transform var(--ease-interactive);
+}
+
+.team-card:hover .team-card-link .read-more-arrow {
+  transform: translateX(8px);
 }
 
 .team-card {
@@ -588,8 +596,6 @@
 @media (max-width: 1200px) {
   .about-hero { padding: var(--space-xl) var(--space-xl) var(--space-3xl); }
   .about-hero-text h1 { font-size: var(--text-10xl); }
-  .about-hero-text p { font-size: var(--text-xl); }
-
   .team-section { padding: var(--space-3xl) var(--space-xl); }
   .team-cards { gap: var(--space-lg); }
   .team-title { font-size: var(--text-8xl); }
