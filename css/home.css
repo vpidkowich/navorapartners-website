@@ -92,7 +92,6 @@
 
 .hero-sub {
   font-size: var(--text-lg);
-  font-weight: var(--weight-regular);
   line-height: var(--leading-loose);
   color: var(--color-text-muted);
   margin-bottom: var(--space-lg);
