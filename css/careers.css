@@ -5,18 +5,13 @@
    ================================================================ */
 
 
-/* ========== HERO ========== */
+/* ========== 1. HERO ========== */
 
 .careers-hero {
   background: var(--color-hero-bg);
-  padding: var(--space-4xl) var(--space-5xl);
+  padding: var(--space-xl) var(--space-5xl) var(--space-3xl);
   position: relative;
   overflow: hidden;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 480px;
 }
 
 .careers-hero-bg {
@@ -53,9 +48,19 @@
 }
 
 .careers-hero-inner {
+  display: flex;
+  gap: var(--space-3xl);
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 1;
-  max-width: var(--container-base);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+}
+
+.careers-hero-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .careers-hero-label {
@@ -68,7 +73,7 @@
   margin-bottom: var(--space-sm);
 }
 
-.careers-hero-inner h1 {
+.careers-hero-text h1 {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: var(--text-9xl);
@@ -76,8 +81,39 @@
   color: #fff;
 }
 
+.careers-hero-image {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-2xl);
+}
 
-/* ========== THE CHALLENGE ========== */
+.careers-hero-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.careers-hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.careers-hero-image-gradient {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, transparent 50%, rgba(2, 46, 42, 0.4) 100%);
+  pointer-events: none;
+}
+
+
+/* ========== 2. THE CHALLENGE ========== */
 
 .careers-challenge {
   background: var(--color-cream);
@@ -103,7 +139,105 @@
 }
 
 
-/* ========== OUR VALUES ========== */
+/* ========== 3. WHO WE WORK WITH ========== */
+
+.careers-who {
+  background: var(--color-cream);
+  padding: 0 var(--space-5xl) var(--space-4xl);
+}
+
+.careers-who-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.careers-who .section-label {
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.careers-who h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-7xl);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.careers-who p {
+  font-size: var(--text-xl);
+  line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
+}
+
+
+/* ========== 4. THAT'S WHERE WE COME IN ========== */
+
+.careers-come-in {
+  background: var(--color-cream);
+  padding: 0 var(--space-5xl) var(--space-4xl);
+}
+
+.careers-come-in-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.careers-come-in .section-label {
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.careers-come-in h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-7xl);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.careers-blockquote {
+  border-left: 4px solid var(--color-gold);
+  padding-left: var(--space-lg);
+  margin: 0;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--text-2xl);
+  line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
+}
+
+
+/* ========== 5. VISION + MISSION ========== */
+
+.careers-vision-mission {
+  background: var(--color-cream);
+  padding: 0 var(--space-5xl) var(--space-4xl);
+}
+
+.careers-vision-mission-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.careers-vm-block .section-label {
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.careers-vm-block p {
+  font-size: var(--text-xl);
+  line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
+}
+
+
+/* ========== 6. VALUES ========== */
 
 .careers-values {
   background: var(--color-cream);
@@ -193,11 +327,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+  transition: color var(--ease-default);
+}
+
+.value-footer:hover span {
+  color: var(--color-jade);
 }
 
 .value-footer span {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
+  transition: color var(--ease-default);
 }
 
 .value-footer svg {
@@ -206,7 +347,79 @@
 }
 
 
-/* ========== OPEN POSITIONS ========== */
+/* ========== 7. PERKS AND BENEFITS ========== */
+
+.careers-perks {
+  background: rgba(11, 28, 46, 0.95);
+  padding: var(--space-4xl) var(--space-5xl);
+}
+
+.careers-perks-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.careers-perks-header .section-label {
+  color: var(--color-gold);
+}
+
+.careers-perks-header h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-9xl);
+  line-height: var(--leading-tight);
+  color: #fff;
+}
+
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+}
+
+.perk-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perk-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 225, 116, 0.12);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.perk-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.perk-title {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-xl);
+  line-height: var(--leading-loose);
+  color: var(--color-text-white);
+  margin-bottom: var(--space-xs);
+}
+
+.perk-desc {
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  color: var(--color-text-muted);
+  max-width: 240px;
+}
+
+
+/* ========== 8. OPEN POSITIONS ========== */
 
 .careers-positions {
   background: var(--color-dark-navy);
@@ -332,28 +545,68 @@
 
 
 /* ================================================================
-   RESPONSIVE
+   RESPONSIVE — 1200px (Tablet)
    ================================================================ */
 
 @media (max-width: 1200px) {
-  .careers-hero { padding: var(--space-3xl) var(--space-xl); min-height: 400px; }
+  .careers-hero { padding: var(--space-xl) var(--space-xl) var(--space-3xl); }
+  .careers-hero-image-wrap { height: 360px; }
+
   .careers-challenge { padding: var(--space-3xl) var(--space-xl); }
   .careers-challenge h2 { font-size: var(--text-8xl); }
+
+  .careers-who { padding: 0 var(--space-xl) var(--space-3xl); }
+  .careers-who h2 { font-size: var(--text-6xl); }
+
+  .careers-come-in { padding: 0 var(--space-xl) var(--space-3xl); }
+  .careers-come-in h2 { font-size: var(--text-6xl); }
+
+  .careers-vision-mission { padding: 0 var(--space-xl) var(--space-3xl); }
+
   .careers-values { padding: var(--space-3xl) var(--space-xl); }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .careers-perks { padding: var(--space-3xl) var(--space-xl); }
+  .perks-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-xl) var(--space-lg); }
+
   .careers-positions { padding: var(--space-3xl) var(--space-xl); }
 }
 
+
+/* ================================================================
+   RESPONSIVE — 768px (Mobile)
+   ================================================================ */
+
 @media (max-width: 768px) {
-  .careers-hero { padding: var(--space-xl) var(--space-md); min-height: 320px; }
-  .careers-hero-inner h1 { font-size: var(--text-7xl); }
+  .careers-hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+  .careers-hero-inner { flex-direction: column; gap: var(--space-xl); }
+  .careers-hero-text h1 { font-size: var(--text-7xl); }
+  .careers-hero-image-wrap { height: 300px; }
+
   .careers-challenge { padding: var(--space-xl) var(--space-md); }
   .careers-challenge h2 { font-size: var(--text-6xl); }
+
+  .careers-who { padding: 0 var(--space-md) var(--space-xl); }
+  .careers-who h2 { font-size: var(--text-5xl); }
+  .careers-who p { font-size: var(--text-lg); }
+
+  .careers-come-in { padding: 0 var(--space-md) var(--space-xl); }
+  .careers-come-in h2 { font-size: var(--text-5xl); }
+  .careers-blockquote { font-size: var(--text-xl); padding-left: var(--space-md); }
+
+  .careers-vision-mission { padding: 0 var(--space-md) var(--space-xl); }
+  .careers-vm-block p { font-size: var(--text-lg); }
+
   .careers-values { padding: var(--space-xl) var(--space-md); }
   .careers-values-header h2 { font-size: var(--text-7xl); }
   .careers-values-header p { font-size: var(--text-lg); }
   .values-grid { grid-template-columns: 1fr; }
   .value-card { min-height: auto; }
+
+  .careers-perks { padding: var(--space-xl) var(--space-md); }
+  .careers-perks-header h2 { font-size: var(--text-7xl); }
+  .perks-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
+
   .careers-positions { padding: var(--space-xl) var(--space-md); }
   .careers-positions-header h2 { font-size: var(--text-7xl); }
   .careers-positions-header p { font-size: var(--text-lg); }
@@ -361,9 +614,26 @@
   .apply-btn { width: 100%; justify-content: center; }
 }
 
+
+/* ================================================================
+   RESPONSIVE — 480px (Small Mobile)
+   ================================================================ */
+
 @media (max-width: 480px) {
-  .careers-hero-inner h1 { font-size: 28px; }
+  .careers-hero-text h1 { font-size: 28px; }
+  .careers-hero-image-wrap { height: 220px; }
+
   .careers-challenge h2 { font-size: var(--text-5xl); }
+
+  .careers-who h2 { font-size: var(--text-4xl); }
+
+  .careers-come-in h2 { font-size: var(--text-4xl); }
+  .careers-blockquote { font-size: var(--text-lg); }
+
   .careers-values-header h2 { font-size: var(--text-6xl); }
+
+  .careers-perks-header h2 { font-size: var(--text-6xl); }
+  .perks-grid { grid-template-columns: 1fr; }
+
   .careers-positions-header h2 { font-size: var(--text-6xl); }
 }
