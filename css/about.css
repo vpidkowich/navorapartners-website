@@ -295,8 +295,8 @@
 }
 
 .navora-meaning-card p {
-  font-size: var(--text-lg);
-  line-height: 1.625;
+  font-size: var(--text-3xl);
+  line-height: var(--leading-loose);
   color: var(--color-text-muted);
 }
 
@@ -603,7 +603,7 @@
   .navora-meaning { padding: var(--space-xl) var(--space-md); }
   .navora-meaning-header h2 { font-size: var(--text-7xl); }
   .navora-meaning-header p { font-size: var(--text-lg); }
-  .navora-meaning-card p { font-size: var(--text-base); }
+  .navora-meaning-card p { font-size: var(--text-lg); }
 
   .mission-section { padding: calc(var(--space-xl) * 2) var(--space-md); }
   .mission-text { font-size: var(--text-7xl); }
