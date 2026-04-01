@@ -80,18 +80,36 @@
   max-width: 600px;
 }
 
-.about-hero-list {
-  list-style: decimal;
-  padding-left: 28px;
-  font-size: var(--text-lg);
-  line-height: var(--leading-loose);
-  color: var(--color-text-muted);
+.about-hero-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
   max-width: 600px;
 }
 
-.about-hero-list li {
-  padding-left: var(--space-xs);
-  margin-bottom: var(--space-xs);
+.about-hero-item {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  font-size: var(--text-lg);
+  line-height: var(--leading-loose);
+  color: var(--color-text-muted);
+}
+
+.about-hero-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.about-hero-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .about-hero-image {
