@@ -507,6 +507,8 @@ ul { list-style: none; }
   position: absolute;
   left: 0;
   color: var(--color-jade);
+  font-size: var(--text-lg);
+  line-height: var(--leading-loose);
 }
 
 .story-card-body .read-more {
