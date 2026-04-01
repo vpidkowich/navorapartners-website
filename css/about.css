@@ -70,9 +70,9 @@
 .about-hero-text h1 {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: 72px;
-  line-height: 1;
-  color: var(--color-text-light);
+  font-size: var(--text-9xl);
+  line-height: var(--leading-tight);
+  color: #fff;
   margin-bottom: var(--space-md);
 }
 
@@ -81,6 +81,21 @@
   line-height: var(--leading-loose);
   color: var(--color-text-muted);
   max-width: 576px;
+}
+
+.about-hero-list {
+  list-style: decimal;
+  padding-left: 28px;
+  font-size: var(--text-3xl);
+  line-height: var(--leading-loose);
+  color: var(--color-text-muted);
+  max-width: 576px;
+  margin-top: var(--space-sm);
+}
+
+.about-hero-list li {
+  padding-left: var(--space-xs);
+  margin-bottom: var(--space-xs);
 }
 
 .about-hero-image {
@@ -215,12 +230,13 @@
 
 .team-card {
   border: 1.5px solid transparent;
-  transition: border-color var(--ease-interactive);
+  transition: border-color var(--ease-interactive), transform var(--ease-interactive);
 }
 
 @media (hover: hover) {
   .team-card:hover {
     border-color: var(--color-text-muted);
+    transform: translateY(-4px);
   }
 }
 
@@ -571,7 +587,7 @@
 
 @media (max-width: 1200px) {
   .about-hero { padding: var(--space-xl) var(--space-xl) var(--space-3xl); }
-  .about-hero-text h1 { font-size: 56px; }
+  .about-hero-text h1 { font-size: var(--text-10xl); }
   .about-hero-text p { font-size: var(--text-xl); }
 
   .team-section { padding: var(--space-3xl) var(--space-xl); }
@@ -591,7 +607,7 @@
 @media (max-width: 768px) {
   .about-hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
   .about-hero-inner { flex-direction: column; gap: var(--space-xl); }
-  .about-hero-text h1 { font-size: var(--text-8xl); }
+  .about-hero-text h1 { font-size: var(--text-7xl); }
   .about-hero-text p { font-size: var(--text-lg); }
   .about-hero-image-wrap { height: 300px; }
 
@@ -618,7 +634,7 @@
 }
 
 @media (max-width: 480px) {
-  .about-hero-text h1 { font-size: var(--text-6xl); }
+  .about-hero-text h1 { font-size: 28px; }
 
   .team-title { font-size: var(--text-6xl); }
 
