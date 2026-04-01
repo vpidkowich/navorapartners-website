@@ -81,6 +81,12 @@
   letter-spacing: var(--tracking-stars);
 }
 
+.hero-star-partial {
+  display: inline-block;
+  overflow: hidden;
+  width: 0.8em;
+}
+
 .hero h1 {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
