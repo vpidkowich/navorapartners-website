@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navora Partners - About</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background: #faf9f5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Fonts */
+    .font-heading { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }
+    .font-heading-regular { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+    .font-body { font-family: 'Satoshi', sans-serif; font-weight: 300; font-style: normal; }
+
+    /* ========== HEADER ========== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(2, 71, 66, 0.95);
+      backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+      padding: 0 112px;
+    }
+    .header-inner {
+      display: flex; height: 80px; align-items: center; justify-content: space-between;
+    }
+    .header-logo {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 24px; line-height: 32px; color: #faf9f5;
+    }
+    .header-nav { display: flex; align-items: center; }
+    .header-nav a {
+      font-weight: 300; font-size: 16px; line-height: 24px; color: #faf9f5;
+    }
+    .header-nav a + a { margin-left: 32px; }
+    .header-cta {
+      margin-left: 32px; background: #ffe174; display: flex; align-items: center;
+      padding: 10px 24px; position: relative;
+      box-shadow: 0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -2px rgba(0,0,0,0.1);
+    }
+    .header-cta span {
+      font-weight: 300; font-size: 16px; line-height: 24px; color: #024742;
+    }
+    .header-cta img { margin-left: 8px; width: 12.25px; height: 14px; }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: #024742; padding: 160px 112px 128px; position: relative; overflow: hidden;
+    }
+    /* Shimmer effects */
+    .hero::before, .hero::after { content: ''; position: absolute; border-radius: 9999px; }
+    .hero::before {
+      width: 1008px; height: 500px; left: -144px; top: -143px;
+      background: rgba(255,225,116,0.05); filter: blur(60px);
+    }
+    .hero::after {
+      width: 864px; height: 428px; right: -144px; top: 286px;
+      background: #035e57; filter: blur(50px); opacity: 0.6;
+    }
+    .hero-shimmer-3 {
+      position: absolute; width: 720px; height: 357px; left: 288px; bottom: -143px;
+      background: rgba(255,225,116,0.05); filter: blur(50px); opacity: 0.4; border-radius: 9999px;
+    }
+    .hero-inner {
+      display: flex; gap: 80px; align-items: center; justify-content: center; position: relative; z-index: 1;
+    }
+    .hero-text { flex: 1; min-width: 0; }
+    .hero-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 72px; line-height: 72px; color: #faf9f5;
+      text-shadow: 0px 1px 1px rgba(0,0,0,0.05); padding-bottom: 24px;
+    }
+    .hero-desc {
+      font-weight: 300; font-size: 24px; line-height: 32px; color: #c5cbbf; max-width: 576px;
+    }
+    .hero-image {
+      flex: 1; min-width: 0; overflow: hidden; position: relative;
+      box-shadow: 0px 25px 50px -12px rgba(0,0,0,0.2);
+    }
+    .hero-image-wrap { height: 426px; position: relative; overflow: hidden; }
+    .hero-image img {
+      position: absolute; width: 100%; height: 133.33%; top: -16.67%; left: 0;
+    }
+    .hero-image-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(2,71,66,0.2), rgba(2,71,66,0));
+    }
+
+    /* ========== TEAM SECTION ========== */
+    .team-section {
+      background: #faf9f5; padding: 128px 80px;
+    }
+    .team-container {
+      max-width: 1280px; padding: 0 32px; display: flex; flex-direction: column; gap: 64px; align-items: center;
+    }
+    .team-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 48px; line-height: 48px; text-align: center; color: #181a1d;
+    }
+    .team-cards {
+      display: flex; gap: 48px; justify-content: center; width: 100%;
+    }
+    .team-card {
+      background: white; width: 373.33px; height: 484px; position: relative;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    .team-card-photo {
+      position: absolute; left: 32px; right: 32px; top: 32px; height: 256px; overflow: hidden;
+    }
+    .team-card-photo img {
+      position: absolute; width: 100%; height: 120.84%; top: -10.42%; left: 0;
+    }
+    .team-card-name {
+      position: absolute; left: 32px; right: 32px; top: 312px; text-align: center;
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 24px; line-height: 32px; color: #024742;
+    }
+    .team-card-role {
+      position: absolute; left: 32px; right: 32px; top: 352px; text-align: center;
+      font-weight: 300; font-size: 18px; line-height: 28px; color: #181a1d;
+    }
+    .team-card-location {
+      position: absolute; left: 32px; right: 32px; top: 388px; text-align: center;
+      font-weight: 300; font-size: 16px; line-height: 24px; color: #024742;
+    }
+    .team-card-link {
+      position: absolute; left: 50%; transform: translateX(-50%); top: 428px;
+      font-weight: 300; font-size: 16px; line-height: 24px; color: #024742; text-align: center;
+      cursor: pointer;
+    }
+    .team-card-link:hover { opacity: 0.7; }
+
+    /* ========== NAH-VOR-AH SECTION ========== */
+    .navora-section {
+      background: #024742; padding: 128px 208px;
+    }
+    .navora-container {
+      max-width: 1024px; padding: 0 32px;
+      display: flex; flex-direction: column; gap: 64px;
+    }
+    .navora-header {
+      display: flex; flex-direction: column; gap: 32px; align-items: center;
+    }
+    .navora-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 48px; line-height: 48px; text-align: center; color: #ffe174;
+    }
+    .navora-desc {
+      font-weight: 300; font-size: 24px; line-height: 32px; text-align: center; color: #c5cbbf;
+    }
+    .navora-clarity {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 24px; line-height: 32px; text-align: center; color: #faf9f5;
+      padding-top: 16px;
+    }
+    .navora-cards { display: flex; flex-direction: column; gap: 48px; }
+    .navora-card {
+      background: rgba(250,249,245,0.1); padding: 32px;
+      display: flex; flex-direction: column; gap: 15px;
+    }
+    .navora-card-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 24px; line-height: 32px; color: #ffe174;
+    }
+    .navora-card-text {
+      font-weight: 300; font-size: 18px; line-height: 29.25px; color: #c5cbbf;
+    }
+
+    /* ========== MISSION SECTION ========== */
+    .mission-section {
+      background: #faf9f5; padding: 128px 240px 176px;
+    }
+    .mission-text {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 60px; line-height: 60px; text-align: center; color: #181a1d;
+    }
+
+    /* ========== OUR STORY SECTION ========== */
+    .story-section {
+      background: #282828; padding: 128px 80px;
+    }
+    .story-container {
+      max-width: 1280px; padding: 0 32px;
+      display: flex; flex-direction: column; gap: 64px;
+    }
+    .story-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 48px; line-height: 48px; color: #ffe174;
+    }
+    .story-row {
+      display: flex; gap: 64px; align-items: center; justify-content: center;
+    }
+    .story-text-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+    .story-text {
+      font-weight: 300; font-size: 24px; line-height: 32px; color: #c5cbbf;
+    }
+    .story-text-white { color: #faf9f5; }
+    .story-image-col {
+      flex: 1; min-width: 0; height: 384px; overflow: hidden; position: relative;
+    }
+    .story-image-col img {
+      position: absolute; left: 0; top: 0; width: 576px; height: 576px;
+    }
+    .story-row-2 { padding-top: 16px; }
+    .story-roas-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 48px; line-height: 48px; color: #ffe174;
+    }
+    .story-roas-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 32.5px; }
+    .story-roas-text-group { display: flex; flex-direction: column; gap: 24px; }
+    .story-paragraph-group { display: flex; flex-direction: column; gap: 32px; }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      min-height: 600px; position: relative; display: flex; align-items: flex-start; justify-content: center;
+    }
+    .cta-bg {
+      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+    }
+    .cta-bg-image {
+      flex: 1; min-height: 1px; width: 100%; position: relative; overflow: hidden;
+    }
+    .cta-bg-image img {
+      position: absolute; width: 100%; height: 213.02%; top: -56.51%; left: 0;
+    }
+    .cta-overlay { position: absolute; inset: 0; background: rgba(2,71,66,0.5); }
+    .cta-content {
+      max-width: 1280px; width: 1280px; padding: 80px 32px;
+      display: flex; align-items: center; position: relative; z-index: 1; align-self: stretch;
+    }
+    .cta-inner { max-width: 672px; display: flex; flex-direction: column; gap: 16px; }
+    .cta-label {
+      font-weight: 300; font-size: 14px; line-height: 20px; letter-spacing: 1.4px;
+      text-transform: uppercase; color: #ffe174;
+    }
+    .cta-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 60px; line-height: 60px; color: #faf9f5;
+    }
+    .cta-desc {
+      font-weight: 300; font-size: 20px; line-height: 28px; color: #faf9f5;
+      padding: 8px 0 24px;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; border: 2px solid white;
+      padding: 18px 34px; align-self: flex-start; position: relative; cursor: pointer;
+      background: transparent;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    .cta-btn span {
+      font-family: 'Satoshi', sans-serif; font-weight: 300;
+      font-size: 18px; line-height: 28px; text-align: center; color: white;
+    }
+    .cta-btn img { margin-left: 12px; width: 15.75px; height: 18px; }
+    .cta-btn:hover { background: rgba(255,255,255,0.1); }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: #024742; padding: 80px;
+    }
+    .footer-container {
+      max-width: 1280px; padding: 0 32px;
+      display: flex; flex-direction: column; gap: 48px;
+    }
+    .footer-top { display: flex; gap: 32px; }
+    .footer-brand { width: 488px; display: flex; flex-direction: column; gap: 16px; }
+    .footer-brand-name {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 400;
+      font-size: 48px; line-height: 48px; letter-spacing: -1.2px; color: white;
+    }
+    .footer-brand-desc {
+      font-weight: 300; font-size: 14px; line-height: 20px; color: #faf9f5;
+    }
+    .footer-certs { display: flex; gap: 68px; margin-top: auto; }
+    .footer-certs img:first-child { width: 180px; height: 94.42px; }
+    .footer-certs img:last-child { width: 174px; height: 82px; }
+    .footer-links {
+      width: 280px; padding-left: 32px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .footer-links-title {
+      font-weight: 300; font-size: 20px; line-height: 28px; color: #ffe174;
+    }
+    .footer-links-nav { display: flex; flex-direction: column; }
+    .footer-links-nav a {
+      font-weight: 300; font-size: 20px; line-height: 28px; color: white;
+    }
+    .footer-links-nav a + a { margin-top: 16px; }
+    .footer-links-nav a:hover { opacity: 0.8; }
+    .footer-contact {
+      width: 384px; display: flex; flex-direction: column; gap: 23px;
+    }
+    .footer-contact-title {
+      font-weight: 300; font-size: 20px; line-height: 28px; color: #ffe174;
+    }
+    .footer-contact-address {
+      font-weight: 300; font-size: 20px; line-height: 32.5px; color: white;
+    }
+    .footer-social { display: flex; gap: 24px; align-items: center; padding-top: 9px; }
+    .footer-social-icon {
+      width: 48px; height: 40px; border: 2px solid #ff6b00; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-social-icon img { width: 10.5px; height: 14px; }
+    .footer-social-circle {
+      width: 40px; height: 40px; border: 2px solid #ff6b00; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .footer-social-circle-inner {
+      width: 20px; height: 20px; border: 2px solid #ff6b00; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-social-circle-dot {
+      width: 6px; height: 6px; background: #ff6b00; border-radius: 9999px;
+    }
+    .footer-social-circle-dot-small {
+      position: absolute; top: 6px; right: 6px; width: 4px; height: 4px;
+      background: #ff6b00; border-radius: 9999px;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(250,249,245,0.2); padding-top: 33px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-copyright {
+      font-weight: 300; font-size: 20px; line-height: 28px; color: white;
+    }
+    .footer-legal { display: flex; gap: 32px; }
+    .footer-legal a {
+      font-weight: 300; font-size: 20px; line-height: 28px; color: white;
+    }
+    .footer-legal a:hover { opacity: 0.8; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="header-logo">Navora Partners</a>
+    <nav class="header-nav">
+      <a href="#">About</a>
+      <a href="#">Proof</a>
+      <a href="#">Careers</a>
+      <a href="#" class="header-cta">
+        <span>Get Free Growth Strategy</span>
+        <img src="http://localhost:3845/assets/e159cd3f252729b95f4a601d198ceb35ef901ff0.svg" alt="">
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shimmer-3"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1 class="hero-title">We're Navora</h1>
+      <p class="hero-desc">We're an optimistic group of experts dedicated to empowering DTC brands to confidently grow, reach more of the people they're meant to serve sooner, and deliver real impact with the products they create.</p>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-wrap">
+        <img src="http://localhost:3845/assets/8343b46554c27dc57bc1d55b41b2b12751738d96.png" alt="Navora team photo">
+      </div>
+      <div class="hero-image-gradient"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team-section">
+  <div class="team-container">
+    <h2 class="team-title">A team of real people</h2>
+    <div class="team-cards">
+
+      <div class="team-card">
+        <div class="team-card-photo">
+          <img src="http://localhost:3845/assets/0d0135e5ec04cbf11a1760f9440c6415084cedd9.png" alt="Chaky Ling">
+        </div>
+        <div class="team-card-name">Chaky Ling</div>
+        <div class="team-card-role">Director of Paid Media</div>
+        <div class="team-card-location">Tokyo, Japan</div>
+        <a href="#" class="team-card-link">Learn more &rarr;</a>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-photo">
+          <img src="http://localhost:3845/assets/ce419d88866d2c5362abf0bb044a0ca7bdaf07f4.png" alt="Victor Pidkowich">
+        </div>
+        <div class="team-card-name">Victor Pidkowich</div>
+        <div class="team-card-role">Director of Operations</div>
+        <div class="team-card-location">Calgary, AB</div>
+        <a href="#" class="team-card-link">Learn more &rarr;</a>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-photo">
+          <img src="http://localhost:3845/assets/47b8a58443fe568b147daa982c2ee1f181c56aa6.png" alt="Joe">
+        </div>
+        <div class="team-card-name">Joe</div>
+        <div class="team-card-role">Director of Strategy</div>
+        <div class="team-card-location">Miami, FL</div>
+        <a href="#" class="team-card-link">Learn more &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NAH-VOR-AH SECTION -->
+<section class="navora-section">
+  <div class="navora-container">
+    <div class="navora-header">
+      <h2 class="navora-title">nah-VOR-ah</h2>
+      <p class="navora-desc">In the vast, shifting expanse of the DTC market, the currents are more volatile than ever. What was once a steady voyage has become an unpredictable deep, where the thick fog of information obscures the way and deceptive tides pull brands off course. For many, this creates a sense of drift, the feeling of being captain of a vessel without a compass, where despite the energy spent, the destination remains lost in the haze, and the hidden reefs of risk are rising.</p>
+      <p class="navora-clarity">This is where clarity begins.</p>
+    </div>
+    <div class="navora-cards">
+      <div class="navora-card">
+        <h3 class="navora-card-title">Navigation (Nav) -</h3>
+        <p class="navora-card-text">True growth is not found in following the crowd, but in mastering the current and creating a Blue Ocean. Our name begins with Navigation. We act as your strategic compass, using deep analytical precision and market intuition to chart a course that is both intentional and effective. We don't just launch campaigns; we guide your brand toward its true north, ensuring every move is a step in the right direction.</p>
+      </div>
+      <div class="navora-card">
+        <h3 class="navora-card-title">Aura (ora) -</h3>
+        <p class="navora-card-text">A map is only the beginning. To truly lead, a brand must find its wind and unfurl its sails. We believe a brand's Aura is the momentum of its vessel - an invisible yet undeniable presence that captures market forces and converts them into steady, powerful progress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION SECTION -->
+<section class="mission-section">
+  <h2 class="mission-text">Our Mission is to infuse clarity, expertise and systems that DTC ecom operators need to scale profitably with a sense of calm confidence.</h2>
+</section>
+
+<!-- OUR STORY SECTION -->
+<section class="story-section">
+  <div class="story-container">
+    <h2 class="story-title">Our Story</h2>
+
+    <!-- Row 1: Text + Image -->
+    <div class="story-row">
+      <div class="story-text-col">
+        <p class="story-text">It started in the trenches, selling marketing to business owners who'd heard every pitch under the sun. That experience taught us something most marketers miss: trust isn't built on tactics. It's built on outcomes and follow-through.</p>
+        <p class="story-text">From there, we moved into live-fire growth environments scaling personal brands and eCommerce businesses with real budgets and real pressure. We grew audiences into the millions, built and promoted Shopify offers, and learned what it takes to turn attention into revenue and revenue into profit.</p>
+        <p class="story-text">But as we went deeper into the eCommerce world, we saw a pattern that kept repeating.</p>
+      </div>
+      <div class="story-image-col">
+        <img src="http://localhost:3845/assets/918141020c605c4099488d2b5f61814007046fa0.png" alt="Team brainstorming">
+      </div>
+    </div>
+
+    <!-- Row 2: Image + Text (ROAS) -->
+    <div class="story-row story-row-2">
+      <div class="story-image-col">
+        <img src="http://localhost:3845/assets/64cce5f200c0029fc467ebc9c984d491c8479bb1.png" alt="Data analytics dashboard">
+      </div>
+      <div class="story-roas-col">
+        <h3 class="story-roas-title">Agencies would celebrate ROAS...</h3>
+        <div class="story-roas-text-group">
+          <div class="story-paragraph-group">
+            <p class="story-text story-text-white">...while the P&L told a different story.</p>
+            <p class="story-text">Founders would be stuck in spreadsheets at midnight. Teams would debate dashboards instead of making decisions. Growth looked impressive, but it felt fragile.</p>
+          </div>
+          <p class="story-text story-text-white">So we built Navora to be the opposite.</p>
+          <p class="story-text">We don't exist to "run ads." We exist to create clarity across the entire growth system, connecting paid media, customer behavior, unit economics, and P&L so leadership teams can <span style="font-weight:300;">scale with confidence.</span></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="cta-bg">
+    <div class="cta-bg-image">
+      <img src="http://localhost:3845/assets/10516b334f4adb2bbc8c6c452028d0ba61fb4f28.png" alt="">
+    </div>
+    <div class="cta-overlay"></div>
+  </div>
+  <div class="cta-content">
+    <div class="cta-inner">
+      <p class="cta-label">Stop scaling on hope. Start scaling on evidence.</p>
+      <h2 class="cta-title">Ready to stop "revving in neutral" and get back to steady, predictable growth?</h2>
+      <p class="cta-desc">The longer you try to scale without clarity, the more expensive it becomes. We'll give you a clear, P&L-backed plan that restores confidence, aligns your team, and shows you exactly where profitable growth lives — starting with the right next move for your business.</p>
+      <a href="#" class="cta-btn">
+        <span>Get My Free Growth Strategy</span>
+        <img src="http://localhost:3845/assets/91a8537e0c84eac641eddc47cd2967754b6e038d.svg" alt="">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <div class="footer-brand-name">Navora Partners</div>
+        <p class="footer-brand-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="footer-certs">
+          <img src="http://localhost:3845/assets/7307b2b93f57e71053bbbb7038cdeb68314c47f2.png" alt="Google Partner">
+          <img src="http://localhost:3845/assets/649716e74a34c6d9aa1990c28207fa0cf276f910.png" alt="Meta Business Partner">
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-links-title">Information</div>
+        <nav class="footer-links-nav">
+          <a href="#">About</a>
+          <a href="#">Case Studies</a>
+          <a href="#">Careers</a>
+        </nav>
+      </div>
+
+      <div class="footer-contact">
+        <div class="footer-contact-title">Contact</div>
+        <address class="footer-contact-address" style="font-style:normal;">
+          1309 Coffeen Avenue STE 9809<br>
+          Sheridan, WY 82801
+        </address>
+        <div class="footer-social">
+          <div class="footer-social-icon">
+            <img src="http://localhost:3845/assets/e0b5851ef72777b6b81d32c635b7af7a298c688b.svg" alt="Social">
+          </div>
+          <div class="footer-social-circle">
+            <div class="footer-social-circle-inner">
+              <div class="footer-social-circle-dot"></div>
+            </div>
+            <div class="footer-social-circle-dot-small"></div>
+          </div>
+          <img src="http://localhost:3845/assets/b50c1727e498f5cf3f1f978e628fa63cf56cb62b.svg" alt="Social" style="width:42px;height:48px;">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy; Navora Partners 2026 - All Rights Reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

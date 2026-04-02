@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What The Process Looks Like</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Satoshi';
+      src: url('https://api.fontshare.com/v2/css?f[]=satoshi@300&display=swap');
+      font-weight: 300;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      background-color: #faf9f5;
+      color: #181a1d;
+    }
+
+    .process-section {
+      padding: 128px 80px 156px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 1280px;
+      width: 100%;
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    /* Header */
+    .section-header {
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #282828;
+      line-height: 28px;
+    }
+
+    /* Steps timeline */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      border-left: 2px dashed rgba(2, 71, 66, 0.3);
+      transform: translateX(-50%);
+    }
+
+    /* Step row */
+    .step {
+      display: flex;
+      width: 100%;
+    }
+
+    .step--left {
+      justify-content: flex-start;
+    }
+
+    .step--right {
+      justify-content: flex-end;
+    }
+
+    .step__content {
+      width: calc(50% - 32px);
+    }
+
+    .step--left .step__content {
+      text-align: right;
+      padding-right: 32px;
+    }
+
+    .step--right .step__content {
+      text-align: left;
+      padding-left: 32px;
+    }
+
+    /* Icon circle */
+    .step__icon {
+      width: 64px;
+      height: 64px;
+      background-color: #024742;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 16px;
+    }
+
+    .step--left .step__icon {
+      margin-left: auto;
+    }
+
+    .step__icon svg {
+      width: 28px;
+      height: 24px;
+    }
+
+    /* Step title */
+    .step__title {
+      font-family: 'Roslindale', 'Georgia', serif;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 36px;
+      color: #024742;
+      margin-bottom: 15px;
+    }
+
+    /* Step description */
+    .step__description {
+      font-size: 18px;
+      line-height: 29.25px;
+      color: #181a1d;
+    }
+
+    /* CTA Card */
+    .cta-card {
+      background: #fff;
+      padding: 88px 48px 48px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .cta-card__heading {
+      font-family: 'Inria Serif', serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 40px;
+      color: #000;
+      max-width: 726px;
+      margin-bottom: 16px;
+    }
+
+    .cta-card__body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 20px;
+    }
+
+    .cta-card__text {
+      font-size: 28px;
+      line-height: 45.5px;
+      color: #181a1d;
+      max-width: 716px;
+    }
+
+    .cta-card__button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffe174;
+      padding: 16px 32px;
+      text-decoration: none;
+      color: #024742;
+      font-size: 18px;
+      line-height: 28px;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+
+    .cta-card__button:hover {
+      opacity: 0.9;
+    }
+
+    .cta-card__button svg {
+      width: 16px;
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<section class="process-section">
+  <div class="container">
+
+    <!-- Header -->
+    <p class="section-header">What the process looks like</p>
+
+    <!-- Steps -->
+    <div class="steps">
+
+      <!-- Step 1 - Left aligned -->
+      <div class="step step--left">
+        <div class="step__content">
+          <div class="step__icon">
+            <svg viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.75051 16.5C15.1365 16.5 19.5005 12.8063 19.5005 8.25C19.5005 3.69375 15.1365 0 9.75051 0C9.75051 0 0.000513022 3.69375 0.000513022 8.25C0.000513022 10.0594 0.689576 11.7328 1.85676 13.0969C1.6927 13.5375 1.44895 13.9266 1.19114 14.2547C0.966138 14.5453 0.736451 14.7703 0.567701 14.925C0.483326 15 0.413013 15.0609 0.366138 15.0984C0.342701 15.1172 0.323951 15.1313 0.314576 15.1359L0.305201 15.1453C0.047388 15.3375 -0.065112 15.675 0.038013 15.9797C0.141138 16.2844 0.427076 16.5 0.750513 16.5C1.77239 16.5 2.80364 16.2375 3.66145 15.9141C4.0927 15.75 4.49583 15.5672 4.84739 15.3797C6.28645 16.0922 7.95989 16.5 9.75051 16.5M21.0005 8.25C21.0005 13.5141 16.3552 17.4797 10.8521 17.9531C11.9911 21.4406 15.7693 24 20.2505 24C22.0411 24 23.7146 23.5922 25.1583 22.8797C25.5099 23.0672 25.9083 23.25 26.3396 23.4141C27.1974 23.7375 28.2286 24 29.2505 24C29.574 24 29.8646 23.7891 29.963 23.4797C30.0615 23.1703 29.9536 22.8328 29.6911 22.6406L29.6818 22.6313C29.6724 22.6219 29.6536 22.6125 29.6302 22.5938C29.5833 22.5562 29.513 22.5 29.4286 22.4203C29.2599 22.2656 29.0302 22.0406 28.8052 21.75C28.5474 21.4219 28.3036 21.0281 28.1396 20.5922C29.3068 19.2328 29.9958 17.5594 29.9958 15.7453C29.9958 11.3953 26.0161 7.82813 20.9677 7.51875C20.9865 7.75781 20.9958 8.00156 20.9958 8.24531L21.0005 8.25" fill="#FFE174"/>
+            </svg>
+          </div>
+          <h3 class="step__title">Step 1 - Leadership &amp; Context Call</h3>
+          <p class="step__description">
+            We start with a focused call to understand your business from the inside out. We ask about your growth history, margin structure, cash flow constraints, inventory, creative pipeline, and internal friction points so we're not just looking at data in isolation. Most growth issues aren't visible in the ad account alone. Context changes conclusions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2 - Right aligned -->
+      <div class="step step--right">
+        <div class="step__content">
+          <div class="step__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.5 1.5C2.32969 1.5 3 2.17031 3 3V18.75C3 19.1625 3.3375 19.5 3.75 19.5H22.5C23.3297 19.5 24 20.1703 24 21C24 21.8297 23.3297 22.5 22.5 22.5H3.75C1.67812 22.5 0 20.8219 0 18.75V3C0 2.17031 0.670313 1.5 1.5 1.5M6 6C6 5.17031 6.67031 4.5 7.5 4.5H16.5C17.3297 4.5 18 5.17031 18 6C18 6.82969 17.3297 7.5 16.5 7.5H7.5C6.67031 7.5 6 6.82969 6 6M7.5 9H13.5C14.3297 9 15 9.67031 15 10.5C15 11.3297 14.3297 12 13.5 12H7.5C6.67031 12 6 11.3297 6 10.5C6 9.67031 6.67031 9 7.5 9M7.5 13.5H19.5C20.3297 13.5 21 14.1703 21 15C21 15.8297 20.3297 16.5 19.5 16.5H7.5C6.67031 16.5 6 15.8297 6 15C6 14.1703 6.67031 13.5 7.5 13.5" fill="#FFE174"/>
+            </svg>
+          </div>
+          <h3 class="step__title">Step 2 - Metrics Review</h3>
+          <p class="step__description">
+            We analyze your P&amp;L, unit economics, payback windows, contribution margins, and 12-month performance trends across Shopify, Meta, Google, and other channels. We reconcile platform data against financial reality to understand where scale is real, inflated, or eroding profit.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3 - Left aligned -->
+      <div class="step step--left">
+        <div class="step__content">
+          <div class="step__icon">
+            <svg viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 6C0 4.34531 1.34531 3 3 3H15C16.6547 3 18 4.34531 18 6V18C18 19.6547 16.6547 21 15 21H3C1.34531 21 0 19.6547 0 18V6M26.2078 4.67813C26.6953 4.94063 27 5.44687 27 6V18C27 18.5531 26.6953 19.0594 26.2078 19.3219C25.7203 19.5844 25.1297 19.5563 24.6656 19.2469L20.1656 16.2469L19.5 15.8016V15V9V8.19844L20.1656 7.75313L24.6656 4.75312C25.125 4.44844 25.7156 4.41563 26.2078 4.67813" fill="#FFE174"/>
+            </svg>
+          </div>
+          <h3 class="step__title">Step 3 - Receive a Recorded Strategic Walkthrough</h3>
+          <p class="step__description">
+            You receive a 30–60 minute recorded walkthrough that lays out what we found, what's blocking scale, and where your next best moves live. It's specific, tied to your economics, and designed to create immediate clarity and alignment.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 4 - Right aligned -->
+      <div class="step step--right">
+        <div class="step__content">
+          <div class="step__icon">
+            <svg viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.1594 3.99375L10.6219 7.66875C9.86719 8.27812 9.72187 9.375 10.2937 10.1578C10.8984 10.9922 12.075 11.1562 12.8859 10.5234L17.5406 6.90469C17.8687 6.65156 18.3375 6.70781 18.5953 7.03594C18.8531 7.36406 18.7922 7.83281 18.4641 8.09062L17.4844 8.85L24 14.85V6H23.9672L23.7844 5.88281L20.3813 3.70312C19.6641 3.24375 18.825 3 17.9719 3C16.95 3 15.9563 3.35156 15.1594 3.99375M16.2281 9.825L13.8047 11.7094C12.3281 12.8625 10.1859 12.5625 9.07969 11.0437C8.03906 9.61406 8.30156 7.61719 9.675 6.50625L13.575 3.35156C13.0312 3.12188 12.4453 3.00469 11.85 3.00469C10.9688 3 10.1109 3.2625 9.375 3.75L6 6V16.5H7.32188L11.6062 20.4094C12.525 21.2484 13.9453 21.1828 14.7844 20.2641C15.0422 19.9781 15.2156 19.6453 15.3047 19.2984L16.1016 20.0297C17.0156 20.8688 18.4406 20.8078 19.2797 19.8937C19.4906 19.6641 19.6453 19.3969 19.7437 19.1203C20.6531 19.7297 21.8906 19.6031 22.6547 18.7688C23.4938 17.8547 23.4328 16.4297 22.5187 15.5906L16.2281 9.825M0.75 6C0.3375 6 0 6.3375 0 6.75V16.5C0 17.3297 0.670313 18 1.5 18H3C3.82969 18 4.5 17.3297 4.5 16.5V6H0.75M2.25 15C2.66394 15 3 15.3361 3 15.75C3 16.1639 2.66394 16.5 2.25 16.5C1.83606 16.5 1.5 16.1639 1.5 15.75C1.5 15.3361 1.83606 15 2.25 15M25.5 6V16.5C25.5 17.3297 26.1703 18 27 18H28.5C29.3297 18 30 17.3297 30 16.5V6.75C30 6.3375 29.6625 6 29.25 6H25.5M27 15.75C27 15.3361 27.3361 15 27.75 15C28.1639 15 28.5 15.3361 28.5 15.75C28.5 16.1639 28.1639 16.5 27.75 16.5C27.3361 16.5 27 16.1639 27 15.75" fill="#FFE174"/>
+            </svg>
+          </div>
+          <h3 class="step__title">Step 4 - Meet with our founder</h3>
+          <p class="step__description">
+            You meet directly with our founder to pressure-test the conclusions, ask the hard questions, and talk through trade-offs. If there's a strong fit, we'll map what working together would look like. If not, you still leave with a clear direction and the reasoning behind it.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Card -->
+    <div class="cta-card">
+      <h2 class="cta-card__heading">Not a campaign critique, ad account audit or salespitch in disguise.</h2>
+      <div class="cta-card__body">
+        <p class="cta-card__text">It's a way to determine if you're ready for scaling and if not, what to do to get there.</p>
+        <a href="#" class="cta-card__button">
+          Get My Free Growth Strategy
+          <svg viewBox="0 0 15.75 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.4195 9.79453C15.859 9.35508 15.859 8.64141 15.4195 8.20195L9.79453 2.57695C9.35508 2.1375 8.64141 2.1375 8.20195 2.57695C7.7625 3.01641 7.7625 3.73008 8.20195 4.16953L11.9109 7.875H1.125C0.502734 7.875 0 8.37773 0 9C0 9.62227 0.502734 10.125 1.125 10.125H11.9074L8.20547 13.8305C7.76602 14.2699 7.76602 14.9836 8.20547 15.423C8.64492 15.8625 9.35859 15.8625 9.79805 15.423L15.423 9.79805L15.4195 9.79453" fill="#024742"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

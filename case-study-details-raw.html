@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navora Partners - Case Studies</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Satoshi', sans-serif; background: #faf9f5; -webkit-font-smoothing: antialiased; }
+    img { display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .font-heading { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(2,71,66,0.95); backdrop-filter: blur(2px); padding: 0 112px;
+    }
+    .header-inner { display: flex; height: 80px; align-items: center; justify-content: space-between; }
+    .header-logo { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 24px; line-height: 32px; color: #faf9f5; }
+    .header-nav { display: flex; align-items: center; }
+    .header-nav a { font-weight: 300; font-size: 16px; line-height: 24px; color: #faf9f5; }
+    .header-nav a + a { margin-left: 32px; }
+    .header-cta {
+      margin-left: 32px; background: #ffe174; display: inline-flex; align-items: center;
+      padding: 10px 24px; position: relative;
+      box-shadow: 0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -2px rgba(0,0,0,0.1);
+    }
+    .header-cta span { font-weight: 300; font-size: 16px; line-height: 24px; color: #024742; }
+    .header-cta img { margin-left: 8px; width: 22.75px; height: 26px; }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 600px; position: relative; overflow: hidden; padding: 0 80px;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+    }
+    .hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(157.38deg, #024742 0%, #024742 50%, rgba(2,71,66,0.9) 100%);
+    }
+    .hero-content {
+      max-width: 1280px; padding: 0 32px; padding-top: 80px;
+      display: flex; align-items: center; flex: 1; min-height: 0; position: relative; width: 100%;
+    }
+    .hero-text { max-width: 896px; display: flex; flex-direction: column; gap: 24px; }
+    .hero-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 72px; line-height: 72px; color: #faf9f5;
+    }
+    .hero-desc { font-weight: 300; font-size: 24px; line-height: 32px; color: white; max-width: 768px; }
+
+    /* ===== CARDS SECTION ===== */
+    .cards-section { background: #faf9f5; padding: 128px 112px; }
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: white; overflow: hidden;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    .card-image { height: 256px; overflow: hidden; position: relative; }
+    .card-image img {
+      position: absolute; width: 100%; height: 147.92%; top: -23.96%; left: 0;
+    }
+    .card-body { padding: 32px; }
+    .card-tag {
+      display: inline-block; background: rgba(148,223,107,0.2);
+      padding: 4px 12px; margin-bottom: 12px;
+      font-weight: 300; font-size: 14px; line-height: 20px; color: #024742;
+    }
+    .card-title {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+      font-size: 24px; line-height: 32px; color: #024742; margin-bottom: 12px;
+    }
+    .card-desc {
+      font-weight: 300; font-size: 16px; line-height: 26px; color: #282828;
+      margin-bottom: 24px;
+    }
+    .card-stats {
+      border-top: 1px solid rgba(197,203,191,0.2);
+      padding-top: 25px; display: flex; flex-direction: column; gap: 24px;
+    }
+    .card-metrics { display: flex; gap: 24px; }
+    .card-metric { display: flex; flex-direction: column; gap: 4px; }
+    .card-metric-label { font-weight: 300; font-size: 14px; line-height: 20px; color: #282828; }
+    .card-metric-value { font-weight: 300; font-size: 20px; line-height: 28px; color: #22c55e; }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+    }
+    .card-link span { font-weight: 300; font-size: 18px; line-height: 28px; color: #024742; }
+    .card-link img { width: 15.75px; height: 18px; }
+    .card-link:hover { opacity: 0.7; }
+
+    /* ===== FOOTER ===== */
+    .footer { background: #024742; padding: 80px; }
+    .footer-container { max-width: 1280px; padding: 0 32px; }
+    .footer-top { display: flex; gap: 32px; }
+    .footer-brand { width: 488px; display: flex; flex-direction: column; gap: 16px; }
+    .footer-brand-name {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 400;
+      font-size: 48px; line-height: 48px; letter-spacing: -1.2px; color: white;
+    }
+    .footer-brand-desc { font-weight: 300; font-size: 14px; line-height: 20px; color: #faf9f5; }
+    .footer-certs { display: flex; gap: 68px; margin-top: auto; }
+    .footer-certs img:first-child { width: 180px; height: 94.42px; }
+    .footer-certs img:last-child { width: 174px; height: 82px; }
+    .footer-links { width: 280px; padding-left: 32px; display: flex; flex-direction: column; gap: 24px; }
+    .footer-links-title { font-weight: 300; font-size: 20px; line-height: 28px; color: #ffe174; }
+    .footer-links-nav { display: flex; flex-direction: column; }
+    .footer-links-nav a { font-weight: 300; font-size: 20px; line-height: 28px; color: white; }
+    .footer-links-nav a + a { margin-top: 16px; }
+    .footer-links-nav a:hover { opacity: 0.8; }
+    .footer-contact { width: 384px; display: flex; flex-direction: column; gap: 23px; }
+    .footer-contact-title { font-weight: 300; font-size: 20px; line-height: 28px; color: #ffe174; }
+    .footer-contact-address { font-weight: 300; font-size: 20px; line-height: 32.5px; color: white; font-style: normal; }
+    .footer-social { display: flex; gap: 24px; align-items: center; padding-top: 9px; }
+    .footer-social-yt {
+      width: 48px; height: 40px; border: 2px solid #ff6b00; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .footer-social-yt img { width: 10.5px; height: 14px; }
+    .footer-social-ig {
+      width: 40px; height: 40px; border: 2px solid #ff6b00; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .footer-social-ig-inner {
+      width: 20px; height: 20px; border: 2px solid #ff6b00; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-social-ig-dot { width: 6px; height: 6px; background: #ff6b00; border-radius: 9999px; }
+    .footer-social-ig-dot-sm {
+      position: absolute; top: 6px; right: 6px; width: 4px; height: 4px;
+      background: #ff6b00; border-radius: 9999px;
+    }
+    .footer-bottom {
+      padding-top: 30px; display: flex; align-items: center; justify-content: space-between; margin-top: 48px;
+    }
+    .footer-copyright { font-weight: 300; font-size: 20px; line-height: 28px; color: #c5cbbf; }
+    .footer-legal { display: flex; gap: 32px; }
+    .footer-legal a { font-weight: 300; font-size: 20px; line-height: 28px; color: white; }
+    .footer-legal a:hover { opacity: 0.8; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="header-logo">Navora Partners</a>
+    <nav class="header-nav">
+      <a href="#">About</a>
+      <a href="#">Proof</a>
+      <a href="#">Careers</a>
+      <a href="#" class="header-cta">
+        <span>Get Free Growth Strategy</span>
+        <img src="http://localhost:3845/assets/c90e99d89d7e8f06bd3b3d50af667b367dbdd61a.svg" alt="">
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">Case Studies</h1>
+      <p class="hero-desc">Real results from real partnerships. See how we've helped DTC brands navigate growth with clarity and confidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CARDS SECTION -->
+<section class="cards-section">
+  <div class="cards-grid">
+
+    <!-- Card 1: Premium Skincare Brand -->
+    <article class="card">
+      <div class="card-image">
+        <img src="http://localhost:3845/assets/2f34b837eb6e6c4175eac491f0f53693e917b314.png" alt="Premium Skincare Brand">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Beauty &amp; Wellness</span>
+        <h3 class="card-title">Premium Skincare Brand</h3>
+        <p class="card-desc">Scaled from $50K to $500K monthly revenue while maintaining a 4.2 ROAS and 28% profit margin through strategic paid media optimization.</p>
+        <div class="card-stats">
+          <div class="card-metrics">
+            <div class="card-metric">
+              <span class="card-metric-label">Revenue Growth</span>
+              <span class="card-metric-value">900%</span>
+            </div>
+            <div class="card-metric">
+              <span class="card-metric-label">LTV Increase</span>
+              <span class="card-metric-value">4.2x</span>
+            </div>
+          </div>
+          <a href="#" class="card-link">
+            <span>Read more</span>
+            <img src="http://localhost:3845/assets/5b2b7603eb778c8c9e81ef3679a270aae3941820.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: Sustainable Apparel Co. -->
+    <article class="card">
+      <div class="card-image">
+        <img src="http://localhost:3845/assets/be3fc5ef31fd0472515e6dc381b00e2829862e8d.png" alt="Sustainable Apparel Co.">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Apparel</span>
+        <h3 class="card-title">Sustainable Apparel Co.</h3>
+        <p class="card-desc">Reduced customer acquisition cost by 42% while increasing lifetime value through refined audience targeting and creative testing.</p>
+        <div class="card-stats">
+          <div class="card-metrics">
+            <div class="card-metric">
+              <span class="card-metric-label">CAC Reduction</span>
+              <span class="card-metric-value">42%</span>
+            </div>
+            <div class="card-metric">
+              <span class="card-metric-label">LTV Increase</span>
+              <span class="card-metric-value">65%</span>
+            </div>
+          </div>
+          <a href="#" class="card-link">
+            <span>Read more</span>
+            <img src="http://localhost:3845/assets/5b2b7603eb778c8c9e81ef3679a270aae3941820.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: Performance Supplements -->
+    <article class="card">
+      <div class="card-image">
+        <img src="http://localhost:3845/assets/99920c81e21ecc82521f21c4b9236e114e2bd57d.png" alt="Performance Supplements">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Health &amp; Wellness</span>
+        <h3 class="card-title">Performance Supplements</h3>
+        <p class="card-desc">Achieved 6-figure monthly revenue in first 90 days through data-driven campaign structure and funnel optimization.</p>
+        <div class="card-stats">
+          <div class="card-metrics">
+            <div class="card-metric">
+              <span class="card-metric-label">Time to 6-Figures</span>
+              <span class="card-metric-value">90 Days</span>
+            </div>
+            <div class="card-metric">
+              <span class="card-metric-label">LTV Increase</span>
+              <span class="card-metric-value">3.8x</span>
+            </div>
+          </div>
+          <a href="#" class="card-link">
+            <span>Read more</span>
+            <img src="http://localhost:3845/assets/5b2b7603eb778c8c9e81ef3679a270aae3941820.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4: Modern Home Goods -->
+    <article class="card">
+      <div class="card-image">
+        <img src="http://localhost:3845/assets/75dfba896bdf3e6ab6408142b36f112edcbf0a12.png" alt="Modern Home Goods">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Home &amp; Living</span>
+        <h3 class="card-title">Modern Home Goods</h3>
+        <p class="card-desc">Turned a stagnant brand into a market leader with 250% revenue growth through omnichannel paid media strategy.</p>
+        <div class="card-stats">
+          <div class="card-metrics">
+            <div class="card-metric">
+              <span class="card-metric-label">Revenue Growth</span>
+              <span class="card-metric-value">250%</span>
+            </div>
+            <div class="card-metric">
+              <span class="card-metric-label">LTV Increase</span>
+              <span class="card-metric-value">5.1x</span>
+            </div>
+          </div>
+          <a href="#" class="card-link">
+            <span>Read more</span>
+            <img src="http://localhost:3845/assets/5b2b7603eb778c8c9e81ef3679a270aae3941820.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5: Premium Pet Products -->
+    <article class="card">
+      <div class="card-image">
+        <img src="http://localhost:3845/assets/287346be47ed6857f0f0f99c9d758a29bb65f308.png" alt="Premium Pet Products">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Pet Care</span>
+        <h3 class="card-title">Premium Pet Products</h3>
+        <p class="card-desc">Built a subscription model that increased customer lifetime value by 180% while reducing churn to under 5%.</p>
+        <div class="card-stats">
+          <div class="card-metrics">
+            <div class="card-metric">
+              <span class="card-metric-label">LTV Increase</span>
+              <span class="card-metric-value">180%</span>
+            </div>
+            <div class="card-metric">
+              <span class="card-metric-label">Churn Rate</span>
+              <span class="card-metric-value">4.8%</span>
+            </div>
+          </div>
+          <a href="#" class="card-link">
+            <span>Read more</span>
+            <img src="http://localhost:3845/assets/5b2b7603eb778c8c9e81ef3679a270aae3941820.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 6: Smart Tech Accessories -->
+    <article class="card">
+      <div class="card-image">
+        <img src="http://localhost:3845/assets/8a20187e693e03b87dc4921ceb9e78a925884bca.png" alt="Smart Tech Accessories">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Technology</span>
+        <h3 class="card-title">Smart Tech Accessories</h3>
+        <p class="card-desc">Launched a new product line to $1M in revenue within 6 months through precision targeting and conversion rate optimization.</p>
+        <div class="card-stats">
+          <div class="card-metrics">
+            <div class="card-metric">
+              <span class="card-metric-label">Time to $1M</span>
+              <span class="card-metric-value">6 Months</span>
+            </div>
+            <div class="card-metric">
+              <span class="card-metric-label">CVR Lift</span>
+              <span class="card-metric-value">92%</span>
+            </div>
+          </div>
+          <a href="#" class="card-link">
+            <span>Read more</span>
+            <img src="http://localhost:3845/assets/5b2b7603eb778c8c9e81ef3679a270aae3941820.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Navora Partners</div>
+        <p class="footer-brand-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="footer-certs">
+          <img src="http://localhost:3845/assets/7307b2b93f57e71053bbbb7038cdeb68314c47f2.png" alt="Google Partner">
+          <img src="http://localhost:3845/assets/649716e74a34c6d9aa1990c28207fa0cf276f910.png" alt="Meta Business Partner">
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-title">Information</div>
+        <nav class="footer-links-nav">
+          <a href="#">About</a>
+          <a href="#">Case Studies</a>
+          <a href="#">Careers</a>
+        </nav>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-contact-title">Contact</div>
+        <address class="footer-contact-address">
+          1309 Coffeen Avenue STE 9809<br>
+          Sheridan, WY 82801
+        </address>
+        <div class="footer-social">
+          <div class="footer-social-yt">
+            <img src="http://localhost:3845/assets/e0b5851ef72777b6b81d32c635b7af7a298c688b.svg" alt="YouTube">
+          </div>
+          <div class="footer-social-ig">
+            <div class="footer-social-ig-inner">
+              <div class="footer-social-ig-dot"></div>
+            </div>
+            <div class="footer-social-ig-dot-sm"></div>
+          </div>
+          <img src="http://localhost:3845/assets/b50c1727e498f5cf3f1f978e628fa63cf56cb62b.svg" alt="LinkedIn" style="width:42px;height:48px;">
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy; Navora Partners 2026 - All Rights Reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

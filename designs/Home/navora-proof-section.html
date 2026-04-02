@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navora - Proof Over Promises</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background: #faf9f5;
+      color: #282828;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Section */
+    .section {
+      background: #faf9f5;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 128px 80px;
+      width: 100%;
+    }
+
+    .section-container {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      align-items: flex-start;
+      max-width: 1280px;
+      padding: 0 32px;
+      width: 100%;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .header-label-wrap, .header-title-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .header-label {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-style: normal;
+      font-size: 17px;
+      line-height: 25.5px;
+      text-align: center;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      color: #282828;
+    }
+
+    .header-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 48px;
+      line-height: 48px;
+      text-align: center;
+      color: #282828;
+    }
+
+    /* Featured Cards Row */
+    .featured-row {
+      display: flex;
+      gap: 32px;
+      height: 356.5px;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* Card Base */
+    .card {
+      background: white;
+      display: flex;
+      flex: 1 0 0;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 1px;
+      min-width: 1px;
+      overflow: hidden;
+      align-self: stretch;
+      box-shadow: 0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    .card-inner {
+      display: flex;
+      flex: 1 0 0;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 1px;
+      min-width: 1px;
+      width: 100%;
+    }
+
+    /* Card Image Side */
+    .card-image {
+      flex: 1 0 0;
+      height: 100%;
+      min-height: 300px;
+      min-width: 1px;
+      position: relative;
+    }
+
+    .card-image-photo {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .card-image-photo img {
+      position: absolute;
+      max-width: none;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 9999px;
+      border: 2px solid white;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 21px 2px 25px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .play-btn img {
+      display: block;
+      width: 18px;
+      height: 24px;
+    }
+
+    /* Card Content Side - White variant */
+    .card-content-white {
+      background: white;
+      display: flex;
+      flex: 1 0 0;
+      flex-direction: column;
+      height: 100%;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 1px;
+      min-width: 1px;
+      overflow: hidden;
+      padding: 32px;
+      position: relative;
+    }
+
+    .card-content-white .arc {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 296px;
+      height: 356.5px;
+      display: block;
+    }
+
+    .card-content-white .heading {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      color: #024742;
+      padding-bottom: 16px;
+      position: relative;
+      width: 100%;
+    }
+
+    .card-content-white .body-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 22.75px;
+      color: rgba(2,71,66,0.8);
+      position: relative;
+      width: 100%;
+    }
+
+    .card-content-white .link {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    .card-content-white .link-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 20px;
+      color: #024742;
+    }
+
+    .card-content-white .link-arrow {
+      padding-left: 8px;
+    }
+
+    .card-content-white .link-arrow img {
+      display: block;
+      width: 10.5px;
+      height: 12px;
+    }
+
+    /* Card Content Side - Dark variant */
+    .card-content-dark {
+      background: #024742;
+      display: flex;
+      flex: 1 0 0;
+      flex-direction: column;
+      height: 100%;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 1px;
+      min-width: 1px;
+      overflow: hidden;
+      padding: 32px;
+      position: relative;
+    }
+
+    .card-content-dark .arc {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 296px;
+      height: 300px;
+      display: block;
+    }
+
+    .card-content-dark .heading {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      color: #ffe174;
+      padding-bottom: 16px;
+      position: relative;
+      width: 100%;
+    }
+
+    .card-content-dark .body-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 22.75px;
+      color: rgba(250,249,245,0.8);
+      position: relative;
+      width: 100%;
+    }
+
+    .card-content-dark .link {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    .card-content-dark .link-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 20px;
+      color: #ffe174;
+    }
+
+    .card-content-dark .link-arrow {
+      padding-left: 8px;
+    }
+
+    .card-content-dark .link-arrow img {
+      display: block;
+      width: 10.5px;
+      height: 12px;
+    }
+
+    /* Recent Successes Heading */
+    .recent-heading-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 16px;
+      width: 100%;
+    }
+
+    .recent-heading {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      text-align: center;
+      color: #024742;
+    }
+
+    /* Grid Container - absolute positioned cards like Figma */
+    .grid-container {
+      position: relative;
+      height: 1644px;
+      width: 100%;
+    }
+
+    .grid-container .card {
+      position: absolute;
+      flex-direction: column;
+    }
+
+    .grid-container .card-inner {
+      height: 300px;
+      flex: none;
+    }
+
+    /* Grid card positions from Figma insets: top right bottom left */
+    .grid-card-1 { top: 0; left: 0; right: calc(50% + 16px); height: 300px; }
+    .grid-card-2 { top: 0; left: calc(50% + 16px); right: 0; height: 300px; }
+    .grid-card-3 { top: 332px; left: 0; right: calc(50% + 16px); height: 300px; }
+    .grid-card-4 { top: 332px; left: calc(50% + 16px); right: 0; height: 300px; }
+    .grid-card-5 { top: 664px; left: 0; right: calc(50% + 16px); height: 300px; }
+    .grid-card-6 { top: 664px; left: calc(50% + 16px); right: 0; height: 300px; }
+    .grid-card-7 { top: 996px; left: 0; right: calc(50% + 16px); height: 300px; }
+    .grid-card-8 { top: 996px; left: calc(50% + 16px); right: 0; height: 300px; }
+    .grid-card-9 { top: 1328px; left: 0; right: calc(50% + 16px); height: 300px; }
+
+    /* CTA */
+    .cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .cta-btn {
+      background: #024742;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 32px;
+      position: relative;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+
+    .cta-btn .cta-shadow {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0);
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+    }
+
+    .cta-btn .cta-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 28px;
+      text-align: center;
+      color: #ffe174;
+      position: relative;
+    }
+
+    .cta-btn .cta-arrow {
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .cta-btn .cta-arrow img {
+      display: block;
+      width: 15.75px;
+      height: 18px;
+    }
+
+    /* Link hover */
+    .link { cursor: pointer; }
+    .link:hover { opacity: 0.8; }
+    .cta-btn:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+<section class="section">
+  <div class="section-container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-label-wrap">
+        <span class="header-label">WE DELIVER REAL PROFITABLE GROWTH</span>
+      </div>
+      <div class="header-title-wrap">
+        <h2 class="header-title">Proof over promises.</h2>
+      </div>
+    </div>
+
+    <!-- Featured Cards -->
+    <div class="featured-row">
+
+      <!-- Featured Card 1 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/c26e2c91-0403-4e80-8aed-6c717148d27a" alt="" style="height:100%; left:-40.39%; top:0; width:180.77%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-white">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/3a4fda71-cd84-4c3b-b013-462c52d5bd96" alt="">
+            <div class="heading">"They 2x'ed our margin within 90 days"</div>
+            <div class="body-text">Struggling with rising ad costs, this home goods brand needed a strategy pivot. By restructuring their account architecture and focusing on contribution margin, we doubled profitability in just one quarter.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/c6a40eb9-435a-48cc-9c46-59b8467783a4" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Card 2 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/9fea65a1-81b3-4aed-a91b-cd527d3de596" alt="" style="height:124.54%; left:0; top:-12.27%; width:100%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-white">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/fce847f7-f7da-4c33-b1b1-393edd20a2e7" alt="">
+            <div class="heading">"Scaled to $5M without losing efficiency"</div>
+            <div class="body-text">Scaling usually means efficiency loss. Not here. We implemented a rapid creative testing framework that allowed this fashion retailer to triple spend while maintaining a 4.5 ROAS.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/c6a40eb9-435a-48cc-9c46-59b8467783a4" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Recent Successes -->
+    <div class="recent-heading-wrap">
+      <h3 class="recent-heading">RECENT SUCCESSES</h3>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid-container">
+
+      <!-- Card 1: 450% ROI -->
+      <div class="card grid-card-1">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/e76be2d8-9af4-4e1f-842e-fd3e6c246539" alt="" style="height:100%; left:-33.07%; top:0; width:166.15%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/76f4fbf9-48e2-431a-b203-1821dbcf78f0" alt="">
+            <div class="heading">"450% ROI increase in Q1"</div>
+            <div class="body-text">Beauty brand transformation through strategic audience segmentation and creative optimization.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Reduced CAC -->
+      <div class="card grid-card-2">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/7e0ca382-2807-48f9-b769-02390cb10dd2" alt="" style="height:100%; left:-26.06%; top:0; width:152.12%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/1433e7c1-9524-4e41-a8b7-233f3b5250a6" alt="">
+            <div class="heading">"Reduced CAC by 60%"</div>
+            <div class="body-text">Tech startup breakthrough with precision targeting and funnel optimization strategies.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: $2.8M revenue -->
+      <div class="card grid-card-3">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/0e8360b5-2d9d-4169-85d6-c3b3883eaf69" alt="" style="height:100%; left:-26.06%; top:0; width:152.12%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/a5ef2c06-8bf8-498b-986d-f5a59672565a" alt="">
+            <div class="heading">$2.8M revenue in 6 months</div>
+            <div class="body-text">Fashion retailer's explosive growth through multi-channel campaign orchestration.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: 300% LTV -->
+      <div class="card grid-card-4">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/263d8add-790d-48d9-a5c3-cc3b57a1b3e6" alt="" style="height:148%; left:0; top:-24%; width:100%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/4907cd2d-784b-4430-b2fc-e69ac0c5b800" alt="">
+            <div class="heading">"300% LTV improvement"</div>
+            <div class="body-text">Health brand's customer lifetime value optimization through retention-focused campaigns.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: 8x ROAS -->
+      <div class="card grid-card-5">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/02eba364-5a67-4d24-91f6-608a2e636a38" alt="" style="height:100%; left:-26.06%; top:0; width:152.12%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <div class="heading">"8x ROAS in peak season"</div>
+            <div class="body-text">Home decor brand's holiday campaign success through strategic timing and creative rotation.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Zero to $1M -->
+      <div class="card grid-card-6">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/71e3edc4-153c-4261-b0fa-11999ab95930" alt="" style="height:100%; left:-26.06%; top:0; width:152.12%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/0f672862-8791-4142-b23b-3b5a15e1bb4a" alt="">
+            <div class="heading">"Zero to $1M in 4 months"</div>
+            <div class="body-text">Startup's rapid market entry through precision-targeted launch campaigns and conversion optimization.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7: Profitable from day one -->
+      <div class="card grid-card-7">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/e682c7a0-cb39-444f-93c1-1ab43b9a2ec4" alt="" style="height:148%; left:0; top:-24%; width:100%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/97351ced-2e2e-4f10-8294-0862ead73043" alt="">
+            <div class="heading">"Profitable from day one"</div>
+            <div class="body-text">Luxury goods brand's market expansion with immediate profitability through strategic positioning.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8: Conversion rate up 285% -->
+      <div class="card grid-card-8">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/025e48dc-d3ae-4a47-9d40-7ccda2eecf23" alt="" style="height:100%; left:-26.06%; top:0; width:152.12%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/ac51998c-8d4a-46e4-888f-0efc1e5edf87" alt="">
+            <div class="heading">"Conversion rate up 285%"</div>
+            <div class="body-text">Electronics retailer's conversion optimization through advanced funnel analysis and A/B testing.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9: Scaled to 7 figures -->
+      <div class="card grid-card-9">
+        <div class="card-inner">
+          <div class="card-image">
+            <div class="card-image-photo">
+              <img src="https://www.figma.com/api/mcp/asset/a7b0dc7e-df8a-48ab-a0d6-e2521ed4cce3" alt="" style="height:100%; left:-17.57%; top:0; width:135.14%;">
+            </div>
+            <div class="card-overlay">
+              <button class="play-btn" aria-label="Play video">
+                <img src="https://www.figma.com/api/mcp/asset/9cfd948b-bcd0-4bb8-b3bf-cad81e51d4d0" alt="Play">
+              </button>
+            </div>
+          </div>
+          <div class="card-content-dark">
+            <img class="arc" src="https://www.figma.com/api/mcp/asset/3ee905ee-b70c-4a7d-8af5-f2b8f7f9afef" alt="">
+            <div class="heading">"Scaled to 7 figures sustainably"</div>
+            <div class="body-text">Pet products brand's sustainable growth strategy maintaining profitability at scale.</div>
+            <div class="link">
+              <span class="link-text">See Case Study</span>
+              <span class="link-arrow"><img src="https://www.figma.com/api/mcp/asset/a07b6d03-c590-40d6-abaa-ddab36e24ed2" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Button -->
+    <div class="cta-wrap">
+      <a href="#" class="cta-btn">
+        <div class="cta-shadow"></div>
+        <span class="cta-text">View All Proof</span>
+        <span class="cta-arrow"><img src="https://www.figma.com/api/mcp/asset/f036fd3e-36c2-4ed5-986c-9ecacfc85d71" alt=""></span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

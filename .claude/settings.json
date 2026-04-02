@@ -33,7 +33,39 @@
       "Bash(mv navora-home-backup-before-responsive.html navora-home-before-spacing-manual-version.html backups/)",
       "Bash(mkdir -p about-us case-studies/inova-air-purifiers case-studies/tammy-inflekion-media careers sitemap terms privacy)",
       "Bash(cp navora-home.html index.html)",
-      "Bash(ls -d */)"
+      "Bash(ls -d */)",
+      "Bash(node -e \":*)",
+      "Bash(find 'c:/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/designs' -name *.png -o -name *.PNG -o -name *.jpg -o -name *.jpeg)",
+      "mcp__figma-remote-mcp__get_design_context",
+      "mcp__figma-remote-mcp__get_screenshot",
+      "mcp__figma-remote-mcp__get_metadata",
+      "Bash(ls *.html)",
+      "Bash(grep -c \"GTM-5DD29LTJ\" public/index.html public/about.html public/careers.html public/case-studies.html public/style-guide.html public/case-studies/*/index.html)",
+      "Bash(cp -r \"videos/Internal Case Study 1/\"* \"case-studies/auto-parts-revenue/\")",
+      "Bash(cp -r \"videos/Internal Case Study 2/\"* \"case-studies/fitness-brand/\")",
+      "Bash(cp -r \"videos/Internal Case Study 3/\"* \"case-studies/tallow-skincare/\")",
+      "Bash(cp -r \"videos/Internal Case Study 4/\"* \"case-studies/puzzle-retailer/\")",
+      "Bash(cp -r \"videos/Internal Case Study 5/\"* \"case-studies/handmade-jewelry/\")",
+      "Bash(mkdir -p \"case-studies/tammy-inflektion\")",
+      "Bash(cp -r \"videos/Tammy/\"* \"case-studies/tammy-inflektion/\")",
+      "Bash(mkdir -p \"case-studies/nick-inova\")",
+      "Bash(cp -r \"videos/Nick at Inova Air Purifiers/\"* \"case-studies/nick-inova/\")",
+      "Bash(cp \"videos/Case Study Copy.txt\" \"case-studies/Case Study Copy.txt\")",
+      "Bash(grep -rn \"videos/\" public/*.html public/case-studies/*/index.html)",
+      "Bash(node -e ':*)",
+      "Bash(mv \"videos/Internal Case Study 1/\"*.mp4 \"case-studies/auto-parts-revenue/\")",
+      "Bash(mv \"videos/Internal Case Study 2/\"*.mp4 \"case-studies/fitness-brand/\")",
+      "Bash(mv \"videos/Internal Case Study 3/\"*.mp4 \"case-studies/tallow-skincare/\")",
+      "Bash(mv \"videos/Internal Case Study 4/\"*.mp4 \"case-studies/puzzle-retailer/\")",
+      "Bash(mv \"videos/Internal Case Study 5/\"*.mp4 \"case-studies/handmade-jewelry/\")",
+      "Bash(powershell -Command 'Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::OpenRead\\('\\\\''references/ICP.docx'\\\\''\\); $entry = $zip.Entries | Where-Object { $_.Name -eq '\\\\''document.xml'\\\\'' }; $reader = [System.IO.StreamReader]$entry.Open\\(\\); $xml = $reader.ReadToEnd\\(\\); $reader.Close\\(\\); $zip.Dispose\\(\\); $xml -replace '\\\\''<[^>]+>'\\\\'','\\\\'' '\\\\'' -replace '\\\\''\\\\s+'\\\\'','\\\\'' '\\\\''')",
+      "Bash(powershell -Command 'Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::OpenRead\\('\\\\''references/Brand Essence - Our Identity.docx'\\\\''\\); $entry = $zip.Entries | Where-Object { $_.Name -eq '\\\\''document.xml'\\\\'' }; $reader = [System.IO.StreamReader]$entry.Open\\(\\); $xml = $reader.ReadToEnd\\(\\); $reader.Close\\(\\); $zip.Dispose\\(\\); $xml -replace '\\\\''<[^>]+>'\\\\'','\\\\'' '\\\\'' -replace '\\\\''\\\\s+'\\\\'','\\\\'' '\\\\''')",
+      "Bash(powershell -Command 'Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::OpenRead\\('\\\\''references/Promised Land and Cautionary Tale.docx'\\\\''\\); $entry = $zip.Entries | Where-Object { $_.Name -eq '\\\\''document.xml'\\\\'' }; $reader = [System.IO.StreamReader]$entry.Open\\(\\); $xml = $reader.ReadToEnd\\(\\); $reader.Close\\(\\); $zip.Dispose\\(\\); $xml -replace '\\\\''<[^>]+>'\\\\'','\\\\'' '\\\\'' -replace '\\\\''\\\\s+'\\\\'','\\\\'' '\\\\''')",
+      "Bash(powershell -Command 'Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::OpenRead\\('\\\\''references/case-studies/3 times Client Volume Growth for a Houston Personal Injury Firm.docx'\\\\''\\); $entry = $zip.Entries | Where-Object { $_.Name -eq '\\\\''document.xml'\\\\'' }; $reader = [System.IO.StreamReader]$entry.Open\\(\\); $xml = $reader.ReadToEnd\\(\\); $reader.Close\\(\\); $zip.Dispose\\(\\); $xml -replace '\\\\''<[^>]+>'\\\\'','\\\\'' '\\\\'' -replace '\\\\''\\\\s+'\\\\'','\\\\'' '\\\\''')"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\pidvi\\OneDrive\\Desktop\\Navora - Figma and MCP\\designs",
+      "c:\\Users\\pidvi\\OneDrive\\Desktop\\Navora - Figma and MCP\\designs\\Reference Case Studies"
     ]
   }
 }

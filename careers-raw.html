@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navora Partners - Careers</title>
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #faf9f5;
+      --dark: #282828;
+      --teal: #024742;
+      --yellow: #ffe174;
+      --orange: #ff6b00;
+      --gray-border: #f3f4f6;
+    }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    /* Roslindale fallback - using Georgia as similar serif */
+    .font-serif {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+    }
+    .font-serif-regular {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(2, 71, 66, 0.95);
+      backdrop-filter: blur(2px);
+      padding: 0 112px;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .header-logo {
+      font-size: 24px;
+      color: var(--cream);
+      line-height: 32px;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .header-nav a {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--cream);
+      text-decoration: none;
+      line-height: 24px;
+    }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      background: var(--yellow);
+      padding: 10px 24px;
+      color: var(--teal) !important;
+      box-shadow: 0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -2px rgba(0,0,0,0.1);
+      text-decoration: none;
+    }
+    .header-cta svg {
+      margin-left: 8px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 744px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-inner {
+      text-align: center;
+      color: var(--cream);
+      padding: 0 80px;
+    }
+    .hero-label {
+      font-weight: 300;
+      font-size: 18px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: 64px;
+      line-height: 64px;
+      margin-bottom: 24px;
+    }
+
+    /* ===== SECTION: THE CHALLENGE ===== */
+    .section {
+      padding: 128px 240px 176px;
+    }
+    .section-label {
+      font-weight: 300;
+      font-size: 18px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+    .section-heading {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    /* ===== SECTION: OUR VALUES ===== */
+    .values-section {
+      background: var(--cream);
+      padding: 128px 80px;
+    }
+    .values-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .values-header .section-label {
+      margin-bottom: 16px;
+    }
+    .values-header .section-heading {
+      margin-bottom: 8px;
+    }
+    .values-header .section-subtitle {
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 42px;
+      max-width: 768px;
+      margin: 8px auto 0;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .value-card {
+      background: white;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+      min-height: 380px;
+    }
+    .value-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(2, 71, 66, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .value-icon img {
+      width: 24px;
+      height: 24px;
+    }
+    .value-title {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 16px;
+    }
+    .value-desc {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .value-footer {
+      border-top: 1px solid var(--gray-border);
+      padding-top: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .value-footer span {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .value-footer svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ===== SECTION: OPEN POSITIONS ===== */
+    .positions-section {
+      background: var(--cream);
+      padding: 128px 80px;
+    }
+    .positions-header {
+      text-align: center;
+      margin-bottom: 64px;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .positions-header .section-subtitle {
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 42px;
+      max-width: 768px;
+      margin: 8px auto 0;
+    }
+
+    .positions-list {
+      max-width: 896px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .position-card {
+      background: white;
+      padding: 32px;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .position-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .position-title {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 8px;
+    }
+    .position-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .position-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .position-tag svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .position-tag .location-icon {
+      width: 12px;
+      height: 16px;
+    }
+    .apply-btn {
+      display: inline-flex;
+      align-items: center;
+      background: var(--teal);
+      color: var(--cream);
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px;
+      flex-shrink: 0;
+    }
+    .apply-btn svg {
+      margin-left: 8px;
+    }
+    .position-desc {
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 35.75px;
+    }
+
+    .positions-bottom {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .positions-bottom p {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 28px;
+      margin-bottom: 24px;
+    }
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid var(--teal);
+      padding: 18px 34px;
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 28px;
+      background: transparent;
+    }
+    .resume-btn svg {
+      margin-left: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--teal);
+      padding: 80px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      padding: 0 32px;
+    }
+    .footer-top {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .footer-brand {
+      width: 488px;
+      flex-shrink: 0;
+    }
+    .footer-brand-name {
+      font-size: 48px;
+      line-height: 48px;
+      color: white;
+      letter-spacing: -1.2px;
+      margin-bottom: 16px;
+    }
+    .footer-brand-desc {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .footer-certs {
+      display: flex;
+      gap: 68px;
+      align-items: flex-start;
+    }
+    .footer-certs img {
+      height: 82px;
+      width: auto;
+    }
+
+    .footer-links {
+      width: 280px;
+      padding-left: 32px;
+    }
+    .footer-links-title {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 28px;
+      color: var(--yellow);
+      margin-bottom: 24px;
+    }
+    .footer-links a {
+      display: block;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 28px;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+
+    .footer-contact {
+      width: 384px;
+    }
+    .footer-contact-title {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 28px;
+      color: var(--yellow);
+      margin-bottom: 23px;
+    }
+    .footer-address {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 32.5px;
+      color: white;
+      font-style: normal;
+      margin-bottom: 8px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .social-icon {
+      width: 48px;
+      height: 40px;
+      border: 2px solid var(--orange);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(250,249,245,0.2);
+      padding-top: 33px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copyright {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 28px;
+      color: white;
+    }
+    .footer-legal {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-legal a {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 28px;
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-logo font-serif">Navora Partners</div>
+      <nav class="header-nav">
+        <a href="#">About</a>
+        <a href="#">Proof</a>
+        <a href="#">Careers</a>
+        <a href="#" class="header-cta">
+          Get Free Growth Strategy
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13" stroke="#024742" stroke-width="1.5"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO (placeholder since Figma had 744px top offset) -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">Careers</div>
+      <h1 class="font-serif" style="font-size:64px; line-height:64px; color:var(--cream);">Join Navora Partners</h1>
+    </div>
+  </section>
+
+  <!-- THE CHALLENGE -->
+  <section class="section">
+    <div class="section-label">The Challenge</div>
+    <h2 class="section-heading font-serif">
+      At Navora we believe what separates us<br>
+      from a typical ad agency is our<br>
+      understanding that business growth<br>
+      doesn't come from one part of the<br>
+      business. It comes from the whole<br>
+      system working together.
+    </h2>
+  </section>
+
+  <!-- OUR VALUES -->
+  <section class="values-section">
+    <div class="values-header">
+      <div class="section-label">Our Values</div>
+      <h2 class="section-heading font-serif">What we stand for</h2>
+      <p class="section-subtitle">
+        Our values aren't just words on a wall &mdash; they're the principles that guide<br>
+        every decision we make and every partnership we build.
+      </p>
+    </div>
+
+    <div class="values-grid">
+      <!-- Value 1: Radical Ownership -->
+      <div class="value-card">
+        <div>
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#024742" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="value-title font-serif">Radical Ownership</h3>
+          <p class="value-desc">We don't pass the buck. Every team member takes full responsibility for their work, their results, and the success of the clients they serve.</p>
+        </div>
+        <div class="value-footer">
+          <span>How we show up</span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="#282828" stroke-width="1.5"><path d="M7 1v12M1 7h12"/></svg>
+        </div>
+      </div>
+
+      <!-- Value 2: Truth Over Comfort -->
+      <div class="value-card">
+        <div>
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#024742" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="value-title font-serif">Truth Over Comfort</h3>
+          <p class="value-desc">We tell the truth, even when it's uncomfortable. Our clients deserve honest counsel, not flattery. Real growth starts with real conversations.</p>
+        </div>
+        <div class="value-footer">
+          <span>How we show up</span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="#282828" stroke-width="1.5"><path d="M7 1v12M1 7h12"/></svg>
+        </div>
+      </div>
+
+      <!-- Value 3: Systems Thinking -->
+      <div class="value-card">
+        <div>
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#024742" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+            </svg>
+          </div>
+          <h3 class="value-title font-serif">Systems Thinking</h3>
+          <p class="value-desc">We see the whole, not just the parts. Our approach connects every piece of the growth puzzle &mdash; from paid media to unit economics to creative strategy.</p>
+        </div>
+        <div class="value-footer">
+          <span>How we show up</span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="#282828" stroke-width="1.5"><path d="M7 1v12M1 7h12"/></svg>
+        </div>
+      </div>
+
+      <!-- Value 4: Relentless Curiosity -->
+      <div class="value-card">
+        <div>
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#024742" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+          </div>
+          <h3 class="value-title font-serif">Relentless Curiosity</h3>
+          <p class="value-desc">Complacency is the enemy. We question assumptions, test constantly, and never settle for "good enough" when great is possible.</p>
+        </div>
+        <div class="value-footer">
+          <span>How we show up</span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="#282828" stroke-width="1.5"><path d="M7 1v12M1 7h12"/></svg>
+        </div>
+      </div>
+
+      <!-- Value 5: Speed With Intention -->
+      <div class="value-card">
+        <div>
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#024742" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3 class="value-title font-serif">Speed With Intention</h3>
+          <p class="value-desc">In eCommerce, timing is everything. We move fast, but never recklessly. Speed paired with strategic thinking is our competitive edge.</p>
+        </div>
+        <div class="value-footer">
+          <span>How we show up</span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="#282828" stroke-width="1.5"><path d="M7 1v12M1 7h12"/></svg>
+        </div>
+      </div>
+
+      <!-- Value 6: Partnership Over Transaction -->
+      <div class="value-card">
+        <div>
+          <div class="value-icon">
+            <svg width="30" height="24" viewBox="0 0 30 24" fill="none" stroke="#024742" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h3 class="value-title font-serif">Partnership Over Transaction</h3>
+          <p class="value-desc">We are not vendors; we are partners. We invest deeply in the relationships we build, caring as much about the people as the business outcomes.</p>
+        </div>
+        <div class="value-footer">
+          <span>How we show up</span>
+          <svg viewBox="0 0 14 14" fill="none" stroke="#282828" stroke-width="1.5"><path d="M7 1v12M1 7h12"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN POSITIONS -->
+  <section class="positions-section">
+    <div class="positions-header">
+      <div class="section-label">Open Positions</div>
+      <h2 class="section-heading font-serif" style="margin-bottom: 8px;">Join our growing team</h2>
+      <p class="section-subtitle">
+        We're looking for talented individuals who share our values<br>
+        and want to make a real impact in the world of eCommerce.
+      </p>
+    </div>
+
+    <div class="positions-list">
+      <!-- Position 1 -->
+      <div class="position-card">
+        <div class="position-top">
+          <div>
+            <h3 class="position-title font-serif">Senior Paid Media Strategist</h3>
+            <div class="position-meta">
+              <span class="position-tag">
+                <svg class="location-icon" viewBox="0 0 12 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M6 1C3.24 1 1 3.24 1 6c0 4.5 5 9 5 9s5-4.5 5-9c0-2.76-2.24-5-5-5z"/><circle cx="6" cy="6" r="2"/></svg>
+                Remote
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#282828" stroke-width="1.2"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 3"/></svg>
+                Full-time
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M14 2H2v12h12V2z"/><path d="M5 2V0M11 2V0M2 6h12"/></svg>
+                Strategy
+              </span>
+            </div>
+          </div>
+          <a href="#" class="apply-btn">
+            Apply Now
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1L13 8L1 15" stroke="#faf9f5" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+        <p class="position-desc">Lead strategic initiatives for 7-figure DTC brands, developing comprehensive paid media strategies that drive profitable growth while maintaining P&L alignment.</p>
+      </div>
+
+      <!-- Position 2 -->
+      <div class="position-card">
+        <div class="position-top">
+          <div>
+            <h3 class="position-title font-serif">Performance Marketing Analyst</h3>
+            <div class="position-meta">
+              <span class="position-tag">
+                <svg class="location-icon" viewBox="0 0 12 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M6 1C3.24 1 1 3.24 1 6c0 4.5 5 9 5 9s5-4.5 5-9c0-2.76-2.24-5-5-5z"/><circle cx="6" cy="6" r="2"/></svg>
+                Remote
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#282828" stroke-width="1.2"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 3"/></svg>
+                Full-time
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M2 14l4-4 3 3 5-5"/><path d="M10 8h4v4"/></svg>
+                Analytics
+              </span>
+            </div>
+          </div>
+          <a href="#" class="apply-btn">
+            Apply Now
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1L13 8L1 15" stroke="#faf9f5" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+        <p class="position-desc">Dive deep into data to uncover insights that drive decision-making. Reconcile platform metrics with P&L reality and build dashboards that actually matter.</p>
+      </div>
+
+      <!-- Position 3 -->
+      <div class="position-card">
+        <div class="position-top">
+          <div>
+            <h3 class="position-title font-serif">Creative Strategist</h3>
+            <div class="position-meta">
+              <span class="position-tag">
+                <svg class="location-icon" viewBox="0 0 12 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M6 1C3.24 1 1 3.24 1 6c0 4.5 5 9 5 9s5-4.5 5-9c0-2.76-2.24-5-5-5z"/><circle cx="6" cy="6" r="2"/></svg>
+                Remote
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#282828" stroke-width="1.2"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 3"/></svg>
+                Full-time
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M12 2L2 7l4 2 2 5 4-12z"/></svg>
+                Creative
+              </span>
+            </div>
+          </div>
+          <a href="#" class="apply-btn">
+            Apply Now
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1L13 8L1 15" stroke="#faf9f5" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+        <p class="position-desc">Develop creative strategies that resonate with target audiences and drive performance. Bridge the gap between brand storytelling and conversion optimization.</p>
+      </div>
+
+      <!-- Position 4 -->
+      <div class="position-card">
+        <div class="position-top">
+          <div>
+            <h3 class="position-title font-serif">Client Success Manager</h3>
+            <div class="position-meta">
+              <span class="position-tag">
+                <svg class="location-icon" viewBox="0 0 12 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M6 1C3.24 1 1 3.24 1 6c0 4.5 5 9 5 9s5-4.5 5-9c0-2.76-2.24-5-5-5z"/><circle cx="6" cy="6" r="2"/></svg>
+                Remote
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#282828" stroke-width="1.2"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 3"/></svg>
+                Full-time
+              </span>
+              <span class="position-tag">
+                <svg viewBox="0 0 20 16" fill="none" stroke="#282828" stroke-width="1.2"><path d="M14 15v-1a3 3 0 00-3-3H5a3 3 0 00-3 3v1"/><circle cx="8" cy="5" r="3"/><path d="M18 15v-1a3 3 0 00-2-2.83M13 1.17a3 3 0 010 5.66"/></svg>
+                Client Relations
+              </span>
+            </div>
+          </div>
+          <a href="#" class="apply-btn">
+            Apply Now
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1L13 8L1 15" stroke="#faf9f5" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+        <p class="position-desc">Be the strategic partner our clients need. Ensure alignment across teams, facilitate communication, and drive outcomes that matter to the business.</p>
+      </div>
+    </div>
+
+    <div class="positions-bottom">
+      <p>Don't see the right role? We're always looking for exceptional talent.</p>
+      <a href="#" class="resume-btn">
+        Send Us Your Resume
+        <svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1L15 9L1 17" stroke="#024742" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3 class="footer-brand-name font-serif-regular">Navora Partners</h3>
+          <p class="footer-brand-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div class="footer-certs">
+            <img src="http://localhost:3845/assets/7307b2b93f57e71053bbbb7038cdeb68314c47f2.png" alt="Google Partner Certification">
+            <img src="http://localhost:3845/assets/649716e74a34c6d9aa1990c28207fa0cf276f910.png" alt="Meta Business Partner Certification">
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4 class="footer-links-title">Information</h4>
+          <nav>
+            <a href="#">About</a>
+            <a href="#">Case Studies</a>
+            <a href="#">Careers</a>
+          </nav>
+        </div>
+        <div class="footer-contact">
+          <h4 class="footer-contact-title">Contact</h4>
+          <address class="footer-address">
+            1309 Coffeen Avenue STE 9809<br>
+            Sheridan, WY 82801
+          </address>
+          <div class="footer-socials">
+            <!-- Facebook -->
+            <a href="#" class="social-icon">
+              <svg width="10" height="18" viewBox="0 0 10 18" fill="none"><path d="M6.5 7V5a1 1 0 011-1H9V1H7a3 3 0 00-3 3v3H2v3h2v7h3v-7h2l1-3H7z" fill="#ff6b00"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="social-icon" style="width:40px; height:40px;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="1" y="1" width="18" height="18" rx="5" stroke="#ff6b00" stroke-width="1.5"/>
+                <circle cx="10" cy="10" r="4" stroke="#ff6b00" stroke-width="1.5"/>
+                <circle cx="15" cy="5" r="1.5" fill="#ff6b00"/>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" class="social-icon" style="width:42px; height:48px; border:none;">
+              <img src="http://localhost:3845/assets/b50c1727e498f5cf3f1f978e628fa63cf56cb62b.svg" alt="LinkedIn" style="width:100%;height:100%;">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; Navora Partners 2026 - All Rights Reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
