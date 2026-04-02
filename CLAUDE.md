@@ -168,6 +168,27 @@ Fix any issues, then delete the `-raw` file once the production version is appro
 - Every new component added to the system becomes available for all future pages
 - Never edit the `-raw` files — if you need a fresh Figma pull, re-pull and overwrite the raw file
 
+## Case Study Workflow
+
+To add a new case study to the website, follow the master workflow at `instructions/add-new-case-study.md`. This covers creating the detail page, listing page card, and optionally the homepage card.
+
+### Supporting instruction files:
+- `instructions/case-study-detail-pages.md` — how to write and build detail pages
+- `instructions/case-study-listing-cards.md` — how to create and organize listing page cards
+- `instructions/success-story-cards.md` — how to create and organize homepage cards
+
+### Reference material:
+- `references/ICP.docx` — ideal client profile
+- `references/Brand Essence - Our Identity.docx` — brand voice and tone
+- `references/Promised Land and Cautionary Tale.docx` — narrative framework
+- `references/case-studies/` — tone examples from Rankings.io
+
+### Design system (always reference when building pages):
+- `public/css/variables.css` — design tokens
+- `public/css/components.css` — shared components
+- `public/css/layout.css` — layout patterns
+- `public/css/case-study-detail.css` — detail page styles
+
 ## Future Phase: GitHub & Hosting Setup (Partially Complete)
 GitHub repo is live and code is being pushed regularly.
 
