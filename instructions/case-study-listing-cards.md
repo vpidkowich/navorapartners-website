@@ -75,13 +75,22 @@ The headline is the most important element. It follows the same rules as the hom
 
 A short industry/vertical label displayed as a pastel-colored pill above the title. Colors are auto-generated from the tag text — each unique industry gets a consistent pastel shade.
 
-**CRITICAL: Never use generic categories like "eCommerce" or "Retail."** These are too broad and don't help the reader self-select. The tag must name the specific niche or vertical.
+**CRITICAL: Use standard product categories similar to how Amazon categorizes products.** These should be broad enough to group similar businesses but specific enough to be meaningful. Never use generic labels like "eCommerce" or "Retail."
 
-**Good examples:** Automotive, Beauty & Skincare, Fitness & Recovery, Toys & Hobbies, Jewelry, Air Quality, Medical Devices, Outdoor & RV, Pet Nutrition, Home Décor, Supplements, Activewear
+**How to determine the category:** Read the case study outline to identify what the brand actually sells, then match it to the most appropriate standard product category.
 
-**Bad examples:** eCommerce, Retail, Health & Wellness, Fashion & Accessories, Technology
+**Standard product categories (use these or similar):**
+Automotive, Beauty & Personal Care, Health & Fitness, Health & Wellness Tech, Home Appliances, Home & Bedding, Jewelry & Accessories, Toys & Games, Sports & Outdoors, Pet Supplies, Food & Beverage, Electronics, Baby & Kids, Clothing & Apparel, Supplements & Nutrition, Home & Garden, Office Products, Arts & Crafts
 
-The category should be drawn from the case study outline itself — what does this brand actually sell? Name that specific thing.
+**Bad examples:** eCommerce, Retail, Technology, Fashion, DTC — these describe the business model, not the product category.
+
+**Examples of mapping:**
+- Air purifiers → Home Appliances
+- RV mattresses → Home & Bedding  
+- Neurofeedback device → Health & Wellness Tech
+- Tallow skincare → Beauty & Personal Care
+- Puzzle retailer → Toys & Games
+- Handmade jewelry → Jewelry & Accessories
 
 Use `&amp;` for ampersands in HTML.
 
