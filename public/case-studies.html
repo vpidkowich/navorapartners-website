@@ -349,25 +349,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script>
-// Auto-generate pastel tag colors from tag text
+// Auto-generate unique pastel tag colors — evenly spaced hues
 (function() {
-  function hashStr(str) {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return hash;
-  }
-  var colorMap = {};
-  document.querySelectorAll('.cs-card-tag').forEach(function(tag) {
+  // Collect unique tag names first
+  var tags = document.querySelectorAll('.cs-card-tag');
+  var uniqueNames = [];
+  tags.forEach(function(tag) {
     var text = tag.textContent.trim();
-    if (!colorMap[text]) {
-      var h = ((hashStr(text) % 360) + 360) % 360;
-      colorMap[text] = {
-        bg: 'hsl(' + h + ', 60%, 90%)',
-        fg: 'hsl(' + h + ', 50%, 30%)'
-      };
-    }
+    if (uniqueNames.indexOf(text) === -1) uniqueNames.push(text);
+  });
+  // Assign evenly spaced hues so no two are similar
+  var colorMap = {};
+  var goldenAngle = 137.508;
+  uniqueNames.forEach(function(name, i) {
+    var h = (i * goldenAngle) % 360;
+    colorMap[name] = {
+      bg: 'hsl(' + h + ', 55%, 90%)',
+      fg: 'hsl(' + h + ', 45%, 28%)'
+    };
+  });
+  // Apply
+  tags.forEach(function(tag) {
+    var text = tag.textContent.trim();
     tag.style.background = colorMap[text].bg;
     tag.style.color = colorMap[text].fg;
   });
