@@ -138,12 +138,14 @@ This is the heart of the page. It must feel like a real story, not a marketing b
 - End with the qualitative impact: team confidence restored, leadership alignment, etc.
 - The gold highlight bar should contain the single most impressive before→after stat
 
-### Section 8: Testimonial
+### Section 8: Testimonial (CONDITIONAL — only include if a real quote exists)
 - Warm cream background
 - Large blockquote (Roslindale bold)
 - Photo (if available) + attribution
 
-**If no real testimonial exists, use [TESTIMONIAL NEEDED] — do NOT fabricate.**
+**CRITICAL: If no real client quote or testimonial was provided, OMIT this entire section from the page. Do NOT fabricate quotes. Do NOT use placeholder text. Simply skip this section — the page flows from Results directly to Final CTA.**
+
+The same rule applies to the blockquote in the Story section (Section 4) — if no real quote was provided, omit the quote block entirely rather than inserting a fake one.
 
 ### Section 9: Final CTA
 - Jade background, centered

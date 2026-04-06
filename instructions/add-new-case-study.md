@@ -61,21 +61,54 @@ Then read the contents of the case study folder:
 - Any client quotes files
 - Note which image/video assets are available
 
-### Phase 2: Ask Clarifying Questions
+### Phase 2: Inventory Assets & Ask Clarifying Questions
 
-Before building anything, ask the person:
+Before building anything, the agent MUST inventory what's in the folder and report what's present vs missing. Then ask about every gap.
 
-1. **"What category/business type should be labelled for this case study?"**
-   Provide the standard category options: eCommerce, Beauty & Wellness, Health & Fitness, Retail, Fashion & Accessories, Technology, Home & Living, Pet Care, Food & Beverage, Automotive, or suggest "Other" if none fit.
+**Step 1: Report the asset inventory**
 
-2. **Ask about any missing required items:**
-   - If no thumbnail image exists, ask for one or ask permission to use a video screenshot
-   - If no client quote exists, confirm whether to use `[CLIENT QUOTE NEEDED]` placeholder
-   - If the case study outline is missing key details (the problem, the solution steps, the results), ask for them specifically
-   - If locale is not clear from the outline, ask for city/state/country
+List what was found in the case study folder and flag what's missing:
 
-3. **Confirm the headline approach:**
-   Draft the proposed headline (following the SOP rules: concrete number + locale + company type) and present it for approval before proceeding.
+| Asset | Status |
+|-------|--------|
+| Case study outline (.docx) | ✅ Found / ❌ Missing |
+| Case study video embed code (.txt or .html) | ✅ Found / ❌ Missing |
+| Testimonial video from client | ✅ Found / ❌ Missing |
+| Transcripts (files with "transcript" in name) | ✅ Found / ❌ Missing |
+| Client quotes file | ✅ Found / ❌ Missing |
+| Thumbnail image | ✅ Found / ❌ Missing |
+| Client headshot | ✅ Found / ❌ Missing |
+| Client logo | ✅ Found / ❌ Missing |
+| Location/action photo | ✅ Found / ❌ Missing |
+| Graphics/screenshots | ✅ Found / ❌ Missing |
+
+Present this table to the person so they can see what's there and what's not.
+
+**Step 2: Ask about every missing asset**
+
+For each missing item, ask specifically:
+- **No thumbnail?** → "Do you have a thumbnail image, or should I use a screenshot from the case study video?"
+- **No client headshot?** → "Do you have a photo of the client contact for the testimonial section, or should we skip that?"
+- **No client logo?** → "Do you have the client's logo for attribution, or should we use text-only attribution?"
+- **No location/action photo?** → "Do you have a photo of the client's location or an action shot representing their business? This would be used in the story section."
+- **No case study video embed code?** → "Do you have a video embed code (YouTube/Vimeo) for the case study video, or should we skip the video embed?"
+- **No testimonial video?** → "Is there a client testimonial video, or just the case study video?"
+- **No client quotes?** → "Do you have any real client quotes? If not, the testimonial/quote sections will be omitted from the page (not faked)."
+- **No graphics/screenshots?** → "Do you have any hand-made graphics, account screenshots, or before/after visuals? These add visual interest to the page."
+
+**Step 3: Hero background image decision**
+
+If no custom hero background image was provided (location photo or action shot):
+- Ask: "There's no custom hero background image. Should I use the case study video thumbnail as the hero background, or do you have an industry-specific image you'd like to use?"
+
+**Step 4: Ask the category question**
+
+"What product category should this case study be tagged with?"
+Provide examples from the standard list (Automotive, Beauty & Personal Care, Health & Fitness, etc.) and reference `instructions/case-study-listing-cards.md` for the full category rules.
+
+**Step 5: Confirm the headline**
+
+Draft the proposed headline following the SOP rules (concrete number + locale + company type) and present it for approval before proceeding.
 
 Do NOT proceed to building until all questions are answered.
 
