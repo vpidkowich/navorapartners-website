@@ -73,11 +73,17 @@ The headline is the most important element. It follows the same rules as the hom
 
 ### Category Tag
 
-A short industry/vertical label displayed as an orange pill above the title.
+A short industry/vertical label displayed as a pastel-colored pill above the title. Colors are auto-generated from the tag text — each unique industry gets a consistent pastel shade.
 
-**Standard categories:** eCommerce, Beauty & Wellness, Health & Fitness, Retail, Fashion & Accessories, Technology, Home & Living, Pet Care, Food & Beverage, Automotive
+**CRITICAL: Never use generic categories like "eCommerce" or "Retail."** These are too broad and don't help the reader self-select. The tag must name the specific niche or vertical.
 
-Pick the most specific category that applies. Use `&amp;` for ampersands in HTML.
+**Good examples:** Automotive, Beauty & Skincare, Fitness & Recovery, Toys & Hobbies, Jewelry, Air Quality, Medical Devices, Outdoor & RV, Pet Nutrition, Home Décor, Supplements, Activewear
+
+**Bad examples:** eCommerce, Retail, Health & Wellness, Fashion & Accessories, Technology
+
+The category should be drawn from the case study outline itself — what does this brand actually sell? Name that specific thing.
+
+Use `&amp;` for ampersands in HTML.
 
 ### Description (1-2 sentences)
 
