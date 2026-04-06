@@ -39,6 +39,45 @@
 }
 
 
+/* ── Filter Controls ────────────────────────────────────────────── */
+
+.cs-filters {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-xl);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.cs-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: all var(--ease-default);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cs-filter-btn:hover {
+  border-color: var(--color-jade);
+  color: var(--color-jade);
+}
+
+.cs-filter-btn.active {
+  background: var(--color-jade);
+  border-color: var(--color-jade);
+  color: #fff;
+}
+
+
 /* ── Grid Section ────────────────────────────────────────────────── */
 
 .cs-grid-section {
@@ -52,7 +91,7 @@
   padding: 0 var(--space-xl);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+  gap: var(--space-xl);
 }
 
 
@@ -65,12 +104,15 @@
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow var(--ease-default), transform var(--ease-default);
+  border: 1.5px solid transparent;
+  transition: border-color var(--ease-interactive), transform var(--ease-interactive);
 }
 
-.cs-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .cs-card:hover {
+    border-color: var(--color-text-muted);
+    transform: translateY(-4px);
+  }
 }
 
 
@@ -87,11 +129,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform var(--ease-content);
-}
-
-.cs-card:hover .cs-card-image img {
-  transform: scale(1.04);
 }
 
 
@@ -105,22 +142,22 @@
 }
 
 
-/* ── Category Tag ────────────────────────────────────────────────── */
+/* ── Category Tag (pastel colors per industry) ───────────────────── */
 
 .cs-card-tag {
   display: inline-block;
   align-self: flex-start;
-  background: var(--color-orange);
-  color: #ffffff;
-  font-family: var(--font-label);
-  font-size: var(--text-2xs);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
   font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-md);
   margin-bottom: var(--space-sm);
 }
+
+/* Tag colors are auto-generated via JS from the tag text.
+   Each unique industry gets a consistent pastel background
+   and dark foreground, similar to the Buffer-style bio badges. */
 
 
 /* ── Card Title ──────────────────────────────────────────────────── */
@@ -128,10 +165,10 @@
 .cs-card-title {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: var(--text-3xl);
-  line-height: var(--leading-snug);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-xs) 0;
+  font-size: var(--text-2xl);
+  line-height: var(--leading-relaxed);
+  color: var(--color-jade);
+  margin: 0 0 var(--space-sm) 0;
 }
 
 
@@ -139,11 +176,11 @@
 
 .cs-card-desc {
   font-family: var(--font-body);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: var(--weight-regular);
-  line-height: var(--leading-relaxed);
+  line-height: var(--leading-loose);
   color: var(--color-text-secondary);
-  margin: 0 0 var(--space-sm) 0;
+  margin: 0 0 var(--space-md) 0;
 }
 
 
@@ -169,7 +206,7 @@
 .cs-card-metric {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .cs-card-metric-label {
@@ -185,9 +222,9 @@
 .cs-card-metric-value {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: var(--text-lg);
+  font-size: var(--text-4xl);
   line-height: var(--leading-tight);
-  color: var(--color-jade);
+  color: #22C55E;
 }
 
 
@@ -196,6 +233,13 @@
 .cs-card .read-more {
   color: var(--color-jade);
   margin-top: auto;
+}
+
+
+/* ── Card hidden by filter ──────────────────────────────────────── */
+
+.cs-card.hidden {
+  display: none;
 }
 
 
@@ -227,6 +271,10 @@
   .cs-grid-section {
     padding: var(--space-3xl) 0 var(--space-4xl);
   }
+
+  .cs-filters {
+    padding: 0 var(--space-lg) var(--space-lg);
+  }
 }
 
 
@@ -252,11 +300,19 @@
   .cs-grid {
     grid-template-columns: 1fr;
     padding: 0 var(--space-md);
-    gap: var(--space-md);
+    gap: var(--space-lg);
   }
 
   .cs-grid-section {
     padding: var(--space-2xl) 0 var(--space-3xl);
+  }
+
+  .cs-filters {
+    padding: 0 var(--space-md) var(--space-md);
+  }
+
+  .cs-card-metric-value {
+    font-size: var(--text-3xl);
   }
 }
 
@@ -277,10 +333,14 @@
   }
 
   .cs-card-title {
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
   }
 
   .cs-card-image {
     height: 200px;
+  }
+
+  .cs-card-metric-value {
+    font-size: var(--text-2xl);
   }
 }

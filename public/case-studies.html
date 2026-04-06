@@ -63,10 +63,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ========== CASE STUDIES GRID ========== -->
 <section class="cs-grid-section">
+  <div class="cs-filters">
+    <button class="cs-filter-btn active" data-filter="all">All</button>
+    <button class="cs-filter-btn" data-filter="ecommerce">eCommerce</button>
+    <button class="cs-filter-btn" data-filter="beauty">Beauty &amp; Wellness</button>
+    <button class="cs-filter-btn" data-filter="health-fitness">Health &amp; Fitness</button>
+    <button class="cs-filter-btn" data-filter="retail">Retail</button>
+    <button class="cs-filter-btn" data-filter="fashion">Fashion &amp; Accessories</button>
+  </div>
   <div class="cs-grid">
 
     <!-- Card 1: Auto Parts -->
-    <a href="case-studies/auto-parts-revenue/" class="cs-card">
+    <a href="case-studies/auto-parts-revenue/" class="cs-card" data-category="ecommerce">
       <div class="cs-card-image">
         <img src="case-studies/auto-parts-revenue/thumbnail.webp" alt="Auto Parts case study" loading="lazy" decoding="async">
       </div>
@@ -90,7 +98,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <!-- Card 2: High-Ticket Fitness Brand -->
-    <a href="case-studies/fitness-brand/" class="cs-card">
+    <a href="case-studies/fitness-brand/" class="cs-card" data-category="health-fitness">
       <div class="cs-card-image">
         <img src="case-studies/fitness-brand/thumbnail%202.webp" alt="High-ticket fitness brand case study" loading="lazy" decoding="async">
       </div>
@@ -114,7 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <!-- Card 4: Tallow Skincare -->
-    <a href="case-studies/tallow-skincare/" class="cs-card">
+    <a href="case-studies/tallow-skincare/" class="cs-card" data-category="beauty">
       <div class="cs-card-image">
         <img src="case-studies/tallow-skincare/thumbnail%204.webp" alt="Tallow skincare case study" loading="lazy" decoding="async">
       </div>
@@ -138,7 +146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <!-- Card 5: Puzzle Retailer -->
-    <a href="case-studies/puzzle-retailer/" class="cs-card">
+    <a href="case-studies/puzzle-retailer/" class="cs-card" data-category="retail">
       <div class="cs-card-image">
         <img src="case-studies/puzzle-retailer/thumbnail%201.webp" alt="Puzzle retailer case study" loading="lazy" decoding="async">
       </div>
@@ -162,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <!-- Card 6: Handmade Jewelry -->
-    <a href="case-studies/handmade-jewelry/" class="cs-card">
+    <a href="case-studies/handmade-jewelry/" class="cs-card" data-category="fashion">
       <div class="cs-card-image">
         <img src="case-studies/handmade-jewelry/thumbnail%201.webp" alt="Handmade jewelry brand case study" loading="lazy" decoding="async">
       </div>
@@ -186,7 +194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <!-- Card 7: Australian Air Purifier -->
-    <a href="case-studies/australian-air-purifier/" class="cs-card">
+    <a href="case-studies/australian-air-purifier/" class="cs-card" data-category="ecommerce">
       <div class="cs-card-image">
         <img src="case-studies/australian-air-purifier/thumbnail%201.webp" alt="Australian air purifier brand case study" loading="lazy" decoding="async">
       </div>
@@ -210,7 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <!-- Card 8: Neurofeedback Device -->
-    <a href="case-studies/neurofeedback-device/" class="cs-card">
+    <a href="case-studies/neurofeedback-device/" class="cs-card" data-category="health-fitness">
       <div class="cs-card-image">
         <img src="case-studies/neurofeedback-device/thumbnail%201.webp" alt="Neurofeedback device brand case study" loading="lazy" decoding="async">
       </div>
@@ -234,7 +242,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <!-- Card 9: DTC RV Mattress -->
-    <a href="case-studies/rv-mattress-brand/" class="cs-card">
+    <a href="case-studies/rv-mattress-brand/" class="cs-card" data-category="ecommerce">
       <div class="cs-card-image">
         <img src="case-studies/rv-mattress-brand/thumbnail%203.webp" alt="DTC RV mattress brand case study" loading="lazy" decoding="async">
       </div>
@@ -336,5 +344,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
+
+<script>
+// Auto-generate pastel tag colors from tag text
+(function() {
+  function hashStr(str) {
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return hash;
+  }
+  var colorMap = {};
+  document.querySelectorAll('.cs-card-tag').forEach(function(tag) {
+    var text = tag.textContent.trim();
+    if (!colorMap[text]) {
+      var h = ((hashStr(text) % 360) + 360) % 360;
+      colorMap[text] = {
+        bg: 'hsl(' + h + ', 60%, 90%)',
+        fg: 'hsl(' + h + ', 50%, 30%)'
+      };
+    }
+    tag.style.background = colorMap[text].bg;
+    tag.style.color = colorMap[text].fg;
+  });
+})();
+</script>
+
+<script>
+// Case study filter
+(function() {
+  var btns = document.querySelectorAll('.cs-filter-btn');
+  var cards = document.querySelectorAll('.cs-card');
+  if (!btns.length || !cards.length) return;
+
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var filter = this.getAttribute('data-filter');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      cards.forEach(function(card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
