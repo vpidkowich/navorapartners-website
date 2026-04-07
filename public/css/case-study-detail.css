@@ -669,6 +669,16 @@
   color: var(--color-text-white);
 }
 
+.cs-final-cta .btn-gold {
+  border-color: var(--color-gold);
+}
+
+@media (hover: hover) {
+  .cs-final-cta .btn-gold:hover {
+    border-color: var(--color-gold);
+  }
+}
+
 .cs-final-cta__subtitle {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
