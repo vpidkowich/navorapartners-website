@@ -246,10 +246,10 @@
 
 .cs-stat-card__desc {
   font-family: var(--font-body);
-  font-weight: var(--weight-light);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  color: #5a6b65;
+  font-weight: var(--weight-regular);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
 }
 
 
