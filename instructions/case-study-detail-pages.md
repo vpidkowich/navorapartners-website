@@ -132,7 +132,7 @@ This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the
 - HTML structure: `<div class="cs-story__video"><iframe>...</iframe></div>`
 
 ### Section 5: Challenges
-- Icon (warning triangle SVG)
+- **Icon: Warning triangle** — `<svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22H22L12 2Z" stroke="#0b1c2e" stroke-width="2" stroke-linejoin="round"/><path d="M12 10V14M12 17V18" stroke="#0b1c2e" stroke-width="2" stroke-linecap="round"/></svg>`
 - Heading: "Challenges"
 - Subheading: A short phrase naming the core challenge (e.g., "Inventory Trapped in a Single Campaign")
 - **1 intro paragraph** summarizing the situation (2-3 sentences)
@@ -152,7 +152,7 @@ This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the
 - Font style must match homepage Growth Strategy paragraph: 22px, regular weight, line-height 1.5, `--color-text-secondary`
 
 ### Section 6: Solution
-- Gold circle icon (lightbulb SVG)
+- **Icon: Lightbulb** — `<svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 2 4.5 5.5 4.5 9.5C4.5 13.5 8 16 9.5 18H14.5C16 16 19.5 13.5 19.5 9.5C19.5 5.5 16 2 12 2Z" stroke="#0b1c2e" stroke-width="2" stroke-linejoin="round"/><path d="M9 21H15M10 24H14" stroke="#0b1c2e" stroke-width="2" stroke-linecap="round"/></svg>`
 - Heading: "Solution"
 - Subheading: A short phrase naming the strategic approach (e.g., "A Full-Funnel Restructuring")
 - 4 numbered steps, each with a bold title and 1-2 sentence description
@@ -165,7 +165,7 @@ This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the
 - If you don't know the specific approach, use [DETAIL NEEDED] placeholder
 
 ### Section 7: Results
-- Gold circle icon (trophy SVG)
+- **Icon: Bar chart** — `<svg viewBox="0 0 24 24" fill="none"><path d="M4 20V12M10 20V6M16 20V10M22 20V4" stroke="#0b1c2e" stroke-width="2.5" stroke-linecap="round"/></svg>`
 - Heading: "Results"
 - Subheading: A short confidence phrase (e.g., "Scaling with Confidence")
 - 1-2 summary paragraphs
