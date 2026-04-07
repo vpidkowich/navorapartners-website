@@ -10,7 +10,7 @@
 .cs-hero {
   position: relative;
   background: var(--color-dark-navy);
-  padding: var(--space-3xl) var(--space-5xl) var(--space-3xl);
+  padding: var(--space-4xl) var(--space-5xl) var(--space-4xl);
   overflow: hidden;
   text-align: center;
 }
