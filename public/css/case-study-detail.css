@@ -155,7 +155,7 @@
 /* ── Key Stats Section ───────────────────────────────────────────── */
 
 .cs-stats {
-  background: var(--color-cream);
+  background: #F3E5AB;
   padding: var(--space-4xl) var(--space-5xl);
 }
 
@@ -256,7 +256,7 @@
 /* ── Story Section ───────────────────────────────────────────────── */
 
 .cs-story {
-  background: var(--color-cream);
+  background: #F3E5AB;
   padding: var(--space-xl) var(--space-5xl) var(--space-4xl);
 }
 
@@ -388,7 +388,7 @@
 /* ── Content Sections (Challenges / Solution / Results) ──────────── */
 
 .cs-section {
-  background: var(--color-cream);
+  background: #F3E5AB;
   padding: var(--space-3xl) var(--space-5xl);
 }
 
@@ -620,7 +620,7 @@
 }
 
 .cs-testimonial__inner {
-  max-width: var(--container-base);
+  max-width: 720px;
   margin: 0 auto;
   display: flex;
   gap: var(--space-xl);
@@ -644,8 +644,8 @@
 .cs-testimonial__quote {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: var(--text-3xl);
-  line-height: var(--leading-normal);
+  font-size: var(--text-6xl);
+  line-height: var(--leading-tight);
   color: var(--color-dark-navy);
   margin-bottom: var(--space-sm);
 }
