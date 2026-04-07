@@ -81,15 +81,16 @@ The download bar has been removed from the template. Do NOT include it on any ca
 - Values should be punchy: "435%", "$1.5M/mo", "90 Days"
 - Descriptions should be one line, plain language
 
-**Navora case study video embed (CONDITIONAL — placed below the stat cards):**
-- This is the Navora-produced internal case study video (NOT the client testimonial)
-- If a case study video embed code was provided (YouTube/Vimeo), embed it at the bottom of this section, after the stat cards
+**Client testimonial video embed (CONDITIONAL — placed below the stat cards):**
+- This is a video of the CLIENT speaking about their experience (NOT the Navora-produced case study video)
+- If a testimonial video embed code was provided (YouTube/Vimeo), embed it at the bottom of this section, after the stat cards
 - Uses a responsive 16:9 container, max-width 680px, centered, with shadow and border-radius
 - Double spacing above the video (--space-3xl) for breathing room between stats and video
-- HTML structure: `<div class="cs-stats__video"><iframe src="[EMBED_URL]" title="[Title]" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0&modestbranding=1` to prevent related videos and minimize YouTube branding**
+- HTML structure: `<div class="cs-stats__video"><iframe src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0&modestbranding=1" title="Client Testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
 - If no embed code was provided, skip this entirely
 
-Note: The client testimonial video (if available) goes in the "FROM CHALLENGES TO SUCCESS" section, NOT here.
+Note: The Navora-produced case study video (if available) goes in the "FROM CHALLENGES TO SUCCESS" section, NOT here.
 
 ### Section 4: The Story
 - Cream background
@@ -135,13 +136,14 @@ This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the
 - If a real client quote is provided, use it exactly as given with proper attribution
 - If NO real client quote was provided, OMIT the entire quote block from this section. Do NOT fabricate quotes or use placeholders.
 
-**Client testimonial video embed (CONDITIONAL):**
-- This is a video of the CLIENT speaking about their experience (not the Navora-produced case study video)
-- If a testimonial video embed code was provided, embed it here using `<div class="cs-story__video"><iframe>...</iframe></div>`
-- Placed after the overview paragraph, before the optional quote block
-- If no testimonial video was provided, skip this entirely
+**Navora case study video embed (CONDITIONAL):**
+- This is the Navora-produced internal case study video (NOT the client testimonial)
+- If a case study video embed code was provided, embed it here after the overview paragraph, before the optional quote block
+- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0&modestbranding=1` to prevent related videos and minimize YouTube branding**
+- HTML structure: `<div class="cs-story__video"><iframe src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0&modestbranding=1" title="Case Study Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+- If no embed code was provided, skip this entirely
 
-Note: The Navora-produced case study video goes in the Key Stats section (see above), NOT here.
+Note: The client testimonial video (if available) goes in the Key Stats section (see above), NOT here.
 
 ### Section 5: Challenges
 - **Icon: Warning triangle** — `<svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22H22L12 2Z" stroke="#0b1c2e" stroke-width="2" stroke-linejoin="round"/><path d="M12 10V14M12 17V18" stroke="#0b1c2e" stroke-width="2" stroke-linecap="round"/></svg>`

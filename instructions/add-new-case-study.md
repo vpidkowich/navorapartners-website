@@ -19,8 +19,8 @@ Add the following files to that folder:
 | File | Required? | Notes |
 |------|-----------|-------|
 | Case study outline | **Required** | Google Doc (.docx) or Word doc with the full case study details |
-| Navora case study video embed code | Preferred | Embed code for the Navora-produced internal case study video. Placed in Key Stats section. |
-| Client testimonial video embed code | Optional | Embed code for the client speaking about their experience. Placed in FROM CHALLENGES TO SUCCESS section. |
+| Client testimonial video embed code | Optional | Embed code for the client speaking about their experience. Placed in Key Stats section. |
+| Navora case study video embed code | Preferred | Embed code for the Navora-produced internal case study video. Placed in FROM CHALLENGES TO SUCCESS section. |
 | Transcripts | Preferred | Files with "transcript" in the name — from case study video and/or testimonial |
 | Client quotes file | Preferred | Select quotes from client contacts, with names/titles |
 | Thumbnail image | **Required** | The card image for the listing page. Prefer .webp format |
@@ -95,8 +95,8 @@ Specific questions per item:
 - **No client headshot?** → "Did you mean to skip the client headshot, or did you forget? If skipped, the quote block won't have a photo."
 - **No client logo?** → "Did you mean to skip the client logo, or did you forget? If skipped, attribution will be text-only."
 - **No location/action photo?** → "Did you mean to skip the location/action photo, or did you forget? This would be used in the story section alongside the quote."
-- **No Navora case study video embed code?** → "Did you mean to skip the Navora case study video, or did you forget to add the embed code? If skipped, the video in the Key Stats section will be omitted."
-- **No client testimonial video embed code?** → "Did you mean to skip the client testimonial video, or did you forget? If skipped, the testimonial video in the FROM CHALLENGES TO SUCCESS section will be omitted."
+- **No client testimonial video embed code?** → "Did you mean to skip the client testimonial video, or did you forget? If skipped, the testimonial video in the Key Stats section will be omitted."
+- **No Navora case study video embed code?** → "Did you mean to skip the Navora case study video, or did you forget to add the embed code? If skipped, the video in the FROM CHALLENGES TO SUCCESS section will be omitted."
 - **No client quotes?** → "Did you mean to skip client quotes, or did you forget? If skipped, the quote block and testimonial section will be omitted entirely (not faked)."
 - **No graphics/screenshots?** → "Did you mean to skip graphics/screenshots, or did you forget? These add visual interest to the page."
 
