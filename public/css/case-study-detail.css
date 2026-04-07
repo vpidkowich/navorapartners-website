@@ -472,6 +472,11 @@
   padding: 0;
   margin: var(--space-lg) 0 0;
   margin-left: calc(52px + var(--space-md));
+}
+
+/* When bullets are inside .cs-section__body, the parent already has the left margin */
+.cs-section__body .cs-bullets {
+  margin-left: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -544,9 +549,9 @@
 .cs-step__title {
   font-family: var(--font-body);
   font-weight: var(--weight-semibold);
-  font-size: var(--text-lg);
-  color: var(--color-dark-navy);
-  margin-bottom: 4px;
+  font-size: var(--text-2xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
 }
 
 .cs-step__desc {

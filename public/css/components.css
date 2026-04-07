@@ -503,13 +503,14 @@ ul { list-style: none; }
 }
 
 .story-card-body .story-bullets li::before {
-  content: '\2022';
+  content: '';
   position: absolute;
   left: 0;
-  top: 0;
-  color: var(--color-jade);
-  font-size: var(--text-sm);
-  line-height: inherit;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-jade);
 }
 
 .story-card-body .read-more {
