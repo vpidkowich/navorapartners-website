@@ -22,6 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/careers.css">
+<script async src="https://tally.so/widgets/embed.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -461,5 +462,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+
+<!-- Tally Form Lightbox -->
+<div class="tally-lightbox" id="tallyLightbox">
+  <div class="tally-lightbox__card">
+    <button class="tally-lightbox__close" id="tallyClose">&times;</button>
+    <iframe data-tally-src="https://tally.so/embed/PdlN75?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Growth Strategy Request"></iframe>
+  </div>
+</div>
+
+<script>
+// Tally form lightbox
+(function() {
+  var lb = document.getElementById("tallyLightbox");
+  var closeBtn = document.getElementById("tallyClose");
+  if (!lb) return;
+
+  function openTally(e) {
+    e.preventDefault();
+    lb.classList.add("active");
+    document.body.style.overflow = "hidden";
+    if (typeof Tally !== "undefined") Tally.loadEmbeds();
+  }
+
+  function closeTally() {
+    lb.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  // Wire all growth strategy buttons
+  document.querySelectorAll("a, button").forEach(function(el) {
+    var text = el.textContent.toLowerCase();
+    if (text.indexOf("growth strategy") > -1 && !el.classList.contains("tally-lightbox__close")) {
+      el.addEventListener("click", openTally);
+    }
+  });
+
+  closeBtn.addEventListener("click", closeTally);
+  lb.addEventListener("click", function(e) { if (e.target === lb) closeTally(); });
+  document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeTally(); });
+})();
+</script>
 </body>
 </html>
