@@ -432,6 +432,7 @@
   font-size: var(--text-2xl);
   line-height: var(--leading-loose);
   color: var(--color-text-secondary);
+  margin-left: calc(52px + var(--space-md));
 }
 
 .cs-section__body p {
@@ -449,6 +450,7 @@
   list-style: none;
   padding: 0;
   margin: var(--space-lg) 0 0;
+  margin-left: calc(52px + var(--space-md));
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -488,6 +490,7 @@
   flex-direction: column;
   gap: var(--space-lg);
   margin-top: var(--space-lg);
+  margin-left: calc(52px + var(--space-md));
 }
 
 .cs-step {
@@ -797,6 +800,12 @@
   .cs-section__header {
     flex-direction: column;
     gap: var(--space-sm);
+  }
+
+  .cs-section__body,
+  .cs-bullets,
+  .cs-steps {
+    margin-left: 0;
   }
 
   /* Testimonial */
