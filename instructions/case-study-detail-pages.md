@@ -33,7 +33,7 @@ Before building a detail page, the following must be provided. If any item is mi
 
 ## Part 2: Page Structure (Section by Section)
 
-Every detail page follows this exact section order. The HTML template is at `public/case-studies/template.html`. The shared CSS is `public/css/case-study-detail.css`.
+Every detail page follows this exact section order. The HTML template is at `public/case-studies/_template/index.html`. The shared CSS is `public/css/case-study-detail.css`.
 
 ### Section 1: Hero
 - **Background:** Thumbnail image with dark overlay (`rgba(11,28,46,0.85)`)
@@ -335,6 +335,6 @@ Before committing a new case study detail page:
 - **Brand voice:** `references/Brand Essence - Our Identity.docx`
 - **Narrative framework:** `references/Promised Land and Cautionary Tale.docx`
 - **Reference case studies (tone examples):** `references/case-studies/*.docx`
-- **HTML template:** `public/case-studies/template.html` — the master template for all case study detail pages
+- **HTML template:** `public/case-studies/_template/index.html` — the master template for all case study detail pages
 - **Shared CSS:** `public/css/case-study-detail.css`
 - **Source data for existing cards:** `public/case-studies/Case Study Copy.txt`
