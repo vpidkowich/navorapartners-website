@@ -484,6 +484,7 @@
   font-weight: var(--weight-regular);
   font-size: var(--text-2xl);
   line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
   color: #5a6b65;
 }
 
@@ -499,7 +500,7 @@
 }
 
 .cs-bullets li strong {
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
 }
 

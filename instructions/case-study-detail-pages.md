@@ -161,7 +161,10 @@ Note: The Navora-produced case study video goes in the Key Stats section (see ab
 - Use operational language the ICP recognizes
 - Be specific: "PMax was cannibalizing 40% of branded search budget" not "ads weren't performing"
 - Every bullet should make the reader nod and think "we have that problem too"
-- Font style must match homepage Growth Strategy paragraph: 22px, regular weight, line-height 1.5, `--color-text-secondary`
+- Font style must match homepage Growth Strategy paragraph: 22px, regular weight (400), line-height 1.5, `--color-text-secondary`
+- The **bold label** uses semibold weight (600) with `--color-text-primary` for differentiation
+- The **trailing description text** uses regular weight (400) with `--color-text-secondary` (same as body copy)
+- The bold must be noticeably heavier than the description but not jarring
 
 ### Section 6: Solution
 - **Icon: Lightbulb** — `<svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 2 4.5 5.5 4.5 9.5C4.5 13.5 8 16 9.5 18H14.5C16 16 19.5 13.5 19.5 9.5C19.5 5.5 16 2 12 2Z" stroke="#0b1c2e" stroke-width="2" stroke-linejoin="round"/><path d="M9 21H15M10 24H14" stroke="#0b1c2e" stroke-width="2" stroke-linecap="round"/></svg>`
