@@ -43,21 +43,24 @@ Every detail page follows this exact section order. The HTML template is at `pub
 
 **Headline rules:**
 - MUST contain locale (state, country, or region)
-- MUST contain a concrete number
+- MUST contain a concrete number (percentage, dollar figure, or multiplier)
 - MUST contain a company type descriptor
-- Gold-highlighted text should be the most impressive number or transformation
-- Maximum ~12 words
-- Write naturally — like a news headline, not a formula. Use active language: "goes from," "scales to," "cuts," "triples" rather than stiff phrasing like "Revenue from X to Y"
-- Study the reference case studies in `references/case-studies/` for headline tone
+- Start with "How a [Locale] [Brand Type]..." — this is the standard pattern
+- Use an active past-tense verb: "Scaled," "Cut," "Tripled," "Grew," "Reversed"
+- Gold-highlight (`<span class="highlight">`) the key numbers — multiple highlights are encouraged for visual impact
+- Maximum ~15 words
+
+**Standard formula:** `How a [Locale] [Brand Type] [Action Verb] [Primary Metric] from [Before] to [After]`
 
 **Good examples:**
-- "California Auto Parts Brand Goes from $280K to $1.5M/Month"
-- "Alabama Skincare Brand Scales from $100K to $600K/Month"
-- "How a Nevada Puzzle Retailer Cut Acquisition Cost from $40 to $15"
+- "How a California Auto Parts Brand Scaled Revenue <highlight>435%</highlight> from <highlight>$280K</highlight> to <highlight>$1.5M/Month</highlight>"
+- "How an Alabama Skincare Brand Scaled from <highlight>$100K</highlight> to <highlight>$600K/Month</highlight>"
+- "How a Nevada Puzzle Retailer Cut Acquisition Cost from <highlight>$40</highlight> to <highlight>$15</highlight>"
+- "How an Australian Air Purifier Brand Reversed Decline to <highlight>20% YoY Growth</highlight>"
 
-**Bad examples (too stiff/formulaic):**
-- "California Auto Parts Revenue from $280K to $1.5M/Month" — sounds like a spreadsheet
-- "How a California Auto Parts Retailer Scaled Revenue 435% from $280K to $1.5M/Month" — too long, too many numbers
+**Bad examples:**
+- "California Auto Parts Revenue from $280K to $1.5M/Month" — no verb, sounds like a spreadsheet
+- "California Auto Parts Brand Goes from $280K to $1.5M/Month" — "goes" is too casual, no percentage
 
 ### Section 2: Download Bar — REMOVED
 The download bar has been removed from the template. Do NOT include it on any case study page.
@@ -129,16 +132,24 @@ This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the
 - HTML structure: `<div class="cs-story__video"><iframe>...</iframe></div>`
 
 ### Section 5: Challenges
-- Gold circle icon (target/crosshair SVG)
+- Icon (warning triangle SVG)
 - Heading: "Challenges"
 - Subheading: A short phrase naming the core challenge (e.g., "Inventory Trapped in a Single Campaign")
-- 3-4 bullet points, each describing one specific challenge
+- **1 intro paragraph** summarizing the situation (2-3 sentences)
+- **3-4 bullet points**, each with a **bold label** followed by a description
+
+**Intro paragraph rules:**
+- Sets the stage for the bullets. States the overarching problem in one breath.
+- Example: "The brand was running their entire product catalog through a single shopping campaign with no segmentation. This created a cascade of problems that compounded over time, making it nearly impossible to scale efficiently."
+- 2-3 sentences max. Don't repeat bullet content — set the context for it.
 
 **Bullet rules:**
-- Each bullet is 1-2 sentences max
+- Each bullet starts with a **bold 2-3 word label** followed by a colon, then 1-2 sentences of explanation
+- Example: "**No campaign structure:** Thousands of SKUs competing for the same budget with no priority tiers, product grouping, or performance-based segmentation."
 - Use operational language the ICP recognizes
 - Be specific: "PMax was cannibalizing 40% of branded search budget" not "ads weren't performing"
 - Every bullet should make the reader nod and think "we have that problem too"
+- Font style must match homepage Growth Strategy paragraph: 22px, regular weight, line-height 1.5, `--color-text-secondary`
 
 ### Section 6: Solution
 - Gold circle icon (lightbulb SVG)
@@ -234,7 +245,18 @@ Before committing a new case study detail page:
 - **Confident but not arrogant.** We state results factually. We don't say "we crushed it."
 - **Specific over general.** "nCAC dropped from $40 to $15 in 90 days" beats "we significantly reduced costs."
 - **Empathetic to the ICP.** We describe problems using the language our audience uses in their own heads.
-- **Systems-thinking.** We frame solutions as interconnected — not "we ran better ads" but "we rebuilt the measurement system, restructured the campaigns, and aligned spend to the P&L."
+- **Systems-thinking.** We frame solutions as interconnected. Not "we ran better ads" but "we rebuilt the measurement system, restructured the campaigns, and aligned spend to the P&L."
+
+### Punctuation rules
+- **Em dashes (—) must be used sparingly.** Maximum 5-10% of sentences. When tempted to use an em dash, use a comma, period, or "and" instead. Em dashes are a crutch that makes writing feel choppy when overused.
+- **Good:** "We focused resources on the Most Profitable Brands, ensuring these high-margin lines had 100% coverage."
+- **Bad:** "We focused resources on the Most Profitable Brands — ensuring these high-margin lines had 100% coverage."
+- Reserve em dashes for moments of genuine dramatic emphasis, not routine clause separation.
+
+### Quote attribution rules
+- Attribution shows only the person's role (e.g., "Brand Owner", "Operations Manager")
+- Do NOT include the company/brand descriptor below the name. The reader already knows which case study they're reading.
+- If no real name is available, use a role title only.
 
 ### Tone references
 - Read `references/Brand Essence - Our Identity.docx` for brand personality
