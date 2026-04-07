@@ -193,8 +193,8 @@
 .cs-stats__video {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: var(--space-xl) auto 0;
+  max-width: 680px;
+  margin: var(--space-3xl) auto 0;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
@@ -302,7 +302,7 @@
 .cs-story__video {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 680px;
   margin: 0 auto var(--space-2xl);
   padding-bottom: 56.25%;
   height: 0;

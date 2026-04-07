@@ -83,7 +83,9 @@ The download bar has been removed from the template. Do NOT include it on any ca
 
 **Case study video embed (CONDITIONAL — placed below the stat cards):**
 - If a video embed code was provided (YouTube/Vimeo), embed it at the bottom of this section, after the stat cards
-- Uses a responsive 16:9 container with shadow and border-radius
+- Uses a responsive 16:9 container, max-width 680px, centered, with shadow and border-radius
+- Double spacing above the video (--space-3xl) for breathing room between stats and video
+- Must match the same size as the video embed in the "FROM CHALLENGES TO SUCCESS" section
 - HTML structure: `<div class="cs-stats__video"><iframe src="[EMBED_URL]" title="[Title]" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
 - If no embed code was provided, skip this entirely
 
