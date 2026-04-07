@@ -23,7 +23,7 @@ Add the following files to that folder:
 | Navora case study video embed code | Preferred | Embed code for the Navora-produced internal case study video. Placed in FROM CHALLENGES TO SUCCESS section. |
 | Transcripts | Preferred | Files with "transcript" in the name — from case study video and/or testimonial |
 | Client quotes file | Preferred | Select quotes from client contacts, with names/titles |
-| Thumbnail image | **Required** | The card image for the listing page. Prefer .webp format |
+| Thumbnail image | Optional | No longer used on listing page cards. May still be useful as a detail page asset. |
 | Client headshot | Optional | Photo of the client contact for the testimonial section |
 | Client logo | Optional | Logo image for attribution |
 | Location/action photo | Optional | Photo of client location or representing their business/niche |
@@ -76,7 +76,7 @@ List what was found in the case study folder and flag what's missing:
 | Client testimonial video embed code | ✅ Found / ❌ Missing |
 | Transcripts (files with "transcript" in name) | ✅ Found / ❌ Missing |
 | Client quotes file | ✅ Found / ❌ Missing |
-| Thumbnail image | ✅ Found / ❌ Missing |
+| Thumbnail image (optional) | ✅ Found / ❌ Not provided |
 | Client headshot | ✅ Found / ❌ Missing |
 | Client logo | ✅ Found / ❌ Missing |
 | Location/action photo | ✅ Found / ❌ Missing |
@@ -91,7 +91,7 @@ For EACH missing item, ask: **"Did you mean to skip [item], or did you just forg
 Only omit the section from the page if the person confirms they want to skip it. If they forgot, wait for them to provide it before building.
 
 Specific questions per item:
-- **No thumbnail?** → "Did you mean to skip the thumbnail, or did you forget to add it? I can use a screenshot from the case study video if needed."
+- **No thumbnail?** → Thumbnails are no longer required for listing page cards. Only ask if a thumbnail is needed for other purposes (e.g., detail page hero background).
 - **No client headshot?** → "Did you mean to skip the client headshot, or did you forget? If skipped, the quote block won't have a photo."
 - **No client logo?** → "Did you mean to skip the client logo, or did you forget? If skipped, attribution will be text-only."
 - **No location/action photo?** → "Did you mean to skip the location/action photo, or did you forget? This would be used in the story section alongside the quote."
@@ -147,8 +147,8 @@ Add a card to `public/case-studies.html` inside the `.cs-grid` div, following th
 
 Key requirements:
 - Card links to `case-studies/[slug]/`
-- Thumbnail path points to `case-studies/[slug]/thumbnail.webp`
-- Headline follows the SOP rules (number + locale + company type)
+- No thumbnail image on listing cards (thumbnails have been removed)
+- Headline follows the SOP rules (number + company type; locale is NOT required on listing cards)
 - Description is 1-2 sentences max
 - Two complementary metrics
 - Card placement follows the sequencing rules (not adjacent to same story type)
@@ -176,7 +176,6 @@ Before committing:
 
 - [ ] Detail page loads correctly (check all image paths)
 - [ ] Listing page card links to the detail page
-- [ ] Listing page card thumbnail loads
 - [ ] GTM snippet present on detail page (head + body)
 - [ ] No `[PLACEHOLDER]`, `[DETAIL NEEDED]`, or `[CLIENT QUOTE NEEDED]` markers remain (unless explicitly approved)
 - [ ] All CSS references use design system tokens

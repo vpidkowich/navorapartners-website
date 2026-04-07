@@ -13,10 +13,7 @@ The audience is direct-to-consumer ecommerce founders and operators, typically r
 Each card is an `<a>` tag wrapping the entire card (the whole card is clickable). The structure:
 
 ```html
-<a href="case-studies/[slug]/" class="cs-card">
-  <div class="cs-card-image">
-    <img src="case-studies/[slug]/thumbnail.webp" alt="[descriptive alt]" loading="lazy" decoding="async">
-  </div>
+<a href="case-studies/[slug]/" class="cs-card" data-category="[filter-slug]">
   <div class="cs-card-body">
     <span class="cs-card-tag">[Category]</span>
     <h3 class="cs-card-title">[Headline]</h3>
@@ -40,11 +37,8 @@ Each card is an `<a>` tag wrapping the entire card (the whole card is clickable)
 ### CSS file
 Cards are styled by `public/css/case-studies.css`. Do not add inline styles.
 
-### Thumbnail image
-- Must be `.webp` format for performance
-- Stored in the case study's own folder: `public/case-studies/[slug]/thumbnail.webp`
-- 256px display height, full card width, `object-fit: cover`
-- URL-encode any spaces in filenames with `%20`
+### Thumbnail images — REMOVED
+Thumbnail images have been removed from listing page cards. Cards are text-only (tag, headline, description, metrics, read more). Do NOT include a `cs-card-image` div.
 
 ---
 
@@ -54,22 +48,22 @@ Cards are styled by `public/css/case-studies.css`. Do not add inline styles.
 
 The headline is the most important element. It follows the same rules as the homepage success story cards (see `instructions/success-story-cards.md`):
 
-**Formula:** `[Most Significant Result] + [Locale] + [Company Type Differentiator]`
-
-**Critical rule: Every headline MUST include locale.** This is a differentiator from most agency case studies. Locale builds trust, signals "this works in my market," and aids SEO.
-
-**Examples:**
-- "Auto Parts Revenue from $280K to $1.5M/Month" → should be "California Auto Parts Revenue from $280K to $1.5M/Month"
-- "$98 nCAC Drop for an Australian Air Purifier Brand" ✓ (locale is built in)
-- "170% Revenue Growth for an Illinois High-Ticket Fitness Brand" ✓
+**Formula:** `[Most Significant Result] + [Company Type Differentiator]`
 
 **Headline principles:**
 - Contains a concrete number (dollar figures beat percentages)
-- Contains locale (state, country, or region)
 - Contains a company type descriptor specific enough to differentiate
+- Locale is NOT required on listing card headlines (locale goes on the detail page headline instead)
 - No two headlines across the full set sound alike in structure
 - Uses ICP language (nCAC, MER, ROI, PMax — not dumbed down)
 - Maximum ~12 words
+
+**Examples (from existing cards):**
+- "Auto Parts Revenue from $280K to $1.5M/Month" ✓
+- "170% Revenue Growth for a High-Ticket Fitness Brand" ✓
+- "$98 nCAC Drop for an Australian Air Purifier Brand" ✓
+- "Acquisition Cost Cut from $40 to $15 for a Puzzle Retailer" ✓
+- "3x Revenue for a Handmade Jewelry Brand" ✓
 
 ### Category Tag
 
@@ -159,16 +153,14 @@ Follow the same row-pairing logic as the homepage success story cards (see `inst
 
 When adding a new case study card:
 
-1. [ ] Thumbnail image exists at `public/case-studies/[slug]/thumbnail.webp`
-2. [ ] Detail page exists at `public/case-studies/[slug]/index.html`
-3. [ ] Card HTML added to `public/case-studies.html` inside `.cs-grid`
-4. [ ] Headline contains: concrete number + locale + company type
-5. [ ] Description is 1-2 sentences max, uses ICP language
-6. [ ] Two complementary metrics with short labels and punchy values
-7. [ ] Category tag is from the standard list
-8. [ ] Card placement follows sequencing rules (not adjacent to same story type)
-9. [ ] GTM snippet is present on the detail page
-10. [ ] All image paths are URL-encoded (spaces → `%20`)
+1. [ ] Detail page exists at `public/case-studies/[slug]/index.html`
+2. [ ] Card HTML added to `public/case-studies.html` inside `.cs-grid`
+3. [ ] Headline contains: concrete number + company type (no locale needed on listing cards)
+4. [ ] Description is 1-2 sentences max, uses ICP language
+5. [ ] Two complementary metrics with short labels and punchy values
+6. [ ] Category tag is from the standard list
+7. [ ] Card placement follows sequencing rules (not adjacent to same story type)
+8. [ ] GTM snippet is present on the detail page
 
 ---
 

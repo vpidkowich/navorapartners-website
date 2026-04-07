@@ -21,7 +21,7 @@ Before building a detail page, the following must be provided. If any item is mi
 - **The problem** (2-4 sentences: what was broken, what wasn't working, in operational detail)
 - **What Navora did** (2-4 numbered steps: specific actions taken, not generic marketing speak)
 - **The results** (2-3 sentences: the before/after transformation with numbers)
-- **Thumbnail image** (file name, or "use video thumbnail")
+- **Hero background image** (file name — a location/action photo or other visual for the hero section)
 
 ### Optional but preferred:
 - **Client quote** (real quote with name/title — if unavailable, mark as "placeholder needed")
