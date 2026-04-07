@@ -247,7 +247,7 @@
 .cs-stat-card__desc {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
-  font-size: var(--text-2xl);
+  font-size: var(--text-lg);
   line-height: var(--leading-loose);
   color: var(--color-text-secondary);
 }
