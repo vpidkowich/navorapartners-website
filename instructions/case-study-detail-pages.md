@@ -196,12 +196,46 @@ Note: The client testimonial video (if available) goes in the Key Stats section 
 - 1-2 summary paragraphs
 - Gold highlight bar showing the before→after transformation
 - "START YOUR PROJECT" CTA button
+- **Client testimonial video embed (CONDITIONAL — placed at the bottom of the Results section, after the CTA button)**
 
 **Results writing rules:**
 - Lead with the headline number, then layer in supporting metrics
 - Include a timeline when available ("within 90 days," "over 6 months")
 - End with the qualitative impact: team confidence restored, leadership alignment, etc.
 - The gold highlight bar should contain the single most impressive before→after stat
+
+**Client testimonial video (CONDITIONAL):**
+- If a client testimonial video embed code was provided, place it at the very bottom of the Results section
+- Uses the same responsive 16:9 container as all other video embeds (max-width 680px, centered)
+- HTML structure: `<div class="cs-results__video"><iframe>...</iframe></div>`
+- If no testimonial was provided, skip this entirely
+
+### Standard YouTube Embed Code (applies to ALL video embeds on ALL pages)
+
+Every YouTube embed on the site MUST use this exact format to prevent viewers from navigating away:
+
+```html
+<iframe
+  src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0&modestbranding=1&disablekb=1&fs=1&iv_load_policy=3&showinfo=0"
+  title="[Descriptive Title]"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="no-referrer"
+  sandbox="allow-scripts allow-same-origin allow-presentation"
+  allowfullscreen>
+</iframe>
+```
+
+**Parameter explanations:**
+- `youtube-nocookie.com` — privacy-enhanced mode, no tracking cookies
+- `rel=0` — no related videos at the end
+- `modestbranding=1` — minimal YouTube branding
+- `disablekb=1` — disable keyboard shortcuts that navigate away
+- `iv_load_policy=3` — hide video annotations
+- `showinfo=0` — hide video title bar
+- `sandbox` attribute — restricts the iframe from navigating the parent page
+- `referrerpolicy="no-referrer"` — blocks referrer tracking
+
+**NEVER use a plain YouTube embed without these parameters.**
 
 ### Section 8: Testimonial (CONDITIONAL — only include if a real quote exists)
 - Warm cream background
