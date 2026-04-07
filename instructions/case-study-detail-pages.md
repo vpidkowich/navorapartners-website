@@ -39,20 +39,28 @@ Every detail page follows this exact section order. The HTML template is at `pub
 - **Background:** Thumbnail image with dark overlay (`rgba(11,28,46,0.85)`)
 - **Badge pill:** Category tag in gold text on translucent background (uppercase)
 - **Headline:** Contains the headline stat + locale + company type. The stat/number portion is wrapped in `<span class="highlight">` for gold coloring.
-- **Subtitle:** 1-2 sentences that expand the headline. States the specific problem and hints at the approach. Written in third person ("we transformed..." not "they transformed...").
+- **NO subtitle paragraph.** The headline speaks for itself. Removing the subtitle keeps the hero tight and above-the-fold.
 
-**Headline rules (same as card headlines but can be slightly longer):**
+**Headline rules:**
 - MUST contain locale (state, country, or region)
 - MUST contain a concrete number
 - MUST contain a company type descriptor
 - Gold-highlighted text should be the most impressive number or transformation
-- Maximum ~15 words
+- Maximum ~12 words
+- Write naturally — like a news headline, not a formula. Use active language: "goes from," "scales to," "cuts," "triples" rather than stiff phrasing like "Revenue from X to Y"
+- Study the reference case studies in `references/case-studies/` for headline tone
 
-**Example:** "How a <span class="highlight">California</span> Auto Parts Brand Scaled Revenue <span class="highlight">435%</span> from <span class="highlight">$280K to $1.5M/Month</span>"
+**Good examples:**
+- "California Auto Parts Brand Goes from $280K to $1.5M/Month"
+- "Alabama Skincare Brand Scales from $100K to $600K/Month"
+- "How a Nevada Puzzle Retailer Cut Acquisition Cost from $40 to $15"
 
-### Section 2: Download Bar
-- Jade background, overlaps the hero via negative margin
-- Left side: "Download the full case study" heading + "Get the detailed PDF version. No email required." subtitle
+**Bad examples (too stiff/formulaic):**
+- "California Auto Parts Revenue from $280K to $1.5M/Month" — sounds like a spreadsheet
+- "How a California Auto Parts Retailer Scaled Revenue 435% from $280K to $1.5M/Month" — too long, too many numbers
+
+### Section 2: Download Bar — REMOVED
+The download bar has been removed from the template. Do NOT include it on any case study page.
 - Right side: Gold "DOWNLOAD PDF" button
 - **Note:** If no PDF exists, the button links to `#` as placeholder. Flag this to the reviewer.
 
@@ -72,7 +80,7 @@ Every detail page follows this exact section order. The HTML template is at `pub
 
 ### Section 4: The Story
 - Cream background
-- Label: "CLIENT CASE STUDY"
+- Label: "FROM CHALLENGES TO SUCCESS"
 - Heading: "A Journey of [Transformation Type]" — e.g., "A Journey of Restructuring Growth"
 - 2-3 body paragraphs telling the narrative
 - Photo + blockquote section with gold left border
