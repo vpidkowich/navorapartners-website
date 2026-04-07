@@ -91,10 +91,26 @@ This is the heart of the page. It must feel like a real story, not a marketing b
 
 **Tone:** Confident, specific, empathetic. Write as an expert recounting a successful engagement to a peer. No hype, no fluff, no superlatives. Let the numbers do the heavy lifting. Mirror the tone in `references/Brand Essence - Our Identity.docx` and the Promised Land narrative in `references/Promised Land and Cautionary Tale.docx`.
 
-**Structure the narrative as:**
-1. **The context** (1 paragraph) — Who is the brand? What's their market? What makes them impressive? This paragraph should make the reader think "that sounds like my situation" or "they work with serious companies."
-2. **The pain** (1 paragraph) — What specifically wasn't working? Name the operational problem using ICP language (PMax cannibalization, ROAS mirage, broken tracking, nCAC inflation, etc.). The reader should see their own pain reflected here.
-3. **The turning point** (1 paragraph, optional) — When/how they engaged Navora. Keep this brief — the reader doesn't need a sales story.
+**Structure the narrative as a SINGLE paragraph (3-4 sentences max):**
+
+This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the scene and names the problem in one breath. The reader should be able to scan it in 10 seconds and understand the situation.
+
+**Formula:** [Who they are + what they had going for them] + [But here's what was broken] + [The result of that broken thing]
+
+**Example (the standard to follow):**
+"This auto parts brand had a strong product catalog and loyal customer base, but their paid media was running on autopilot. All 30,000+ SKUs were crammed into a single campaign with no differentiation between audiences, creative angles, or funnel stages. The result: rising acquisition costs, stagnant revenue, and no visibility into what was actually working."
+
+**What makes this work:**
+- Sentence 1: Establishes credibility ("strong catalog, loyal customers") — then pivots with "but"
+- Sentence 2: Names the specific operational problem in ICP language ("crammed into a single campaign, no differentiation")
+- Sentence 3: States the consequence in business terms ("rising acquisition costs, stagnant revenue")
+- Total: 3 sentences. No fluff. The detail comes in the Challenges section.
+
+**What NOT to do:**
+- Don't write 3 separate paragraphs — this section is a summary, not the full story
+- Don't repeat what will be said in the Challenges section
+- Don't use vague language ("struggling to grow") — be operationally specific
+- Don't mention Navora in this paragraph — this is about the client's situation before we arrived
 
 **What NOT to write:**
 - No generic phrases: "struggling to scale," "needed help with marketing," "wasn't seeing results"

@@ -86,15 +86,19 @@ Present this table to the person so they can see what's there and what's not.
 
 **Step 2: Ask about every missing asset**
 
-For each missing item, ask specifically:
-- **No thumbnail?** → "Do you have a thumbnail image, or should I use a screenshot from the case study video?"
-- **No client headshot?** → "Do you have a photo of the client contact for the testimonial section, or should we skip that?"
-- **No client logo?** → "Do you have the client's logo for attribution, or should we use text-only attribution?"
-- **No location/action photo?** → "Do you have a photo of the client's location or an action shot representing their business? This would be used in the story section."
-- **No case study video embed code?** → "Do you have a video embed code (YouTube/Vimeo) for the case study video, or should we skip the video embed?"
-- **No testimonial video?** → "Is there a client testimonial video, or just the case study video?"
-- **No client quotes?** → "Do you have any real client quotes? If not, the testimonial/quote sections will be omitted from the page (not faked)."
-- **No graphics/screenshots?** → "Do you have any hand-made graphics, account screenshots, or before/after visuals? These add visual interest to the page."
+For EACH missing item, ask: **"Did you mean to skip [item], or did you just forget to add it?"**
+
+Only omit the section from the page if the person confirms they want to skip it. If they forgot, wait for them to provide it before building.
+
+Specific questions per item:
+- **No thumbnail?** → "Did you mean to skip the thumbnail, or did you forget to add it? I can use a screenshot from the case study video if needed."
+- **No client headshot?** → "Did you mean to skip the client headshot, or did you forget? If skipped, the quote block won't have a photo."
+- **No client logo?** → "Did you mean to skip the client logo, or did you forget? If skipped, attribution will be text-only."
+- **No location/action photo?** → "Did you mean to skip the location/action photo, or did you forget? This would be used in the story section alongside the quote."
+- **No case study video embed code?** → "Did you mean to skip the video embed, or did you forget to add the embed code? If skipped, the video section will be omitted."
+- **No testimonial video?** → "Did you mean to skip the client testimonial video, or is there one coming?"
+- **No client quotes?** → "Did you mean to skip client quotes, or did you forget? If skipped, the quote block and testimonial section will be omitted entirely (not faked)."
+- **No graphics/screenshots?** → "Did you mean to skip graphics/screenshots, or did you forget? These add visual interest to the page."
 
 **Step 3: Hero background image decision**
 
