@@ -220,7 +220,6 @@ Every YouTube embed on the site MUST use this exact format to prevent viewers fr
   title="[Descriptive Title]"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   referrerpolicy="no-referrer"
-  sandbox="allow-scripts allow-same-origin allow-presentation"
   allowfullscreen>
 </iframe>
 ```
@@ -232,7 +231,6 @@ Every YouTube embed on the site MUST use this exact format to prevent viewers fr
 - `disablekb=1` — disable keyboard shortcuts that navigate away
 - `iv_load_policy=3` — hide video annotations
 - `showinfo=0` — hide video title bar
-- `sandbox` attribute — restricts the iframe from navigating the parent page
 - `referrerpolicy="no-referrer"` — blocks referrer tracking
 
 **NEVER use a plain YouTube embed without these parameters.**
