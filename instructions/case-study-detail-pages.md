@@ -33,7 +33,7 @@ Before building a detail page, the following must be provided. If any item is mi
 
 ## Part 2: Page Structure (Section by Section)
 
-Every detail page follows this exact section order. The HTML template is at `public/case-studies/auto-parts-revenue/index.html`. The shared CSS is `public/css/case-study-detail.css`.
+Every detail page follows this exact section order. The HTML template is at `public/case-studies/template.html`. The shared CSS is `public/css/case-study-detail.css`.
 
 ### Section 1: Hero
 - **Background:** Thumbnail image with dark overlay (`rgba(11,28,46,0.85)`)
@@ -94,8 +94,8 @@ The download bar has been removed from the template. Do NOT include it on any ca
 - If a testimonial video embed code was provided (YouTube/Vimeo), embed it at the bottom of this section, after the stat cards
 - Uses a responsive 16:9 container, max-width 680px, centered, with shadow and border-radius
 - Double spacing above the video (--space-3xl) for breathing room between stats and video
-- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0&modestbranding=1` to prevent related videos and minimize YouTube branding**
-- HTML structure: `<div class="cs-stats__video"><iframe src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0&modestbranding=1" title="Client Testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0` to prevent related videos**
+- HTML structure: `<div class="cs-stats__video"><iframe src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0" title="Client Testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
 - If no embed code was provided, skip this entirely
 
 Note: The Navora-produced case study video (if available) goes in the "FROM CHALLENGES TO SUCCESS" section, NOT here.
@@ -147,8 +147,8 @@ This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the
 **Navora case study video embed (CONDITIONAL):**
 - This is the Navora-produced internal case study video (NOT the client testimonial)
 - If a case study video embed code was provided, embed it here after the overview paragraph, before the optional quote block
-- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0&modestbranding=1` to prevent related videos and minimize YouTube branding**
-- HTML structure: `<div class="cs-story__video"><iframe src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0&modestbranding=1" title="Case Study Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0` to prevent related videos**
+- HTML structure: `<div class="cs-story__video"><iframe src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0" title="Case Study Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
 - If no embed code was provided, skip this entirely
 
 Note: The client testimonial video (if available) goes in the Key Stats section (see above), NOT here.
@@ -216,7 +216,7 @@ Every YouTube embed on the site MUST use this exact format to prevent viewers fr
 
 ```html
 <iframe
-  src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0&modestbranding=1&disablekb=1&fs=1&iv_load_policy=3&showinfo=0"
+  src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0"
   title="[Descriptive Title]"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   referrerpolicy="no-referrer"
@@ -227,10 +227,6 @@ Every YouTube embed on the site MUST use this exact format to prevent viewers fr
 **Parameter explanations:**
 - `youtube-nocookie.com` — privacy-enhanced mode, no tracking cookies
 - `rel=0` — no related videos at the end
-- `modestbranding=1` — minimal YouTube branding
-- `disablekb=1` — disable keyboard shortcuts that navigate away
-- `iv_load_policy=3` — hide video annotations
-- `showinfo=0` — hide video title bar
 - `referrerpolicy="no-referrer"` — blocks referrer tracking
 
 **NEVER use a plain YouTube embed without these parameters.**
@@ -339,6 +335,6 @@ Before committing a new case study detail page:
 - **Brand voice:** `references/Brand Essence - Our Identity.docx`
 - **Narrative framework:** `references/Promised Land and Cautionary Tale.docx`
 - **Reference case studies (tone examples):** `references/case-studies/*.docx`
-- **HTML template:** `public/case-studies/auto-parts-revenue/index.html`
+- **HTML template:** `public/case-studies/template.html` — the master template for all case study detail pages
 - **Shared CSS:** `public/css/case-study-detail.css`
 - **Source data for existing cards:** `public/case-studies/Case Study Copy.txt`
