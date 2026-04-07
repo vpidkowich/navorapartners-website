@@ -161,7 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="hero-sub">Uncover hidden truth with our proprietary ecom analysis and go beyond optimizing for ROAS. We align every ad dollar to your P&amp;L so you scale with clarity, not guesswork.</p>
       <div class="hero-buttons">
         <a href="#growth-strategy-cta" class="btn btn-gold btn-arrow">Get My Free Growth Strategy</a>
-        <a href="#growth-strategy" class="btn btn-outline-white">What Is The Growth Strategy?</a>
+        <a href="#growth-strategy" class="btn btn-outline-white no-tally">What Is The Growth Strategy?</a>
       </div>
       <div class="hero-trust">
         <div class="hero-trust-item">
@@ -540,9 +540,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           " fill="none" stroke="white" stroke-width="24"/>
         </mask>
       </defs>
-      <!-- X mark at step 1 start -->
-      <line class="map-x-line" id="x-line-1" x1="365" y1="85" x2="395" y2="115"/>
-      <line class="map-x-line" id="x-line-2" x1="395" y1="85" x2="365" y2="115"/>
       <!-- Main travel path -->
       <path class="map-path-fill" mask="url(#path-reveal-mask)" d="
         M 380,100
@@ -1196,7 +1193,7 @@ document.addEventListener('keydown', function(e) {
   // Wire all growth strategy buttons
   document.querySelectorAll("a, button").forEach(function(el) {
     var text = el.textContent.toLowerCase();
-    if (text.indexOf("growth strategy") > -1 && !el.classList.contains("tally-lightbox__close")) {
+    if (text.indexOf("growth strategy") > -1 && !el.classList.contains("tally-lightbox__close") && !el.classList.contains("no-tally")) {
       el.addEventListener("click", openTally);
     }
   });
