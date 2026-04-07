@@ -81,6 +81,12 @@ The download bar has been removed from the template. Do NOT include it on any ca
 - Values should be punchy: "435%", "$1.5M/mo", "90 Days"
 - Descriptions should be one line, plain language
 
+**Case study video embed (CONDITIONAL — placed below the stat cards):**
+- If a video embed code was provided (YouTube/Vimeo), embed it at the bottom of this section, after the stat cards
+- Uses a responsive 16:9 container with shadow and border-radius
+- HTML structure: `<div class="cs-stats__video"><iframe src="[EMBED_URL]" title="[Title]" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+- If no embed code was provided, skip this entirely
+
 ### Section 4: The Story
 - Cream background
 - Label: "FROM CHALLENGES TO SUCCESS"
@@ -125,11 +131,9 @@ This is NOT a multi-paragraph essay. It's a tight, punchy overview that sets the
 - If a real client quote is provided, use it exactly as given with proper attribution
 - If NO real client quote was provided, OMIT the entire quote block from this section. Do NOT fabricate quotes or use placeholders.
 
-**Case study video embed (placed after the narrative paragraphs, before the quote block):**
-- If a video embed code was provided (YouTube/Vimeo), embed it here using a responsive 16:9 container
-- The video sits between the story paragraphs and the optional quote block
-- If no embed code was provided, skip this — do NOT leave an empty video container
-- HTML structure: `<div class="cs-story__video"><iframe>...</iframe></div>`
+**Case study video embed:**
+- The video does NOT go in this section. It goes in Section 3 (Key Stats), at the bottom after the stat cards.
+- See Section 3 for placement details.
 
 ### Section 5: Challenges
 - **Icon: Warning triangle** — `<svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22H22L12 2Z" stroke="#0b1c2e" stroke-width="2" stroke-linejoin="round"/><path d="M12 10V14M12 17V18" stroke="#0b1c2e" stroke-width="2" stroke-linecap="round"/></svg>`
