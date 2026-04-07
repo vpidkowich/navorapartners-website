@@ -102,10 +102,15 @@ This is the heart of the page. It must feel like a real story, not a marketing b
 - No revealing client names unless explicitly approved
 - No made-up details — if you don't know something, ask. Better to leave a [PLACEHOLDER] than fabricate.
 
-**The blockquote:**
-- If a real client quote is provided, use it exactly as given
-- If no quote is available, write `[CLIENT QUOTE NEEDED]` as placeholder — do NOT fabricate quotes
-- Attribution: client name and title if approved, otherwise "Brand Founder" or similar
+**The blockquote (CONDITIONAL):**
+- If a real client quote is provided, use it exactly as given with proper attribution
+- If NO real client quote was provided, OMIT the entire quote block from this section. Do NOT fabricate quotes or use placeholders.
+
+**Case study video embed (placed after the narrative paragraphs, before the quote block):**
+- If a video embed code was provided (YouTube/Vimeo), embed it here using a responsive 16:9 container
+- The video sits between the story paragraphs and the optional quote block
+- If no embed code was provided, skip this — do NOT leave an empty video container
+- HTML structure: `<div class="cs-story__video"><iframe>...</iframe></div>`
 
 ### Section 5: Challenges
 - Gold circle icon (target/crosshair SVG)
