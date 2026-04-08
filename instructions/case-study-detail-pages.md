@@ -210,24 +210,21 @@ Note: The client testimonial video (if available) goes in the Key Stats section 
 
 ### Standard YouTube Embed Code (applies to ALL video embeds on ALL pages)
 
-Every YouTube embed on the site MUST use this exact format to prevent viewers from navigating away:
+Every YouTube embed on the site MUST use this exact format:
 
 ```html
 <iframe
-  src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0"
+  src="https://www.youtube.com/embed/[VIDEO_ID]?rel=0"
   title="[Descriptive Title]"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  referrerpolicy="no-referrer"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   allowfullscreen>
 </iframe>
 ```
 
 **Parameter explanations:**
-- `youtube-nocookie.com` — privacy-enhanced mode, no tracking cookies
 - `rel=0` — no related videos at the end
-- `referrerpolicy="no-referrer"` — blocks referrer tracking
 
-**NEVER use a plain YouTube embed without these parameters.**
+**Do NOT use `youtube-nocookie.com` or `referrerpolicy="no-referrer"` — these break video loading on local file:// development.**
 
 **Video sizing:** The CSS containers (`cs-story__video`, `cs-results__video`) use a responsive 16:9 aspect ratio at `max-width: 680px` with drop shadow and border-radius by default. The agent has liberty to adjust `max-width` on individual embeds if needed to make the video look right within the section — e.g., wider for landscape-heavy content, narrower for talking-head videos.
 
