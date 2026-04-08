@@ -189,7 +189,7 @@ Note: The client testimonial video (if available) goes in the Key Stats section 
 - Subheading: A short confidence phrase (e.g., "Scaling with Confidence")
 - 1-2 summary paragraphs
 - Gold highlight bar showing the before→after transformation
-- "Want Similar Results? Get Your Growth Strategy" CTA button — **CONDITIONAL: only include if there is NO client quote/testimonial section.** If a testimonial section exists, omit this CTA button entirely. The testimonial flows directly into the Final CTA.
+- "Want Similar Results? Get Your Growth Strategy" CTA button — **CONDITIONAL: only include if there IS a client quote/testimonial section.** If there is NO testimonial section, omit this CTA button entirely. The Results section flows directly into the Final CTA.
 
 **Results writing rules:**
 - Lead with the headline number, then layer in supporting metrics
