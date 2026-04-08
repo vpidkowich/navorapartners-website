@@ -24,6 +24,8 @@ Before building a detail page, the following must be provided. If any item is mi
 - **Hero background image** (file name — a location/action photo or other visual for the hero section)
 
 ### Optional but preferred:
+- **Case study video transcript** (files with "transcript" in the name — use these as a primary source for additional metrics, operational details, and nuance not in the outline)
+- **Client testimonial video transcript** (real quotes from the client — use for the testimonial section)
 - **Client quote** (real quote with name/title — if unavailable, mark as "placeholder needed")
 - **Additional images** for the story section
 - **Timeline** (how long the engagement took to show results)
