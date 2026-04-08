@@ -229,6 +229,8 @@ Every YouTube embed on the site MUST use this exact format to prevent viewers fr
 
 **NEVER use a plain YouTube embed without these parameters.**
 
+**Video sizing:** The CSS containers (`cs-story__video`, `cs-results__video`) use a responsive 16:9 aspect ratio at `max-width: 680px` with drop shadow and border-radius by default. The agent has liberty to adjust `max-width` on individual embeds if needed to make the video look right within the section — e.g., wider for landscape-heavy content, narrower for talking-head videos.
+
 ### Section 8: Testimonial (CONDITIONAL — only include if a real quote exists)
 - Warm cream background
 - Large blockquote (Roslindale bold)
