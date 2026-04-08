@@ -193,6 +193,7 @@ Note: The client testimonial video (if available) goes in the Key Stats section 
 
 **Results writing rules:**
 - Lead with the headline number, then layer in supporting metrics
+- Do NOT just repeat the same 3 stats from Key Stats — bring in additional metrics and successes from the outline that weren't featured above (e.g., impression share gains, order volume, timeline milestones, qualitative shifts like "branded to prospecting")
 - Include a timeline when available ("within 90 days," "over 6 months")
 - End with the qualitative impact: team confidence restored, leadership alignment, etc.
 - The gold highlight bar should contain the single most impressive before→after stat
