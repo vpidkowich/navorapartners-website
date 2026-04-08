@@ -95,7 +95,9 @@ The download bar has been removed from the template. Do NOT include it on any ca
 ### Section 4: The Story
 - Cream background
 - Label: "FROM CHALLENGES TO SUCCESS"
-- Heading: "A Journey of [Transformation Type]" — e.g., "A Journey of Restructuring Growth"
+- Heading: A unique, case-study-specific headline that captures the core narrative of THIS engagement. Do NOT use the template pattern "A Journey of [X]" — every heading must be distinct and memorable. Think of it as a chapter title that could only belong to this story.
+  - Good examples: "Unmasking the PMax ROAS Mirage", "The Dashboard Said Growth. The P&L Said Otherwise.", "30,000 SKUs, One Broken Campaign"
+  - Bad examples: "A Journey of Reclaiming Growth", "A Journey of Scaling Revenue" — these are generic template fill-ins
 - 2-3 body paragraphs telling the narrative
 - Photo + blockquote section with gold left border
 
