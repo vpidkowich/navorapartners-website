@@ -189,7 +189,8 @@ Note: The client testimonial video (if available) goes in the Key Stats section 
 - Subheading: A short confidence phrase (e.g., "Scaling with Confidence")
 - 1-2 summary paragraphs
 - Gold highlight bar showing the before→after transformation
-- "START YOUR PROJECT" CTA button
+- "Want Similar Results? Get Your Growth Strategy" CTA button — **CONDITIONAL: only include if there is NO client quote/testimonial section.** If a testimonial section exists, omit this CTA button entirely. The testimonial flows directly into the Final CTA.
+
 **Results writing rules:**
 - Lead with the headline number, then layer in supporting metrics
 - Include a timeline when available ("within 90 days," "over 6 months")
