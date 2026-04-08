@@ -79,11 +79,12 @@ The download bar has been removed from the template. Do NOT include it on any ca
 **Rules:**
 - The 3 stats should cover different dimensions (e.g., revenue growth + efficiency metric + revenue milestone)
 - Values should be punchy: "435%", "$1.5M", "30%"
-- Descriptions should be a full sentence with context, ending with a period
-- Example: "Revenue growth from paid channels, scaling from $280K to $1.5M in monthly revenue."
-- Example: "Reduction in new Customer Acquisition Cost (nCAC) within the first 90 days of engagement."
-- Example: "Monthly revenue milestone achieved in under 6 months through scalable paid media strategy."
-- Descriptions explain what the number means in business terms, not just restate it
+- Descriptions should be SHORT — just name what the metric is, don't explain why or how
+- Keep descriptions to a brief label/fragment, ending with a period
+- Example: "Revenue growth from paid channels."
+- Example: "Reduction in new Customer Acquisition Cost (nCAC)."
+- Example: "Monthly revenue milestone."
+- Do NOT include timelines, methods, or explanations in the stat description — save that for the Results section
 
 **Badge/category tag: REMOVED from hero.**
 - Do NOT include the category badge (e.g., "AUTOMOTIVE") in the hero section
