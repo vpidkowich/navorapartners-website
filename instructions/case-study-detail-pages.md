@@ -89,16 +89,7 @@ The download bar has been removed from the template. Do NOT include it on any ca
 - Do NOT include the category badge (e.g., "AUTOMOTIVE") in the hero section
 - The category only appears on the listing page card, not on the detail page
 
-**Client testimonial video embed (CONDITIONAL — placed below the stat cards):**
-- This is a video of the CLIENT speaking about their experience (NOT the Navora-produced case study video)
-- If a testimonial video embed code was provided (YouTube/Vimeo), embed it at the bottom of this section, after the stat cards
-- Uses a responsive 16:9 container, max-width 680px, centered, with shadow and border-radius
-- Double spacing above the video (--space-3xl) for breathing room between stats and video
-- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0` to prevent related videos**
-- HTML structure: `<div class="cs-stats__video"><iframe src="https://www.youtube-nocookie.com/embed/[VIDEO_ID]?rel=0" title="Client Testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
-- If no embed code was provided, skip this entirely
-
-Note: The Navora-produced case study video (if available) goes in the "FROM CHALLENGES TO SUCCESS" section, NOT here.
+**Client testimonial video:** Does NOT go in Key Stats. It goes in the **Results section** (Section 7), placed after the gold highlight bar and before the CTA button. See Section 7 for placement details.
 
 ### Section 4: The Story
 - Cream background
@@ -196,8 +187,6 @@ Note: The client testimonial video (if available) goes in the Key Stats section 
 - 1-2 summary paragraphs
 - Gold highlight bar showing the before→after transformation
 - "START YOUR PROJECT" CTA button
-- **Client testimonial video embed (CONDITIONAL — placed at the bottom of the Results section, after the CTA button)**
-
 **Results writing rules:**
 - Lead with the headline number, then layer in supporting metrics
 - Include a timeline when available ("within 90 days," "over 6 months")
@@ -205,10 +194,12 @@ Note: The client testimonial video (if available) goes in the Key Stats section 
 - The gold highlight bar should contain the single most impressive before→after stat
 
 **Client testimonial video (CONDITIONAL):**
-- If a client testimonial video embed code was provided, place it at the very bottom of the Results section
-- Uses the same responsive 16:9 container as all other video embeds (max-width 680px, centered)
+- This is the video of the CLIENT speaking about their experience (NOT the Navora-produced case study video)
+- Place it in the Results section, after the gold highlight bar and BEFORE the CTA button
+- Uses a responsive 16:9 container, max-width 680px, centered, with shadow and border-radius
 - HTML structure: `<div class="cs-results__video"><iframe>...</iframe></div>`
-- If no testimonial was provided, skip this entirely
+- **IMPORTANT: Use `youtube-nocookie.com` domain and add `?rel=0` to prevent related videos**
+- If no testimonial video was provided, skip this entirely
 
 ### Standard YouTube Embed Code (applies to ALL video embeds on ALL pages)
 
@@ -235,6 +226,10 @@ Every YouTube embed on the site MUST use this exact format to prevent viewers fr
 - Warm cream background
 - Large blockquote (Roslindale bold)
 - Photo (if available) + attribution
+
+**Quote length:** Keep quotes short — 1-2 sentences max, similar in length to the template quote. If the original quote is long, edit it down to the most impactful 1-2 sentences while preserving the client's voice and meaning.
+
+**Photo cropping:** The testimonial image container uses `object-fit: cover` with a fixed height, which can crop faces. If the client's face is cut off, add `style="object-position: top;"` to the `<img>` tag to keep the face in frame.
 
 **CRITICAL: If no real client quote or testimonial was provided, OMIT this entire section from the page. Do NOT fabricate quotes. Do NOT use placeholder text. Simply skip this section — the page flows from Results directly to Final CTA.**
 
