@@ -300,33 +300,6 @@
   margin: 0 auto var(--space-2xl);
 }
 
-/* Block YouTube external links — overlays cover logo and info areas */
-.cs-stats__video::before,
-.cs-story__video::before,
-.cs-results__video::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;
-  height: 42px;
-  z-index: 2;
-  cursor: default;
-}
-
-.cs-stats__video::after,
-.cs-story__video::after,
-.cs-results__video::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 160px;
-  height: 36px;
-  z-index: 2;
-  cursor: default;
-}
-
 .cs-story__video {
   position: relative;
   width: 100%;
