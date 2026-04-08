@@ -304,6 +304,10 @@ Before committing a new case study detail page:
 - **Empathetic to the ICP.** We describe problems using the language our audience uses in their own heads.
 - **Systems-thinking.** We frame solutions as interconnected. Not "we ran better ads" but "we rebuilt the measurement system, restructured the campaigns, and aligned spend to the P&L."
 
+### Banned words
+- **Never use "audit" when referring to what Navora did.** We don't do "audits" — we do Growth Strategy sessions, account reviews, or deep analyses. The word "audit" is only acceptable when describing what a previous agency or provider did for the client (e.g., "the previous agency's audit missed...").
+- **Never refer to Navora as "an agency."** We are a strategic partner, not a generic agency.
+
 ### Punctuation rules
 - **Em dashes (—) must be used sparingly.** Maximum 5-10% of sentences. When tempted to use an em dash, use a comma, period, or "and" instead. Em dashes are a crutch that makes writing feel choppy when overused.
 - **Good:** "We focused resources on the Most Profitable Brands, ensuring these high-margin lines had 100% coverage."
