@@ -52,6 +52,12 @@
     return false;
   }
 
+  function isValidEmailDomain(email) {
+    var domain = email.split('@')[1];
+    if (!domain) return false;
+    return isValidWebsite(domain);
+  }
+
   function normalizeWebsiteUrl(value) {
     var url = value.trim();
     if (!/^https?:\/\//i.test(url)) {
@@ -189,8 +195,8 @@
     if (!lastName) { setError('field-lastName', true); valid = false; }
     else { setError('field-lastName', false); }
 
-    // Email
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    // Email — check format and validate TLD of domain
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !isValidEmailDomain(email)) {
       setError('field-email', true); valid = false;
     } else {
       setError('field-email', false);
@@ -238,7 +244,8 @@
       if (lastName.value.trim()) setError('field-lastName', false);
     });
     if (email) email.addEventListener('input', function () {
-      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) setError('field-email', false);
+      var val = email.value.trim();
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) && isValidEmailDomain(val)) setError('field-email', false);
     });
     if (phone) phone.addEventListener('input', function () {
       var digits = phone.value.replace(/\D/g, '');
