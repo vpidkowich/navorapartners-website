@@ -26,6 +26,40 @@
 
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid'];
 
+  var VALID_TLDS = [
+    'com', 'org', 'net', 'edu', 'gov', 'mil', 'int', 'co', 'io', 'ai', 'app', 'dev',
+    'us', 'uk', 'ca', 'au', 'nz', 'ie', 'de', 'fr', 'it', 'es', 'nl', 'be', 'at', 'ch',
+    'se', 'no', 'dk', 'fi', 'pt', 'pl', 'cz', 'ru', 'jp', 'cn', 'kr', 'in', 'br', 'mx',
+    'za', 'ae', 'sg', 'hk', 'tw', 'ph', 'th', 'my', 'id', 'vn', 'cl', 'ar', 'co.uk',
+    'com.au', 'co.nz', 'co.za', 'com.br', 'com.mx', 'co.in', 'co.jp', 'com.sg',
+    'info', 'biz', 'me', 'tv', 'cc', 'xyz', 'online', 'store', 'shop', 'site',
+    'tech', 'design', 'agency', 'media', 'digital', 'marketing', 'health', 'fitness',
+    'beauty', 'style', 'fashion', 'food', 'travel', 'photography', 'consulting',
+  ];
+
+  function isValidWebsite(value) {
+    if (!value) return false;
+    // Strip protocol if provided
+    var domain = value.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '').trim().toLowerCase();
+    if (!domain || domain.indexOf('.') === -1) return false;
+    // Check TLD
+    var parts = domain.split('.');
+    var tld = parts.slice(1).join('.'); // handles co.uk, com.au etc
+    if (VALID_TLDS.indexOf(tld) > -1) return true;
+    // Also check just the last part
+    var lastPart = parts[parts.length - 1];
+    if (VALID_TLDS.indexOf(lastPart) > -1) return true;
+    return false;
+  }
+
+  function normalizeWebsiteUrl(value) {
+    var url = value.trim();
+    if (!/^https?:\/\//i.test(url)) {
+      url = 'https://' + url;
+    }
+    return url;
+  }
+
   // ── UTM capture ──────────────────────────────────────────────────
 
   function captureUtmParams() {
@@ -91,8 +125,8 @@
       '</div>' +
       '<div class="form-field" id="field-website">' +
       '<label for="ff-website">Website URL <span style="color:var(--color-orange)">*</span></label>' +
-      '<input type="url" id="ff-website" name="website_url" autocomplete="url" placeholder="https://yoursite.com">' +
-      '<span class="form-field__error">Website URL is required (https://\u2026)</span>' +
+      '<input type="text" id="ff-website" name="website_url" autocomplete="url" placeholder="yoursite.com">' +
+      '<span class="form-field__error">Please enter a valid website (e.g. yoursite.com)</span>' +
       '</div>' +
       '<!-- Honeypot -->' +
       '<div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">' +
@@ -178,8 +212,8 @@
       setError('field-revenue', false);
     }
 
-    // Website (required, must be a valid URL)
-    if (!website || !/^https?:\/\/.+\..+/.test(website)) {
+    // Website (required, must have a valid TLD)
+    if (!website || !isValidWebsite(website)) {
       setError('field-website', true); valid = false;
     } else {
       setError('field-website', false);
@@ -215,9 +249,7 @@
       if (revenue.value) setError('field-revenue', false);
     });
     if (website) website.addEventListener('input', function () {
-      if (/^https?:\/\/.+\..+/.test(website.value.trim())) {
-        setError('field-website', false);
-      }
+      if (isValidWebsite(website.value.trim())) setError('field-website', false);
     });
   }
 
@@ -276,7 +308,7 @@
       email: document.getElementById('ff-email').value.trim(),
       phone: window._itiInstance ? window._itiInstance.getNumber() : document.getElementById('ff-phone').value.trim(),
       revenue: document.getElementById('ff-revenue').value,
-      website_url: document.getElementById('ff-website').value.trim(),
+      website_url: normalizeWebsiteUrl(document.getElementById('ff-website').value),
       company_name: document.querySelector('input[name="company_name"]').value,
       utm_source: getUtmParam('utm_source'),
       utm_medium: getUtmParam('utm_medium'),
