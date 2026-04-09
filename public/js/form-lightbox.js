@@ -99,12 +99,12 @@
       '<div class="form-row">' +
       '<div class="form-field" id="field-firstName">' +
       '<label for="ff-firstName">First Name <span style="color:var(--color-orange)">*</span></label>' +
-      '<input type="text" id="ff-firstName" name="first_name" required autocomplete="given-name" placeholder="John">' +
+      '<input type="text" id="ff-firstName" name="first_name" required autocomplete="given-name" placeholder="Marty">' +
       '<span class="form-field__error">First name is required</span>' +
       '</div>' +
       '<div class="form-field" id="field-lastName">' +
       '<label for="ff-lastName">Last Name <span style="color:var(--color-orange)">*</span></label>' +
-      '<input type="text" id="ff-lastName" name="last_name" required autocomplete="family-name" placeholder="Doe">' +
+      '<input type="text" id="ff-lastName" name="last_name" required autocomplete="family-name" placeholder="McFly">' +
       '<span class="form-field__error">Last name is required</span>' +
       '</div>' +
       '</div>' +
