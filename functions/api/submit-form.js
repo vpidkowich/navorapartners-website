@@ -128,10 +128,11 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     body: JSON.stringify({ data: { values } }),
   });
 
-  if (res.ok) return true;
+  if (res.ok) return { ok: true };
 
   // If failed, retry with core fields only (custom attributes may not exist yet)
-  console.error('Attio upsert with custom fields failed:', res.status, await res.text());
+  const firstError = await res.text();
+  console.error('Attio upsert with custom fields failed:', res.status, firstError);
   const coreValues = {
     name: values.name,
     email_addresses: values.email_addresses,
@@ -149,11 +150,12 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
   });
 
   if (!res.ok) {
-    console.error('Attio upsert person (core only) failed:', res.status, await res.text());
-    return false;
+    const secondError = await res.text();
+    console.error('Attio upsert person (core only) failed:', res.status, secondError);
+    return { ok: false, error: secondError };
   }
 
-  return true;
+  return { ok: true };
 }
 
 // ── Slack notification ───────────────────────────────────────────
@@ -278,9 +280,9 @@ export async function onRequestPost(context) {
     }
 
     // Step 2: Upsert Person (linked to company)
-    const personCreated = await upsertPerson(formData, geoData, companyRecordId, env.ATTIO_API_KEY);
-    if (!personCreated) {
-      return jsonResponse({ success: false, error: 'Failed to create contact record' }, 500);
+    const personResult = await upsertPerson(formData, geoData, companyRecordId, env.ATTIO_API_KEY);
+    if (!personResult.ok) {
+      return jsonResponse({ success: false, error: 'Failed to create contact record', detail: personResult.error }, 500);
     }
 
     // Step 3 & 4: Slack + Google Sheets (fire and forget — don't block response)
