@@ -1025,6 +1025,12 @@ ul { list-style: none; }
   cursor: pointer;
 }
 
+.form-field select option {
+  background: var(--color-dark-navy);
+  color: var(--color-cream);
+  padding: 8px;
+}
+
 /* Error states */
 .form-field--error input,
 .form-field--error select {
