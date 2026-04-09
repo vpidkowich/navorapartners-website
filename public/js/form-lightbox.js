@@ -59,7 +59,7 @@
       '<div class="form-lightbox__card">' +
       '<button class="form-lightbox__close" id="formClose" type="button" aria-label="Close form">&times;</button>' +
       '<h2 class="form-lightbox__title">Request Your Growth Strategy</h2>' +
-      '<p class="form-lightbox__subtitle">Tell us about your business and we\u2019ll build a custom growth plan.</p>' +
+      '<p class="form-lightbox__subtitle">Fill out the form below to speak with our team.</p>' +
       '<div class="form-lightbox__error-banner" id="formErrorBanner"></div>' +
       '<form id="growthForm" novalidate>' +
       '<div class="form-row">' +
@@ -109,7 +109,6 @@
       '<div id="turnstileWidget" class="cf-turnstile" data-sitekey="' + TURNSTILE_SITE_KEY + '" data-size="invisible" data-callback="onTurnstileCallback"></div>' +
       '<button type="submit" class="btn btn-gold btn-arrow form-lightbox__submit" id="formSubmitBtn">' +
       'Get Your Growth Strategy' +
-      '<span class="btn-arrow__icon">\u2192</span>' +
       '</button>' +
       '<p class="form-lightbox__disclaimer">We\u2019ll never share your information. Unsubscribe anytime.</p>' +
       '</form>' +

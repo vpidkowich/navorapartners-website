@@ -914,7 +914,7 @@ ul { list-style: none; }
 }
 
 .form-lightbox__card {
-  background: #fff;
+  background: var(--color-dark-navy);
   border-radius: var(--radius-none);
   max-width: 580px;
   width: 100%;
@@ -934,7 +934,7 @@ ul { list-style: none; }
   border: none;
   background: transparent;
   font-size: 28px;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -945,14 +945,14 @@ ul { list-style: none; }
 }
 
 .form-lightbox__close:hover {
-  color: var(--color-text-primary);
+  color: #fff;
 }
 
 .form-lightbox__title {
   font-family: var(--font-heading);
   font-size: var(--text-5xl);
-  font-weight: var(--weight-regular);
-  color: var(--color-dark-navy);
+  font-weight: var(--weight-bold);
+  color: var(--color-cream);
   line-height: var(--leading-tight);
   margin: 0 0 var(--space-2xs);
 }
@@ -961,10 +961,10 @@ ul { list-style: none; }
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
-  color: var(--color-text-secondary);
+  color: var(--color-cream);
   line-height: var(--leading-relaxed);
   margin: 0 0 var(--space-lg);
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* ── Form Fields ──────────────────────────────────────────────── */
@@ -986,7 +986,7 @@ ul { list-style: none; }
   font-weight: var(--weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
-  color: var(--color-dark-navy);
+  color: var(--color-cream);
   margin-bottom: 6px;
 }
 
@@ -994,13 +994,13 @@ ul { list-style: none; }
 .form-field select {
   width: 100%;
   padding: 13px 14px;
-  border: 1.5px solid rgba(23, 40, 56, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-none);
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
-  color: var(--color-text-primary);
-  background: #fff;
+  color: var(--color-cream);
+  background: rgba(255, 255, 255, 0.08);
   transition: border-color var(--ease-default), box-shadow var(--ease-default);
   outline: none;
   -webkit-appearance: none;
@@ -1008,17 +1008,17 @@ ul { list-style: none; }
 }
 
 .form-field input::placeholder {
-  color: rgba(23, 40, 56, 0.35);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .form-field input:focus,
 .form-field select:focus {
-  border-color: var(--color-jade);
-  box-shadow: 0 0 0 3px rgba(2, 71, 66, 0.08);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(255, 225, 116, 0.15);
 }
 
 .form-field select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23172838' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 40px;
@@ -1056,14 +1056,28 @@ ul { list-style: none; }
 
 .iti__country-list {
   border-radius: var(--radius-none) !important;
-  border: 1.5px solid rgba(23, 40, 56, 0.18) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
   box-shadow: var(--shadow-lg) !important;
+  background: var(--color-dark-navy) !important;
+  color: var(--color-cream) !important;
+}
+
+.iti__country-list .iti__country:hover,
+.iti__country-list .iti__country--highlight {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.iti__dial-code {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .iti__search-input {
   border-radius: var(--radius-none) !important;
   font-family: var(--font-body) !important;
   font-size: var(--text-sm) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--color-cream) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .iti input[type="tel"] {
@@ -1104,8 +1118,9 @@ ul { list-style: none; }
 
 .form-lightbox__disclaimer {
   font-family: var(--font-body);
-  font-size: var(--text-2xs);
-  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
   margin-top: var(--space-sm);
   line-height: var(--leading-relaxed);
@@ -1115,8 +1130,8 @@ ul { list-style: none; }
 
 .form-lightbox__error-banner {
   display: none;
-  background: rgba(255, 107, 0, 0.06);
-  border: 1px solid rgba(255, 107, 0, 0.2);
+  background: rgba(255, 107, 0, 0.12);
+  border: 1px solid rgba(255, 107, 0, 0.3);
   padding: var(--space-sm);
   margin-bottom: var(--space-sm);
   font-family: var(--font-body);
