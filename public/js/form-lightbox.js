@@ -178,6 +178,36 @@
     return valid;
   }
 
+  // ── Real-time validation (clear errors as user corrects) ─────────
+
+  function initLiveValidation() {
+    var firstName = document.getElementById('ff-firstName');
+    var lastName = document.getElementById('ff-lastName');
+    var email = document.getElementById('ff-email');
+    var phone = document.getElementById('ff-phone');
+    var website = document.getElementById('ff-website');
+
+    if (firstName) firstName.addEventListener('input', function () {
+      if (firstName.value.trim()) setError('field-firstName', false);
+    });
+    if (lastName) lastName.addEventListener('input', function () {
+      if (lastName.value.trim()) setError('field-lastName', false);
+    });
+    if (email) email.addEventListener('input', function () {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) setError('field-email', false);
+    });
+    if (phone) phone.addEventListener('input', function () {
+      if (!phone.value.trim() || (window._itiInstance && window._itiInstance.isValidNumber())) {
+        setError('field-phone', false);
+      }
+    });
+    if (website) website.addEventListener('input', function () {
+      if (!website.value.trim() || /^https?:\/\/.+\..+/.test(website.value.trim())) {
+        setError('field-website', false);
+      }
+    });
+  }
+
   // ── Submission ───────────────────────────────────────────────────
 
   var isSubmitting = false;
@@ -388,11 +418,12 @@
       });
     }
 
-    // Wire up form submit
+    // Wire up form submit and live validation
     var form = document.getElementById('growthForm');
     if (form) {
       form.addEventListener('submit', handleSubmit);
     }
+    initLiveValidation();
 
     // Wire close button
     var closeBtn = document.getElementById('formClose');
