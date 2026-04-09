@@ -107,7 +107,7 @@
       '<input type="hidden" name="client_timezone">' +
       '<!-- Turnstile widget -->' +
       '<div id="turnstileWidget" class="cf-turnstile" data-sitekey="' + TURNSTILE_SITE_KEY + '" data-size="invisible" data-callback="onTurnstileCallback"></div>' +
-      '<button type="submit" class="btn btn-gold btn-arrow form-lightbox__submit" id="formSubmitBtn">' +
+      '<button type="submit" class="btn btn-gold-ghost btn-arrow form-lightbox__submit" id="formSubmitBtn">' +
       'Get Your Growth Strategy' +
       '</button>' +
       '<p class="form-lightbox__disclaimer">We\u2019ll never share your information. Unsubscribe anytime.</p>' +
