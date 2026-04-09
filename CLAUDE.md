@@ -79,7 +79,7 @@ Add structured data for SEO rich snippets. This is a `<script type="application/
 - Validate with Google's Rich Results Test (search.google.com/test/rich-results)
 - Test with Schema.org validator (validator.schema.org)
 
-## Current Phase: Design System
+## Completed Phase: Design System
 Once the homepage is complete and responsive, extract a formal design system so all future pages are consistent and efficient to build. The homepage sets the tone — the design system codifies it.
 
 ### What a design system includes:
@@ -121,7 +121,7 @@ Once the homepage is complete and responsive, extract a formal design system so 
 
 - **Maintainable** — change a token in one place, it updates everywhere
 
-## Next Phase: Internal Pages (Post-Design System)
+## Completed Phase: Internal Pages
 
 Once the design system is extracted and `style-guide.html` exists, use this workflow to build every internal page. The design system is the source of truth — Figma provides content and layout intent, the design system provides the visual language.
 
@@ -189,24 +189,25 @@ To add a new case study to the website, follow the master workflow at `instructi
 - `public/css/layout.css` — layout patterns
 - `public/css/case-study-detail.css` — detail page styles
 
-## Future Phase: GitHub & Hosting Setup (Partially Complete)
-GitHub repo is live and code is being pushed regularly.
-
-### Completed:
-- [x] GitHub account created
-- [x] Repository created on GitHub (vpidkowich/navorapartners-website)
-- [x] Local git repo connected to GitHub remote
+## Completed Phase: Hosting Setup
+- [x] GitHub repo live (vpidkowich/navorapartners-website)
 - [x] Code pushed to GitHub regularly
-- [x] GitHub Pages set up for preview (vpidkowich.github.io)
+- [x] Deployed via Cloudflare Pages with custom domain (navorapartners.com)
 
-### Remaining:
-1. Learn branching, pull requests, and collaboration workflows
-2. Deploy to Sevalla.com (primary production host — replaces GitHub Pages)
+## Current Phase: SEO Optimization
+Optimize the website based on SEO best practices to improve organic visibility, search rankings, and technical health.
 
-### Sevalla.com Deployment
-Sevalla (sevalla.com) will be the primary hosting platform for the live site. GitHub Pages remains as a preview/staging tool.
-- Read Sevalla knowledge base for static site deployment steps
-- Connect GitHub repo to Sevalla for automatic deploys
-- Configure custom domain (navorapartners.com) on Sevalla
-- Set up SSL/HTTPS
-- Verify site performance and CDN configuration
+### What SEO optimization includes:
+1. **Technical SEO** — site speed, crawlability, indexability, sitemap, robots.txt, canonical tags, structured data (JSON-LD)
+2. **On-Page SEO** — title tags, meta descriptions, heading hierarchy, image alt text, internal linking structure
+3. **Content SEO** — keyword targeting per page, content gaps, blog/resource strategy
+4. **Local/Industry SEO** — schema markup for services, reviews, organization data
+5. **Performance** — Core Web Vitals, mobile usability, page load optimization
+
+### Implementation approach:
+- Run a full SEO audit of all live pages (homepage, about, careers, case studies listing, 8 detail pages)
+- Prioritize fixes by impact (technical blockers first, then on-page, then content)
+- Implement JSON-LD schema markup (already planned in CLAUDE.md)
+- Review and optimize all title tags and meta descriptions
+- Ensure proper internal linking between case study pages, listing page, and homepage
+- Validate with Google Search Console, Lighthouse, and rich results testing tools
