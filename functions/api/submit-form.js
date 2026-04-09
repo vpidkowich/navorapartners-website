@@ -27,7 +27,10 @@ function extractDomain(url) {
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
   });
 }
 
@@ -115,7 +118,7 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
 
   // Link to company if we have a record ID
   if (companyRecordId) {
-    values.company = [{ target_record_id: companyRecordId }];
+    values.company = [{ target_object: 'companies', target_record_id: companyRecordId }];
   }
 
   // First try with all fields (including custom attributes)
@@ -138,7 +141,7 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     email_addresses: values.email_addresses,
   };
   if (formData.phone) coreValues.phone_numbers = [{ original_phone_number: formData.phone }];
-  if (companyRecordId) coreValues.company = [{ target_record_id: companyRecordId }];
+  if (companyRecordId) coreValues.company = [{ target_object: 'companies', target_record_id: companyRecordId }];
 
   res = await fetch('https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses', {
     method: 'PUT',
