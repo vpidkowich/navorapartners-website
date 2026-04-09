@@ -50,20 +50,26 @@ The headline is the most important element. It follows the same rules as the hom
 
 **Formula:** `[Most Significant Result] + [Company Type Differentiator]`
 
+**Revenue-first principle:** Headlines and metrics must always lead with revenue impact. Navora optimizes based on revenue and real business outcomes, not platform dashboard metrics like ROAS. Every card should communicate what happened to the bank account, not what happened inside an ad platform.
+
 **Headline principles:**
-- Contains a concrete number (dollar figures beat percentages)
+- **Always lead with revenue** — dollar figures ($280K → $1.5M), revenue multipliers (3x), or revenue growth percentages (170%) as the primary hook
+- Dollar-to-dollar figures are the most compelling (e.g., "$100K to $600K/Month")
+- Revenue multipliers are second best (e.g., "3x Revenue")
+- Percentages are a fallback when no dollar figures are available
 - Contains a company type descriptor specific enough to differentiate
 - Locale is NOT required on listing card headlines (locale goes on the detail page headline instead)
 - No two headlines across the full set sound alike in structure
-- Uses ICP language (nCAC, MER, ROI, PMax — not dumbed down)
 - Maximum ~12 words
 
 **Examples (from existing cards):**
-- "Auto Parts Revenue from $280K to $1.5M/Month" ✓
-- "170% Revenue Growth for a High-Ticket Fitness Brand" ✓
-- "$98 nCAC Drop for an Australian Air Purifier Brand" ✓
-- "Acquisition Cost Cut from $40 to $15 for a Puzzle Retailer" ✓
-- "3x Revenue for a Handmade Jewelry Brand" ✓
+- "Auto Parts Revenue from $280K to $1.5M/Month" ✓ (dollar-to-dollar)
+- "Tallow Skincare Scaled from $100K to $600K/Month" ✓ (dollar-to-dollar)
+- "Declining RV Mattress Brand Turned into a $577K/Month Engine" ✓ (decline-to-dollar)
+- "High-Ticket Fitness Brand to 170% Revenue Growth and 3x Scale" ✓ (percentage + multiplier)
+- "Handmade Jewelry Brand to 3x Revenue in 24 Months" ✓ (multiplier + timeframe)
+- "Australian Air Purifier Brand Reverses Decline to 30% Annual Growth" ✓ (growth reversal)
+- "Acquisition Cost Cut from $40 to $15 for a Puzzle Retailer" ✓ (exception — efficiency story with no revenue data)
 
 ### Category Tag
 
@@ -110,11 +116,18 @@ Two key stats displayed below a divider line.
 - A value (bold, jade color) — e.g., "435%", "$98", "5x"
 
 **Rules:**
+- **Revenue first:** When dollar figures are available, use "Revenue Before" / "Revenue After" as the two metrics (e.g., $280K / $1.5M). This is the most compelling format.
+- When no dollar figures exist, use the revenue multiplier or growth percentage as the primary metric and pair it with a complementary metric (timeframe, scale, efficiency)
 - The two metrics should tell complementary parts of the story
-- If the headline uses a dollar figure, one metric should use a percentage (and vice versa)
-- Include a time indicator when available (e.g., "90 Days" as a value)
 - Keep labels under 3 words
-- Keep values punchy — "$40 → $15" or "3x" or "500%"
+- Keep values punchy — "$280K", "$1.5M", "3x", "24 Mo"
+
+**Examples of metric pairs:**
+- Revenue Before: $280K / Revenue After: $1.5M (dollar-to-dollar — best)
+- Revenue Growth: 170% / Account Scale: 3x (percentage + multiplier)
+- Revenue Growth: 3x / Sustained For: 24 Mo (multiplier + timeframe)
+- Revenue Before: $491K / Revenue After: $577K (dollar-to-dollar)
+- Annual Growth: 30% / nCAC Drop: $98 (growth + efficiency)
 
 ---
 
