@@ -923,15 +923,6 @@ ul { list-style: none; }
     radial-gradient(ellipse 350px 250px at 80% 10%, rgba(45, 90, 130, 0.1) 0%, transparent 70%),
     linear-gradient(to bottom, transparent 60%, rgba(5, 15, 28, 0.2) 100%),
     var(--color-dark-navy);
-  background-position:
-    50px 50px,
-    50px 50px,
-    50px 50px,
-    50px 50px,
-    50px 50px,
-    50px 50px,
-    50px 50px,
-    0 0;
   border-radius: var(--radius-none);
   max-width: 580px;
   width: 100%;
@@ -1048,15 +1039,18 @@ ul { list-style: none; }
   padding: 8px;
 }
 
-/* Error states */
+/* Error states — must override :focus gold highlight */
 .form-field--error input,
-.form-field--error select {
+.form-field--error select,
+.form-field--error input:focus,
+.form-field--error select:focus {
   border-color: var(--color-orange) !important;
   box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.25) !important;
   background: rgba(255, 107, 0, 0.06) !important;
 }
 
-.form-field--error .iti input[type="tel"] {
+.form-field--error .iti input[type="tel"],
+.form-field--error .iti input[type="tel"]:focus {
   border-color: var(--color-orange) !important;
   box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.25) !important;
   background: rgba(255, 107, 0, 0.06) !important;
