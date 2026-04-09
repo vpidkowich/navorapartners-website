@@ -77,7 +77,11 @@ async function upsertCompany(domain, apiKey) {
 
 async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
   const values = {
-    first_name: [{ first_name: formData.first_name, last_name: formData.last_name, full_name: `${formData.first_name} ${formData.last_name}` }],
+    name: [{
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      full_name: `${formData.first_name} ${formData.last_name}`,
+    }],
     email_addresses: [formData.email],
   };
 
@@ -85,7 +89,8 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     values.phone_numbers = [formData.phone];
   }
 
-  // Custom attributes
+  // Custom attributes — only sent if they exist in Attio workspace
+  // Run scripts/setup-attio-attributes.js to create them first
   const customFields = {
     revenue_range: formData.revenue || null,
     utm_source: formData.utm_source || null,
@@ -113,20 +118,38 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     values.company = [{ target_record_id: companyRecordId }];
   }
 
-  const res = await fetch('https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses', {
+  // First try with all fields (including custom attributes)
+  let res = await fetch('https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses', {
     method: 'PUT',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      data: { values },
-    }),
+    body: JSON.stringify({ data: { values } }),
+  });
+
+  if (res.ok) return true;
+
+  // If failed, retry with core fields only (custom attributes may not exist yet)
+  console.error('Attio upsert with custom fields failed:', res.status, await res.text());
+  const coreValues = {
+    name: values.name,
+    email_addresses: values.email_addresses,
+  };
+  if (formData.phone) coreValues.phone_numbers = [formData.phone];
+  if (companyRecordId) coreValues.company = [{ target_record_id: companyRecordId }];
+
+  res = await fetch('https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses', {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: { values: coreValues } }),
   });
 
   if (!res.ok) {
-    const text = await res.text();
-    console.error('Attio upsert person failed:', res.status, text);
+    console.error('Attio upsert person (core only) failed:', res.status, await res.text());
     return false;
   }
 

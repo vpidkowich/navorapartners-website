@@ -265,7 +265,7 @@
       btn.innerHTML = '<span class="form-lightbox__spinner"></span>Submitting\u2026';
     } else {
       btn.disabled = false;
-      btn.innerHTML = 'Get Your Growth Strategy<span class="btn-arrow__icon">\u2192</span>';
+      btn.innerHTML = 'Get Your Growth Strategy';
     }
   }
 
