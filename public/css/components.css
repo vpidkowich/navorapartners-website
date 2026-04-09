@@ -1155,8 +1155,11 @@ ul { list-style: none; }
 }
 
 .form-lightbox__submit:disabled {
-  opacity: 0.6;
+  opacity: 1;
   cursor: not-allowed;
+  background-color: var(--color-gold) !important;
+  color: var(--color-dark-navy) !important;
+  border-color: var(--color-gold) !important;
 }
 
 .form-lightbox__spinner {

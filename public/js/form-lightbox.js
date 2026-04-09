@@ -80,18 +80,19 @@
       '<span class="form-field__error">Please enter a valid email address</span>' +
       '</div>' +
       '<div class="form-field" id="field-phone">' +
-      '<label for="ff-phone">Phone</label>' +
+      '<label for="ff-phone">Phone <span style="color:var(--color-orange)">*</span></label>' +
       '<input type="tel" id="ff-phone" name="phone" autocomplete="tel">' +
-      '<span class="form-field__error">Please enter a valid phone number</span>' +
+      '<span class="form-field__error">Phone number is required</span>' +
       '</div>' +
       '<div class="form-field" id="field-revenue">' +
-      '<label for="ff-revenue">Annual Revenue</label>' +
+      '<label for="ff-revenue">Annual Revenue <span style="color:var(--color-orange)">*</span></label>' +
       '<select id="ff-revenue" name="revenue">' + buildRevenueOptions() + '</select>' +
+      '<span class="form-field__error">Please select a revenue range</span>' +
       '</div>' +
       '<div class="form-field" id="field-website">' +
-      '<label for="ff-website">Website URL</label>' +
+      '<label for="ff-website">Website URL <span style="color:var(--color-orange)">*</span></label>' +
       '<input type="url" id="ff-website" name="website_url" autocomplete="url" placeholder="https://yoursite.com">' +
-      '<span class="form-field__error">Please enter a valid URL (https://\u2026)</span>' +
+      '<span class="form-field__error">Website URL is required (https://\u2026)</span>' +
       '</div>' +
       '<!-- Honeypot -->' +
       '<div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">' +
@@ -161,15 +162,23 @@
       setError('field-email', false);
     }
 
-    // Phone (optional, but if provided must be valid)
-    if (phone && window._itiInstance && !window._itiInstance.isValidNumber()) {
+    // Phone (required, must be valid)
+    if (!phone || (window._itiInstance && !window._itiInstance.isValidNumber())) {
       setError('field-phone', true); valid = false;
     } else {
       setError('field-phone', false);
     }
 
-    // Website (optional, but if provided must look like a URL)
-    if (website && !/^https?:\/\/.+\..+/.test(website)) {
+    // Revenue (required)
+    var revenue = document.getElementById('ff-revenue').value;
+    if (!revenue) {
+      setError('field-revenue', true); valid = false;
+    } else {
+      setError('field-revenue', false);
+    }
+
+    // Website (required, must be a valid URL)
+    if (!website || !/^https?:\/\/.+\..+/.test(website)) {
       setError('field-website', true); valid = false;
     } else {
       setError('field-website', false);
@@ -197,12 +206,16 @@
       if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) setError('field-email', false);
     });
     if (phone) phone.addEventListener('input', function () {
-      if (!phone.value.trim() || (window._itiInstance && window._itiInstance.isValidNumber())) {
+      if (phone.value.trim() && window._itiInstance && window._itiInstance.isValidNumber()) {
         setError('field-phone', false);
       }
     });
+    var revenue = document.getElementById('ff-revenue');
+    if (revenue) revenue.addEventListener('change', function () {
+      if (revenue.value) setError('field-revenue', false);
+    });
     if (website) website.addEventListener('input', function () {
-      if (!website.value.trim() || /^https?:\/\/.+\..+/.test(website.value.trim())) {
+      if (/^https?:\/\/.+\..+/.test(website.value.trim())) {
         setError('field-website', false);
       }
     });
@@ -287,8 +300,12 @@
       body: JSON.stringify(data),
     })
       .then(function (res) {
-        return res.json().then(function (json) {
-          return { ok: res.ok, data: json };
+        return res.text().then(function (text) {
+          try {
+            return { ok: res.ok, data: JSON.parse(text) };
+          } catch (e) {
+            return { ok: false, data: { error: 'Unexpected server response' } };
+          }
         });
       })
       .then(function (result) {
