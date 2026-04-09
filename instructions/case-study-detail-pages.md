@@ -282,14 +282,16 @@ Before committing a new case study detail page:
 4. [ ] Nav has `nav-active` on "Results"
 5. [ ] All asset paths use `../../` prefix for shared resources
 6. [ ] Local assets (thumbnail, video) referenced without path prefix (same folder)
-7. [ ] GTM head + body snippets present
-8. [ ] Headline contains: concrete number + locale + company type
-9. [ ] No fabricated quotes — real quotes or `[PLACEHOLDER]`
-10. [ ] No fabricated details — real data or `[DETAIL NEEDED]`
-11. [ ] Card added to `public/case-studies.html` listing page
-12. [ ] Footer links use `../../` prefix
-13. [ ] Responsive behavior verified (desktop, tablet, mobile)
-14. [ ] All image paths URL-encoded (spaces → `%20`)
+7. [ ] Google Tag Manager (GTM-5DD29LTJ) head script + body noscript present
+8. [ ] Google tag / gtag.js (G-D4JNFE89WN) present in head
+9. [ ] Tally form lightbox HTML + script present before `</body>`
+10. [ ] Headline contains: concrete number + locale + company type
+11. [ ] No fabricated quotes — real quotes or `[PLACEHOLDER]`
+12. [ ] No fabricated details — real data or `[DETAIL NEEDED]`
+13. [ ] Card added to `public/case-studies.html` listing page
+14. [ ] Footer links use `../../` prefix
+15. [ ] Responsive behavior verified (desktop, tablet, mobile)
+16. [ ] All image paths URL-encoded (spaces → `%20`)
 
 ---
 
