@@ -334,7 +334,7 @@
     if (phoneInput && typeof intlTelInput === 'function') {
       window._itiInstance = intlTelInput(phoneInput, {
         initialCountry: 'us',
-        preferredCountries: ['us', 'ca', 'gb', 'au'],
+        preferredCountries: ['us', 'ca', 'gb', 'ie', 'au', 'nz'],
         separateDialCode: true,
         countrySearch: true,
         utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js',

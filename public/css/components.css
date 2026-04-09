@@ -1068,6 +1068,14 @@ ul { list-style: none; }
   color: var(--color-cream) !important;
 }
 
+.iti__country-list .iti__country {
+  color: var(--color-cream) !important;
+}
+
+.iti__country-list .iti__country-name {
+  color: var(--color-cream) !important;
+}
+
 .iti__country-list .iti__country:hover,
 .iti__country-list .iti__country--highlight {
   background: rgba(255, 255, 255, 0.1) !important;
@@ -1081,9 +1089,19 @@ ul { list-style: none; }
   border-radius: var(--radius-none) !important;
   font-family: var(--font-body) !important;
   font-size: var(--text-sm) !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   color: var(--color-cream) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  padding: 10px 12px !important;
+}
+
+.iti__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.iti__search-input:focus {
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 0 0 3px rgba(255, 225, 116, 0.15) !important;
 }
 
 .iti input[type="tel"] {
