@@ -110,7 +110,7 @@
       '</div>' +
       '<div class="form-field" id="field-email">' +
       '<label for="ff-email">Email <span style="color:var(--color-orange)">*</span></label>' +
-      '<input type="email" id="ff-email" name="email" required autocomplete="email" placeholder="john@company.com">' +
+      '<input type="email" id="ff-email" name="email" required autocomplete="email" placeholder="marty@awesomeecom.com">' +
       '<span class="form-field__error">Please enter a valid email address</span>' +
       '</div>' +
       '<div class="form-field" id="field-phone">' +
