@@ -360,10 +360,19 @@
       phoneInput.addEventListener('input', function () {
         var iti = window._itiInstance;
         if (!iti) return;
+        var raw = phoneInput.value;
+
+        // Auto-detect country if user types/pastes a + international number
+        if (raw.indexOf('+') === 0) {
+          iti.setNumber(raw);
+          return;
+        }
+
+        // Format US/CA numbers as (XXX) XXX-XXXX
         var country = iti.getSelectedCountryData();
         if (country.iso2 !== 'us' && country.iso2 !== 'ca') return;
 
-        var digits = phoneInput.value.replace(/\D/g, '');
+        var digits = raw.replace(/\D/g, '');
         var formatted = '';
         if (digits.length === 0) {
           formatted = '';

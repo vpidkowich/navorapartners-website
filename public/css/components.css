@@ -997,7 +997,7 @@ ul { list-style: none; }
   border: 1.5px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-none);
   font-family: var(--font-body);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: var(--weight-regular);
   color: var(--color-cream);
   background: rgba(255, 255, 255, 0.08);
