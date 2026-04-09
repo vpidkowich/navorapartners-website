@@ -331,14 +331,51 @@
 
     // Initialize intl-tel-input
     var phoneInput = document.getElementById('ff-phone');
+    var PREFERRED_COUNTRIES = ['us', 'ca', 'gb', 'ie', 'au', 'nz'];
     if (phoneInput && typeof intlTelInput === 'function') {
       window._itiInstance = intlTelInput(phoneInput, {
         initialCountry: 'us',
-        countryOrder: ['us', 'ca', 'gb', 'ie', 'au', 'nz'],
+        countryOrder: PREFERRED_COUNTRIES,
         separateDialCode: true,
         countrySearch: true,
         searchPlaceholder: 'Search country\u2026',
         loadUtils: function () { return import('https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js'); },
+      });
+
+      // Add divider after preferred countries in dropdown
+      setTimeout(function () {
+        var list = document.querySelector('.iti__country-list');
+        if (list) {
+          var items = list.querySelectorAll('.iti__country');
+          if (items.length > PREFERRED_COUNTRIES.length) {
+            var divider = document.createElement('li');
+            divider.className = 'iti__divider';
+            divider.setAttribute('aria-hidden', 'true');
+            list.insertBefore(divider, items[PREFERRED_COUNTRIES.length]);
+          }
+        }
+      }, 500);
+
+      // Format phone number as user types: (201) 555-0123
+      phoneInput.addEventListener('input', function () {
+        var iti = window._itiInstance;
+        if (!iti) return;
+        var country = iti.getSelectedCountryData();
+        if (country.iso2 !== 'us' && country.iso2 !== 'ca') return;
+
+        var digits = phoneInput.value.replace(/\D/g, '');
+        var formatted = '';
+        if (digits.length === 0) {
+          formatted = '';
+        } else if (digits.length <= 3) {
+          formatted = '(' + digits;
+        } else if (digits.length <= 6) {
+          formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+        } else {
+          formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
+        }
+
+        phoneInput.value = formatted;
       });
     }
 

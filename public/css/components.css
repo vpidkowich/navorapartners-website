@@ -1095,6 +1095,14 @@ ul { list-style: none; }
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
+.iti__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 6px 0;
+  list-style: none;
+  pointer-events: none;
+}
+
 .iti__search-input {
   border-radius: var(--radius-none) !important;
   font-family: var(--font-body) !important;
