@@ -162,8 +162,9 @@
       setError('field-email', false);
     }
 
-    // Phone (required, must be valid)
-    if (!phone || (window._itiInstance && !window._itiInstance.isValidNumber())) {
+    // Phone (required, must have enough digits)
+    var phoneDigits = phone.replace(/\D/g, '');
+    if (!phone || phoneDigits.length < 7) {
       setError('field-phone', true); valid = false;
     } else {
       setError('field-phone', false);
@@ -206,9 +207,8 @@
       if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) setError('field-email', false);
     });
     if (phone) phone.addEventListener('input', function () {
-      if (phone.value.trim() && window._itiInstance && window._itiInstance.isValidNumber()) {
-        setError('field-phone', false);
-      }
+      var digits = phone.value.replace(/\D/g, '');
+      if (digits.length >= 7) setError('field-phone', false);
     });
     var revenue = document.getElementById('ff-revenue');
     if (revenue) revenue.addEventListener('change', function () {
