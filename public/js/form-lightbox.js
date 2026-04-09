@@ -244,7 +244,14 @@
 
     hideErrorBanner();
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      // Remove focus from all fields so orange error shows (not gold focus)
+      if (document.activeElement) document.activeElement.blur();
+      // Scroll first error field into view
+      var firstError = document.querySelector('.form-field--error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
 
     isSubmitting = true;
     setLoadingState(true);
