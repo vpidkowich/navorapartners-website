@@ -1068,12 +1068,13 @@ ul { list-style: none; }
   color: var(--color-cream) !important;
 }
 
-.iti__country-list .iti__country {
+.form-lightbox .iti__country-list .iti__country,
+.form-lightbox .iti__country-list .iti__country * {
   color: var(--color-cream) !important;
 }
 
-.iti__country-list .iti__country-name {
-  color: var(--color-cream) !important;
+.form-lightbox .iti__country-list .iti__country .iti__dial-code {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .iti__country-list .iti__country:hover,
