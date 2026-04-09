@@ -1054,34 +1054,45 @@ ul { list-style: none; }
 
 .iti {
   width: 100%;
+  --iti-hover-color: rgba(255, 255, 255, 0.1);
+  --iti-border-color: rgba(255, 255, 255, 0.15);
 }
 
 .iti__selected-country-primary {
   border-radius: var(--radius-none) !important;
 }
 
-.iti__country-list {
-  border-radius: var(--radius-none) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: var(--shadow-lg) !important;
-  background: var(--color-dark-navy) !important;
+.iti__selected-dial-code {
   color: var(--color-cream) !important;
 }
 
-.iti__country-list .iti__country,
-.iti__country-list .iti__country-name,
-.iti__country-list .iti__dial-code,
-.iti__country-list .iti__country * {
+/* Dropdown container — may be appended to body */
+.iti__dropdown-content {
+  background: var(--color-dark-navy) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: var(--radius-none) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.iti__country-list {
+  background: var(--color-dark-navy) !important;
+}
+
+.iti__country-list .iti__country {
   color: var(--color-cream) !important;
+}
+
+.iti__country-list .iti__country-name {
+  color: var(--color-cream) !important;
+}
+
+.iti__country-list .iti__dial-code {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .iti__country-list .iti__country:hover,
-.iti__country-list .iti__country--highlight {
+.iti__country-list .iti__highlight {
   background: rgba(255, 255, 255, 0.1) !important;
-}
-
-.iti__dial-code {
-  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .iti__search-input {

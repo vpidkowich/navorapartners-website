@@ -334,10 +334,11 @@
     if (phoneInput && typeof intlTelInput === 'function') {
       window._itiInstance = intlTelInput(phoneInput, {
         initialCountry: 'us',
-        preferredCountries: ['us', 'ca', 'gb', 'ie', 'au', 'nz'],
+        countryOrder: ['us', 'ca', 'gb', 'ie', 'au', 'nz'],
         separateDialCode: true,
         countrySearch: true,
-        utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js',
+        searchPlaceholder: 'Search country\u2026',
+        loadUtils: function () { return import('https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js'); },
       });
     }
 
