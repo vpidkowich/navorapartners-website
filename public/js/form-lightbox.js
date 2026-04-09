@@ -451,14 +451,16 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // Wire all "growth strategy" buttons/links
+    // Wire all "growth strategy" buttons/links (except the form's own submit button)
     document.querySelectorAll('a, button').forEach(function (el) {
       var text = el.textContent.toLowerCase();
       if (
         text.indexOf('growth strategy') > -1 &&
         !el.classList.contains('form-lightbox__close') &&
+        !el.classList.contains('form-lightbox__submit') &&
         !el.classList.contains('no-tally') &&
-        !el.classList.contains('no-form')
+        !el.classList.contains('no-form') &&
+        el.type !== 'submit'
       ) {
         el.addEventListener('click', openLightbox);
       }
