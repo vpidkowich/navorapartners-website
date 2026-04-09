@@ -19,6 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="canonical" href="https://navorapartners.com/case-studies/neurofeedback-device/">
 <title>Simplifying a 2-SKU Neurofeedback Brand to +30% ROI &mdash; Navora Partners</title>
 <meta name="description" content="How a neurofeedback device brand simplified a bloated ad account to achieve +30% ROI and +47% new traffic while defending against knockoff competitors.">
 <link rel="preconnect" href="https://api.fontshare.com">
@@ -30,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="../../css/components.css">
 <link rel="stylesheet" href="../../css/layout.css">
 <link rel="stylesheet" href="../../css/case-study-detail.css">
-<script async src="https://tally.so/widgets/embed.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/css/intlTelInput.min.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -340,45 +341,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
-<!-- Tally Form Lightbox -->
-<div class="tally-lightbox" id="tallyLightbox">
-  <div class="tally-lightbox__card">
-    <button class="tally-lightbox__close" id="tallyClose">&times;</button>
-    <iframe data-tally-src="https://tally.so/embed/PdlN75?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Growth Strategy Request"></iframe>
-  </div>
-</div>
-
-<script>
-// Tally form lightbox
-(function() {
-  var lb = document.getElementById("tallyLightbox");
-  var closeBtn = document.getElementById("tallyClose");
-  if (!lb) return;
-
-  function openTally(e) {
-    e.preventDefault();
-    lb.classList.add("active");
-    document.body.style.overflow = "hidden";
-    if (typeof Tally !== "undefined") Tally.loadEmbeds();
-  }
-
-  function closeTally() {
-    lb.classList.remove("active");
-    document.body.style.overflow = "";
-  }
-
-  // Wire all growth strategy buttons
-  document.querySelectorAll("a, button").forEach(function(el) {
-    var text = el.textContent.toLowerCase();
-    if (text.indexOf("growth strategy") > -1 && !el.classList.contains("tally-lightbox__close")) {
-      el.addEventListener("click", openTally);
-    }
-  });
-
-  closeBtn.addEventListener("click", closeTally);
-  lb.addEventListener("click", function(e) { if (e.target === lb) closeTally(); });
-  document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeTally(); });
-})();
-</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/intlTelInput.min.js"></script>
+<script src="../../js/form-lightbox.js"></script>
 </body>
 </html>
