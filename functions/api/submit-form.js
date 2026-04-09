@@ -172,7 +172,7 @@ async function sendSlackNotification(firstName, lastName, webhookUrl) {
     body: JSON.stringify({
       text: `${firstName} ${lastName} just filled the form for a Growth Strategy.`,
       icon_emoji: ':grinning-slackbot:',
-      username: 'Navora Lead Bot',
+      username: 'Sales Bot 9000',
     }),
   }).catch((err) => console.error('Slack notification failed:', err));
 }
