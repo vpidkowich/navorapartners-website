@@ -200,13 +200,12 @@ export async function onRequestPost(context) {
   const ip = request.headers.get('CF-Connecting-IP') || '';
   const turnstileToken = body.turnstile_token;
 
-  if (!turnstileToken) {
-    return jsonResponse({ success: false, error: 'Security verification required' }, 400);
-  }
-
-  const turnstileValid = await verifyTurnstile(turnstileToken, ip, env.TURNSTILE_SECRET_KEY);
-  if (!turnstileValid) {
-    return jsonResponse({ success: false, error: 'Security verification failed' }, 403);
+  // TODO: Re-enable Turnstile verification once invisible challenge is fixed
+  if (turnstileToken) {
+    const turnstileValid = await verifyTurnstile(turnstileToken, ip, env.TURNSTILE_SECRET_KEY);
+    if (!turnstileValid) {
+      return jsonResponse({ success: false, error: 'Security verification failed' }, 403);
+    }
   }
 
   // Sanitize inputs

@@ -319,42 +319,10 @@
       client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
     };
 
-    // Get Turnstile token — execute invisible challenge and wait for callback
-    function submitWithToken(token) {
-      data.turnstile_token = token;
-      doSubmit(data);
-    }
-
-    if (typeof turnstile !== 'undefined') {
-      // Reset and re-execute to get a fresh token
-      if (window._turnstileWidgetId !== undefined) {
-        turnstile.reset(window._turnstileWidgetId);
-        turnstile.execute(window._turnstileWidgetId);
-      } else {
-        // Render for the first time with explicit execute
-        window._turnstileWidgetId = turnstile.render('#turnstileWidget', {
-          sitekey: TURNSTILE_SITE_KEY,
-          size: 'invisible',
-          callback: submitWithToken,
-          'error-callback': function () {
-            showErrorBanner('Security verification failed. Please try again.');
-            setLoadingState(false);
-            isSubmitting = false;
-          },
-        });
-      }
-      // Set a timeout in case Turnstile never calls back
-      setTimeout(function () {
-        if (isSubmitting && !data.turnstile_token) {
-          showErrorBanner('Security verification timed out. Please try again.');
-          setLoadingState(false);
-          isSubmitting = false;
-        }
-      }, 10000);
-    } else {
-      // Turnstile not loaded — submit without token (server will reject)
-      doSubmit(data);
-    }
+    // TODO: Re-enable Turnstile once invisible challenge is debugged
+    // For now, submit directly without Turnstile token
+    data.turnstile_token = '';
+    doSubmit(data);
   }
 
   function doSubmit(data) {
