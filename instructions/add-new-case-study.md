@@ -95,8 +95,10 @@ Specific questions per item:
 - **No client headshot?** → "Did you mean to skip the client headshot, or did you forget? If skipped, the quote block won't have a photo."
 - **No client logo?** → "Did you mean to skip the client logo, or did you forget? If skipped, attribution will be text-only."
 - **No location/action photo?** → "Did you mean to skip the location/action photo, or did you forget? This would be used in the story section alongside the quote."
-- **No client testimonial video embed code?** → "Did you mean to skip the client testimonial video, or did you forget? If skipped, the testimonial video in the Key Stats section will be omitted."
-- **No Navora case study video embed code?** → "Did you mean to skip the Navora case study video, or did you forget to add the embed code? If skipped, the video in the FROM CHALLENGES TO SUCCESS section will be omitted."
+- **Video embed codes (Navora case study video and/or client testimonial video)?** → For each video type, check whether a video FILE (`.mp4`, `.mov`, `.webm`, `.avi`, `.mkv`) exists in the folder:
+  - **Video file found, no embed code:** → "I found `[filename]` but no embed code. Would you like me to upload it to YouTube and generate the embed code automatically? (This takes 10-20 minutes.) Or would you prefer to skip the video?" If yes → follow `instructions/youtube-upload-sub-procedure.md`.
+  - **No video file, no embed code:** → "Did you mean to skip the [Navora case study video / client testimonial video], or did you forget? If skipped, that video section will be omitted."
+  - **Embed code already provided:** → Proceed as normal.
 - **No client quotes?** → "Did you mean to skip client quotes, or did you forget? If skipped, the quote block and testimonial section will be omitted entirely (not faked)."
 - **No graphics/screenshots?** → "Did you mean to skip graphics/screenshots, or did you forget? These add visual interest to the page."
 
@@ -219,3 +221,4 @@ Push to the remote repository.
 | Listing page | `public/case-studies.html` |
 | Homepage | `public/index.html` |
 | Existing card data | `public/case-studies/Case Study Copy.txt` |
+| YouTube upload sub-procedure | `instructions/youtube-upload-sub-procedure.md` |

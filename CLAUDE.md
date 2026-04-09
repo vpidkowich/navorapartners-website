@@ -176,6 +176,7 @@ To add a new case study to the website, follow the master workflow at `instructi
 - `instructions/case-study-detail-pages.md` — how to write and build detail pages
 - `instructions/case-study-listing-cards.md` — how to create and organize listing page cards
 - `instructions/success-story-cards.md` — how to create and organize homepage cards
+- `instructions/youtube-upload-sub-procedure.md` — auto-upload videos to YouTube during case study builds
 
 ### Reference material:
 - `references/ICP.docx` — ideal client profile
@@ -211,3 +212,8 @@ Optimize the website based on SEO best practices to improve organic visibility, 
 - Review and optimize all title tags and meta descriptions
 - Ensure proper internal linking between case study pages, listing page, and homepage
 - Validate with Google Search Console, Lighthouse, and rich results testing tools
+
+### Pending: Legal Pages
+- `public/terms.html` and `public/privacy.html` exist as placeholder pages
+- Content for these pages must be created with the help of legal counsel
+- Do NOT generate legal content without explicit approval — only update when real legal copy is provided
