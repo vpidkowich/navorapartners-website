@@ -59,7 +59,7 @@ async function upsertCompany(domain, apiKey) {
     body: JSON.stringify({
       data: {
         values: {
-          domains: [domain],
+          domains: [{ domain: domain }],
         },
       },
     }),
@@ -82,11 +82,11 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
       last_name: formData.last_name,
       full_name: `${formData.first_name} ${formData.last_name}`,
     }],
-    email_addresses: [formData.email],
+    email_addresses: [{ email_address: formData.email }],
   };
 
   if (formData.phone) {
-    values.phone_numbers = [formData.phone];
+    values.phone_numbers = [{ original_phone_number: formData.phone }];
   }
 
   // Custom attributes — only sent if they exist in Attio workspace
@@ -136,7 +136,7 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     name: values.name,
     email_addresses: values.email_addresses,
   };
-  if (formData.phone) coreValues.phone_numbers = [formData.phone];
+  if (formData.phone) coreValues.phone_numbers = [{ original_phone_number: formData.phone }];
   if (companyRecordId) coreValues.company = [{ target_record_id: companyRecordId }];
 
   res = await fetch('https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses', {
