@@ -125,7 +125,7 @@
       '</div>' +
       '<div class="form-field" id="field-website">' +
       '<label for="ff-website">Website URL <span style="color:var(--color-orange)">*</span></label>' +
-      '<input type="text" id="ff-website" name="website_url" autocomplete="url" placeholder="yoursite.com">' +
+      '<input type="text" id="ff-website" name="website_url" autocomplete="url" placeholder="hoverboardsupreme.com">' +
       '<span class="form-field__error">Please enter a valid website (e.g. yoursite.com)</span>' +
       '</div>' +
       '<!-- Honeypot -->' +
