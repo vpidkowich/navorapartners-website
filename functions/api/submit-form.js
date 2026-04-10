@@ -110,9 +110,10 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     geo_timezone: geoData.timezone || null,
   };
 
+  // Wrap each custom value in Attio's typed array format
   for (const [key, value] of Object.entries(customFields)) {
     if (value) {
-      values[key] = value;
+      values[key] = [{ value: value }];
     }
   }
 
