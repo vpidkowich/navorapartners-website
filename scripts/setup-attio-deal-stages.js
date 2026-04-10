@@ -40,7 +40,7 @@ const CUSTOM_STAGES = [
   { title: 'Strategic Video Walkthrough Sent' },
   { title: 'Key Findings - Call Booked' },
   { title: 'Key Findings - Call Cancelled' },
-  { title: 'Won', celebrate: true },
+  { title: 'Won \uD83C\uDF89', celebrate: true },
   { title: 'Lost' },
   { title: 'Followup' },
 ];

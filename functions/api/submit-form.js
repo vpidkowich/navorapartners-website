@@ -133,7 +133,10 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     body: JSON.stringify({ data: { values } }),
   });
 
-  if (res.ok) return { ok: true };
+  if (res.ok) {
+    const data = await res.json();
+    return { ok: true, recordId: data.data?.id?.record_id || null };
+  }
 
   // If failed, retry with core fields only (custom attributes may not exist yet)
   const firstError = await res.text();
@@ -160,7 +163,47 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     return { ok: false, error: secondError };
   }
 
-  return { ok: true };
+  const data = await res.json();
+  return { ok: true, recordId: data.data?.id?.record_id || null };
+}
+
+// ── Attio: Create Deal ───────────────────────────────────────────
+
+async function createDeal(formData, personRecordId, companyRecordId, apiKey) {
+  const domain = formData.website_url ? extractDomain(formData.website_url) : '';
+  const companyLabel = domain || 'Unknown Company';
+  const dealName = `${formData.first_name} ${formData.last_name} \u2014 ${companyLabel}`;
+
+  const values = {
+    name: [{ value: dealName }],
+    stage: [{ status: 'Lead' }],
+    owner: [{ workspace_member_email_address: 'victor@navorapartners.com' }],
+  };
+
+  if (personRecordId) {
+    values.associated_people = [{ target_object: 'people', target_record_id: personRecordId }];
+  }
+  if (companyRecordId) {
+    values.associated_company = [{ target_object: 'companies', target_record_id: companyRecordId }];
+  }
+
+  const res = await fetch('https://api.attio.com/v2/objects/deals/records', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: { values } }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error('Attio create deal failed:', res.status, text);
+    return null;
+  }
+
+  const data = await res.json();
+  return data.data?.id?.record_id || null;
 }
 
 // ── Slack notification ───────────────────────────────────────────
@@ -292,7 +335,10 @@ export async function onRequestPost(context) {
       return jsonResponse({ success: false, error: 'Failed to create contact record', detail: personResult.error }, 500);
     }
 
-    // Step 3 & 4: Slack + Google Sheets (fire and forget — don't block response)
+    // Step 3: Create Deal (linked to person + company, owned by Victor, stage = Lead)
+    await createDeal(formData, personResult.recordId, companyRecordId, env.ATTIO_API_KEY);
+
+    // Step 4 & 5: Slack + Google Sheets (fire and forget — don't block response)
     await Promise.allSettled([
       sendSlackNotification(formData.first_name, formData.last_name, env.SLACK_WEBHOOK_URL),
       logToGoogleSheets(formData, geoData, env.GOOGLE_SHEET_WEBHOOK_URL),
