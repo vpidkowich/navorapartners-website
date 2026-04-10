@@ -92,10 +92,8 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     values.phone_numbers = [{ original_phone_number: formData.phone }];
   }
 
-  // Custom attributes — only sent if they exist in Attio workspace
-  // Run scripts/setup-attio-attributes.js to create them first
-  const customFields = {
-    revenue_range: formData.revenue || null,
+  // Text custom attributes — formatted as [{ value: "..." }]
+  const textFields = {
     utm_source: formData.utm_source || null,
     utm_medium: formData.utm_medium || null,
     utm_campaign: formData.utm_campaign || null,
@@ -109,12 +107,15 @@ async function upsertPerson(formData, geoData, companyRecordId, apiKey) {
     geo_country: geoData.country || null,
     geo_timezone: geoData.timezone || null,
   };
-
-  // Wrap each custom value in Attio's typed array format
-  for (const [key, value] of Object.entries(customFields)) {
+  for (const [key, value] of Object.entries(textFields)) {
     if (value) {
       values[key] = [{ value: value }];
     }
+  }
+
+  // Select custom attributes — formatted as [{ option: "title" }]
+  if (formData.revenue) {
+    values.revenue_range = [{ option: formData.revenue }];
   }
 
   // Link to company if we have a record ID
