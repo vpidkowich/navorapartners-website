@@ -39,9 +39,13 @@
 
   function isValidWebsite(value) {
     if (!value) return false;
+    // Reject any whitespace anywhere in the URL
+    if (/\s/.test(value)) return false;
     // Strip protocol if provided
-    var domain = value.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '').trim().toLowerCase();
+    var domain = value.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '').toLowerCase();
     if (!domain || domain.indexOf('.') === -1) return false;
+    // Reject if domain contains characters not allowed in hostnames
+    if (!/^[a-z0-9.-]+$/.test(domain)) return false;
     // Check TLD
     var parts = domain.split('.');
     var tld = parts.slice(1).join('.'); // handles co.uk, com.au etc
