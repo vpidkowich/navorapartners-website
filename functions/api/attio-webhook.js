@@ -88,6 +88,68 @@ async function updateDealOwner(dealId, ownerEmail, apiKey) {
   return true;
 }
 
+const CHAKY_WORKSPACE_MEMBER_ID = '039b82bf-8126-4d2c-97a4-7f61b9f10d71';
+
+// Recursively find all strings that look like UUIDs in an object
+function findRecordIds(obj, found = new Set()) {
+  if (!obj) return found;
+  if (typeof obj === 'string') {
+    if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(obj)) {
+      found.add(obj);
+    }
+    return found;
+  }
+  if (Array.isArray(obj)) {
+    obj.forEach((item) => findRecordIds(item, found));
+    return found;
+  }
+  if (typeof obj === 'object') {
+    Object.values(obj).forEach((v) => findRecordIds(v, found));
+  }
+  return found;
+}
+
+async function processDealUpdate(dealId, env) {
+  const deal = await fetchDeal(dealId, env.ATTIO_API_KEY);
+  if (!deal) return false;
+
+  const currentStage = deal.values.stage?.[0]?.status?.title || '';
+  if (currentStage !== TARGET_STAGE) return false;
+
+  // Avoid infinite loop: skip if owner is already Chaky
+  const currentOwner = deal.values.owner?.[0]?.referenced_actor_id;
+  if (currentOwner === CHAKY_WORKSPACE_MEMBER_ID) return false;
+
+  // Switch owner to Chaky
+  const updated = await updateDealOwner(dealId, CHAKY_EMAIL, env.ATTIO_API_KEY);
+  if (!updated) return false;
+
+  // Gather deal/person/company info for the Slack message
+  const dealName = deal.values.name?.[0]?.value || 'Unnamed deal';
+  let personName = 'Unknown person';
+  let companyName = 'Unknown company';
+
+  const personRef = deal.values.associated_people?.[0]?.target_record_id;
+  if (personRef) {
+    const person = await fetchPerson(personRef, env.ATTIO_API_KEY);
+    if (person) {
+      const n = person.values.name?.[0];
+      if (n) personName = n.full_name || `${n.first_name || ''} ${n.last_name || ''}`.trim();
+    }
+  }
+
+  const companyRef = deal.values.associated_company?.[0]?.target_record_id;
+  if (companyRef) {
+    const company = await fetchCompany(companyRef, env.ATTIO_API_KEY);
+    if (company) {
+      companyName = company.values.name?.[0]?.value || companyName;
+    }
+  }
+
+  await notifySlack(env.SLACK_WEBHOOK_URL, dealName, personName, companyName);
+  return true;
+}
+
 // ── Main handler ──────────────────────────────────────────────────
 
 export async function onRequestPost(context) {
@@ -103,65 +165,20 @@ export async function onRequestPost(context) {
     });
   }
 
-  // Attio sends events as an array
-  const events = body.events || [body];
+  // Extract all UUIDs from the payload and try each as a deal ID.
+  // fetchDeal returns null for non-deal IDs, so this is safe.
+  const candidateIds = Array.from(findRecordIds(body));
 
-  for (const event of events) {
-    // We care about deal stage updates
-    if (event.event_type !== 'record-updated') continue;
-
-    const objectSlug = event.parent_object_slug || event.id?.object_slug;
-    if (objectSlug !== 'deals') continue;
-
-    // Check if the stage attribute was the one that changed
-    const updatedAttrs = event.actor_changes || event.changed_attributes || [];
-    const stageChanged = Array.isArray(updatedAttrs)
-      ? updatedAttrs.some((a) => a === 'stage' || a?.api_slug === 'stage')
-      : true; // fallback: process anyway
-
-    if (!stageChanged) continue;
-
-    const dealId = event.id?.record_id || event.parent_record_id;
-    if (!dealId) continue;
-
-    // Fetch the deal to verify the current stage
-    const deal = await fetchDeal(dealId, env.ATTIO_API_KEY);
-    if (!deal) continue;
-
-    const currentStage = deal.values.stage?.[0]?.status?.title || '';
-    if (currentStage !== TARGET_STAGE) continue;
-
-    // Switch owner to Chaky
-    const updated = await updateDealOwner(dealId, CHAKY_EMAIL, env.ATTIO_API_KEY);
-    if (!updated) continue;
-
-    // Gather person + company info for the Slack message
-    const dealName = deal.values.name?.[0]?.value || 'Unnamed deal';
-    let personName = 'Unknown person';
-    let companyName = 'Unknown company';
-
-    const personRef = deal.values.associated_people?.[0]?.target_record_id;
-    if (personRef) {
-      const person = await fetchPerson(personRef, env.ATTIO_API_KEY);
-      if (person) {
-        const n = person.values.name?.[0];
-        if (n) personName = n.full_name || `${n.first_name || ''} ${n.last_name || ''}`.trim();
-      }
+  let processedAny = false;
+  for (const id of candidateIds) {
+    const didProcess = await processDealUpdate(id, env);
+    if (didProcess) {
+      processedAny = true;
+      break; // only process one deal per event payload
     }
-
-    const companyRef = deal.values.associated_company?.[0]?.target_record_id;
-    if (companyRef) {
-      const company = await fetchCompany(companyRef, env.ATTIO_API_KEY);
-      if (company) {
-        companyName = company.values.name?.[0]?.value || companyName;
-      }
-    }
-
-    // Send Slack notification
-    await notifySlack(env.SLACK_WEBHOOK_URL, dealName, personName, companyName);
   }
 
-  return new Response(JSON.stringify({ ok: true }), {
+  return new Response(JSON.stringify({ ok: true, processed: processedAny }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   });
