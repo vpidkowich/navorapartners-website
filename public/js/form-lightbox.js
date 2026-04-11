@@ -150,8 +150,8 @@
       '<input type="hidden" name="utm_term">' +
       '<input type="hidden" name="gclid">' +
       '<input type="hidden" name="client_timezone">' +
-      '<!-- Turnstile widget -->' +
-      '<div id="turnstileWidget"></div>' +
+      '<!-- Turnstile widget — rendered explicitly via turnstile.render() -->' +
+      '<div id="turnstileWidget" style="margin-top:var(--space-sm);display:flex;justify-content:center;"></div>' +
       '<button type="submit" class="btn btn-gold-ghost btn-arrow form-lightbox__submit" id="formSubmitBtn">' +
       'Get Your Growth Strategy' +
       '</button>' +
@@ -330,9 +330,20 @@
       client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
     };
 
-    // TODO: Re-enable Turnstile once invisible challenge is debugged
-    // For now, submit directly without Turnstile token
-    data.turnstile_token = '';
+    // Get Turnstile token from rendered widget
+    var token = '';
+    if (typeof turnstile !== 'undefined' && window._turnstileWidgetId !== undefined) {
+      token = turnstile.getResponse(window._turnstileWidgetId) || '';
+    }
+
+    if (!token) {
+      showErrorBanner('Please complete the security check before submitting.');
+      setLoadingState(false);
+      isSubmitting = false;
+      return;
+    }
+
+    data.turnstile_token = token;
     doSubmit(data);
   }
 
@@ -377,10 +388,27 @@
         showErrorBanner('Network error. Please check your connection and try again.');
         setLoadingState(false);
         isSubmitting = false;
-        if (typeof turnstile !== 'undefined') {
-          turnstile.reset();
+        if (typeof turnstile !== 'undefined' && window._turnstileWidgetId !== undefined) {
+          turnstile.reset(window._turnstileWidgetId);
         }
       });
+  }
+
+  // ── Turnstile ────────────────────────────────────────────────────
+
+  function renderTurnstile() {
+    if (window._turnstileWidgetId !== undefined) return; // already rendered
+    if (typeof turnstile === 'undefined') {
+      // Script not loaded yet — retry shortly
+      setTimeout(renderTurnstile, 200);
+      return;
+    }
+    var container = document.getElementById('turnstileWidget');
+    if (!container) return;
+    window._turnstileWidgetId = turnstile.render(container, {
+      sitekey: TURNSTILE_SITE_KEY,
+      theme: 'dark',
+    });
   }
 
   // ── Lightbox open/close ──────────────────────────────────────────
@@ -402,6 +430,9 @@
 
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Render Turnstile widget (idempotent — only runs once)
+    renderTurnstile();
 
     // Focus first input after animation
     setTimeout(function () {
