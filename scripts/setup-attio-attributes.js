@@ -68,17 +68,23 @@ async function createAttribute(objectSlug, attr) {
     api_slug: attr.api_slug,
     title: attr.title,
     type: attr.type,
+    description: attr.description || '',
+    is_required: false,
+    is_unique: false,
+    is_multiselect: attr.type === 'select' ? false : false,
   };
 
-  // Add select choices if this is a select attribute
+  // Config is required by the API; populate per type
   if (attr.type === 'select' && attr.config?.choices) {
     body.config = { choices: attr.config.choices };
+  } else {
+    body.config = {};
   }
 
   const res = await fetch(`${BASE_URL}/objects/${objectSlug}/attributes`, {
     method: 'POST',
     headers,
-    body: JSON.stringify(body),
+    body: JSON.stringify({ data: body }),
   });
 
   if (!res.ok) {
