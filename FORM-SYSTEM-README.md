@@ -1,6 +1,61 @@
 # Navora Growth Strategy Form — System Documentation
 
-This document describes the end-to-end lead capture system that powers the "Get Free Growth Strategy" CTAs across the Navora Partners website.
+> **This README documents a sub-project within the larger Navora Partners website repo.**
+> It covers ONLY the lead capture form system — the form itself, the backend that processes submissions, the Attio CRM integration, the Slack notifications, the Google Sheets backup, and the deal-stage-change webhook. **It does not cover the rest of the marketing website** (homepage sections, case studies, team pages, design system, etc.).
+
+---
+
+## Relationship to the parent project
+
+This repo (`vpidkowich/navorapartners-website`) contains two distinct layers that share a single deploy pipeline:
+
+### Layer 1 — The Marketing Website
+- Static HTML/CSS/JS for navorapartners.com
+- Homepage, about page, case studies, careers page, sitemap, etc.
+- Documented in `CLAUDE.md` (project overview, design system, section maps, spacing tokens, responsive breakpoints, hosting notes)
+- Lives primarily in `public/` (minus the form-specific files)
+
+### Layer 2 — The Lead Capture System *(this README)*
+- Form UI rendered as a lightbox on top of any website page
+- Cloudflare Pages Functions that handle form submissions and Attio webhooks
+- One-time setup scripts for Attio CRM configuration
+- Slack + Google Sheets integrations
+- Documented here in `FORM-SYSTEM-README.md`
+
+**Why one repo?** Cloudflare Pages Functions must live in the same repo as the site they serve — that's a technical constraint of the platform. Splitting would require rebuilding the backend as a separate Cloudflare Worker with its own domain and cross-origin calls, adding complexity for zero benefit.
+
+### How to tell which files belong to which layer
+
+| Layer | Files / folders |
+|-------|----------------|
+| **Website (Layer 1)** | `public/index.html`, `public/about.html`, `public/careers.html`, `public/case-studies.html`, `public/case-studies/**/*.html`, `public/sitemap.html`, `public/css/variables.css`, `public/css/layout.css`, `public/images/`, `public/fonts/`, `designs/`, `instructions/`, `references/`, `seo/` |
+| **Form system (Layer 2, this README)** | `public/js/form-lightbox.js`, `public/lead-confirmed.html`, `public/css/lead-confirmed.css`, the form-related section of `public/css/components.css`, `functions/api/submit-form.js`, `functions/api/attio-webhook.js`, `scripts/setup-attio-attributes.js`, `scripts/setup-attio-deal-stages.js`, `scripts/google-sheets-appscript.js`, `public/images/grinning-slackbot.png`, `FORM-SYSTEM-README.md` |
+| **Shared** | `public/css/components.css` (contains both website components AND form lightbox styles), all 16 HTML pages (each loads `form-lightbox.js` so the form can open from any page) |
+
+### Filtering commit history by layer
+
+```bash
+# Form system changes only
+git log -- functions/ scripts/ public/js/form-lightbox.js public/lead-confirmed.html public/css/lead-confirmed.css FORM-SYSTEM-README.md
+
+# Website changes only (excluding form system)
+git log -- public/ ':(exclude)public/js/form-lightbox.js' ':(exclude)public/lead-confirmed.html' ':(exclude)public/css/lead-confirmed.css'
+```
+
+### Commit message conventions
+
+Form-system commits should start with a prefix that makes the layer obvious, e.g.:
+- `Form lightbox: ...`
+- `Attio custom fields: ...`
+- `Webhook: ...`
+- `Slack notification: ...`
+- `Deal stages: ...`
+
+Website commits use prefixes like:
+- `Homepage: ...`
+- `Case study — <name>: ...`
+- `Careers: ...`
+- `Design system: ...`
 
 ---
 

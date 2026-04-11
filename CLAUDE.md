@@ -1,5 +1,19 @@
 # Navora Partners — Homepage Build
 
+## Project has two layers: Website + Form System
+
+This repo contains two distinct sub-projects that share one deploy pipeline:
+
+1. **The marketing website** — static HTML/CSS/JS for navorapartners.com. Documented in this file (`CLAUDE.md`). Covers homepage, about, case studies, careers, design system, spacing tokens, responsive breakpoints, SEO, hosting.
+
+2. **The lead capture form system** — the Growth Strategy form lightbox, Cloudflare Pages Functions for Attio CRM integration, Slack notifications, Google Sheets backup, and the deal-stage-change webhook. **Documented separately in `FORM-SYSTEM-README.md`.** Do NOT duplicate form-system details here — the README is the source of truth for that layer.
+
+When making changes, know which layer you're touching:
+- Touching `functions/`, `scripts/`, `public/js/form-lightbox.js`, `public/lead-confirmed.html`, or form-related CSS → Form system. Also update `FORM-SYSTEM-README.md`.
+- Touching anything else in `public/` → Website. `FORM-SYSTEM-README.md` doesn't need updating.
+
+See `FORM-SYSTEM-README.md` for a full file-to-layer mapping and commit message conventions.
+
 ## IMPORTANT: README maintenance rule
 
 There is a comprehensive system documentation file at `FORM-SYSTEM-README.md` that describes the lead capture form system (form submission flow, Attio integration, deal stage webhook, Slack, Google Sheets, Turnstile, etc.).
