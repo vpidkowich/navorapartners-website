@@ -149,7 +149,7 @@ When any page loads:
 When the user clicks a CTA:
 - Lightbox becomes visible (`.active` class)
 - First name field auto-focuses
-- Cloudflare Turnstile widget renders inside the form (dark theme to match navy background)
+- Cloudflare Turnstile widget renders invisibly into a hidden container when the form opens. The challenge runs in the background — no UI is shown to the user.
 - Hidden UTM fields are populated from session storage
 - Client timezone captured via `Intl.DateTimeFormat().resolvedOptions().timeZone`
 
@@ -161,7 +161,7 @@ When the user submits:
   - Revenue required (dropdown)
   - Website required, TLD checked, whitespace rejected
 - Honeypot field `company_name` is collected (if bots fill it, the server silently returns success)
-- Turnstile token is read from the rendered widget
+- Turnstile token is read from the rendered widget via `turnstile.getResponse()`. Because the widget is invisible, the user may experience a 1–3 second "Submitting..." delay while the background challenge completes — this is normal and expected.
 - Website URL is normalized (prepends `https://` if missing)
 - Data POSTed to `/api/submit-form`
 
@@ -350,11 +350,15 @@ ATTIO_API_KEY=your_key node -e "
 
 ### 6. Set up Cloudflare Turnstile
 
+The widget is configured in **Invisible** mode at the dashboard level — no visible CAPTCHA UI is shown to users. The challenge runs in the background when the form opens, and the token is collected on submit.
+
 1. Cloudflare Dashboard → Turnstile → Add Site
 2. Domain: `navorapartners.com`, `*.navorapartners.com`, `localhost`
-3. Widget Mode: Managed (visible widget)
+3. Widget Mode: **Invisible** (no visible CAPTCHA UI; runs in background)
 4. Copy site key → replace `TURNSTILE_SITE_KEY` in `public/js/form-lightbox.js`
 5. Copy secret key → set as `TURNSTILE_SECRET_KEY` in Cloudflare env vars
+
+The current site key is `0x4AAAAAAC3KURli7VfZzOC7`.
 
 ---
 
@@ -417,10 +421,13 @@ curl -X POST https://navorapartners.com/api/attio-webhook \
 
 ### Form submission hangs at "Submitting..."
 
+A 1–3 second delay between clicking Submit and the redirect is **normal** — the invisible Turnstile challenge needs a moment to complete in the background. If it takes longer than ~10 seconds:
+
 - Open browser DevTools → Network tab → click Submit
 - Check the `/api/submit-form` request for the response body
 - Common causes:
   - Turnstile verification failed → response has `error: "Security verification failed"`
+  - Turnstile token never generated → response has `error: "Security verification required"` (could mean the Turnstile script failed to load, the site key is wrong, or the domain isn't whitelisted in the Turnstile widget settings)
   - Attio API validation error → response has `error: "Failed to create contact record"` with a `detail` field
   - Network error → shown in console
 
@@ -448,7 +455,7 @@ curl -X POST https://navorapartners.com/api/attio-webhook \
 ## Security measures in place
 
 1. **Attio API key** — server-side only, in Cloudflare encrypted env vars
-2. **Cloudflare Turnstile** — visible widget, token verified server-side
+2. **Cloudflare Turnstile** — invisible widget runs background challenge on form open, token verified server-side on submit
 3. **Honeypot field** — hidden `company_name` input, if filled, server silently succeeds (bots get no error signal)
 4. **Server-side input validation + HTML sanitization** — strips tags, trims whitespace
 5. **Client-side validation** — UX only, never the only layer of defense
