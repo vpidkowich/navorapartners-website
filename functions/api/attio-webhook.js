@@ -7,21 +7,20 @@
  *     2. Sends Slack notification to sales channel mentioning Chaky
  *
  * Required env vars:
- *   ATTIO_API_KEY                      — Attio API token (already set)
- *   SLACK_SALES_WEBHOOK_URL            — Slack incoming webhook for #sales channel
- *   SLACK_CHAKY_MEMBER_ID              — Chaky's Slack member ID (for @-mention)
- *   ATTIO_WEBHOOK_SIGNING_SECRET       — Attio webhook signing secret (for verification)
+ *   ATTIO_API_KEY     — Attio API token (already set)
+ *   SLACK_WEBHOOK_URL — Slack incoming webhook (already set, reused)
  */
 
 const CHAKY_EMAIL = 'chaky@navorapartners.com';
+const CHAKY_SLACK_MEMBER_ID = 'U0AQGTTAWCS';
 const TARGET_STAGE = 'Context Call - Scheduled';
 
 // ── Slack notification ────────────────────────────────────────────
 
-async function notifySlack(webhookUrl, chakyMemberId, dealName, personName, companyName) {
+async function notifySlack(webhookUrl, dealName, personName, companyName) {
   if (!webhookUrl) return;
 
-  const mention = chakyMemberId ? `<@${chakyMemberId}>` : '@chaky';
+  const mention = `<@${CHAKY_SLACK_MEMBER_ID}>`;
   const text = `${mention} A context call has been scheduled with *${personName}* from *${companyName}*. You're now the deal owner for "${dealName}".`;
 
   await fetch(webhookUrl, {
@@ -159,13 +158,7 @@ export async function onRequestPost(context) {
     }
 
     // Send Slack notification
-    await notifySlack(
-      env.SLACK_SALES_WEBHOOK_URL,
-      env.SLACK_CHAKY_MEMBER_ID,
-      dealName,
-      personName,
-      companyName
-    );
+    await notifySlack(env.SLACK_WEBHOOK_URL, dealName, personName, companyName);
   }
 
   return new Response(JSON.stringify({ ok: true }), {
