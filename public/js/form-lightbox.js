@@ -151,7 +151,7 @@
       '<input type="hidden" name="gclid">' +
       '<input type="hidden" name="client_timezone">' +
       '<!-- Turnstile widget — rendered explicitly via turnstile.render() -->' +
-      '<div id="turnstileWidget" style="margin-top:var(--space-sm);display:flex;justify-content:center;"></div>' +
+      '<div id="turnstileWidget" style="margin-top:var(--space-sm);min-height:65px;display:flex;justify-content:center;align-items:center;"></div>' +
       '<button type="submit" class="btn btn-gold-ghost btn-arrow form-lightbox__submit" id="formSubmitBtn">' +
       'Get Your Growth Strategy' +
       '</button>' +
