@@ -1,5 +1,23 @@
 # Navora Partners — Homepage Build
 
+## IMPORTANT: README maintenance rule
+
+There is a comprehensive system documentation file at `FORM-SYSTEM-README.md` that describes the lead capture form system (form submission flow, Attio integration, deal stage webhook, Slack, Google Sheets, Turnstile, etc.).
+
+**Whenever you commit and push changes to any of the following, you MUST also update `FORM-SYSTEM-README.md` in the same commit to accurately reflect the new behavior:**
+- `public/js/form-lightbox.js`
+- `functions/api/submit-form.js`
+- `functions/api/attio-webhook.js`
+- `scripts/setup-attio-*.js`
+- `scripts/google-sheets-appscript.js`
+- `public/lead-confirmed.html`
+- Any new file in `functions/api/`, `scripts/`, or related to the form/CRM system
+- Env var additions/removals in Cloudflare Pages for the form system
+- Changes to Attio setup (new attributes, stages, webhook filters)
+- Changes to Slack notification behavior
+
+The README is the source of truth for how the lead capture system works. Future developers (and future Claude sessions) rely on it. Keep it accurate.
+
 ## Project Overview
 Single-page marketing site for Navora Partners, an e-commerce paid media agency.
 Built from a Figma design. Homepage is complete and responsive.
