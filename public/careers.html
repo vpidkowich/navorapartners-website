@@ -506,7 +506,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="form-lightbox__error-banner" id="resumeErrorBanner"></div>
 
-    <form id="resumeForm" novalidate enctype="multipart/form-data">
+    <form id="resumeForm" novalidate>
       <!-- Honeypot — hidden from humans, bots tend to fill it -->
       <input type="text" name="company_name" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
 
@@ -536,9 +536,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="form-field">
-        <label for="resumeFile">Resume (PDF or Word, max 5MB)</label>
-        <input type="file" id="resumeFile" name="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
-        <div class="form-field__error">Please upload a PDF or Word document (max 5MB)</div>
+        <label for="resumeUrl">Resume link (Google Drive, Dropbox, or personal site)</label>
+        <input type="url" id="resumeUrl" name="resume_url" placeholder="https://drive.google.com/..." required>
+        <div class="form-field__error">Please enter a valid https URL with viewing permissions enabled</div>
       </div>
 
       <div id="resumeTurnstileWidget" style="display:none;"></div>
@@ -562,8 +562,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var banner = document.getElementById("resumeErrorBanner");
   if (!lb || !openBtn) return;
 
-  var MAX_FILE_SIZE = 5 * 1024 * 1024;
-  var ALLOWED_EXTENSIONS = ["pdf", "doc", "docx"];
   var isSubmitting = false;
 
   function openLightbox(e) {
@@ -620,11 +618,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
-  function isValidResume(file) {
-    if (!file) return false;
-    if (file.size > MAX_FILE_SIZE) return false;
-    var ext = (file.name.split(".").pop() || "").toLowerCase();
-    return ALLOWED_EXTENSIONS.indexOf(ext) > -1;
+  function isValidResumeUrl(value) {
+    if (!value) return false;
+    try {
+      var url = new URL(value);
+      if (url.protocol !== "https:" && url.protocol !== "http:") return false;
+      if (!url.hostname || url.hostname.indexOf(".") === -1) return false;
+      return true;
+    } catch (err) {
+      return false;
+    }
   }
 
   // ── Turnstile ──────────────────────────────────────────────────
@@ -666,14 +669,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var lastName = document.getElementById("resumeLastName");
     var email = document.getElementById("resumeEmail");
     var linkedin = document.getElementById("resumeLinkedIn");
-    var resumeFile = document.getElementById("resumeFile");
+    var resumeUrl = document.getElementById("resumeUrl");
 
     var hasError = false;
     if (!firstName.value.trim()) { setFieldError(firstName, true); hasError = true; }
     if (!lastName.value.trim()) { setFieldError(lastName, true); hasError = true; }
     if (!isValidEmail(email.value.trim())) { setFieldError(email, true); hasError = true; }
     if (!isValidLinkedIn(linkedin.value.trim())) { setFieldError(linkedin, true); hasError = true; }
-    if (!isValidResume(resumeFile.files[0])) { setFieldError(resumeFile, true); hasError = true; }
+    if (!isValidResumeUrl(resumeUrl.value.trim())) { setFieldError(resumeUrl, true); hasError = true; }
 
     if (hasError) {
       if (document.activeElement) document.activeElement.blur();
@@ -695,14 +698,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     isSubmitting = true;
     setLoadingState(true);
 
-    // Build multipart form body directly from the form element to preserve the file
-    var fd = new FormData(form);
-    fd.append("turnstile_token", token);
-    fd.append("source_page", window.location.pathname);
+    var payload = {
+      first_name: firstName.value.trim(),
+      last_name: lastName.value.trim(),
+      email: email.value.trim(),
+      linkedin_url: linkedin.value.trim(),
+      resume_url: resumeUrl.value.trim(),
+      company_name: form.querySelector('input[name="company_name"]').value,
+      source_page: window.location.pathname,
+      turnstile_token: token,
+    };
 
     fetch("/api/submit-resume", {
       method: "POST",
-      body: fd,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     })
       .then(function(res) {
         return res.text().then(function(text) {

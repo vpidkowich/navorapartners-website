@@ -474,3 +474,152 @@ A 1–3 second delay between clicking Submit and the redirect is **normal** — 
 - **Attio workspace ID**: `d6635828-00eb-41f4-9b55-b05f6e911eb6`
 - **Attio Deals object ID**: `b263383e-c2dd-42a8-9a65-16d6e000e47b`
 - **Attio People object ID**: `36a8eabd-6ee5-4fcd-b8c8-0886f6cb227c`
+
+---
+
+# Talent Pipeline (Careers Resume Form)
+
+The Talent pipeline is a sibling flow to the Growth Strategy form: a separate Cloudflare Pages Function that handles careers resume submissions and routes candidates into a dedicated Attio List that lives on top of the Deals object. This avoids the free-plan's 3-custom-object cap while keeping Talent reports/filters cleanly separated from Growth Strategy deals.
+
+**No file hosting — URL-based resume model.** Candidates paste a link to their resume (Google Drive, Dropbox, personal site, etc. with viewing permissions enabled) rather than uploading a file. This eliminates hosting costs, storage concerns, malware-scanning ToS issues, and keeps the resume in the candidate's own control. Recruiters click the URL in Attio to open the resume in its source platform, where the native preview handles rendering.
+
+## Architecture at a glance
+
+```
+careers.html
+  │  (JSON POST: name, email, linkedin_url, resume_url + turnstile token)
+  ▼
+/api/submit-resume (functions/api/submit-resume.js)
+  │
+  ├─ Turnstile verify (reuses pattern from submit-form.js)
+  ├─ Field validation (email regex, LinkedIn host check, resume URL format)
+  ├─ Attio upsertPerson (lead_type = "Talent")
+  ├─ Attio createDeal (pipeline_type = "Talent", stage = "Lead")
+  ├─ Attio addDealToTalentList
+  │     (list-level stage = "Applications", resume_url, role, applied_at)
+  ├─ Slack notification ("First Last applied for {role}. Resume: {url}")
+  └─ Google Sheets log (Talent Submissions sheet)
+       │
+       ▼
+  /application-received.html
+```
+
+## File map (Talent-specific)
+
+**Backend:**
+- `functions/api/submit-resume.js` — Cloudflare Pages Function handling the JSON POST end-to-end
+
+**Setup scripts (one-time, idempotent):**
+- `scripts/setup-attio-talent-attributes.js` — creates object-level attrs on People (`linkedin_url`, `source_page`, `lead_type`) and Deals (`pipeline_type`)
+- `scripts/setup-attio-talent-list.js` — creates the "Talent" List on Deals, its list-level custom attributes, and the 9 pipeline stages. Prints manual UI instructions if the API rejects programmatic stage creation
+- `scripts/google-sheets-talent-appscript.js` — Apps Script template for the Talent Submissions Sheet
+
+**Frontend:**
+- `public/careers.html` — contains the resume lightbox (reuses `.form-lightbox` / `.form-field` styles from `components.css`)
+- `public/application-received.html` — thank-you page after successful submission
+
+## Attio data model
+
+The Talent pipeline does **not** use a new custom Object (free plan caps custom Objects at 3). Instead it uses Attio's native **Lists** feature:
+
+- **Existing Deals object** stays as-is for Growth Strategy — no existing stages touched
+- **New "Talent" List** on the Deals object, with its own 9-stage pipeline (list-level stage attribute, independent of the Deals object's built-in stage)
+- **Person.lead_type** (`Client` | `Talent`) — tag that distinguishes candidates from prospects
+- **Deal.pipeline_type** (`Growth Strategy` | `Talent`) — filter-friendly discriminator for object-level reports
+
+### Object-level custom attributes added by `setup-attio-talent-attributes.js`
+
+**People:**
+- `linkedin_url` (text) — LinkedIn profile URL
+- `source_page` (text) — page path the candidate submitted from
+- `lead_type` (select: `Client` | `Talent`)
+
+**Deals:**
+- `pipeline_type` (select: `Growth Strategy` | `Talent`)
+
+### List-level custom attributes on the Talent list
+
+Created by `setup-attio-talent-list.js`:
+- `resume_url` (text) — URL the candidate pasted pointing to their resume (Google Drive, Dropbox, personal site, etc. with viewing permissions). Attio renders it as a clickable link — one click opens the native preview in the source platform
+- `role_applied_for` (text) — free-form for Phase 1 (Phase 2 will link to Google Doc JDs)
+- `applied_at` (timestamp)
+
+### Talent pipeline stages (list-level, 9 stages)
+
+1. **Applications** — entry stage, where form submissions land
+2. **Send Request to Interview** — auto-sends email + calendar link *(automation = Phase 3)*
+3. **Interview 1 Booked** — triggered by calendar webhook *(automation = Phase 3)*
+4. **Send Invite/Instructions to Assessment** — auto-sends email *(automation = Phase 3)*
+5. **Assessment In Progress** — manual move when candidate accepted
+6. **Assessment Ready for Review** — manual move when assessment submitted
+7. **Interview 2** — auto-sends calendar link *(automation = Phase 3)*
+8. **Interview 2 Complete**
+9. **Offer Sent** — manual; accept/decline happens inside this stage
+
+*Accept/decline are manual sub-actions on the "Offer Sent" stage, not separate terminal stages. Dedicated Hired/Declined stages can be added later if reporting needs them.*
+
+## Environment variables (new for Talent)
+
+Added to Cloudflare Pages → Settings → Environment variables:
+
+- `TALENT_SHEET_WEBHOOK_URL` — Apps Script web app URL for the Talent Submissions sheet
+- `TALENT_LIST_ID` — Attio List ID of the Talent list (captured after running `setup-attio-talent-list.js`)
+
+**Reused from Growth Strategy:** `ATTIO_API_KEY`, `TURNSTILE_SECRET_KEY`, `SLACK_WEBHOOK_URL`
+
+## Why URL-based instead of file upload
+
+The original design had candidates upload a PDF/Word file which would be stored in Cloudflare R2 and scanned with VirusTotal. Two problems killed that approach:
+
+1. **VirusTotal's free-tier ToS forbids commercial use.** Navora Partners is a commercial business, so using the free public API on a live form would violate their terms the moment a single real candidate submitted.
+2. **Every alternative had a cost** — either financial (commercial scanning SaaS, VirusTotal Premium), operational (self-hosted ClamAV microservice ~$5/month), or security (defer scanning entirely and rely only on extension/MIME gates).
+
+**The pivot:** ask candidates to paste a URL to their resume instead. Google Drive, Dropbox, OneDrive, Notion, personal websites — everyone hosts resumes somewhere already, and every one of those platforms already has its own virus scanning and native preview. We're pushing the file-handling problem to services that have already solved it, and we never touch the file ourselves.
+
+**Tradeoffs we accepted:**
+- **No inline preview in Attio.** Recruiters see a clickable URL in the Talent list entry; one click opens the resume in its source platform where the native preview renders. Attio doesn't render OpenGraph cards or iframed previews for URL attributes.
+- **Candidate must have cloud-hosted resume.** Some candidates may not know how to create a view-only Google Drive share link. The form placeholder and help text guide them (`Resume link (Google Drive, Dropbox, or personal site)`), and the error message on invalid URL explicitly mentions "viewing permissions enabled."
+- **Link rot.** If a candidate later revokes access to their Google Drive file, the link in Attio becomes dead. This is acceptable — resumes are reviewed within days of submission, and recruiters can always fall back to the LinkedIn profile we also capture.
+
+**What we gain:** zero hosting cost, zero storage cost, zero malware-scanning ToS risk, no R2 bucket to provision, no file upload infrastructure, and much simpler code.
+
+## Initial setup (one-time)
+
+Follow these steps in order the first time you bring up the Talent pipeline:
+
+1. **Create the Talent Submissions Google Sheet** with the column headers listed in `scripts/google-sheets-talent-appscript.js`. Extensions → Apps Script → paste the script → Deploy as Web App (Execute as: Me, Access: Anyone). Copy the web app URL and add to Cloudflare Pages as `TALENT_SHEET_WEBHOOK_URL`.
+2. **Run object-level attribute setup:**
+   ```bash
+   ATTIO_API_KEY=your_key node scripts/setup-attio-talent-attributes.js
+   ```
+   Creates `linkedin_url`, `source_page`, `lead_type` on People and `pipeline_type` on Deals. Idempotent.
+3. **Run Talent List setup:**
+   ```bash
+   ATTIO_API_KEY=your_key node scripts/setup-attio-talent-list.js
+   ```
+   Creates the Talent list, its 3 list-level custom attributes (`resume_url`, `role_applied_for`, `applied_at`), and the 9 stages. If the Attio API rejects programmatic list-level stage creation for any reason, the script prints clear manual UI instructions and exits cleanly.
+4. **Capture the Talent List ID** from the script output (printed at the end). Add to Cloudflare Pages as `TALENT_LIST_ID`.
+5. **Deploy** (`git push` triggers Cloudflare Pages auto-deploy). Wait ~1-2 minutes.
+6. **Test end-to-end** — see Testing section below.
+
+## Testing (Talent form)
+
+- **Submit a valid form:** open `https://navorapartners.com/careers.html`, click "Send Us Your Resume", fill all fields with a real Google Drive share link (viewing permissions), submit. Expect redirect to `/application-received.html`.
+- **Verify Attio:**
+  - Open the Talent List in Attio UI. New entry at stage "Applications" with `resume_url`, `role_applied_for`, `applied_at` populated. The `resume_url` should render as a clickable link — click it to confirm it opens the resume in Google Drive's native preview
+  - Open the linked Person record. Confirm `linkedin_url`, `source_page`, `lead_type = Talent`, `lead_source = Talent Form`
+  - Open the Deal. Confirm `pipeline_type = Talent`. Confirm it does NOT appear in Growth Strategy reports filtered by `pipeline_type = Growth Strategy`
+- **Verify Slack:** expect message `"First Last applied for {role}. Resume: {url}"` from `Talent Bot`
+- **Verify Sheet:** new row appears in the Talent Submissions sheet with all 13 columns populated
+- **Turnstile test:** bypass the widget by submitting without the token → expect 400 `"Security verification required"`
+- **Invalid resume URL test:** try submitting with a non-URL string or an `http://` link with no TLD → expect 400 `"A valid resume URL is required"`
+- **Invalid LinkedIn test:** try submitting with a non-LinkedIn URL → expect 400 `"A valid LinkedIn profile URL is required"`
+
+## Phase 3 (deferred automation)
+
+- **Stage automation emails** for stages 2, 4, 7 (calendar invites, assessment instructions, interview 2 booking link) — requires email templates + a transactional email provider
+- **Calendar webhook integration** to auto-move to stage 3 (Interview 1 Booked) and 7 (Interview 2) when the candidate books via Cal.com or Calendly
+- **Per-position Apply Now buttons** that link to Google Doc job descriptions with role pre-filled into the form
+- **Rate limiting** on `/api/submit-resume` (per-IP counter via Cloudflare KV)
+- **Dedicated terminal stages** (Hired / Declined) if Offer Sent sub-actions become a reporting bottleneck
+- **Domain allow-list for resume URLs** — if phishing/spam links become an issue, add a server-side check that resume_url hosts match a known list (drive.google.com, dropbox.com, onedrive.live.com, notion.so, etc.) or flag submissions with exotic domains for manual review
