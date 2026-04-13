@@ -494,7 +494,7 @@ ul { list-style: none; }
 }
 
 .story-card-body .story-bullets li {
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: var(--weight-regular);
   line-height: var(--leading-loose);
   color: var(--color-jade);

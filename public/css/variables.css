@@ -104,7 +104,17 @@
   --weight-bold:     700;
   --weight-black:    900;
 
-  /* ── Typography: Line Heights ──────────────────────────────────── */
+  /* ── Typography: Line Heights ──────────────────────────────────── *
+   *  Unitless ratios (multipliers of font-size). Using ratios keeps
+   *  line-height proportional to font-size, so the same token stays
+   *  consistent across every breakpoint and size swap — no eyeballing
+   *  pixel values. Pick by role, not by size:
+   *
+   *    none / tight     → large display headings (40px+)
+   *    snug  / normal   → medium headings + prose headings that wrap
+   *    relaxed          → long-form heading prose (readable multi-line)
+   *    loose / extra    → body text, descriptions, captions
+   * ─────────────────────────────────────────────────────────────── */
   --leading-none:    1.1;
   --leading-tight:   1.2;
   --leading-snug:    1.25;
@@ -132,6 +142,7 @@
   --space-3xl:  72px;
   --space-4xl:  86px;
   --space-5xl:  101px;
+  --space-6xl:  140px;
 
   /* ── Border Radii ──────────────────────────────────────────────── */
   --radius-none:   0;
@@ -201,5 +212,6 @@
     --space-3xl:  80px;
     --space-4xl:  96px;
     --space-5xl:  112px;
+    --space-6xl:  144px;
   }
 }
