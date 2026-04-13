@@ -292,6 +292,9 @@ Before committing a new case study detail page:
 14. [ ] Footer links use `../../` prefix
 15. [ ] Responsive behavior verified (desktop, tablet, mobile)
 16. [ ] All image paths URL-encoded (spaces → `%20`)
+17. [ ] Canonical tag present (`<link rel="canonical" href="https://navorapartners.com/case-studies/[slug]/">`)
+18. [ ] Open Graph + Twitter Card meta tags present using hero image (see Part 6)
+19. [ ] JSON-LD schema block present with `Article` + `BreadcrumbList` (see Part 6)
 
 ---
 
@@ -333,7 +336,85 @@ Before committing a new case study detail page:
 
 ---
 
-## Part 6: Reference Files
+## Part 6: SEO Requirements (Canonical + JSON-LD Schema)
+
+Every new case study detail page MUST include a canonical tag and a JSON-LD schema block. These are critical for traditional SEO, Google AI Overviews, and GEO (Generative Engine Optimization — citations in ChatGPT, Perplexity, Claude, Gemini).
+
+### Canonical tag
+Placed right after the `<link rel="icon">` tag in the `<head>`:
+
+```html
+<link rel="canonical" href="https://navorapartners.com/case-studies/[slug]/">
+```
+
+### Open Graph + Twitter Card tags (Rich Link Previews)
+These tags control how the page appears when shared on LinkedIn, Slack, Twitter/X, iMessage, Facebook, etc. They are MANDATORY for every case study. Placed right after the `<meta name="description">` tag.
+
+```html
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://navorapartners.com/case-studies/[slug]/">
+<meta property="og:title" content="[Exact page headline or shortened version]">
+<meta property="og:description" content="[1-2 sentence summary — can be a trimmed version of the meta description]">
+<meta property="og:image" content="https://navorapartners.com/case-studies/[slug]/[hero-filename with %20 for spaces].webp">
+<meta property="og:site_name" content="Navora Partners">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="[Shorter version of title — max ~70 chars]">
+<meta name="twitter:description" content="[Shorter description — max ~200 chars]">
+<meta name="twitter:image" content="https://navorapartners.com/case-studies/[slug]/[hero-filename with %20 for spaces].webp">
+```
+
+**Rules:**
+- Use the hero image as the OG image — it's already a full-bleed visual appropriate for social
+- Use absolute URLs (full `https://navorapartners.com/...`)
+- URL-encode spaces as `%20` in image paths
+- Twitter fields can be shorter/punchier than Open Graph
+- Always use `og:type="article"` for case studies (not "website")
+
+### JSON-LD Schema block
+Placed right after the Open Graph / Twitter Card block, before `<title>`. Populate every field with the specific data for THIS case study.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "[Exact page headline — matches H1]",
+      "description": "[Exact meta description]",
+      "author": { "@type": "Organization", "name": "Navora Partners", "url": "https://navorapartners.com" },
+      "publisher": { "@type": "Organization", "name": "Navora Partners", "url": "https://navorapartners.com" },
+      "mainEntityOfPage": "https://navorapartners.com/case-studies/[slug]/",
+      "image": "https://navorapartners.com/case-studies/[slug]/[hero-filename with %20 for spaces].webp",
+      "about": {
+        "@type": "Thing",
+        "name": "[One-sentence description of what was accomplished — used by AI to understand the engagement]"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://navorapartners.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://navorapartners.com/case-studies.html" },
+        { "@type": "ListItem", "position": 3, "name": "[Short case study name]", "item": "https://navorapartners.com/case-studies/[slug]/" }
+      ]
+    }
+  ]
+}
+</script>
+```
+
+### Also update when adding a new case study
+- **`public/sitemap.xml`** — add a new `<url>` entry with the detail page URL, `changefreq: yearly`, `priority: 0.7`
+- **`public/sitemap.html`** — add a link to the new detail page under the "Case Studies" section
+- **`public/llms.txt`** — add the new case study to the "Case Studies" section with a one-sentence description for AI crawlers
+- **`public/case-studies.html`** — update the `CollectionPage` / `ItemList` schema block to include the new case study in the list
+
+---
+
+## Part 8: Reference Files
 
 - **Case study outline inputs:** Provided per-engagement (Google Doc or text file)
 - **Card writing rules:** `instructions/success-story-cards.md`

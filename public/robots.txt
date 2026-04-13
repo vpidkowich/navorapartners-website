@@ -1,0 +1,11 @@
+# Navora Partners — robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://navorapartners.com/sitemap.xml
+
+# Block non-public files
+Disallow: /case-studies/_template/
+Disallow: /case-studies-backup.html
+Disallow: /style-guide.html

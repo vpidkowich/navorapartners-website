@@ -19,8 +19,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>Careers — Navora Partners</title>
-<meta name="description" content="Join the Navora Partners team. We're looking for talented individuals who share our values and want to make a real impact in the world of eCommerce.">
+<link rel="canonical" href="https://navorapartners.com/careers.html">
+<title>Careers at Navora Partners &mdash; Join a DTC Ecommerce Growth Team</title>
+<meta name="description" content="Join the Navora Partners team. We help DTC ecommerce brands from $5M to $15M break through growth plateaus. Explore open roles in paid media, strategy, creative, and client success.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://navorapartners.com/careers.html">
+<meta property="og:title" content="Careers at Navora Partners &mdash; Join a DTC Ecommerce Growth Team">
+<meta property="og:description" content="Join the Navora Partners team. We help DTC ecommerce brands from $5M to $15M break through growth plateaus. Explore open roles in paid media, strategy, creative, and client success.">
+<meta property="og:image" content="https://navorapartners.com/images/Main%20call%20to%20action%20image.webp">
+<meta property="og:site_name" content="Navora Partners">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Careers at Navora Partners &mdash; Join a DTC Ecommerce Growth Team">
+<meta name="twitter:description" content="Join the Navora Partners team. We help DTC ecommerce brands from $5M to $15M break through growth plateaus.">
+<meta name="twitter:image" content="https://navorapartners.com/images/Main%20call%20to%20action%20image.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://navorapartners.com/careers.html#webpage",
+      "url": "https://navorapartners.com/careers.html",
+      "name": "Careers at Navora Partners",
+      "description": "Join the Navora Partners team. We help DTC ecommerce brands from $5M to $15M break through growth plateaus.",
+      "isPartOf": { "@type": "WebSite", "url": "https://navorapartners.com/", "name": "Navora Partners" },
+      "about": { "@type": "Organization", "name": "Navora Partners", "url": "https://navorapartners.com/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://navorapartners.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Careers", "item": "https://navorapartners.com/careers.html" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -468,7 +504,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="form-lightbox__title" id="resumeLightboxTitle">Send us your resume</h2>
     <p class="form-lightbox__subtitle">Don't see the right role? Drop your details and we'll reach out when something fits.</p>
 
+    <div class="form-lightbox__error-banner" id="resumeErrorBanner"></div>
+
     <form id="resumeForm" novalidate enctype="multipart/form-data">
+      <!-- Honeypot — hidden from humans, bots tend to fill it -->
+      <input type="text" name="company_name" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+
       <div class="form-row">
         <div class="form-field">
           <label for="resumeFirstName">First name</label>
@@ -500,6 +541,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="form-field__error">Please upload a PDF or Word document (max 5MB)</div>
       </div>
 
+      <div id="resumeTurnstileWidget" style="display:none;"></div>
+
       <button type="submit" class="btn btn-gold btn-arrow form-lightbox__submit" id="resumeSubmit">
         Submit Application
       </button>
@@ -509,19 +552,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 (function() {
+  var TURNSTILE_SITE_KEY = '0x4AAAAAAC3KURli7VfZzOC7';
+
   var lb = document.getElementById("resumeLightbox");
   var openBtn = document.getElementById("resumeLightboxOpen");
   var closeBtn = document.getElementById("resumeLightboxClose");
   var form = document.getElementById("resumeForm");
+  var submitBtn = document.getElementById("resumeSubmit");
+  var banner = document.getElementById("resumeErrorBanner");
   if (!lb || !openBtn) return;
 
   var MAX_FILE_SIZE = 5 * 1024 * 1024;
   var ALLOWED_EXTENSIONS = ["pdf", "doc", "docx"];
+  var isSubmitting = false;
 
   function openLightbox(e) {
     if (e) e.preventDefault();
     lb.classList.add("active");
     document.body.style.overflow = "hidden";
+    renderTurnstile();
     setTimeout(function() {
       var first = document.getElementById("resumeFirstName");
       if (first) first.focus();
@@ -531,11 +580,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function closeLightbox() {
     lb.classList.remove("active");
     document.body.style.overflow = "";
+    hideErrorBanner();
   }
 
   function setFieldError(field, hasError) {
     var wrap = field.closest(".form-field");
     if (wrap) wrap.classList.toggle("form-field--error", hasError);
+  }
+
+  function showErrorBanner(message) {
+    if (!banner) return;
+    banner.textContent = message;
+    banner.classList.add("active");
+  }
+
+  function hideErrorBanner() {
+    if (!banner) return;
+    banner.textContent = "";
+    banner.classList.remove("active");
+  }
+
+  function setLoadingState(loading) {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    submitBtn.textContent = loading ? "Submitting..." : "Submit Application";
   }
 
   function isValidEmail(value) {
@@ -559,6 +627,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return ALLOWED_EXTENSIONS.indexOf(ext) > -1;
   }
 
+  // ── Turnstile ──────────────────────────────────────────────────
+  function renderTurnstile() {
+    if (window._resumeTurnstileId !== undefined) return;
+    if (typeof turnstile === "undefined") {
+      setTimeout(renderTurnstile, 200);
+      return;
+    }
+    var container = document.getElementById("resumeTurnstileWidget");
+    if (!container) return;
+    window._resumeTurnstileId = turnstile.render(container, {
+      sitekey: TURNSTILE_SITE_KEY,
+      theme: "dark",
+    });
+  }
+
+  // ── Events ─────────────────────────────────────────────────────
   openBtn.addEventListener("click", openLightbox);
   closeBtn.addEventListener("click", closeLightbox);
   lb.addEventListener("click", function(e) { if (e.target === lb) closeLightbox(); });
@@ -567,12 +651,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   form.querySelectorAll("input").forEach(function(input) {
-    input.addEventListener("input", function() { setFieldError(input, false); });
-    input.addEventListener("change", function() { setFieldError(input, false); });
+    input.addEventListener("input", function() { setFieldError(input, false); hideErrorBanner(); });
+    input.addEventListener("change", function() { setFieldError(input, false); hideErrorBanner(); });
   });
 
+  // ── Submit ─────────────────────────────────────────────────────
   form.addEventListener("submit", function(e) {
     e.preventDefault();
+    if (isSubmitting) return;
+
+    hideErrorBanner();
 
     var firstName = document.getElementById("resumeFirstName");
     var lastName = document.getElementById("resumeLastName");
@@ -587,18 +675,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!isValidLinkedIn(linkedin.value.trim())) { setFieldError(linkedin, true); hasError = true; }
     if (!isValidResume(resumeFile.files[0])) { setFieldError(resumeFile, true); hasError = true; }
 
-    if (hasError) return;
+    if (hasError) {
+      if (document.activeElement) document.activeElement.blur();
+      var firstErrorEl = document.querySelector(".form-field--error");
+      if (firstErrorEl) firstErrorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
 
-    // TODO: wire up to backend endpoint (virus scan + storage + notification).
-    // Pending follow-up details from stakeholder on submission flow.
-    console.log("Resume form valid, ready to submit:", {
-      first_name: firstName.value.trim(),
-      last_name: lastName.value.trim(),
-      email: email.value.trim(),
-      linkedin_url: linkedin.value.trim(),
-      file_name: resumeFile.files[0] && resumeFile.files[0].name,
-    });
-    alert("Form validated. Submission endpoint pending.");
+    // Turnstile token
+    var token = "";
+    if (typeof turnstile !== "undefined" && window._resumeTurnstileId !== undefined) {
+      token = turnstile.getResponse(window._resumeTurnstileId) || "";
+    }
+    if (!token) {
+      showErrorBanner("Please complete the security check before submitting.");
+      return;
+    }
+
+    isSubmitting = true;
+    setLoadingState(true);
+
+    // Build multipart form body directly from the form element to preserve the file
+    var fd = new FormData(form);
+    fd.append("turnstile_token", token);
+    fd.append("source_page", window.location.pathname);
+
+    fetch("/api/submit-resume", {
+      method: "POST",
+      body: fd,
+    })
+      .then(function(res) {
+        return res.text().then(function(text) {
+          try {
+            return { ok: res.ok, data: JSON.parse(text) };
+          } catch (err) {
+            return { ok: false, data: { error: "Unexpected server response" } };
+          }
+        });
+      })
+      .then(function(result) {
+        if (result.ok && result.data && result.data.success) {
+          if (typeof gtag === "function") {
+            gtag("event", "form_submit", { event_category: "talent", event_label: "resume_upload" });
+          }
+          var dest = (result.data && result.data.redirect) || "/application-received.html";
+          window.location.href = dest;
+        } else {
+          var msg = (result.data && result.data.error) || "Something went wrong. Please try again.";
+          showErrorBanner(msg);
+          setLoadingState(false);
+          isSubmitting = false;
+          if (typeof turnstile !== "undefined" && window._resumeTurnstileId !== undefined) {
+            turnstile.reset(window._resumeTurnstileId);
+          }
+        }
+      })
+      .catch(function() {
+        showErrorBanner("Network error. Please check your connection and try again.");
+        setLoadingState(false);
+        isSubmitting = false;
+        if (typeof turnstile !== "undefined" && window._resumeTurnstileId !== undefined) {
+          turnstile.reset(window._resumeTurnstileId);
+        }
+      });
   });
 })();
 </script>
