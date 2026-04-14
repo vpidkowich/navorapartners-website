@@ -871,6 +871,16 @@ ul { list-style: none; }
   cursor: default;
 }
 
+.video-lightbox iframe {
+  max-width: 860px;
+  max-height: 80vh;
+  width: 90%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-overlay);
+  cursor: default;
+}
+
 .video-lightbox-close {
   position: absolute;
   top: var(--space-md);
