@@ -862,23 +862,25 @@ ul { list-style: none; }
   display: flex;
 }
 
-.video-lightbox video {
+.video-lightbox #lightboxContent {
+  width: 90%;
   max-width: 860px;
   max-height: 80vh;
-  width: 90%;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-overlay);
-  cursor: default;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.video-lightbox video,
 .video-lightbox iframe {
-  max-width: 860px;
-  max-height: 80vh;
-  width: 90%;
-  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 100%;
+  border: none;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-overlay);
   cursor: default;
+  background: #000;
 }
 
 .video-lightbox-close {
