@@ -3,7 +3,7 @@
  * plus its list-level custom attributes and pipeline stages.
  *
  * Usage:
- *   ATTIO_API_KEY=your_key node scripts/setup-attio-talent-list.js
+ *   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-talent-list.js
  *
  * Creates:
  *   1. A List called "Talent" whose parent_object is Deals
@@ -16,7 +16,7 @@
  * At the end, prints the Talent List ID — add this to Cloudflare Pages
  * env vars as TALENT_LIST_ID so submit-resume.js can reference it.
  *
- * IMPORTANT: Run scripts/setup-attio-talent-attributes.js FIRST to create
+ * IMPORTANT: Run crm-integration/scripts/setup-attio-talent-attributes.js FIRST to create
  * the object-level attributes on People and Deals.
  *
  * Idempotent — safe to run multiple times. Checks each resource before
@@ -27,7 +27,7 @@
 const API_KEY = process.env.ATTIO_API_KEY;
 if (!API_KEY) {
   console.error('Missing ATTIO_API_KEY environment variable.');
-  console.error('Usage: ATTIO_API_KEY=your_key node scripts/setup-attio-talent-list.js');
+  console.error('Usage: ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-talent-list.js');
   process.exit(1);
 }
 

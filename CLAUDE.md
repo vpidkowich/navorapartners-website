@@ -6,26 +6,27 @@ This repo contains two distinct sub-projects that share one deploy pipeline:
 
 1. **The marketing website** — static HTML/CSS/JS for navorapartners.com. Documented in this file (`CLAUDE.md`). Covers homepage, about, case studies, careers, design system, spacing tokens, responsive breakpoints, SEO, hosting.
 
-2. **The lead capture form system** — the Growth Strategy form lightbox, Cloudflare Pages Functions for Attio CRM integration, Slack notifications, Google Sheets backup, and the deal-stage-change webhook. **Documented separately in `FORM-SYSTEM-README.md`.** Do NOT duplicate form-system details here — the README is the source of truth for that layer.
+2. **The lead capture form system** — the Growth Strategy form lightbox, Cloudflare Pages Functions for Attio CRM integration, Slack notifications, Google Sheets backup, and the deal-stage-change webhook. **Documented separately in `crm-integration/FORM-SYSTEM-README.md`.** Do NOT duplicate form-system details here — the README is the source of truth for that layer. See also `CRM-INTEGRATION.md` at the repo root for a quick file map.
 
 When making changes, know which layer you're touching:
-- Touching `functions/`, `scripts/`, `public/js/form-lightbox.js`, `public/lead-confirmed.html`, or form-related CSS → Form system. Also update `FORM-SYSTEM-README.md`.
-- Touching anything else in `public/` → Website. `FORM-SYSTEM-README.md` doesn't need updating.
+- Touching `functions/api/submit-form.js`, `functions/api/attio-webhook.js`, `functions/api/submit-resume.js`, `crm-integration/`, `public/js/form-lightbox.js`, `public/lead-confirmed.html`, or form-related CSS → Form system. Also update `crm-integration/FORM-SYSTEM-README.md`.
+- Touching anything else in `public/` → Website. `crm-integration/FORM-SYSTEM-README.md` doesn't need updating.
 
-See `FORM-SYSTEM-README.md` for a full file-to-layer mapping and commit message conventions.
+See `crm-integration/FORM-SYSTEM-README.md` for a full file-to-layer mapping and commit message conventions.
 
 ## IMPORTANT: README maintenance rule
 
-There is a comprehensive system documentation file at `FORM-SYSTEM-README.md` that describes the lead capture form system (form submission flow, Attio integration, deal stage webhook, Slack, Google Sheets, Turnstile, etc.).
+There is a comprehensive system documentation file at `crm-integration/FORM-SYSTEM-README.md` that describes the lead capture form system (form submission flow, Attio integration, deal stage webhook, Slack, Google Sheets, Turnstile, etc.).
 
-**Whenever you commit and push changes to any of the following, you MUST also update `FORM-SYSTEM-README.md` in the same commit to accurately reflect the new behavior:**
+**Whenever you commit and push changes to any of the following, you MUST also update `crm-integration/FORM-SYSTEM-README.md` in the same commit to accurately reflect the new behavior:**
 - `public/js/form-lightbox.js`
 - `functions/api/submit-form.js`
 - `functions/api/attio-webhook.js`
-- `scripts/setup-attio-*.js`
-- `scripts/google-sheets-appscript.js`
+- `functions/api/submit-resume.js`
+- `crm-integration/scripts/setup-attio-*.js`
+- `crm-integration/scripts/google-sheets-*-appscript.js`
 - `public/lead-confirmed.html`
-- Any new file in `functions/api/`, `scripts/`, or related to the form/CRM system
+- Any new file in `functions/api/`, `crm-integration/`, or related to the form/CRM system
 - Env var additions/removals in Cloudflare Pages for the form system
 - Changes to Attio setup (new attributes, stages, webhook filters)
 - Changes to Slack notification behavior

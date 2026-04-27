@@ -74,7 +74,7 @@ Fill in the values from what you already know about the case study:
 Execute the following command. Use the Bash tool with a **10-minute timeout** (600000ms) since the process includes uploading and waiting for auto-generated captions:
 
 ```bash
-cd "/c/Users/pidvi/OneDrive/Desktop/Navora - Youtube Upload Process" && node src/cli.js go "/c/Users/pidvi/OneDrive/Desktop/Navora - Figma and MCP/public/case-studies/[slug]/[video-filename]"
+cd "/c/Users/pidvi/OneDrive/Desktop/Navora - Youtube Upload Process" && node src/cli.js go "/c/Users/pidvi/OneDrive/Desktop/Navora - Website + CRM/public/case-studies/[slug]/[video-filename]"
 ```
 
 Replace `[slug]` and `[video-filename]` with the actual values.

@@ -29,14 +29,14 @@ This repo (`vpidkowich/navorapartners-website`) contains two distinct layers tha
 | Layer | Files / folders |
 |-------|----------------|
 | **Website (Layer 1)** | `public/index.html`, `public/about.html`, `public/careers.html`, `public/case-studies.html`, `public/case-studies/**/*.html`, `public/sitemap.html`, `public/css/variables.css`, `public/css/layout.css`, `public/images/`, `public/fonts/`, `designs/`, `instructions/`, `references/`, `seo/` |
-| **Form system (Layer 2, this README)** | `public/js/form-lightbox.js`, `public/lead-confirmed.html`, `public/css/lead-confirmed.css`, the form-related section of `public/css/components.css`, `functions/api/submit-form.js`, `functions/api/attio-webhook.js`, `scripts/setup-attio-attributes.js`, `scripts/setup-attio-deal-stages.js`, `scripts/google-sheets-appscript.js`, `public/images/grinning-slackbot.png`, `FORM-SYSTEM-README.md` |
+| **Form system (Layer 2, this README)** | `public/js/form-lightbox.js`, `public/lead-confirmed.html`, `public/css/lead-confirmed.css`, the form-related section of `public/css/components.css`, `functions/api/submit-form.js`, `functions/api/attio-webhook.js`, `functions/api/submit-resume.js`, `crm-integration/crm-integration/scripts/setup-attio-attributes.js`, `crm-integration/crm-integration/scripts/setup-attio-deal-stages.js`, `crm-integration/crm-integration/scripts/setup-attio-talent-attributes.js`, `crm-integration/crm-integration/scripts/setup-attio-talent-list.js`, `crm-integration/crm-integration/scripts/google-sheets-appscript.js`, `crm-integration/crm-integration/scripts/google-sheets-talent-appscript.js`, `public/images/grinning-slackbot.png`, `crm-integration/FORM-SYSTEM-README.md` |
 | **Shared** | `public/css/components.css` (contains both website components AND form lightbox styles), all 16 HTML pages (each loads `form-lightbox.js` so the form can open from any page) |
 
 ### Filtering commit history by layer
 
 ```bash
 # Form system changes only
-git log -- functions/ scripts/ public/js/form-lightbox.js public/lead-confirmed.html public/css/lead-confirmed.css FORM-SYSTEM-README.md
+git log -- functions/ crm-integration/ public/js/form-lightbox.js public/lead-confirmed.html public/css/lead-confirmed.css
 
 # Website changes only (excluding form system)
 git log -- public/ ':(exclude)public/js/form-lightbox.js' ':(exclude)public/lead-confirmed.html' ':(exclude)public/css/lead-confirmed.css'
@@ -130,9 +130,9 @@ Separately, when anyone moves a deal in Attio to the **"Context Call - Scheduled
 
 | File | Purpose |
 |------|---------|
-| `scripts/setup-attio-attributes.js` | Creates 13 custom People attributes in Attio (revenue_range, utm_*, gclid, geo_*, ip_address, lead_source) |
-| `scripts/setup-attio-deal-stages.js` | Creates the 15 custom deal stages and archives Attio's defaults |
-| `scripts/google-sheets-appscript.js` | Google Apps Script code (paste into Apps Script editor) that accepts POST requests and appends rows to the backup sheet |
+| `crm-integration/scripts/setup-attio-attributes.js` | Creates 13 custom People attributes in Attio (revenue_range, utm_*, gclid, geo_*, ip_address, lead_source) |
+| `crm-integration/scripts/setup-attio-deal-stages.js` | Creates the 15 custom deal stages and archives Attio's defaults |
+| `crm-integration/scripts/google-sheets-appscript.js` | Google Apps Script code (paste into Apps Script editor) that accepts POST requests and appends rows to the backup sheet |
 
 ---
 
@@ -275,7 +275,7 @@ Also hardcoded in `public/js/form-lightbox.js`:
 Creates the 13 custom People attributes (revenue_range, UTMs, gclid, geo_*, ip_address, lead_source):
 
 ```bash
-ATTIO_API_KEY=your_key node scripts/setup-attio-attributes.js
+ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-attributes.js
 ```
 
 **Important**: The `revenue_range` select attribute is created empty. Run the revenue options creation one-off (already done) or manually add options in Attio matching the form's dropdown values:
@@ -287,7 +287,7 @@ ATTIO_API_KEY=your_key node scripts/setup-attio-attributes.js
 Creates the 15 custom deal stages and archives Attio's defaults:
 
 ```bash
-ATTIO_API_KEY=your_key node scripts/setup-attio-deal-stages.js
+ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-deal-stages.js
 ```
 
 Stages created (in creation order, not display order — display order is controlled by dragging in the Attio UI):
@@ -337,7 +337,7 @@ ATTIO_API_KEY=your_key node -e "
 ### 4. Set up Google Sheet backup
 
 1. Create a Google Sheet with headers: `Timestamp | First Name | Last Name | Email | Phone | Revenue | Website | UTM Source | UTM Medium | UTM Campaign | UTM Content | UTM Term | GCLID | IP | City | Region | Country | Timezone`
-2. Extensions → Apps Script → paste contents of `scripts/google-sheets-appscript.js`
+2. Extensions → Apps Script → paste contents of `crm-integration/scripts/google-sheets-appscript.js`
 3. Deploy → New Deployment → Web App → Execute as: Me, Access: Anyone
 4. Copy the web app URL → set as `GOOGLE_SHEET_WEBHOOK_URL` in Cloudflare env vars
 
@@ -510,9 +510,9 @@ careers.html
 - `functions/api/submit-resume.js` — Cloudflare Pages Function handling the JSON POST end-to-end
 
 **Setup scripts (one-time, idempotent):**
-- `scripts/setup-attio-talent-attributes.js` — creates object-level attrs on People (`linkedin_url`, `source_page`, `lead_type`) and Deals (`pipeline_type`)
-- `scripts/setup-attio-talent-list.js` — creates the "Talent" List on Deals, its list-level custom attributes, and the 9 pipeline stages. Prints manual UI instructions if the API rejects programmatic stage creation
-- `scripts/google-sheets-talent-appscript.js` — Apps Script template for the Talent Submissions Sheet
+- `crm-integration/scripts/setup-attio-talent-attributes.js` — creates object-level attrs on People (`linkedin_url`, `source_page`, `lead_type`) and Deals (`pipeline_type`)
+- `crm-integration/scripts/setup-attio-talent-list.js` — creates the "Talent" List on Deals, its list-level custom attributes, and the 9 pipeline stages. Prints manual UI instructions if the API rejects programmatic stage creation
+- `crm-integration/scripts/google-sheets-talent-appscript.js` — Apps Script template for the Talent Submissions Sheet
 
 **Frontend:**
 - `public/careers.html` — contains the resume lightbox (reuses `.form-lightbox` / `.form-field` styles from `components.css`)
@@ -587,15 +587,15 @@ The original design had candidates upload a PDF/Word file which would be stored 
 
 Follow these steps in order the first time you bring up the Talent pipeline:
 
-1. **Create the Talent Submissions Google Sheet** with the column headers listed in `scripts/google-sheets-talent-appscript.js`. Extensions → Apps Script → paste the script → Deploy as Web App (Execute as: Me, Access: Anyone). Copy the web app URL and add to Cloudflare Pages as `TALENT_SHEET_WEBHOOK_URL`.
+1. **Create the Talent Submissions Google Sheet** with the column headers listed in `crm-integration/scripts/google-sheets-talent-appscript.js`. Extensions → Apps Script → paste the script → Deploy as Web App (Execute as: Me, Access: Anyone). Copy the web app URL and add to Cloudflare Pages as `TALENT_SHEET_WEBHOOK_URL`.
 2. **Run object-level attribute setup:**
    ```bash
-   ATTIO_API_KEY=your_key node scripts/setup-attio-talent-attributes.js
+   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-talent-attributes.js
    ```
    Creates `linkedin_url`, `source_page`, `lead_type` on People and `pipeline_type` on Deals. Idempotent.
 3. **Run Talent List setup:**
    ```bash
-   ATTIO_API_KEY=your_key node scripts/setup-attio-talent-list.js
+   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-talent-list.js
    ```
    Creates the Talent list, its 3 list-level custom attributes (`resume_url`, `role_applied_for`, `applied_at`), and the 9 stages. If the Attio API rejects programmatic list-level stage creation for any reason, the script prints clear manual UI instructions and exits cleanly.
 4. **Capture the Talent List ID** from the script output (printed at the end). Add to Cloudflare Pages as `TALENT_LIST_ID`.

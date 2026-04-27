@@ -2,7 +2,7 @@
  * One-time setup script: configures custom deal stages in Attio.
  *
  * Usage:
- *   ATTIO_API_KEY=your_key node scripts/setup-attio-deal-stages.js
+ *   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-deal-stages.js
  *
  * This script:
  *   1. Lists existing stages on the Deals object's `stage` attribute

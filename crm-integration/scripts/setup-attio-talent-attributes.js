@@ -3,7 +3,7 @@
  * for the Talent pipeline.
  *
  * Usage:
- *   ATTIO_API_KEY=your_key node scripts/setup-attio-talent-attributes.js
+ *   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-talent-attributes.js
  *
  * Creates:
  *   - People.linkedin_url (text)
@@ -14,13 +14,13 @@
  * Idempotent — safe to run multiple times. Checks if each attribute
  * exists before creating it.
  *
- * Run this BEFORE scripts/setup-attio-talent-list.js.
+ * Run this BEFORE crm-integration/scripts/setup-attio-talent-list.js.
  */
 
 const API_KEY = process.env.ATTIO_API_KEY;
 if (!API_KEY) {
   console.error('Missing ATTIO_API_KEY environment variable.');
-  console.error('Usage: ATTIO_API_KEY=your_key node scripts/setup-attio-talent-attributes.js');
+  console.error('Usage: ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-talent-attributes.js');
   process.exit(1);
 }
 
@@ -134,7 +134,7 @@ async function main() {
   await syncObjectAttributes('people', PEOPLE_ATTRIBUTES);
   await syncObjectAttributes('deals', DEAL_ATTRIBUTES);
   console.log('\nDone. Talent object-level attributes are set up.');
-  console.log('\nNext: run scripts/setup-attio-talent-list.js to create the Talent List and its stages.');
+  console.log('\nNext: run crm-integration/scripts/setup-attio-talent-list.js to create the Talent List and its stages.');
 }
 
 main().catch((err) => {

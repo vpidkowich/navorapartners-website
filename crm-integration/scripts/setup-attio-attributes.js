@@ -2,7 +2,7 @@
  * One-time setup script: creates custom attributes in Attio for form data.
  *
  * Usage:
- *   ATTIO_API_KEY=your_key node scripts/setup-attio-attributes.js
+ *   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-attributes.js
  *
  * Idempotent — safe to run multiple times. Checks if each attribute
  * exists before creating it.
@@ -11,7 +11,7 @@
 const API_KEY = process.env.ATTIO_API_KEY;
 if (!API_KEY) {
   console.error('Missing ATTIO_API_KEY environment variable.');
-  console.error('Usage: ATTIO_API_KEY=your_key node scripts/setup-attio-attributes.js');
+  console.error('Usage: ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-attributes.js');
   process.exit(1);
 }
 
