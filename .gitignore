@@ -11,3 +11,9 @@ videos/videos (2)/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local secrets (Cloudflare Pages convention) — never commit
+.dev.vars
+.dev.vars.*
+.env
+.env.local

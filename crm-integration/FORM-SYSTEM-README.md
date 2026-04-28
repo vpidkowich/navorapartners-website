@@ -131,7 +131,7 @@ Separately, when anyone moves a deal in Attio to the **"Context Call - Scheduled
 | File | Purpose |
 |------|---------|
 | `crm-integration/scripts/setup-attio-attributes.js` | Creates 13 custom People attributes in Attio (revenue_range, utm_*, gclid, geo_*, ip_address, lead_source) |
-| `crm-integration/scripts/setup-attio-deal-stages.js` | Creates the 15 custom deal stages and archives Attio's defaults |
+| `crm-integration/scripts/setup-attio-deal-stages.js` | Creates the 16 custom deal stages and archives Attio's defaults |
 | `crm-integration/scripts/google-sheets-appscript.js` | Google Apps Script code (paste into Apps Script editor) that accepts POST requests and appends rows to the backup sheet |
 
 ---
@@ -284,28 +284,29 @@ ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-attributes.js
 
 ### 2. Run deal stages setup
 
-Creates the 15 custom deal stages and archives Attio's defaults:
+Creates the 16 custom deal stages and archives Attio's defaults:
 
 ```bash
 ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-deal-stages.js
 ```
 
-Stages created (in creation order, not display order — display order is controlled by dragging in the Attio UI):
+Stages (in funnel order — display order is controlled by dragging in the Attio UI):
 1. Lead *(default for new deals)*
 2. Qualifying Call Booked
 3. Call Cancelled
 4. Call Complete - Good Fit
 5. Call Complete - Not a Good Fit
-6. Call Complete - Follow Up
-7. **Context Call - Scheduled** *(triggers owner switch to Chaky)*
-8. Context Call - Cancelled
-9. Context Call - Complete
-10. Strategic Video Walkthrough Sent
-11. Key Findings - Call Booked
-12. Key Findings - Call Cancelled
-13. Won 🎉 *(celebration enabled)*
-14. Lost
-15. Followup
+6. Call Complete - Sent ICP Elevation
+7. Call Complete - Follow Up Later
+8. **Context Call - Scheduled** *(celebration enabled; triggers owner switch to Chaky)*
+9. Context Call - Cancelled
+10. Context Call - Complete *(celebration enabled)*
+11. Growth Strategy Sent *(celebration enabled)*
+12. Key Findings - Call Booked
+13. Key Findings - Call Cancelled
+14. Followup
+15. Won 🎉 *(celebration enabled)*
+16. Lost
 
 ### 3. Register the Attio webhook
 

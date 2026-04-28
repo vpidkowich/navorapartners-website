@@ -1,13 +1,20 @@
 /**
- * One-time setup script: configures custom deal stages in Attio.
+ * Setup script: configures custom deal stages in Attio.
  *
  * Usage:
  *   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-deal-stages.js
+ *   ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-deal-stages.js --archive-extras
  *
- * This script:
- *   1. Lists existing stages on the Deals object's `stage` attribute
- *   2. Archives any default stages that aren't in our custom list
- *   3. Creates any missing custom stages
+ * Default behavior (additive — safe):
+ *   1. Lists existing active stages on the Deals object's `stage` attribute
+ *   2. Creates any stages from CUSTOM_STAGES that don't exist yet
+ *   3. WARNS about active stages in Attio that aren't in CUSTOM_STAGES, but does
+ *      not archive them. Pipeline edits made directly in the Attio UI survive.
+ *
+ * With --archive-extras (destructive — opt-in):
+ *   Same as above, but also archives any active stage in Attio that isn't in
+ *   CUSTOM_STAGES. Use this only when you're confident CUSTOM_STAGES reflects
+ *   the desired final state of the pipeline.
  *
  * Idempotent — safe to run multiple times.
  */
@@ -33,16 +40,17 @@ const CUSTOM_STAGES = [
   { title: 'Call Cancelled' },
   { title: 'Call Complete - Good Fit' },
   { title: 'Call Complete - Not a Good Fit' },
-  { title: 'Call Complete - Follow Up' },
-  { title: 'Context Call - Scheduled' },
+  { title: 'Call Complete - Sent ICP Elevation' },
+  { title: 'Call Complete - Follow Up Later' },
+  { title: 'Context Call - Scheduled', celebrate: true },
   { title: 'Context Call - Cancelled' },
-  { title: 'Context Call - Complete' },
-  { title: 'Strategic Video Walkthrough Sent' },
+  { title: 'Context Call - Complete', celebrate: true },
+  { title: 'Growth Strategy Sent', celebrate: true },
   { title: 'Key Findings - Call Booked' },
   { title: 'Key Findings - Call Cancelled' },
+  { title: 'Followup' },
   { title: 'Won \uD83C\uDF89', celebrate: true },
   { title: 'Lost' },
-  { title: 'Followup' },
 ];
 
 async function listStages() {
@@ -80,6 +88,8 @@ async function createStage(title, celebrate) {
 }
 
 async function main() {
+  const archiveExtras = process.argv.includes('--archive-extras');
+
   console.log('Fetching existing deal stages...');
   const existing = await listStages();
   console.log(`Found ${existing.length} existing stages.\n`);
@@ -90,11 +100,24 @@ async function main() {
     if (!s.is_archived) existingByTitle.set(s.title, s);
   });
 
-  // Archive any active stages that aren't in our custom list
-  for (const stage of existing) {
-    if (!stage.is_archived && !customTitles.has(stage.title)) {
-      console.log(`  - Archiving "${stage.title}"`);
-      await archiveStage(stage.id.status_id);
+  // Detect active stages in Attio that aren't in our custom list (drift).
+  // By default we only warn — archiving requires the explicit --archive-extras flag.
+  const extras = existing.filter((s) => !s.is_archived && !customTitles.has(s.title));
+  if (extras.length > 0) {
+    if (archiveExtras) {
+      console.log('Archiving stages not in CUSTOM_STAGES (--archive-extras):');
+      for (const stage of extras) {
+        console.log(`  - Archiving "${stage.title}"`);
+        await archiveStage(stage.id.status_id);
+      }
+      console.log('');
+    } else {
+      console.log('⚠ The following active stages exist in Attio but are NOT in CUSTOM_STAGES:');
+      for (const stage of extras) {
+        console.log(`    • "${stage.title}"`);
+      }
+      console.log('  These were left untouched. If you want to archive them, re-run with --archive-extras.');
+      console.log('  If they should be kept, add them to CUSTOM_STAGES in this script.\n');
     }
   }
 
