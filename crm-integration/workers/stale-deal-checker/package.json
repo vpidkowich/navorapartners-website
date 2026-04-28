@@ -1,0 +1,10 @@
+{
+  "name": "navora-stale-deal-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker that runs daily and alerts on deals stuck in the 'Growth Strategy Sent' stage for more than 7 days. Creates an Attio task on the deal owner and posts to #sales in Slack.",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  }
+}

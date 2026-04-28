@@ -126,12 +126,22 @@ Separately, when anyone moves a deal in Attio to the **"Context Call - Scheduled
 | `functions/api/submit-form.js` | `POST /api/submit-form` | Receives form data, verifies Turnstile, creates Attio records, sends Slack + Google Sheets |
 | `functions/api/attio-webhook.js` | `POST /api/attio-webhook` | Receives Attio webhook events, handles deal-stage-change automations |
 
+### Cloudflare Workers (separate from Pages, scheduled via cron)
+
+| Worker | Trigger | Purpose |
+|--------|---------|---------|
+| `crm-integration/workers/stale-deal-checker/` | Cron `0 9 * * *` (daily 09:00 UTC) | Finds deals stuck in "Growth Strategy Sent" for > 7 days; creates an Attio Task on the deal owner referencing the "5b. TEMPLATE - Followup Email if Sales Call not Booked" template, and posts to Slack #sales. Dedupes via the `stale_alert_sent_at` Deal attribute (6-day cooldown). |
+
 ### One-time setup scripts (run locally)
 
 | File | Purpose |
 |------|---------|
 | `crm-integration/scripts/setup-attio-attributes.js` | Creates 13 custom People attributes in Attio (revenue_range, utm_*, gclid, geo_*, ip_address, lead_source) |
+| `crm-integration/scripts/setup-attio-deal-attributes.js` | Creates custom Deal attributes (currently `stale_alert_sent_at`, used by the stale-deal-checker worker for dedupe) |
 | `crm-integration/scripts/setup-attio-deal-stages.js` | Creates the 16 custom deal stages and archives Attio's defaults |
+| `crm-integration/scripts/setup-demo-marker.js` | Adds an `is_demo` (checkbox, title "Demo Data") attribute to Companies and Deals. Used by the seed/cleanup scripts below to tag and bulk-clean demo records |
+| `crm-integration/scripts/seed-demo-deals.js` | Seeds 100 realistic demo deals across all 16 pipeline stages (varied verticals, geos, traffic sources, revenue tiers, deal values $50K–$50M). Tags every record with `is_demo = true` (Deals/Companies) and `lead_source = "Demo Data"` (People). Hits the Attio API directly — bypasses Turnstile, Slack, and Google Sheets. Tracks created record IDs in `.demo-data-ids.json` (gitignored) |
+| `crm-integration/scripts/cleanup-demo-data.js` | Deletes everything created by `seed-demo-deals.js`, in dependency order (deals → people → companies). Uses `.demo-data-ids.json` by default; pass `--full-sweep` to also query Attio for any tagged records the IDs file may have missed |
 | `crm-integration/scripts/google-sheets-appscript.js` | Google Apps Script code (paste into Apps Script editor) that accepts POST requests and appends rows to the backup sheet |
 
 ---
@@ -252,6 +262,43 @@ Registered in Attio via the API:
 
 ---
 
+## Stale deal alerting (Cloudflare Worker, daily cron)
+
+Separate from the Pages app, a standalone Cloudflare Worker at `crm-integration/workers/stale-deal-checker/` runs once a day and surfaces deals that have gone cold.
+
+### What it does
+
+Cron fires at `0 9 * * *` (09:00 UTC daily). The worker:
+
+1. Queries every active deal from Attio (paginated 500/page).
+2. Filters to deals whose **current** stage entry has `status.title === "Growth Strategy Sent"` (configurable via `TARGET_STAGE` var in `wrangler.toml`).
+3. Computes `daysInStage = now − stage.active_from`. If less than `STALE_DAYS` (default 7), skips.
+4. Reads the deal's `stale_alert_sent_at` attribute. If it was set within the last `COOLDOWN_DAYS` (default 6), skips — prevents re-alerting every day for the same stuck deal.
+5. For each deal that survives the filters:
+   - **Creates an Attio Task** linked to the deal, assigned to the deal's current owner, due in 24h, content: *"`<deal name>` has been in `Growth Strategy Sent` for N days. Send the `5b. TEMPLATE - Followup Email if Sales Call not Booked` email template to follow up."*
+   - **Posts a Slack message** to `#sales` via `SLACK_WEBHOOK_URL` (reused from Pages), formatted as: *":hourglass_flowing_sand: *Stale deal:* `<deal name>` — owner: *<owner first name>* — *N days* in *Growth Strategy Sent*. Send the *5b. TEMPLATE - Followup Email if Sales Call not Booked* template. <link to deal in Attio>"*
+   - **Stamps `stale_alert_sent_at`** on the deal with the current timestamp (the dedupe attribute).
+
+### Manual testing
+
+The worker also exposes a `fetch` handler for manual invocation, gated by a shared secret:
+
+```
+GET https://<worker-url>/?token=<MANUAL_TRIGGER_TOKEN>&dryRun=true
+```
+
+`dryRun=true` reports what would be alerted without actually creating tasks, posting Slack, or stamping the dedupe attribute. Drop `dryRun` to do a real run on demand.
+
+### Deploy
+
+See **Setup → 6. Deploy stale-deal-checker worker** below.
+
+### Tuning
+
+Constants live in `wrangler.toml [vars]` — change `TARGET_STAGE`, `STALE_DAYS`, `COOLDOWN_DAYS`, or `EMAIL_TEMPLATE_NAME` and re-deploy. To monitor multiple stages, the worker would need a small refactor (currently single-stage).
+
+---
+
 ## Environment variables (Cloudflare Pages)
 
 Set in **Cloudflare Dashboard → Workers & Pages → navorapartners-website → Settings → Variables and Secrets**:
@@ -349,7 +396,39 @@ ATTIO_API_KEY=your_key node -e "
 3. Copy webhook URL → set as `SLACK_WEBHOOK_URL` in Cloudflare env vars
 4. The bot uses `icon_url` pointing at the Slack emoji image URL for `:grinning-slackbot:` (hardcoded in the function)
 
-### 6. Set up Cloudflare Turnstile
+### 6. Deploy stale-deal-checker worker
+
+A separate Cloudflare Worker (not part of the Pages project) runs the daily stale-deal alerting (see "Stale deal alerting" section above for what it does). Deploy steps:
+
+```bash
+# One-time on the local machine
+npm install -g wrangler
+wrangler login   # opens a browser to authorize Cloudflare
+
+# One-time: create the Attio dedupe attribute
+ATTIO_API_KEY=your_key node crm-integration/scripts/setup-attio-deal-attributes.js
+
+# Move into the worker directory
+cd crm-integration/workers/stale-deal-checker
+
+# Set secrets (will prompt for value, never written to disk)
+wrangler secret put ATTIO_API_KEY            # paste the same Attio token
+wrangler secret put SLACK_WEBHOOK_URL        # paste the existing #sales webhook URL
+wrangler secret put MANUAL_TRIGGER_TOKEN     # paste any random string (used for manual HTTP testing)
+
+# Deploy
+wrangler deploy
+```
+
+The worker URL is printed at the end of `wrangler deploy`. Test with:
+
+```bash
+curl "https://<worker-url>/?token=<MANUAL_TRIGGER_TOKEN>&dryRun=true"
+```
+
+The cron is configured in `wrangler.toml` (`crons = ["0 9 * * *"]`) — it begins firing automatically after the first deploy. Logs are visible via `wrangler tail` while it's running, or in Cloudflare Dashboard → Workers & Pages → `navora-stale-deal-checker` → Logs.
+
+### 7. Set up Cloudflare Turnstile
 
 The widget is configured in **Invisible** mode at the dashboard level — no visible CAPTCHA UI is shown to users. The challenge runs in the background when the form opens, and the token is collected on submit.
 

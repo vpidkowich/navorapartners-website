@@ -17,3 +17,12 @@ Thumbs.db
 .dev.vars.*
 .env
 .env.local
+
+# Demo data tracking (created by seed-demo-* scripts; used for cleanup)
+crm-integration/scripts/.demo-data-ids.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example

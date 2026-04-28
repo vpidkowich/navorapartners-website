@@ -1,0 +1,25 @@
+name = "navora-stale-deal-checker"
+main = "src/index.js"
+compatibility_date = "2025-01-15"
+
+# Keep the .workers.dev URL enabled so the manual-trigger endpoint
+# (used for testing) stays reachable; disable per-deploy preview URLs.
+workers_dev = true
+preview_urls = false
+
+# Daily at 09:00 UTC = 04:00 EST / 05:00 EDT
+[triggers]
+crons = ["0 9 * * *"]
+
+# Secrets (set via `wrangler secret put`, never committed):
+#   ATTIO_API_KEY         — read-write Attio API token
+#   SLACK_WEBHOOK_URL     — Slack incoming webhook for #sales (reused from Pages)
+#   MANUAL_TRIGGER_TOKEN  — random string; required to hit the worker via HTTP for testing
+
+# Vars (non-secret, can override in wrangler.toml or via dashboard):
+[vars]
+TARGET_STAGE = "Growth Strategy Sent"
+STALE_DAYS = "7"
+COOLDOWN_DAYS = "6"
+EMAIL_TEMPLATE_NAME = "5b. TEMPLATE - Followup Email if Sales Call not Booked"
+ATTIO_WORKSPACE_SLUG = "navora-partners"
