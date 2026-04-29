@@ -1,15 +1,18 @@
 # Navora Partners — Homepage Build
 
-## Project has two layers: Website + Form System
+## Project has three layers: Website + Form System + Reports
 
-This repo contains two distinct sub-projects that share one deploy pipeline:
+This repo contains three distinct sub-projects that share one deploy pipeline:
 
 1. **The marketing website** — static HTML/CSS/JS for navorapartners.com. Documented in this file (`CLAUDE.md`). Covers homepage, about, case studies, careers, design system, spacing tokens, responsive breakpoints, SEO, hosting.
 
 2. **The lead capture form system** — the Growth Strategy form lightbox, Cloudflare Pages Functions for Attio CRM integration, Slack notifications, Google Sheets backup, and the deal-stage-change webhook. **Documented separately in `crm-integration/FORM-SYSTEM-README.md`.** Do NOT duplicate form-system details here — the README is the source of truth for that layer. See also `CRM-INTEGRATION.md` at the repo root for a quick file map.
 
+3. **The Reports / BI Hub** — internal-only dashboard at `navorapartners.com/reports/` gated by Cloudflare Access. Lives in `public/reports/` (frontend) and `functions/api/reports/` (Pages Functions). Reads live from Attio. First report is the Sales Pipeline analytics; the hub is structured to add Marketing/Inbound and Finance reports over time. See the "Reports / BI Hub" section below for the architecture.
+
 When making changes, know which layer you're touching:
 - Touching `functions/api/submit-form.js`, `functions/api/attio-webhook.js`, `functions/api/submit-resume.js`, `crm-integration/`, `public/js/form-lightbox.js`, `public/lead-confirmed.html`, or form-related CSS → Form system. Also update `crm-integration/FORM-SYSTEM-README.md`.
+- Touching `functions/api/reports/`, `public/reports/`, or report config (`pipeline-shape.json`, `benchmarks.json`) → Reports. Update the "Reports / BI Hub" section below if architecture changes.
 - Touching anything else in `public/` → Website. `crm-integration/FORM-SYSTEM-README.md` doesn't need updating.
 
 See `crm-integration/FORM-SYSTEM-README.md` for a full file-to-layer mapping and commit message conventions.
@@ -250,3 +253,53 @@ Optimize the website based on SEO best practices to improve organic visibility, 
 - `public/terms.html` and `public/privacy.html` exist as placeholder pages
 - Content for these pages must be created with the help of legal counsel
 - Do NOT generate legal content without explicit approval — only update when real legal copy is provided
+
+## Reports / BI Hub
+
+Internal-only sub-project at `navorapartners.com/reports/`. Hub of interactive reports backed by Attio CRM data, designed to grow over time (sales today, marketing/finance later).
+
+### Architecture
+- **Frontend** lives in `public/reports/`. Reuses `css/variables.css` + `css/components.css` + `css/layout.css` so reports look like siblings of the marketing site. Charts powered by Apache ECharts loaded from jsDelivr CDN — no build step, no npm.
+- **API** lives in `functions/api/reports/` (Cloudflare Pages Functions). Reads live from Attio per request, computes metrics in-memory, caches the response at the edge for 5 minutes via the Cache API.
+- **Auth** is gated by Cloudflare Access (Zero Trust) — email allowlist policy on `/reports/*` and `/api/reports/*` configured in the Cloudflare dashboard. `functions/api/reports/_middleware.js` re-verifies the `Cf-Access-Jwt-Assertion` header against the team JWKS as defence-in-depth.
+
+### File map
+- `public/reports/index.html` — hub home, lists available reports
+- `public/reports/sales-pipeline/index.html` — first report (CRM pipeline analytics)
+- `public/reports/css/reports.css` — dashboard-specific styles (consumes design tokens, never redefines)
+- `public/reports/js/reports-shared.js` — fetch wrapper, formatters, color tokens
+- `public/reports/js/sales-pipeline.js` — page logic + ECharts configs for the sales report
+- `partials/report-head.html` — `<head>` template for new report pages
+- `functions/api/reports/_middleware.js` — Cloudflare Access JWT verification
+- `functions/api/reports/sales-pipeline.js` — aggregator endpoint (GET /api/reports/sales-pipeline)
+- `functions/api/reports/_shared/attio.js` — paginated `POST /v2/objects/deals/records/query` client + deal helpers
+- `functions/api/reports/_shared/metrics.js` — pure stage-history math (entry counts, forward edges, eventual conversion, time-in-stage, win rate, cycle length, velocity, monthly trends)
+- `functions/api/reports/_shared/pipeline-shape.json` — canonical 16-stage Navora pipeline with tags (`progression`/`cancelled`/`parked`/`won`/`lost`) + happy-path order. **Stage titles must match `crm-integration/scripts/setup-attio-deal-stages.js` exactly.**
+- `functions/api/reports/_shared/benchmarks.json` — hardcoded HubSpot/Pavilion B2B benchmarks with cited sources
+
+### Required env vars (Cloudflare Pages dashboard)
+- `ATTIO_API_KEY` — already set for the form system; reused here
+- `CF_ACCESS_TEAM_DOMAIN` — e.g. `navora.cloudflareaccess.com`
+- `CF_ACCESS_AUD` — Access application's AUD tag
+- `ATTIO_WORKSPACE_SLUG` — defaults to `navora-partners` (used to build "Open in Attio" links)
+- `REPORTS_AUTH_BYPASS=1` — local dev only, never set in prod
+
+### Cancelled-stage rule
+The 3 cancelled stages (Call Cancelled, Context Call Cancelled, Key Findings - Call Cancelled) are treated as **transient**: a deal that detours through a cancelled stage and later returns to the main path counts as eventually-progressed in the conversion math. The Sankey still shows the cancelled detour visually so the rate of cancellations is observable. If this rule needs to change (terminal vs transient), the change is isolated to `happyPathConversion()` in `metrics.js`.
+
+### Adding a new report
+1. Add a new card to `public/reports/index.html` (in the appropriate category section).
+2. Create `public/reports/<report-name>/index.html` mirroring `sales-pipeline/index.html`'s structure.
+3. Create `public/reports/js/<report-name>.js` for the page logic.
+4. Create `functions/api/reports/<report-name>.js` for the data endpoint. The middleware automatically protects it.
+5. Reuse `_shared/attio.js` and `_shared/metrics.js` where possible. Promote any new shared math into `_shared/` rather than duplicating.
+
+### When to update this section
+Update the file map and architecture notes here whenever you:
+- Add or rename a report
+- Change the auth model (e.g. switch identity providers)
+- Add a new env var or shared module
+- Materially change the metrics math (e.g. flip the cancelled-stage rule)
+- Add a new chart type that requires extending the ECharts CDN URL
+
+The `crm-integration/FORM-SYSTEM-README.md` is NOT updated for Reports changes — Reports is a separate layer with its own documentation here.

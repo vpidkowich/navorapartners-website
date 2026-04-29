@@ -1,0 +1,32 @@
+<!-- ================================================================
+     NAVORA REPORTS — SHARED <head> TEMPLATE
+     Copy this block into every page under public/reports/.
+     Adjust the relative path prefix to match the page's depth:
+       - public/reports/index.html              → use "../"
+       - public/reports/<report-name>/index.html → use "../../"
+     The placeholder %REL% below should be replaced with the prefix.
+     Page-specific <title>, meta description, and JS go AFTER this block.
+     ================================================================ -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="%REL%favicon.svg">
+
+<!-- Preconnect to font CDNs -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Web Fonts -->
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Inria+Serif:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+<!-- Design system + reports CSS -->
+<link rel="stylesheet" href="%REL%css/variables.css">
+<link rel="stylesheet" href="%REL%css/components.css">
+<link rel="stylesheet" href="%REL%css/layout.css">
+<link rel="stylesheet" href="%REL%reports/css/reports.css">
+
+<!-- ECharts (CDN, defer-loaded) -->
+<script defer src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>

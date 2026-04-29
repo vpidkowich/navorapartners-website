@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "description": "Canonical Navora deals pipeline shape. Stage titles MUST match Attio exactly (see crm-integration/scripts/setup-attio-deal-stages.js). Tags: progression | cancelled | parked | won | lost. branchOf identifies which progression stage a branch peels off from (drives Sankey layout).",
+  "stages": [
+    { "title": "Lead",                              "tag": "progression", "order": 1,  "branchOf": null },
+    { "title": "Qualifying Call Booked",            "tag": "progression", "order": 2,  "branchOf": "Lead" },
+    { "title": "Call Cancelled",                    "tag": "cancelled",   "order": 3,  "branchOf": "Qualifying Call Booked" },
+    { "title": "Call Complete - Good Fit",          "tag": "progression", "order": 4,  "branchOf": "Qualifying Call Booked" },
+    { "title": "Call Complete - Not a Good Fit",    "tag": "lost",        "order": 5,  "branchOf": "Qualifying Call Booked" },
+    { "title": "Call Complete - Sent ICP Elevation","tag": "parked",      "order": 6,  "branchOf": "Qualifying Call Booked" },
+    { "title": "Call Complete - Follow Up Later",   "tag": "parked",      "order": 7,  "branchOf": "Qualifying Call Booked" },
+    { "title": "Context Call - Scheduled",          "tag": "progression", "order": 8,  "branchOf": "Call Complete - Good Fit" },
+    { "title": "Context Call - Cancelled",          "tag": "cancelled",   "order": 9,  "branchOf": "Context Call - Scheduled" },
+    { "title": "Context Call - Complete",           "tag": "progression", "order": 10, "branchOf": "Context Call - Scheduled" },
+    { "title": "Growth Strategy Sent",              "tag": "progression", "order": 11, "branchOf": "Context Call - Complete" },
+    { "title": "Key Findings - Call Booked",        "tag": "progression", "order": 12, "branchOf": "Growth Strategy Sent" },
+    { "title": "Key Findings - Call Cancelled",     "tag": "cancelled",   "order": 13, "branchOf": "Key Findings - Call Booked" },
+    { "title": "Followup",                          "tag": "progression", "order": 14, "branchOf": "Key Findings - Call Booked" },
+    { "title": "Won 🎉",                  "tag": "won",         "order": 15, "branchOf": "Followup" },
+    { "title": "Lost",                              "tag": "lost",        "order": 16, "branchOf": null }
+  ],
+  "happyPath": [
+    "Lead",
+    "Qualifying Call Booked",
+    "Call Complete - Good Fit",
+    "Context Call - Scheduled",
+    "Context Call - Complete",
+    "Growth Strategy Sent",
+    "Key Findings - Call Booked",
+    "Followup",
+    "Won 🎉"
+  ],
+  "wonStage": "Won 🎉",
+  "lostStage": "Lost",
+  "entryStage": "Lead"
+}

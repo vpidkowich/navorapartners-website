@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<title>Sales Pipeline — Navora Reports</title>
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Inria+Serif:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../css/variables.css">
+<link rel="stylesheet" href="../../css/components.css">
+<link rel="stylesheet" href="../../css/layout.css">
+<link rel="stylesheet" href="../css/reports.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script type="module" src="../js/sales-pipeline.js"></script>
+</head>
+<body class="report-page">
+<div class="site-wrapper">
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="7.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/><path d="M12 1.5V3.5M12 20.5V22.5M1.5 12H3.5M20.5 12H22.5" stroke="#fff" stroke-width="1" stroke-linecap="round"/><path d="M16.5 7.5L13.2 10.8L12 12L10.8 13.2L7.5 16.5" stroke="#FFE174" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="12" cy="12" r="0.8" fill="#FFE174"/></svg>Navora Partners
+    </a>
+    <div class="header-right">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+      <a href="../index.html" class="btn btn-gold btn-arrow header-cta">All Reports</a>
+    </div>
+    <nav class="header-nav" id="headerNav">
+      <a href="../index.html">All Reports</a>
+      <a href="../../index.html">Marketing Site</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="report-eyebrow">Reports · Sales</p>
+  <h1 class="report-title">Sales Pipeline</h1>
+  <p class="report-subtitle">How deals are flowing through the funnel — conversion, timing, and where they're getting stuck. Data pulled live from Attio.</p>
+
+  <div class="report-toolbar">
+    <div class="control-group">
+      <label for="windowPicker">Window</label>
+      <select id="windowPicker">
+        <option value="30d">Last 30 days</option>
+        <option value="90d" selected>Last 90 days</option>
+        <option value="365d">Last 365 days</option>
+        <option value="all">All time</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="comparePicker">Compare</label>
+      <select id="comparePicker">
+        <option value="prior-period" selected>Prior period</option>
+        <option value="prior-year">Prior year</option>
+      </select>
+    </div>
+    <div class="toolbar-meta" id="lastRefreshed"></div>
+    <button class="refresh" id="refreshBtn">Refresh</button>
+  </div>
+
+  <div class="report-loading" id="loadingState">Loading pipeline data…</div>
+  <div class="report-error" id="errorState" style="display:none"></div>
+
+  <div id="reportContent" style="display:none">
+
+    <!-- KPI strip -->
+    <div class="kpi-strip">
+      <div class="kpi-tile" id="kpiWinRate">
+        <div class="kpi-label">Win rate</div>
+        <div class="kpi-value">—</div>
+        <span class="kpi-delta flat"></span>
+        <div class="kpi-spark"></div>
+        <div class="kpi-bench"></div>
+      </div>
+      <div class="kpi-tile" id="kpiVelocity">
+        <div class="kpi-label">Pipeline velocity</div>
+        <div class="kpi-value">—</div>
+        <span class="kpi-delta flat"></span>
+        <div class="kpi-spark"></div>
+        <div class="kpi-bench"></div>
+      </div>
+      <div class="kpi-tile" id="kpiCycle">
+        <div class="kpi-label">Median sales cycle</div>
+        <div class="kpi-value">—</div>
+        <span class="kpi-delta flat"></span>
+        <div class="kpi-spark"></div>
+        <div class="kpi-bench"></div>
+      </div>
+      <div class="kpi-tile" id="kpiOpen">
+        <div class="kpi-label">Open deals</div>
+        <div class="kpi-value">—</div>
+        <span class="kpi-delta flat"></span>
+        <div class="kpi-spark"></div>
+        <div class="kpi-bench"></div>
+      </div>
+      <div class="kpi-tile" id="kpiPipeline">
+        <div class="kpi-label">Open pipeline value</div>
+        <div class="kpi-value">—</div>
+        <span class="kpi-delta flat"></span>
+        <div class="kpi-spark"></div>
+        <div class="kpi-bench"></div>
+      </div>
+    </div>
+
+    <!-- Funnel (Sankey) -->
+    <section class="report-section">
+      <div class="report-section-header">
+        <h2 class="report-section-title">Funnel flow</h2>
+        <p class="report-section-hint">Each band's width reflects how many deals took that path. Cancelled detours show as grey branches; deals that re-enter after a cancellation are not double-counted in the math below.</p>
+      </div>
+      <div class="funnel-chart" id="funnelChart"></div>
+    </section>
+
+    <!-- Stage table -->
+    <section class="report-section">
+      <div class="report-section-header">
+        <h2 class="report-section-title">Stage breakdown</h2>
+        <p class="report-section-hint">Eventual conversion treats cancelled detours as transient. Strict (next-stage-only) shown for reference.</p>
+      </div>
+      <div class="stage-table-wrap">
+        <table class="stage-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th class="num">Deals entered</th>
+              <th>Conv → next happy-path stage</th>
+              <th class="num">Median days</th>
+              <th class="num">p75 days</th>
+              <th>vs benchmark</th>
+            </tr>
+          </thead>
+          <tbody id="stageTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Trends -->
+    <section class="report-section">
+      <div class="report-section-header">
+        <h2 class="report-section-title">Trends</h2>
+        <p class="report-section-hint">Last 12 months. Volume health on the left, conversion + speed on the right.</p>
+      </div>
+      <div class="trend-grid">
+        <div class="trend-chart" id="volumeChart"></div>
+        <div class="trend-chart" id="rollingChart"></div>
+      </div>
+    </section>
+
+    <!-- Stuck deals -->
+    <section class="report-section">
+      <div class="report-section-header">
+        <h2 class="report-section-title">Currently stuck</h2>
+        <p class="report-section-hint">Top 20 open deals by days in current stage. Click a deal name to open it in Attio.</p>
+      </div>
+      <div class="stage-table-wrap">
+        <table class="stuck-table">
+          <thead>
+            <tr>
+              <th>Deal</th>
+              <th>Stage</th>
+              <th>Days</th>
+              <th>Owner</th>
+              <th class="num">Value</th>
+            </tr>
+          </thead>
+          <tbody id="stuckTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+(function() {
+  var btn = document.getElementById('hamburgerBtn');
+  var nav = document.getElementById('headerNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    var isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('active');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+})();
+</script>
+
+</div>
+</body>
+</html>

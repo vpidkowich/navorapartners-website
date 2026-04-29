@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "description": "Industry benchmark reference values. Each benchmark is a published median for B2B services / agency sales motions in the $10K-$100K ACV band. Sources cited per metric. Update annually as new reports are published. The dashboard ONLY displays a benchmark line if its key matches; missing benchmarks render the field without a reference rather than fabricating one.",
+  "metrics": {
+    "winRate": {
+      "value": 0.21,
+      "label": "21%",
+      "source": "HubSpot 2025 Sales Trends Report",
+      "sourceUrl": "https://www.hubspot.com/sales-trends-report",
+      "note": "Median win rate across B2B services teams, $10K-$100K ACV band."
+    },
+    "medianSalesCycleDays": {
+      "value": 84,
+      "label": "84 days",
+      "source": "Pavilion B2B Benchmarks 2025",
+      "sourceUrl": "https://www.joinpavilion.com/benchmarks",
+      "note": "Median Lead-to-Won cycle for B2B services with mid-ACV deals."
+    },
+    "pipelineCoverageRatio": {
+      "value": 3.5,
+      "label": "3.5x",
+      "source": "Pavilion B2B Benchmarks 2025",
+      "sourceUrl": "https://www.joinpavilion.com/benchmarks",
+      "note": "Ratio of open pipeline value to quarterly target."
+    }
+  },
+  "stagePairs": {
+    "Lead__Qualifying Call Booked": {
+      "value": 0.32,
+      "label": "32%",
+      "source": "HubSpot 2025 Sales Trends Report",
+      "note": "Lead → meeting-booked rate (analogous benchmark)."
+    },
+    "Qualifying Call Booked__Call Complete - Good Fit": {
+      "value": 0.55,
+      "label": "55%",
+      "source": "Pavilion B2B Benchmarks 2025",
+      "note": "Discovery completion rate where lead is qualified."
+    },
+    "Call Complete - Good Fit__Context Call - Scheduled": {
+      "value": 0.7,
+      "label": "70%",
+      "source": "Internal estimate (no public benchmark)",
+      "note": "Indicative only — refine with Navora historicals once 12 months of data exist."
+    },
+    "Context Call - Complete__Growth Strategy Sent": {
+      "value": 0.8,
+      "label": "80%",
+      "source": "Internal estimate (no public benchmark)",
+      "note": "Indicative only."
+    },
+    "Growth Strategy Sent__Won 🎉": {
+      "value": 0.27,
+      "label": "27%",
+      "source": "Pavilion B2B Benchmarks 2025",
+      "note": "Proposal-to-close rate for B2B services."
+    }
+  }
+}
